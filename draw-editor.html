@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 	<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Canvas Draw</title>
+	<title>Редактор изображений</title>
 <style>
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }	
-/* Верхня панель */
+/* Верхняя панель */
 .cd-top-toolbar {
   background: #111;
   color: white;
@@ -19,13 +19,13 @@ body {
   align-items: center;
   flex-shrink: 0;
 }
-/* Основний контент */
+/* Основное содержимое */
 .main-content {
   display: flex;
   flex: 1;
   overflow: hidden;
 }
-/* Модальне вікно */
+/* Модальное окно */
 .modal {
   position: fixed;
   top: 0;
@@ -63,7 +63,7 @@ body {
   gap: 8px;
   justify-content: flex-end;
 }
-/* Бічна панель */
+/* Боковая панель */
 .side-toolbar {
   background: #111;
   display: flex;
@@ -116,7 +116,7 @@ body {
   border-radius: 4px;
 }
 
-/* Контейнер canvas — шахова підкладка */
+/* Контейнер canvas — шахматная подложка */
 .canvas-container {
   position: relative;
   display: inline-block;
@@ -166,7 +166,7 @@ body {
 .selection-only {
   display: none;
 }
-/* Курсор гумки */
+/* Курсор ластика */
 #eraserCursor {
   position: absolute;
   pointer-events: none;
@@ -175,7 +175,7 @@ body {
   display: none;
   transform: translate(-50%, -50%);
 }
-/* Нижня панель */
+/* Нижняя панель */
 .cd-bottom-toolbar {
   background: #111;
   padding: 4px 8px;
@@ -191,13 +191,13 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 2px;
-  width: 352px; /* 16 кнопок × (20px + 2px gap) - 2px останнього gap */
-  max-height: 32px; /* 2 ряди × (14px + 2px gap) */
+  width: 352px; /* 16 кнопок × (20px + 2px gap) минус 2px последнего gap */
+  max-height: 32px; /* 2 ряда × (14px + 2px gap) */
 }
 
 .color-palette button {
   width: 20px;
-  height: 14px; /* зменшена висота */
+  height: 14px; /* уменьшенная высота */
   border: 1px solid #666;
   border-radius: 2px;
   cursor: pointer;
@@ -212,7 +212,7 @@ body {
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.6);
-            display: none; /* Приховано за замовчуванням */
+            display: none; /* Скрыто по умолчанию */
             align-items: center;
             justify-content: center;
             z-index: 1000;
@@ -323,37 +323,37 @@ body {
 			<div class="main-content">
 				<div class="side-toolbar">
 					<button id="brushBtn" class="cd-toolbar-button active">
-						<img src="images/brush.png" alt="Пензель">
+						<img src="images/brush.png" alt="Кисть">
 					</button>
 					<button id="eraserBtn" class="cd-toolbar-button">
-						<img src="images/eraser.png" alt="Гумка">
+						<img src="images/eraser.png" alt="Ластик">
 					</button>
 					<button id="lineBtn" class="cd-toolbar-button">
-						<img src="images/line.png" alt="Лінія">
+						<img src="images/line.png" alt="Линия">
 					</button>
 					<button id="rectBtn" class="cd-toolbar-button">
-						<img src="images/rect.png" alt="Прямокутник">
+						<img src="images/rect.png" alt="Прямоугольник">
 					</button>
 					<button id="rectStrokeBtn" class="cd-toolbar-button">
-						<img src="images/rect-stroke.png" alt="Незаповнений прямокутник">
+						<img src="images/rect-stroke.png" alt="Прямоугольник без заливки">
 					</button>
 					<button id="ellipseBtn" class="cd-toolbar-button">
-						<img src="images/ellipse.png" alt="Еліпс">
+						<img src="images/ellipse.png" alt="Эллипс">
 					</button>
 					<button id="ellipseStrokeBtn" class="cd-toolbar-button">
-						<img src="images/ellipse-stroke.png" alt="Незаповнений еліпс">
+						<img src="images/ellipse-stroke.png" alt="Эллипс без заливки">
 					</button>
 					<button id="selectBtn" class="cd-toolbar-button">
-						<img src="images/select.png" alt="Виділення">
+						<img src="images/select.png" alt="Выделение">
 					</button>
 					<button id="fillBtn" class="cd-toolbar-button">
-						<img src="images/fill.png" alt="Заповнення">
+						<img src="images/fill.png" alt="Заливка">
 					</button>
 					<button id="textBtn" class="cd-toolbar-button">
 						<img src="images/text.png" alt="Текст">
 					</button>
 					<button id="eyedropperBtn" class="cd-toolbar-button">
-						<img src="images/eyedropper.png" alt="Піпетка">
+						<img src="images/eyedropper.png" alt="Пипетка">
 					</button>
 					<button id="clearBtn" class="cd-toolbar-button">
 						<img src="images/clear.png" alt="Clear">
@@ -362,11 +362,11 @@ body {
 				<div class="canvas-center-wrapper">
 					<div id="zoomWrapper">
 						
-						<!-- Цей контейнер має шахову підкладку -->
+						<!-- У этого контейнера шахматная подложка -->
 						<div class="canvas-container" id="canvasContainer">
 							<canvas id="cd-canvas" width="128" height="128"></canvas>
 							
-							<!-- 🔑 resize handle ПРИВʼЯЗАНИЙ до canvas -->
+							<!-- resize handle привязан к canvas -->
 							<div id="canvasResizeHandle"></div>
 						</div>
 					</div>
@@ -383,22 +383,22 @@ body {
 		<div id="modal-container" class="modal-overlay" style="display:none;">
 			<div class="modal-content">
 				<h3 id="modal-title">Заголовок</h3>
-				<p id="modal-text">Текст повідомлення...</p>
+				<p id="modal-text">Текст сообщения...</p>
 				<div id="modal-input-wrapper" class="modal-input-wrapper" style="display: none;">
-					<input type="text" id="modal-input-field" placeholder="Введіть текст тут...">
+					<input type="text" id="modal-input-field" placeholder="Введите текст здесь...">
 				</div>
 				<div class="modal-buttons">
-					<button id="modal-cancel-btn" class="btn btn-cancel">Ні</button>					
-					<button id="modal-ok-btn" class="btn btn-ok">Так</button>
+					<button id="modal-cancel-btn" class="btn btn-cancel">Нет</button>					
+					<button id="modal-ok-btn" class="btn btn-ok">Да</button>
 				</div>
 			</div>
 		</div>
 		<script src="./lib/jsfs2.js"></script>
 		<script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Ініціалізація файлової системи
+    // Инициализация файловой системы
     if (typeof window.FileSystem === 'undefined') {
-        message('Помилка: бібліотека jsfs не завантажена!');
+        message('Ошибка: библиотека jsfs не загружена!');
     } else {
         window.jsfs = new window.FileSystem("PGZfs");
     }
@@ -461,16 +461,16 @@ canvasContainer.style.width = canvas.width + 'px';
 canvasContainer.style.height = canvas.height + 'px';
 const handle = document.getElementById('canvasResizeHandle');
 handle.style.transform = `translate(${8}px, ${8}px) scale(${1})`;;  
-// Генерація 32 кольорів (можна налаштувати)
+// Генерация 32 цветов (можно настроить)
 const defaultColors = [
-  // Чорно-біла гамма
+  // Чёрно-белая гамма
   '#000000', '#ffffff',
-  // Основні кольори
+  // Основные цвета
   '#ff0000', '#00ff00', '#0000ff',
   '#ffff00', '#ff00ff', '#00ffff',
-  // Відтінки сірого
+  // Оттенки серого
   '#808080', '#c0c0c0', '#a9a9a9', '#696969',
-  // Додаткові кольори
+  // Дополнительные цвета
   '#ffa500', '#800080', '#008000', '#000080',
   '#808000', '#ffc0cb', '#dda0dd', '#90ee90',
   '#add8e6', '#f0e68c', '#d2b48c', '#ffb6c1',
@@ -478,7 +478,7 @@ const defaultColors = [
   '#2e8b57', '#b22222', '#ff4500', '#daa520'
 ];
 
-// Обрізаємо до 32, якщо потрібно
+// Обрезаем до 32, если нужно
 const paletteColors = defaultColors.slice(0, 32);
 
 const colorPalette = document.getElementById('colorPalette');
@@ -492,28 +492,28 @@ paletteColors.forEach(color => {
   colorPalette.appendChild(btn);
 });
 
-// Синхронізація між колор-пікерами
+// Синхронизация между выборами цвета
 document.getElementById('colorPicker').oninput = (e) => {
   document.getElementById('colorPicker').value = e.target.value;
 };
 //
 
-// draw-editor.html — при завантаженні
+// draw-editor.html — при загрузке
 async function preload() {
 const params = new URLSearchParams(window.location.search);
 loadPath = params.get('load');
 
     if (loadPath) {
         try {
-            // Припускаємо, що jsfs доступний у глобальному контексті
+            // Предполагаем, что jsfs доступен в глобальном контексте
             if (typeof window.jsfs === 'undefined') {
-                await message('','Файлова система недоступна');
+                await message('','Файловая система недоступна');
                 return;
             }
 
             const base64Data = await window.jsfs.read(loadPath);            
             if (typeof base64Data !== 'string') {
-                await message('','Невірний формат файлу');
+                await message('','Неверный формат файла');
                 return;
             }
 
@@ -528,7 +528,7 @@ loadPath = params.get('load');
                 }
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(img, 0, 0);
-                // Оновити стан, як у вашому обробнику
+                // Обновить состояние, как в обработчике
                 saveState();
                 selectionRect = null;
                 floatingLayer = null;
@@ -537,27 +537,27 @@ loadPath = params.get('load');
                 openedFSPath = loadPath;
                 render();
             };
-            img.onerror = () =>  message('','Не вдалося завантажити зображення');
+            img.onerror = () =>  message('','Не удалось загрузить изображение');
             img.src = base64Data;
         } catch (err) {
-            console.error('Помилка завантаження:', err);
-            await message('','Помилка: ' + (err.message || ''));
+            console.error('Ошибка загрузки:', err);
+            await message('','Ошибка: ' + (err.message || ''));
         }
     }
 }
 preload();
 /* -------- TOOLS -------- */
-// Після загального циклу:
+// После общего цикла:
 ['brush','rect','ellipse','rectStroke','ellipseStroke','select','fill','eraser','line','text','eyedropper'].forEach(t=>{
   if (document.getElementById(t+'Btn')) {
     document.getElementById(t+'Btn').onclick=()=>setTool(t);
   }
 });
 
-// 🔁 Перевизначаємо selectBtn окремо:
+// Переопределяем selectBtn отдельно:
 document.getElementById('selectBtn').onclick = () => {
   if (tool === 'select') {
-    // Виділити все полотно
+    // Выделить весь холст
     selectionRect = { x: 0, y: 0, w: canvas.width, h: canvas.height };
     updateSelectionButtons();
     render();
@@ -572,10 +572,10 @@ document.getElementById('shrinkBtn').onclick = () => {
 	shrinkIMG();
 }
 document.getElementById('rotateBtn').onclick = () => {
-  // Якщо є виділення, але немає floating layer — створюємо його
+  // Если есть выделение, но нет floating layer — создаём его
   if (selectionRect && !floatingLayer) {
     createFloatingFromSelection();
-    if (!floatingLayer) return; // якщо не вдалося
+    if (!floatingLayer) return; // если не удалось
   }
 
   if (!floatingLayer) return;
@@ -624,36 +624,36 @@ document.getElementById('closeBtn').onclick = async () => {
   let shouldExit = false;
 
   if (loadPath) {
-    // Зберігаємо без запиту, бо файл вже має шлях
+    // Сохраняем без запроса, потому что у файла уже есть путь
     await saveToFS(loadPath);
-    console.log('*Файл збережено:', loadPath);
-    const ask = await askConfirm("", "Закінчити роботу?");
+    console.log('*Файл сохранён:', loadPath);
+    const ask = await askConfirm("", "Закончить работу?");
     if (ask) {
       shouldExit = true;
     }
   } else {
-    // Перевіряємо, чи є незбережені зміни
+    // Проверяем, есть ли несохранённые изменения
     const hasUnsavedChanges = !openedFromFS || historyIndex > 0;
 
     if (hasUnsavedChanges) {
-      const shouldSave = await askConfirm('Незбережені зміни', 'Хочете зберегти зображення перед виходом?');
+      const shouldSave = await askConfirm('Несохранённые изменения', 'Хотите сохранить изображение перед выходом?');
       if (shouldSave) {
-        const fileName = await input('Зберегти', 'Введіть ім’я файлу без розширення (наприклад: my_art):');
+        const fileName = await input('Сохранить', 'Введите имя файла без расширения (например: my_art):');
         if (fileName && fileName.trim() !== '') {
           const cleanName = fileName.trim();
           const fullPath = `images/${cleanName}.png`;
           await saveToFS(fullPath);
-          console.log('Файл збережено:', fullPath);
+          console.log('Файл сохранён:', fullPath);
         }
-        // Навіть якщо ім’я не введено — продовжуємо вихід
+        // Даже если имя не введено — продолжаем выход
       }
-      // Після запиту про збереження — запитуємо, чи точно виходити
-      const confirmExit = await askConfirm("", "Закінчити роботу?");
+      // После запроса о сохранении спрашиваем, точно ли выходить
+      const confirmExit = await askConfirm("", "Закончить работу?");
       if (confirmExit) {
         shouldExit = true;
       }
     } else {
-      // Немає змін — виходимо без попереджень
+      // Изменений нет — выходим без предупреждений
       shouldExit = true;
     }
   }
@@ -667,7 +667,7 @@ canvas.ondragstart = () => false;
 function updatePasteButtonVisibility() {
 	const pasteBtn = document.getElementById('pasteBtn');
 	if (selectionRect && clipboardData) {
-		pasteBtn.style.display = 'inline-block'; // або 'flex'
+		pasteBtn.style.display = 'inline-block'; // или 'flex'
 	} else {
 		pasteBtn.style.display = 'none';
 	}
@@ -695,7 +695,7 @@ function setTool(t){
 }
 
 async function clearCanvas() {
-  const shouldClear = await askConfirm('Підтвердження', 'Очистити все полотно?');
+  const shouldClear = await askConfirm('Подтверждение', 'Очистить весь холст?');
   if (shouldClear) {
     const clearData = ctx.createImageData(canvas.width, canvas.height);
     ctx.putImageData(clearData, 0, 0);
@@ -713,7 +713,7 @@ function applyZoom(zoomLevel) {
     zoomWrapper.style.transform = `scale(${currentZoom})`;
     zoomWrapper.style.transformOrigin = 'top left';
 
-    // Оновлюємо розмір .canvas-container під поточний розмір canvas
+    // Обновляем размер .canvas-container под текущий размер canvas
     const canvas = document.getElementById('cd-canvas');
     const container = document.getElementById('canvasContainer');
     container.style.width = canvas.width + 'px';
@@ -722,7 +722,7 @@ function applyZoom(zoomLevel) {
 	const handle = document.getElementById('canvasResizeHandle');
 	handle.style.transform = `translate(${offset}px, ${offset}px) scale(${1 / currentZoom})`;;
 
-    // Оновлення індикатора
+    // Обновление индикатора
     const indicator = document.getElementById('zoomIndicator');
     if (indicator) {
         indicator.textContent = Math.round(currentZoom * 100) + '%';
@@ -761,19 +761,19 @@ function undo() {
     historyIndex--;
     const prevState = history[historyIndex];
     
-    // 🔑 Скидаємо розмір canvas до розміру збереженого стану
+    // Сбрасываем размер canvas до размера сохранённого состояния
     canvas.width = prevState.width;
     canvas.height = prevState.height;
     
-    // 🔑 Відновлюємо параметри контексту
+    // Восстанавливаем параметры контекста
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.imageSmoothingEnabled = false;
     
-    // Відновлюємо зображення
+    // Восстанавливаем изображение
     ctx.putImageData(prevState, 0, 0);
     
-    // Оновлюємо розмір контейнера
+    // Обновляем размер контейнера
     const canvasContainer = document.querySelector('.canvas-container');
     canvasContainer.style.width = canvas.width + 'px';
     canvasContainer.style.height = canvas.height + 'px';
@@ -790,18 +790,18 @@ function redo() {
     historyIndex++;
     const nextState = history[historyIndex];
     
-    // 🔑 Скидаємо розмір canvas
+    // Сбрасываем размер canvas
     canvas.width = nextState.width;
     canvas.height = nextState.height;
     
-    // 🔑 Відновлюємо параметри контексту
+    // Восстанавливаем параметры контекста
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.imageSmoothingEnabled = false;
     
     ctx.putImageData(nextState, 0, 0);
     
-    // Оновлюємо контейнер
+    // Обновляем контейнер
     const canvasContainer = document.querySelector('.canvas-container');
     canvasContainer.style.width = canvas.width + 'px';
     canvasContainer.style.height = canvas.height + 'px';
@@ -812,11 +812,11 @@ function redo() {
     updateSelectionButtons();
   }
 }
-// Після оголошення функцій undo/redo
+// После объявления функций undo/redo
 document.getElementById('undoBtn').onclick = undo;
 document.getElementById('redoBtn').onclick = redo;
 //
-// Обробники для кнопок редагування
+// Обработчики для кнопок редактирования
 document.getElementById('copyBtn').addEventListener('click', copySelection);
 document.getElementById('pasteBtn').addEventListener('click', pasteSelection);
 document.getElementById('deleteBtn').addEventListener('click', deleteSelection);
@@ -851,7 +851,7 @@ function floodFill(ctx, x, y, fillColorHex, tolerance = 32) {
   const targetColor = getColor(x, y);
   const replacementColor = hexToRgb(fillColorHex);
 
-  // Якщо вже зафарбовано цим кольором — нічого не робити
+  // Если уже закрашено этим цветом — ничего не делаем
   if (targetColor.r === replacementColor.r &&
       targetColor.g === replacementColor.g &&
       targetColor.b === replacementColor.b &&
@@ -880,12 +880,12 @@ function floodFill(ctx, x, y, fillColorHex, tolerance = 32) {
       if (visited[idx]) continue;
       const neighborColor = getColor(nx, ny);
 
-      // 🔑 СПЕЦІАЛЬНА ОБРОБКА ПРОЗОРОСТІ
+      // ОСОБАЯ ОБРАБОТКА ПРОЗРАЧНОСТИ
       if (targetColor.a === 0) {
-        // Заливаємо лише прозорі пікселі
+        // Заливаем только прозрачные пиксели
         if (neighborColor.a !== 0) continue;
       } else {
-        // Заливаємо лише непрозорі пікселі з подібним кольором
+        // Заливаем только непрозрачные пиксели похожего цвета
         if (neighborColor.a === 0) continue;
         if (colorDistance(neighborColor, targetColor) > tolerance) continue;
       }
@@ -1157,13 +1157,13 @@ canvas.onmouseup = () => {
     ctx.beginPath();
   
     if (currentBrushPath.length === 1) {
-      // Одинокий клік — малюємо точку
+      // Одиночный клик — рисуем точку
       const pt = currentBrushPath[0];
       ctx.arc(pt.x, pt.y, brushSize / 2, 0, Math.PI * 2);
       ctx.fillStyle = colorPicker.value;
       ctx.fill();
     } else {
-      // Звичайний штрих
+      // Обычный штрих
       ctx.moveTo(currentBrushPath[0].x, currentBrushPath[0].y);
       for (let i = 1; i < currentBrushPath.length; i++) {
         ctx.lineTo(currentBrushPath[i].x, currentBrushPath[i].y);
@@ -1325,7 +1325,7 @@ function normalizeSelection(){
       }
     }
   
-    // Створюємо floating layer
+    // Создаём floating layer
     floatingLayer = {
       x: sx,
       y: sy,
@@ -1335,11 +1335,11 @@ function normalizeSelection(){
       rotation: 0
     };
   
-    // Видаляємо оригінальний фрагмент з базового полотна
+    // Удаляем исходный фрагмент с базового холста
     renderBaseOnly();
     const clear = ctx.createImageData(w, h);
     ctx.putImageData(clear, sx, sy);
-    saveState(); // зберігаємо стан БЕЗ виділеного фрагмента
+    saveState(); // сохраняем состояние БЕЗ выделенного фрагмента
   
     return floatingLayer;
   }
@@ -1407,19 +1407,19 @@ function drawShape(shape, commit = false) {
   const color = shape.color;
 
   if (shape.type === 'rect') {
-    // Заповнений прямокутник
+    // Прямоугольник с заливкой
     ctx.fillStyle = color;
     ctx.fillRect(shape.x, shape.y, shape.w, shape.h);
-    ctx.strokeStyle = color; // ← контур того самого кольору
+    ctx.strokeStyle = color; // контур того же цвета
     ctx.strokeRect(shape.x, shape.y, shape.w, shape.h);
   } else if (shape.type === 'rectStroke') {
-    // Лише контур
+    // Только контур
     console.log("rectStroke")
     ctx.strokeStyle = color;
     ctx.lineWidth = brushSize;
     ctx.strokeRect(shape.x, shape.y, shape.w, shape.h);
   } else if (shape.type === 'ellipse') {
-    // Заповнений еліпс
+    // Эллипс с заливкой
     ctx.beginPath();
     ctx.ellipse(
       shape.x + shape.w / 2,
@@ -1430,10 +1430,10 @@ function drawShape(shape, commit = false) {
     );
     ctx.fillStyle = color;
     ctx.fill();
-    ctx.strokeStyle = color; // ← контур того самого кольору
+    ctx.strokeStyle = color; // контур того же цвета
     ctx.stroke();
   } else if (shape.type === 'ellipseStroke') {
-    // Лише контур
+    // Только контур
     ctx.beginPath();
     ctx.ellipse(
       shape.x + shape.w / 2,
@@ -1577,7 +1577,7 @@ function shrinkIMG() {
   const newW = Math.max(1, Math.floor(w * 0.5));
   const newH = Math.max(1, Math.floor(h * 0.5));
 
-  // 👉 тимчасовий canvas для копії
+  // временный canvas для копии
   const tmpCanvas = document.createElement('canvas');
   tmpCanvas.width = w;
   tmpCanvas.height = h;
@@ -1585,22 +1585,22 @@ function shrinkIMG() {
   const tmpCtx = tmpCanvas.getContext('2d');
   tmpCtx.drawImage(canvas, 0, 0);
 
-  // 👉 змінюємо розмір основного canvas
+  // меняем размер основного canvas
   canvas.width = newW;
   canvas.height = newH;
 
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
 
-  // nearest-neighbor (без розмиття)
+  // nearest-neighbor (без размытия)
   ctx.imageSmoothingEnabled = false;
 
-  // 👉 масштабування через drawImage
+  // масштабирование через drawImage
   ctx.drawImage(tmpCanvas, 0, 0, w, h, 0, 0, newW, newH);
   canvas.style.filter = "contrast(1.15)";
 
 
-  // --- оновлення контейнера ---
+  // --- обновление контейнера ---
   const container = document.getElementById('canvasContainer');
   container.style.width = newW + 'px';
   container.style.height = newH + 'px';
@@ -1610,12 +1610,12 @@ function shrinkIMG() {
   const offset = 8;
   handle.style.transform = `translate(${offset}px, ${offset}px) scale(${1 / currentZoom})`;
 
-  // --- скидання виділення ---
+  // --- сброс выделения ---
   selectionRect = null;
   floatingLayer = null;
   updateSelectionButtons();
 
-  // --- збереження ---
+  // --- сохранение ---
   saveState();
   render();
 }
@@ -1627,17 +1627,17 @@ function rotateCW() {
   const w = canvas.width;
   const h = canvas.height;
 
-  // 1. Зберігаємо поточний вміст
+  // 1. Сохраняем текущее содержимое
   const imageData = ctx.getImageData(0, 0, w, h);
 
-  // 2. Тимчасовий canvas для повороту
+  // 2. Временный canvas для поворота
   const tempCanvas = document.createElement('canvas');
   tempCanvas.width = w;
   tempCanvas.height = h;
   const tempCtx = tempCanvas.getContext('2d', { willReadFrequently: true });
   tempCtx.putImageData(imageData, 0, 0);
 
-  // 3. Обчислюємо розмір canvas, достатній для повороту без обрізання
+  // 3. Вычисляем размер canvas, достаточный для поворота без обрезки
   const cos = Math.abs(Math.cos(angleRad));
   const sin = Math.abs(Math.sin(angleRad));
   const newW = Math.ceil(w * cos + h * sin);
@@ -1648,7 +1648,7 @@ function rotateCW() {
   rotatedCanvas.height = newH;
   const rotCtx = rotatedCanvas.getContext('2d', { willReadFrequently: true });
 
-  // 4. Малюємо обернене зображення по центру
+  // 4. Рисуем повёрнутое изображение по центру
   rotCtx.clearRect(0, 0, newW, newH);
   rotCtx.save();
   rotCtx.translate(newW / 2, newH / 2);
@@ -1656,7 +1656,7 @@ function rotateCW() {
   rotCtx.drawImage(tempCanvas, -w / 2, -h / 2);
   rotCtx.restore();
 
-  // 5. Знаходимо bounding box непрозорих пікселів
+  // 5. Находим bounding box непрозрачных пикселей
   const rotData = rotCtx.getImageData(0, 0, newW, newH);
   let minX = newW, minY = newH, maxX = -1, maxY = -1;
 
@@ -1672,16 +1672,16 @@ function rotateCW() {
     }
   }
 
-  // Якщо зображення повністю прозоре — нічого не робимо
+  // Если изображение полностью прозрачное — ничего не делаем
   if (maxX === -1) return;
 
   const cropW = maxX - minX + 1;
   const cropH = maxY - minY + 1;
 
-  // 6. Обрізаємо
+  // 6. Обрезаем
   const croppedData = rotCtx.getImageData(minX, minY, cropW, cropH);
 
-  // 7. Оновлюємо основний canvas
+  // 7. Обновляем основной canvas
   canvas.width = cropW;
   canvas.height = cropH;
   ctx.lineCap = 'round';
@@ -1689,22 +1689,22 @@ function rotateCW() {
   ctx.imageSmoothingEnabled = false;
   ctx.putImageData(croppedData, 0, 0);
 
-  // 8. Оновлюємо контейнер
+  // 8. Обновляем контейнер
   const container = document.getElementById('canvasContainer');
   container.style.width = cropW + 'px';
   container.style.height = cropH + 'px';
 
-  // 9. Оновлюємо handle resize
+  // 9. Обновляем handle resize
   const handle = document.getElementById('canvasResizeHandle');
   const offset = 8;
   handle.style.transform = `translate(${offset}px, ${offset}px) scale(${1 / currentZoom})`;
 
-  // 10. Скидаємо виділення
+  // 10. Сбрасываем выделение
   selectionRect = null;
   floatingLayer = null;
   updateSelectionButtons();
 
-  // 11. Зберігаємо стан
+  // 11. Сохраняем состояние
   saveState();
   render();
 }
@@ -1734,11 +1734,11 @@ document.getElementById('fileInput').addEventListener('change', (e) => {
 	reader.onload = (event) => {
 		const img = new Image();
 		img.onload = () => {
-			// Змінюємо розмір canvas під зображення
+			// Меняем размер canvas под изображение
 			canvas.width = img.width;
 			canvas.height = img.height;
 
-			// Оновлюємо розмір контейнера
+			// Обновляем размер контейнера
 			const canvasContainer = document.getElementById('canvasContainer');
 			canvasContainer.style.width = canvas.width + 'px';
 			canvasContainer.style.height = canvas.height + 'px';
@@ -1753,7 +1753,7 @@ document.getElementById('fileInput').addEventListener('change', (e) => {
 			saveState();
 			selectionRect = null;
 			floatingLayer = null;
-			applyZoom(currentZoom); // або applyZoom(1) для скидання
+			applyZoom(currentZoom); // или applyZoom(1) для сброса
 			render();
 		};
 		img.src = event.target.result;
@@ -1821,7 +1821,7 @@ resizeHandle.addEventListener('mousedown', (e) => {
   canvas.style.pointerEvents = 'none';
 });
 
-// У обробнику mousemove для зміни розміру:
+// В обработчике mousemove для изменения размера:
 window.addEventListener('mousemove', (e) => {
   if (!isResizingCanvas) return;
   const dx = e.clientX - startClientX;
@@ -1833,18 +1833,18 @@ window.addEventListener('mousemove', (e) => {
 
   canvas.width = newWidth;
   canvas.height = newHeight;
- // Оновлюємо розмір контейнера
+ // Обновляем размер контейнера
   const canvasContainer = document.getElementById('canvasContainer');
   canvasContainer.style.width = canvas.width + 'px';
   canvasContainer.style.height = canvas.height + 'px';
-  // 🔑 Відновлюємо параметри контексту!
+  // Восстанавливаем параметры контекста!
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   ctx.imageSmoothingEnabled = false;
 
   ctx.putImageData(imageData, 0, 0);
 
-  // Оновлюємо початкові значення
+  // Обновляем начальные значения
   startClientX = e.clientX;
   startClientY = e.clientY;
   startWidth = newWidth;
@@ -1862,13 +1862,8 @@ window.addEventListener('mouseup', () => {
 });
 
 });
-/*
-					<button id="modal-cancel-btn" class="btn btn-cancel">Скасувати</button>
-					<button id="modal-no-btn" class="btn btn-cancel">Ні</button>
-					<button id="modal-ok-btn" class="btn btn-ok">Так</button>
-*/
 
-// керування модальним вікном для message/confirm/input
+// управление модальным окном для message/confirm/input
 const ModalUI = {
             container: document.getElementById('modal-container'),
             title: document.getElementById('modal-title'),
@@ -1880,17 +1875,17 @@ const ModalUI = {
 
             show(title, text, type) {
                 return new Promise((resolve) => {
-                    // Налаштування контенту
+                    // Настройка содержимого
                     this.title.innerText = title;
                     this.text.innerText = text;
                     this.inputField.value = '';
                     
-                    // Налаштування видимості елементів
+                    // Настройка видимости элементов
                     this.inputWrapper.style.display = (type === 'input') ? 'block' : 'none';
                     this.cancelBtn.style.display = (type === 'message') ? 'none' : 'inline-block';
                     this.container.style.display = 'flex';
 
-                    // Обробка кнопок
+                    // Обработка кнопок
                     const cleanup = () => {
                         this.container.style.display = 'none';
                     };
@@ -1905,14 +1900,14 @@ const ModalUI = {
                         resolve(type === 'input' ? null : false);
                     };
 
-                    // Фокус на полі введення, якщо це input
+                    // Фокус на поле ввода, если это input
                     if (type === 'input') {
                         setTimeout(() => this.inputField.focus(), 100);
                     }
                 });
             }
         };
-        // виведення та введення
+        // вывод и ввод
         async function message(title, text) {
 			document.getElementById('modal-container').style.display = 'none'
             return await ModalUI.show(title, text, 'message');

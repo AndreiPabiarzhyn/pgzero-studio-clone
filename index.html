@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title data-i18n="title">PGZ Studio</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">    
+    <title>PGZero Studio</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">  
 <style>
 /* ========================================
-   ЗАВАНТАЖЕННЯ СТОРІНКИ
+   ЗАГРУЗКА СТРАНИЦЫ
    ======================================== */
 #page-loader {
   position: fixed;
@@ -35,6 +36,7 @@
     <link rel="stylesheet" href="./lib/cm/cobalt.css">
     <link rel="stylesheet" href="./lib/cm/blackboard.css">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./theme.css">
     <link rel="stylesheet" href="./new-message.css">
     <link rel="stylesheet" href="./lib/font-awesome.min.css">   
     <link rel="stylesheet" href="./jquery/ui/1.13.3/themes/base/jquery-ui.css">
@@ -56,13 +58,8 @@
     <script src="./lib/cm/searchcursor.js"></script>
     <script src="./lib/cm/search.js"></script>
     <script src="./lib/cm/searchbox.js"></script>   
-    <!-- Бібліотеки -->
+    <!-- Библиотеки -->
     <script src="./lib/base.js"></script>
-<!--
-    <script src="./jquery/jquery-3.7.1.js"></script>
-    <script src="./jquery/ui/1.13.3/jquery-ui.js"></script> 
-    <script src="./lib/jq/jquery.ui.touch-punch.min.js"></script>
--->
     <script src="./lib/lib.js"></script>
     <script src="./lib/skulpt/skulpt.min.js"></script>
     <script src="./lib/skulpt/skulpt-stdlib.js"></script>
@@ -79,7 +76,7 @@
 <style>
 
 /* ========================================
-   ГАЛЕРЕЯ РЕСУРСІВ
+   ГАЛЕРЕЯ РЕСУРСОВ
    ======================================== */
 .assets-items-scroll {
   display: flex;
@@ -131,7 +128,7 @@
 }
 
 /* ========================================
-   МОДАЛЬНЕ ВІКНО СТВОРЕННЯ ПРОЄКТУ
+   МОДАЛЬНОЕ ОКНО СОЗДАНИЯ ПРОЕКТА
    ======================================== */
 #newProjectModal input[type="text"],
 #newProjectModal input[type="number"],
@@ -208,7 +205,7 @@
 }
 
 /* ========================================
-   МОДАЛЬНЕ ВІКНО ФАЙЛІВ (ЗБЕРЕЖЕННЯ/ВІДНОВЛЕННЯ)
+   МОДАЛЬНОЕ ОКНО ФАЙЛОВ (СОХРАНЕНИЕ/ВОССТАНОВЛЕНИЕ)
    ======================================== */
 #saveModal {
   z-index: 9999;
@@ -226,7 +223,7 @@
   padding: 10px;
 }
 
-/* Кнопка-карта (клікабельний контейнер) - тепер лейбл */
+/* Кнопка-карточка (кликабельный контейнер), теперь лейбл */
 .file-action-button {
   display: flex;
   flex-direction: column;
@@ -247,7 +244,7 @@
   position: relative;
 }
 
-/* Спеціальний стиль для кнопки завантаження файлу */
+/* Особый стиль для кнопки загрузки файла */
 .file-upload-button {
   position: relative;
   overflow: hidden;
@@ -264,7 +261,7 @@
   cursor: pointer;
 }
 
-/* Ефекти при наведенні */
+/* Эффекты при наведении */
 .file-action-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -276,7 +273,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Фокус для доступності */
+/* Фокус для доступности */
 .file-action-button:focus,
 .file-action-button:focus-within {
   outline: none;
@@ -306,7 +303,7 @@
   color: #212529;
 }
 
-/* Тіло картки */
+/* Тело карточки */
 .card-body {
   padding: 12px 0 0 0;
   flex-grow: 1;
@@ -321,7 +318,7 @@
   line-height: 1.5;
 }
 
-/* Підказка про гарячі клавіші */
+/* Подсказка о горячих клавишах */
 .shortcut-hint {
   display: flex;
   align-items: center;
@@ -339,7 +336,7 @@
   font-size: 14px;
 }
 
-/* Кольори для різних кнопок */
+/* Цвета для разных кнопок */
 #btn_show_recover_label {
   background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
 }
@@ -412,7 +409,7 @@
   border-color: #0062cc;
 }
 
-/* Адаптивність */
+/* Адаптивность */
 @media (max-width: 600px) {
   .files-container {
     gap: 12px;
@@ -437,7 +434,7 @@
   }
 }
 
-/* Темна тема для модального вікна */
+/* Тёмная тема для модального окна */
 #saveModal .modal-dark {
   background-color: #1a1a1a;
 }
@@ -450,7 +447,7 @@
   color: #d4d4d4;
 }
 
-/* Анімації */
+/* Анимации */
 @keyframes modalSlideIn {
   from {
     opacity: 0;
@@ -467,7 +464,7 @@
 }
 
 /* ========================================
-   МОДАЛЬНЕ ВІКНО ВІДНОВЛЕННЯ
+   МОДАЛЬНОЕ ОКНО ВОССТАНОВЛЕНИЯ
    ======================================== */
 .modal-overlay {
   position: fixed;
@@ -544,7 +541,7 @@
   line-height: 1.6;
 }
 
-/* Інформаційна секція */
+/* Информационная секция */
 .modal-info {
   margin-bottom: 20px;
   padding: 15px;
@@ -731,7 +728,7 @@
   background: #555;
 }
 
-/* Синтаксис підсвічування (базовий) */
+/* Подсветка синтаксиса (базовая) */
 .code-preview .keyword {
   color: #569cd6;
 }
@@ -752,7 +749,7 @@
   color: #b5cea8;
 }
 
-/* Кнопки дій */
+/* Кнопки действий */
 .modal-actions {
   margin: 20px 0;
   display: flex;
@@ -806,7 +803,7 @@
   transform: translateY(0);
 }
 
-/* Секція попереджень */
+/* Секция предупреждений */
 .warning-section {
   margin-top: 20px;
   padding: 18px;
@@ -832,7 +829,7 @@
   margin-right: 6px;
 }
 
-/* Адаптивність */
+/* Адаптивность */
 @media (max-width: 768px) {
   .modal-content {
     width: 95%;
@@ -857,7 +854,7 @@
   }
 }
 
-/* Анімації */
+/* Анимации */
 @keyframes modalFadeIn {
   from {
     opacity: 0;
@@ -873,13 +870,13 @@
   animation: modalFadeIn 0.3s ease-out;
 }
 
-/* Тінь при наведенні на слайдер */
+/* Тень при наведении на ползунок */
 .ui-slider:hover {
   box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* ========================================
-   СТИЛІ ДЛЯ КНОПОК ЗБЕРЕЖЕННЯ
+   СТИЛИ ДЛЯ КНОПОК СОХРАНЕНИЯ
    ======================================== */
 .save_option {
   background: #82ffab !important;
@@ -925,7 +922,7 @@
   transform: scale(1.02) !important;
 }
 
-/* Стилі для радіокнопок */
+/* Стили для переключателей */
 .ui-dialog input[type="radio"] {
   margin-right: 8px !important;
   cursor: pointer !important;
@@ -941,7 +938,7 @@
   margin: 15px 0 !important;
 }
 
-/* Стилі для кнопки "Відновити" */
+/* Стили для кнопки «Восстановить» */
 #btn_show_recover {
   background: none !important;
   border: none !important;
@@ -966,19 +963,19 @@
   background: #f57c00 !important;
 }
 
-/* Стилі для іконок Font Awesome */
+/* Стили для иконок Font Awesome */
 .ui-dialog .fa {
   margin-right: 8px !important;
   color: #4caf50 !important;
 }
 
-/* Стилі для елементів керування файлами */
+/* Стили для элементов управления файлами */
 #file-btn {
   display: none !important;
 }
 
 /* ========================================
-   НАЛАШТУВАННЯ СЛАЙДЕРІВ
+   НАСТРОЙКА ПОЛЗУНКОВ
    ======================================== */
 .slider-container-settings {
   display: flex;
@@ -1000,11 +997,11 @@
   width: 600px;
 }
 #gameCanvas {
-    touch-action: none;           /* Забороняє прокрутку/масштабування */
-    user-select: none;            /* Забороняє виділення тексту */
+    touch-action: none;           /* Запрещает прокрутку и масштабирование */
+    user-select: none;            /* Запрещает выделение текста */
     -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent; /* Прибирає тап-хайлайт на iOS */
-    cursor: pointer;              /* Покажчик для кращого відчуття інтерактивності */
+    -webkit-tap-highlight-color: transparent; /* Убирает подсветку тапа на iOS */
+    cursor: pointer;              /* Курсор для лучшего ощущения интерактивности */
 }
 
 #virtual-gamepad {
@@ -1016,15 +1013,15 @@
   z-index: 100;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Додаємо вертикальне вирівнювання по центру */
+  align-items: center; /* Добавляем вертикальное выравнивание по центру */
   box-sizing: border-box;
 }
 
-/* Ліва сторона */
+/* Левая сторона */
 .left-side {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Змінюємо з flex-start на center */
+  align-items: center; /* Меняем flex-start на center */
   gap: 12px;
   pointer-events: none;
 }
@@ -1033,12 +1030,12 @@
 .right-side {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Змінюємо з flex-end на center */
+  align-items: center; /* Меняем flex-end на center */
   gap: 12px;
   pointer-events: none;
 }
 
-/* Стилі кнопок */
+/* Стили кнопок */
 .action-btn {
   width: 75px;
   height: 75px;
@@ -1086,7 +1083,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Напівкруглі кнопки - плоска сторона до краю екрану */
+/* Полукруглые кнопки: плоская сторона к краю экрана */
 .semi-left {
   border-radius: 0 50% 50% 0;
 }
@@ -1095,14 +1092,14 @@
   border-radius: 50% 0 0 50%;
 }
 
-/* Приховати геймпад на десктопі */
+/* Скрыть геймпад на десктопе */
 @media (hover: hover) {
   #virtual-gamepad {
     display: none;
   }
 }
 
-/* Альбомний режим - по центру бічних сторін */
+/* Альбомный режим: по центру боковых сторон */
 @media (orientation: landscape) and (max-width: 768px) {
   #virtual-gamepad {
     bottom: auto;
@@ -1112,7 +1109,7 @@
   }
 }
 
-/* Портретний режим - 200 пікселів від низу */
+/* Портретный режим: 200 пикселей от низа */
 @media (orientation: portrait) and (max-width: 768px) {
   #virtual-gamepad {
     bottom: 200px;
@@ -1122,7 +1119,7 @@
   }
 }
 
-/* Адаптивність для малих екранів */
+/* Адаптивность для малых экранов */
 @media (max-height: 600px) and (orientation: portrait) {
   #virtual-gamepad {
     bottom: 10px;
@@ -1147,7 +1144,7 @@
   }
 }
 
-/* Адаптивність для дуже малих екранів (мобільні) */
+/* Адаптивность для очень малых экранов (мобильных) */
 @media (max-width: 400px) and (orientation: portrait) {
   #virtual-gamepad {
     padding: 0 8px;
@@ -1171,7 +1168,7 @@
   }
 }
 
-/* Адаптивність для дуже малих екранів у альбомному режимі */
+/* Адаптивность для очень малых экранов в альбомном режиме */
 @media (max-width: 400px) and (orientation: landscape) {
   #virtual-gamepad {
     padding: 0 8px;
@@ -1195,7 +1192,7 @@
   }
 }
 
-/* Модальне вікно помилки */
+/* Модальное окно ошибки */
 .error-modal-overlay {
     position: fixed;
     height: 100vh;
@@ -1353,7 +1350,7 @@
     }
 }
 
-/* Адаптивність для мобільних */
+/* Адаптивность для мобильных */
 @media (max-width: 600px) {
     .modal-error {
         width: 95vw;
@@ -1365,7 +1362,7 @@
 
 	
 <div id="pgz-playground" >
-  <!-- кнопка запуску гри для standalone-mode -->
+  <!-- кнопка запуска игры для standalone-режима -->
   <button id="playGameBtn" style="
 	    display:none;
         position: absolute;
@@ -1381,30 +1378,25 @@
         transition: opacity 0.3s ease;
         z-index: 10;
     "></button>	
-<!-- верхня панель -->
+<!-- верхняя панель -->
 <div id="topPanel" style="display: none;">
-  <!-- ліва частина: кнопки (інструменти) -->
+  <!-- левая часть: кнопки (инструменты) -->
   <div id="toolPanel" class="toolPanel">
-    <img title="Виконати" data-i18n-title="run_title" alt="Натисніть, щоб виконати код" data-i18n-alt="run_alt" id="btn_run" class="toolButton" src="./media/play.png">
-    <img title="Припинити" class="toolButton" src="./media/stop.png" id="btn_stopRunning" style="display:none;">
-    <img alt="Натисніть, щоб показати/сховати кнопки" data-i18n-alt="tools_alt" title="Показати/сховати кнопки" data-i18n-title="tools_title" class="toolButton" src="./media/ttools.png" id="btn_tools1" style="display:none;">
-    <img title="Відкрити консоль" data-i18n-title="console_title" alt="Консоль - показати або сховати вікно консолі" data-i18n-alt="console_alt" class="toolButton" src="./media/console.png" onclick="showConsole()">
-    <img title="Новий проєкт" class="toolButton" src="./media/new-project.png" onclick="createNewProject()">
-    <img title="Відкрити проєкт" alt="Відкрити проєкт" id="btn_pgz_open" class="toolButton" src="./media/pgz-open.png" onclick="importGallery()">
-    <img title="Зберегти проєкт" alt="Зберегти проєкт" id="btn_pgz_save" class="toolButton" src="./media/pgz-save.png" onclick="exportGallery()">
-    <img title="Імпорт ресурсів" alt="Імпорт ресурсів" class="toolButton" src="./media/import.png" onclick="openImportModal()">
-    <img title="Галерея ресурсів" alt="Галерея ресурсів" class="toolButton" src="./media/gallery.png" onclick="toggleShowGallery()">    
-    <img title="Редактор зображень" alt="Редактор зображень" class="toolButton" src="./media/img-edit.png" onclick="showEditor()"> 
-    <img title="Відновити останній збережений код" alt="Відновити код" id="btn_restore_code" class="toolButton" src="./media/restore-code.png" onclick="restoreLastSavedCode()">
-    <img title="Завантажити та отримати файли" data-i18n-title="share_title" alt="Файли - завантажити та отримати" data-i18n-alt="share_alt" id="btn_show_share" class="toolButton" src="./media/share.png">
-    <img title="Налаштування" data-i18n-title="settings_title" alt="Налаштувати екран" data-i18n-alt="settings_alt" id="btn_show_settings" class="toolButton" src="./media/settings.png">
-    <img title="Посібник з Pygame Zero" alt="Посібник з Pygame Zero" class="toolButton" src="./media/pgz-handbook.png"  onclick="showHandbook()">
-   
+    <button type="button" id="btn_run" class="toolButton tb-btn tb-primary" title="Запустить код">▶ Запуск</button>
+    <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" title="Остановить" style="display:none;">■ Стоп</button>
+    <button type="button" class="toolButton tb-btn" title="Консоль" onclick="showConsole()">⌨ Консоль</button>
+    <button type="button" class="toolButton tb-btn" title="Новый проект" onclick="createNewProject()">＋ Проект</button>
+    <button type="button" id="btn_pgz_open" class="toolButton tb-btn" title="Открыть проект" onclick="importGallery()">↓ Открыть</button>
+    <button type="button" id="btn_pgz_save" class="toolButton tb-btn" title="Сохранить проект" onclick="exportGallery()">↑ Сохранить</button>
+    <button type="button" id="btn_show_project_files" class="toolButton tb-btn" title="Файлы проекта" onclick="showProjectFiles()">📁 Файлы</button>
+    <button type="button" class="toolButton tb-btn" title="Ресурсы проекта" onclick="toggleShowGallery()">🎨 Ресурсы</button>
+    <button type="button" id="btn_show_share" class="toolButton tb-btn" title="Импорт и экспорт кода">💾 Код</button>
+    <button type="button" id="btn_show_settings" class="toolButton tb-btn" title="Настройки">⚙ Настройки</button>
   </div>
-  <div id="hintBar" data-i18n="hint_bar" style="left:50px;margin-top:20px;font-size: 14px;z-index: 3500;color: #FFF;"></div>
-  <!-- права частина: поле назви проєкту -->
+  <div id="hintBar" style="left:50px;margin-top:20px;font-size: 14px;z-index: 3500;color: #FFF;"></div>
+  <!-- правая часть: поле названия проекта -->
   <input type="text" id="projectNameInput" 
-         placeholder="Назва проєкту" 
+         placeholder="Название проекта" 
          maxlength="32"
          style="
            padding: 6px 10px;
@@ -1421,111 +1413,98 @@
          ">
 </div>
 
-<!-- основний макет -->
+<!-- основной макет -->
 <div id="mainLayout" style="display: none; height: calc(100vh - 60px);background-color: #2a2a2a;">
-  <!-- ліва частина -->
+  <!-- левая часть -->
   <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;background-color: #2a2a2a;margin-bottom: 20px;">
     <div id="editorContainer" style="flex: 1; min-height: 0; border: 1px solid #444; background-color: #fff;position: relative;margin-top: 20px;margin-left: 10px;border-radius: 12px;">
-      <span id="file_tabs" style="display:none;"><span class="file_tab file_tab_selected" data-i18n="file_tab_name">my_pgz.py</span></span>
+      <span id="file_tabs" style="display:none;"><span class="file_tab file_tab_selected">my_pgz.py</span></span>
       <div id="editor" style="position: absolute; height: 95%"></div>
     </div>
     <div id="consoleContainer" style="min-height: 220px;max-height: 300px;border-top: 1px solid #444; overflow: auto; padding: 8px; background-color: #000; color: #fff; font-family: monospace; font-size: 14px;border-radius: 10px;margin-top: 10px;margin-left: 10px;">
 		<div id="output" style ="white-space: pre-wrap;word-break: break-word;"></div>		
     </div>
   </div>
-     <!-- права частина -->
+     <!-- правая часть -->
      <div id="rightBar" style="width: 20%;flex: 1; display: flex; flex-direction: column; min-width: 0;max-width:480px; background-color: #2a2a2a;margin-bottom: 20px;margin-right:20px;margin-top: 20px;">
-		 <div class="container" id="splashImg" style="margin-left: 10px; display: flex;justify-content: center;align-items: center;height:100%;border-radius: 10px;background:#140b20;margin-bottom: -20px;">
-			<img src="./media/splash.png" alt="" width="90%">
+		 <div id="splashImg" class="brand-panel">
+			<div class="brand-logo">PZ</div>
+			<h2>PGZero Studio</h2>
+			<p>Создавай игры на Python прямо в браузере</p>
+			<span class="brand-tag">Powered by Pygame Zero</span>
 		</div>
-        <iframe src="./pgz-handbook.html" id="handbook" 
-					style="display: none; margin-left: 10px; justify-content: center;align-items: center;height:100%;border-radius: 10px;background:#140b20;margin-bottom: -20px;"
-					title="Посібник з Pygame Zero">
-		</iframe>;
 
-<!-- галерея ресурсів -->
+<!-- галерея ресурсов -->
 <div id="resourceGallery" style="display: none; margin-top: -20px;">
   <div class="frame" id="imagesFrame">
-    <h3>🖼️ Зображення</h3>
+    <h3>🖼️ Изображения</h3>
     <div id="imagesList" class="assets-items-scroll"></div>
     <div class="controls-bar">
-      <button onclick="(async () => await addFile('image'))()" title="Додати зображення">➕</button>
+      <button onclick="(async () => await addFile('image'))()" title="Добавить изображение">➕</button>
       <span class="file-controls" id="imageControls" style="display:none;">
-        <button onclick="showSelected('image')" title="Показати">👁️</button>
-        <button onclick="renameSelected('image')" title="Перейменувати">✏️</button>
-        <button onclick="showEditor('image')" title="Редагувати">🎨️</button>
-        <button onclick="deleteSelected('image')" title="Видалити">🗑️</button>
+        <button onclick="showSelected('image')" title="Показать">👁️</button>
+        <button onclick="renameSelected('image')" title="Переименовать">✏️</button>
+        <button onclick="showEditor('image')" title="Редактировать">🎨️</button>
+        <button onclick="deleteSelected('image')" title="Удалить">🗑️</button>
       </span>
     </div>
   </div>
 
   <div class="frame" id="soundsFrame">
-    <h3>🔊 Аудіо</h3>
+    <h3>🔊 Аудио</h3>
     <div id="soundsList" class="assets-items-scroll"></div>
     <div class="controls-bar">
-      <button onclick="(async () => await addFile('audio'))()" title="Додати аудіо">➕</button>
+      <button onclick="(async () => await addFile('audio'))()" title="Добавить аудио">➕</button>
       <span class="file-controls" id="soundControls" style="display:none;">
-        <button id="playBtn" onclick="togglePlayPause()" title="Програти">▶️</button>
-        <button onclick="renameSelected('audio')" title="Перейменувати">✏️</button>
-        <button onclick="deleteSelected('audio')" title="Видалити">🗑️</button>
+        <button id="playBtn" onclick="togglePlayPause()" title="Воспроизвести">▶️</button>
+        <button onclick="renameSelected('audio')" title="Переименовать">✏️</button>
+        <button onclick="deleteSelected('audio')" title="Удалить">🗑️</button>
       </span>
     </div>
   </div>
 
   <div class="frame" id="musicFrame">
-    <h3>🎵 Музика</h3>
+    <h3>🎵 Музыка</h3>
     <div id="musicList" class="assets-items-scroll"></div>
     <div class="controls-bar">
-      <button onclick="(async () => await addFile('music'))()" title="Додати музичний файл">➕</button>
+      <button onclick="(async () => await addFile('music'))()" title="Добавить музыкальный файл">➕</button>
       <span class="file-controls" id="musicControls" style="display:none;">
-        <button id="playMusicBtn" onclick="togglePlayPauseMusic()" title="Програти">▶️</button>
-        <button onclick="renameSelected('music')" title="Перейменувати">✏️</button>
-        <button onclick="deleteSelected('music')" title="Видалити">🗑️</button>
+        <button id="playMusicBtn" onclick="togglePlayPauseMusic()" title="Воспроизвести">▶️</button>
+        <button onclick="renameSelected('music')" title="Переименовать">✏️</button>
+        <button onclick="deleteSelected('music')" title="Удалить">🗑️</button>
       </span>
     </div>
   </div>
- <!-- 
-    <div class="frame" id="fontsFrame">
-    <h3>🔤 Шрифти</h3>
-    <div id="fontsList" class="assets1-items-scroll"></div>
-    <div class="controls-bar">
-      <button onclick="addFile('font')" title="Додати шрифт">➕</button>
-      <span class="controls-bar" id="fontControls" style="display:none;">
-        <button onclick="renameSelected('font')" title="Перейменувати">✏️</button>
-        <button onclick="deleteSelected('font')" title="Видалити">🗑️</button>
-      </span>
-    </div>
-  </div>
--->
+
 </div>
     </div>
  </div>
  
 
  
-<!-- Модальне вікно імпорту -->
+<!-- Модальное окно импорта -->
 <div id="importModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
   <div class="modal-content modal-dark"style="height:70vh; overflow:auto;">
 
         <div class="modal-header">
-            <h3 class="modal-title" >📥 Імпорт зображень</h3>
-            <button class="modal-close" <button onclick="closeImportModal()" aria-label="Close">&times;</button>
+            <h3 class="modal-title" >📥 Импорт изображений</h3>
+            <button class="modal-close" <button onclick="closeImportModal()" aria-label="Закрыть">&times;</button>
         </div>
 
-    <!-- Категорії -->
+    <!-- Категории -->
     <div id="importCategories" style="display:flex; flex-wrap:wrap; gap:8px; margin-left:10px;margin-bottom:15px;margin-top:10px;"></div>
 
-    <!-- Зображення -->
+    <!-- Изображения -->
     <div id="importImages" style="display:flex; flex-wrap:wrap; gap:10px; max-height:450px; overflow-y:auto; padding:4px;"></div>
 
-    <!-- Кнопка імпорту -->
+    <!-- Кнопка импорта -->
     <div id="importFileBtnContainer" style="margin-top:15px; text-align:center; display:none;">
-      <button onclick="importSelectedImage()" style="background:#4caf50; color:white; border:0; border-radius:6px; padding:8px 20px; font-size:14px;">Імпортувати файл</button>
+      <button onclick="importSelectedImage()" style="background:#4caf50; color:white; border:0; border-radius:6px; padding:8px 20px; font-size:14px;">Импортировать файл</button>
     </div>
   </div>
 </div>
 
-    <!-- Модальне вікно повідомлень -->
+    <!-- Модальное окно просмотра изображения -->
     <div id="modal" onclick="this.style.display='none'">
         <img id="modalImg" />
     </div>
@@ -1533,17 +1512,17 @@
 		<div id="modal-container" class="modal-overlay" style="display:none;">
 			<div class="modal-mcontent" style="width:400px; height:auto;background: #fff;padding: 20px;border-radius: 10px;font-family: sans-serif">
 				<h3 id="modal-title">Заголовок</h3>
-				<p id="modal-text">Текст повідомлення...</p>
+				<p id="modal-text">Текст сообщения...</p>
 				<div id="modal-input-wrapper" class="modal-input-wrapper" style="display: none;">
-					<input type="text" id="modal-input-field" placeholder="Введіть текст тут...">
+					<input type="text" id="modal-input-field" placeholder="Введите текст здесь...">
 				</div>
 				<div class="modal-buttons">
-					<button id="modal-cancel-btn" class="btn btn-cancel">Скасувати</button>
+					<button id="modal-cancel-btn" class="btn btn-cancel">Отмена</button>
 					<button id="modal-ok-btn" class="btn btn-ok">OK</button>
 				</div>
 			</div>
 		</div>
-    <!-- Скрипти ЄPython -->
+    <!-- Скрипты Skulpt -->
     <script>
     Sk.builtin.jsfswrite = new Sk.builtin.func(function(filename, data) {
         Sk.builtin.pyCheckArgs("jsfswrite", arguments, 2, 2);
@@ -1557,51 +1536,43 @@
         return Sk.builtin.none.none$;
     });
     </script>
-<!--
-    <script>
-        let script = document.createElement('script');
-        script.src = selectedLang === 'en' ? './lib/filedialog-en.js' : './lib/filedialog.js';
-        document.head.appendChild(script);
-    </script>
--->    
     <script src="./lib/customfile.js"></script>
-    <script src="./lib/translations.js"></script>
     
-    <!-- дані проєкту -->
+    <!-- данные проекта -->
     <div id="myfilename.txt"></div>    
-    <div id="recover" title="Файли - збереження, отримання, відновлення" style="display:none"></div>
-    <div id="dlg" title="my_pgz.py" data-i18n-title="file_tab_name_title" style="display:none">       
+    <div id="recover" title="Файлы — сохранение, получение, восстановление" style="display:none"></div>
+    <div id="dlg" title="my_pgz.py" style="display:none">       
     </div>
-<!-- Модальне вікно збереження/відновлення файлів -->
+<!-- Модальное окно сохранения и восстановления файлов -->
 <div id="saveModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark">
         <div class="modal-header">
-            <h3 class="modal-title" data-i18n="files_title">Файли - збереження, отримання, відновлення</h3>
-            <button class="modal-close" id="btn_save_close" aria-label="Close">&times;</button>
+            <h3 class="modal-title">Файлы — сохранение, получение, восстановление</h3>
+            <button class="modal-close" id="btn_save_close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             
             <div class="files-container">
                 
-                <!-- Кнопка Відновити (зверху) -->
+                <!-- Кнопка «Восстановить» (сверху) -->
                 <label class="file-action-button" id="btn_show_recover_label">
                     <div class="card-header">
                         <i class="fa fa-history"></i>
-                        <h3 data-i18n="recover_btn">Відновити</h3>
+                        <h3>Восстановить</h3>
                     </div>
                     <div class="card-body">
-                        <p data-i18n="recover_description">Переглянути та відновити попередні збережені версії вашого py-коду.</p>
+                        <p>Просмотреть и восстановить предыдущие сохранённые версии вашего py-кода.</p>
                     </div>
                 </label>
 
-                <!-- Кнопка Зберегти py-код (посередині) -->
+                <!-- Кнопка «Сохранить py-код» (посередине) -->
                 <label class="file-action-button" id="btnDownloadLabel">
                     <div class="card-header">
                         <i class="fa fa-download"></i>
-                        <h3 data-i18n="save_py_code">Зберегти py-код</h3>
+                        <h3>Сохранить py-код</h3>
                     </div>
                     <div class="card-body">
-                        <p data-i18n="save_description">Завантажити поточний py-код у файл на ваш комп'ютер.</p>
+                        <p>Скачать текущий py-код в файл на ваш компьютер.</p>
                         <div class="shortcut-hint">
                             <i class="fa fa-keyboard-o"></i>
                             <span>Ctrl + Alt + S</span>
@@ -1609,14 +1580,14 @@
                     </div>
                 </label>
 
-                <!-- Кнопка Отримати py-код (знизу) -->
+                <!-- Кнопка «Получить py-код» (снизу) -->
                 <label for="file-btn" class="file-action-button file-upload-button">
                     <div class="card-header">
                         <i class="fa fa-upload"></i>
-                        <h3 data-i18n="get_py_code">Отримати py-код</h3>
+                        <h3>Получить py-код</h3>
                     </div>
                     <div class="card-body">
-                        <p data-i18n="upload_file_instruction">Виберіть Python-файл, щоб завантажити його з комп'ютера в редактор.</p>
+                        <p>Выберите Python-файл, чтобы загрузить его с компьютера в редактор.</p>
                     </div>
                     <input type="file" id="file-btn" accept=".py,.txt,.pyj" hidden>
                 </label>
@@ -1627,22 +1598,22 @@
     </div>
 </div>
 
-<!-- Модальне вікно налаштувань проєкту -->
+<!-- Модальное окно настроек проекта -->
 <div id="projectSettingsModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark">
         <div class="modal-header">
-            <h3 class="modal-title" data-i18n="project_title">Проєкт</h3>
-            <button class="modal-close" id="btn_project_settings_close" aria-label="Close">&times;</button>
+            <h3 class="modal-title">Проект</h3>
+            <button class="modal-close" id="btn_project_settings_close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             <div class="settings-section">
                 <div class="section-content">
-                    <p class="setting-description" data-i18n="project_rename_help">
-                        Перейменування проєкту допоможе вам упорядкувати збережений код
+                    <p class="setting-description">
+                        Переименование проекта поможет вам упорядочить сохранённый код
                     </p>
                     
                     <div class="form-group">
-                        <label for="txt_project_name" class="form-label" data-i18n="project_name_label">Назва проєкту:</label>
+                        <label for="txt_project_name" class="form-label">Название проекта:</label>
                         <input type="text" id="txt_project_name" name="txt_project_name" 
                                class="form-input" value="mycode" maxlength="50">
                     </div>
@@ -1652,36 +1623,36 @@
             <div class="modal-actions">
                 <button id="btn_project_ok" class="btn-primary">
                     <i class="fa fa-check"></i>
-                    <span data-i18n="ok">OK</span>
+                    <span>OK</span>
                 </button>
                 <button id="btn_project_cancel" class="btn-secondary">
                     <i class="fa fa-times"></i>
-                    <span data-i18n="cancel">Скасувати</span>
+                    <span>Отмена</span>
                 </button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Модальне вікно налаштувань файлу -->
+<!-- Модальное окно настроек файла -->
 <div id="fileSettingsModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark">
         <div class="modal-header">
-            <h3 class="modal-title" data-i18n="file_title">Файл</h3>
-            <button class="modal-close" id="btn_file_settings_close" aria-label="Close">&times;</button>
+            <h3 class="modal-title">Файл</h3>
+            <button class="modal-close" id="btn_file_settings_close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             <div class="settings-section">
                 <div class="section-content">
                     <div class="warning-box">
                         <i class="fa fa-warning"></i>
-                        <p class="warning-text" data-i18n="file_warning">
-                            Будьте обережні: якщо ви вирішите видалити файл, ви не зможете відновити його, якщо не збережете копію
+                        <p class="warning-text">
+                            Будьте внимательны: если вы удалите файл, восстановить его не получится — только из заранее сохранённой копии
                         </p>
                     </div>
                     
                     <div class="form-group">
-                        <label for="txt_file_name" class="form-label" data-i18n="file_rename_label">Перейменувати файл:</label>
+                        <label for="txt_file_name" class="form-label">Переименовать файл:</label>
                         <input type="text" id="txt_file_name" name="txt_file_name" 
                                class="form-input" value="">
                     </div>
@@ -1691,38 +1662,38 @@
             <div class="modal-actions">
                 <button id="btn_file_rename" class="btn-primary">
                     <i class="fa fa-edit"></i>
-                    <span data-i18n="rename_file">Перейменувати</span>
+                    <span>Переименовать</span>
                 </button>
                 <button id="btn_file_delete" class="btn-danger">
                     <i class="fa fa-trash"></i>
-                    <span data-i18n="delete_file">Видалити</span>
+                    <span>Удалить</span>
                 </button>
                 <button id="btn_file_cancel" class="btn-secondary">
                     <i class="fa fa-times"></i>
-                    <span data-i18n="cancel">Скасувати</span>
+                    <span>Отмена</span>
                 </button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Модальне вікно налаштувань -->
+<!-- Модальное окно настроек -->
 <div id="settingsModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark settings-modal" style="width:600px;">
         <div class="modal-header">
-            <h3 class="modal-title" data-i18n="settings_title">Налаштування</h3>
-            <button class="modal-close" id="btn_settings_close" aria-label="Close">&times;</button>
+            <h3 class="modal-title">Настройки</h3>
+            <button class="modal-close" id="btn_settings_close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body settings-body">
-            <!-- Розміри тексту -->
+            <!-- Размеры текста -->
             <div class="settings-section">
                 <div class="section-header">                    
-                    <h4 data-i18n="text_size_legend">Розміри шрифтів тексту</h4>
+                    <h4>Размеры шрифтов текста</h4>
                 </div>
                 <div class="section-content">
                     
                     <div class="setting-item">
-                        <label for="txt_code_size" class="setting-label" data-i18n="code_font_size">Розмір шрифту редактора коду:</label>
+                        <label for="txt_code_size" class="setting-label">Размер шрифта редактора кода:</label>
                         <div class="slider-container-settings" style="display: flex;flex-direction: column;">
                             <input type="text" id="txt_code_size" class="slider-value" style="width: 50px;" readonly>
                             <input type="range" id="slider_code_size" min="6" max="40" value="12" class="slider-native">
@@ -1730,7 +1701,7 @@
                     </div>
                     
                     <div class="setting-item">
-                        <label for="txt_output_size" class="setting-label" data-i18n="output_font_size">Розмір шрифту консолі:</label>
+                        <label for="txt_output_size" class="setting-label">Размер шрифта консоли:</label>
                         <div class="slider-container-settings" style="display: flex;flex-direction: column;">
                             <input type="text" id="txt_output_size" class="slider-value" style="width: 50px;" readonly>
                             <input type="range" id="slider_output_size" min="6" max="40" value="12" class="slider-native">
@@ -1740,84 +1711,84 @@
                 </div>
             </div>
 
-            <!-- Кольори редактора -->
+            <!-- Цвета редактора -->
             <div class="settings-section">
                 <div class="section-header">                    
-                    <h4 data-i18n="editor_colors_legend">Кольори редактора</h4>
+                    <h4>Цвета редактора</h4>
                 </div>
                 <div class="section-content">
                     <div class="radio-group" id="radio_code_style">
                         <label class="radio-label" for="radio_code_style_light">
                             <input type="radio" id="radio_code_style_light" name="radio_code_style" checked="checked">
                             <span class="radio-custom"></span>
-                            <span class="radio-text" data-i18n="day">День</span>
+                            <span class="radio-text">День</span>
                         </label>
                         <label class="radio-label" for="radio_code_style_dusk">
                             <input type="radio" id="radio_code_style_dusk" name="radio_code_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text" data-i18n="dusk">Сутінки</span>
+                            <span class="radio-text">Сумерки</span>
                         </label>
                         <label class="radio-label" for="radio_code_style_dark">
                             <input type="radio" id="radio_code_style_dark" name="radio_code_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text" data-i18n="night">Ніч</span>
+                            <span class="radio-text">Ночь</span>
                         </label>
                     </div>
                 </div>
             </div>
 
-            <!-- Кольори консолі -->
+            <!-- Цвета консоли -->
             <div class="settings-section">
                 <div class="section-header">                    
-                    <h4 data-i18n="console_colors_legend">Кольори консолі</h4>
+                    <h4>Цвета консоли</h4>
                 </div>
                 <div class="section-content">
                     <div class="radio-group" id="radio_output_style">
                         <label class="radio-label" for="radio_output_style_light">
                             <input type="radio" id="radio_output_style_light" name="radio_output_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text" data-i18n="day">День</span>
+                            <span class="radio-text">День</span>
                         </label>
                         <label class="radio-label" for="radio_output_style_dusk">
                             <input type="radio" id="radio_output_style_dusk" name="radio_output_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text" data-i18n="dusk">Сутінки</span>
+                            <span class="radio-text">Сумерки</span>
                         </label>
                         <label class="radio-label" for="radio_output_style_dark">
                             <input type="radio" id="radio_output_style_dark" name="radio_output_style" checked="checked">
                             <span class="radio-custom"></span>
-                            <span class="radio-text" data-i18n="night">Ніч</span>
+                            <span class="radio-text">Ночь</span>
                         </label>
                     </div>
                 </div>
             </div>
 
-            <!-- Режим запуску -->
+            <!-- Режим запуска -->
             <div class="settings-section">
                 <div class="section-header">                    
-                    <h4 data-i18n="run_mode_legend">Режим запуску</h4>
+                    <h4>Режим запуска</h4>
                 </div>
                 <div class="section-content">
                     <div class="radio-group" id="radio_run_mode">
                         <label class="radio-label" for="radio_run_mode_all">
                             <input type="radio" id="radio_run_mode_all" name="radio_run_mode" checked>
                             <span class="radio-custom"></span>
-                            <span class="radio-text" data-i18n="run_whole">Уся програма</span>
+                            <span class="radio-text">Вся программа</span>
                         </label>
                         <label class="radio-label" for="radio_run_mode_single">
                             <input type="radio" id="radio_run_mode_single" name="radio_run_mode">
                             <span class="radio-custom"></span>
-                            <span class="radio-text" data-i18n="run_step">Покроково</span>
+                            <span class="radio-text">Пошагово</span>
                         </label>
                         <label class="radio-label" for="radio_run_mode_anim">
                             <input type="radio" id="radio_run_mode_anim" name="radio_run_mode">
                             <span class="radio-custom"></span>
-                            <span class="radio-text" data-i18n="run_animated">Анімація рядків</span>
+                            <span class="radio-text">Анимация строк</span>
                         </label>
                     </div>
                     
                     <div class="setting-item" id="anim_time_setting">
-                        <label for="txt_step_anim_time" class="setting-label" data-i18n="delay_time">Час затримки між виконанням кожного рядка:</label>
+                        <label for="txt_step_anim_time" class="setting-label">Задержка между выполнением каждой строки:</label>
                         <div class="slider-container-settings" style="display: flex;flex-direction: column;">
                             <input type="text" id="txt_step_anim_time" class="slider-value" style="width: 50px;" readonly>
                             <input type="range" id="slider_step_anim_time" min="500" max="5000" step="500" value="500" class="slider-native">
@@ -1831,38 +1802,52 @@
     </div>
 </div>
   <dialog id='filemanager'></dialog>
+
+<!-- Файлы проекта -->
+<div id="projectFilesModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content modal-dark" style="width:480px;">
+        <div class="modal-header">
+            <h3 class="modal-title">Файлы проекта</h3>
+            <button class="modal-close" onclick="closeProjectFiles()" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p id="projectFilesCount" class="pf-count"></p>
+            <div id="projectFilesList" class="pf-list"></div>
+        </div>
+    </div>
+</div>
   
-<!-- Модальне вікно відновлення коду -->
+<!-- Модальное окно восстановления кода -->
 <div id="recoverModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark">
         <div class="modal-header">
-            <h3 class="modal-title" data-i18n="recover_code">Відновлення коду</h3>
-            <button class="modal-close" id="btn_recover_close" aria-label="Close">&times;</button>
+            <h3 class="modal-title">Восстановление кода</h3>
+            <button class="modal-close" id="btn_recover_close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             
-            <!-- Інформація про збереження -->
+            <!-- Информация о сохранении -->
             <div class="modal-info">
                 <p class="info-text" id="recover_info_text">
-                    Копія вашого коду зберігається у сховищі вашого вебоглядача кожного разу, коли ви його запускаєте.
+                    Копия вашего кода сохраняется в хранилище браузера каждый раз, когда вы его запускаете.
                 </p>
                 <p class="info-count" id="recover_count_text">
-                    Кількість резервних копій коду, які зараз зберігаються в сховищі: <span id="vault_count">0</span>
+                    Количество резервных копий кода, которые сейчас хранятся в хранилище: <span id="vault_count">0</span>
                 </p>
             </div>
 
-            <!-- Слайдер для вибору версії -->
+            <!-- Ползунок для выбора версии -->
             <div class="slider-container-recover">
                 <input type="range" id="slider_recover" min="0" max="0" value="0" class="slider-native-recover">
                 <div id="recover_time" class="recover-time-info" style="margin-top:20px; background: #333;">
-                    Перетягніть повзунок, щоб переглянути попередній стан коду
+                    Перетащите ползунок, чтобы посмотреть предыдущее состояние кода
                 </div>
             </div>
 
-            <!-- Фрейм для перегляду коду -->
+            <!-- Фрейм для просмотра кода -->
             <div class="code-preview-frame">
                 <div class="preview-header">
-                    <span class="preview-title" data-i18n="code_preview">Перегляд коду</span>
+                    <span class="preview-title">Просмотр кода</span>
                     <span class="preview-file-name" id="preview_file_name">my_pgz.py</span>
                 </div>
                 <div class="preview-content">
@@ -1870,72 +1855,38 @@
                 </div>
             </div>
 
-            <!-- Кнопки дій -->
+            <!-- Кнопки действий -->
             <div class="modal-actions">
                 <button id="btn_recover" class="btn-primary btn-recover">
                     <i class="fa fa-undo"></i>
-                    <span data-i18n="restore_code">Відновити обрану копію коду</span>
+                    <span>Восстановить выбранную копию кода</span>
                 </button>
             </div>
 
-            <!-- Секція видалення -->
+            <!-- Секция удаления -->
             <div class="warning-section">
                 <p class="warning-text" id="recover_delete_info">
-                    За потреби ви можете видалити всі копії коду, що зберігаються у сховищі відновлення.
+                    При необходимости вы можете удалить все копии кода, которые хранятся в хранилище восстановления.
                 </p>
                 <p class="warning-caution">
                     <i class="fa fa-warning"></i>
                     <span id="recover_warning_text">
-                        Будьте обережні: після того, як ви натиснули Видалити все, ви не зможете скасувати цю дію.
+                        Будьте внимательны: после нажатия «Удалить всё» отменить это действие не получится.
                     </span>
                 </p>
                 <button id="btn_recover_clear" class="btn-danger">
                     <i class="fa fa-trash"></i>
-                    <span data-i18n="delete_storage">Видалити все зі сховища</span>
+                    <span>Удалить всё из хранилища</span>
                 </button>
             </div>
             
         </div>
     </div>
 </div>
-<!-- 
-    <script src="./lib/addfuncs.js"></script> 
--->
-    <!--Галерея ресурсів -->
+    <!-- Галерея ресурсов -->
     <script src="./lib/assets-gallery.js"></script>
+    <script src="./lib/project-files.js"></script>
     <script>
-	function applyTranslations(lang) {
-        const translation = translations[lang] || {};
-
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            if (key && translation[key]) {
-                element.textContent = translation[key];
-            }
-        });
-
-        // Обробляємо всі data-i18n-*, наприклад: data-i18n-title="some_key"
-        document.querySelectorAll('*').forEach(element => {
-            [...element.attributes].forEach(attr => {
-                if (attr.name.startsWith('data-i18n-')) {
-                    const attrName = attr.name.replace('data-i18n-', ''); 
-                    const translationKey = attr.value; 
-                    if (translation[translationKey]) {
-                        element.setAttribute(attrName, translation[translationKey]);
-                    }
-                }
-            });
-        });
-        
-        // Переклад jQuery UI заголовків діалогових вікон
-        
-        ukTranslations = translations['uk'];
-        enTranslations = translations['en'];
-
-
-    }
-     
-	applyTranslations(selectedLang);	
 	PythonIDE.init('normal');	
 
     async function showEditor(filename = null) {
@@ -1956,7 +1907,7 @@
 
 		const path = getPath(filename);
 
-        // Передаємо ім’я файлу через URL-параметр
+        // Передаём имя файла через URL-параметр
         const editorUrl = path 
             ? `draw-editor.html?load=${encodeURIComponent(path)}`
             : 'draw-editor.html';
@@ -1986,20 +1937,14 @@
     
         window.addEventListener('message', messageHandler);
     }	
-	function showPGZ() {
-			document.getElementById("pgz-playground").style.display = "block";
-			document.getElementById("cdraw-editor").style.display = "none";
-	}	
 	async function showGallery() {
 			document.getElementById("splashImg").style.display = "none";
-			document.getElementById("handbook").style.display = "none";
 			document.getElementById("resourceGallery").style.display = "block";
 			await initializeAssetsGallery();
 	}
 
 	function showSplash() {
 		document.getElementById("resourceGallery").style.display = "none";
-		document.getElementById("handbook").style.display = "none";
 		document.getElementById("splashImg").style.display = "block";
 	}
 	function toggleShowGallery() {
@@ -2080,25 +2025,18 @@
     return "my" + randomName + "Game";
 }
 
-// Відновити останній збережений код
+// Восстановить последний сохранённый код
 function restoreLastSavedCode() {
-    // Перевіряємо, чи є збережені копії
     if (!PythonIDE.vault || PythonIDE.vault.length === 0) {
-        const message = selectedLang === 'en'
-            ? 'No saved code backups found. Run your code first to create a backup.'
-            : 'Не знайдено збережених копій коду. Спочатку запустіть код, щоб створити резервну копію.';
-        PythonIDE.showHint(message);
+        PythonIDE.showHint('Сохранённых копий кода не найдено. Сначала запустите код, чтобы создать резервную копию.');
         return;
     }
     
-    // Отримуємо останню збережену копію (найновішу)
     const lastSnapshot = PythonIDE.vault[PythonIDE.vault.length - 1];
     const files = JSON.parse(lastSnapshot.files);
     
-    // Відновлюємо файли
     PythonIDE.files = files;
     
-    // Визначаємо активний файл
     let restoreFile = PythonIDE.currentFile;
     if (!files[restoreFile]) {
         restoreFile = "my_pgz.py";
@@ -2109,20 +2047,12 @@ function restoreLastSavedCode() {
     PythonIDE.updateFileTabs();
     PythonIDE.editor.setCursor(0);
     
-    // Показуємо повідомлення про успішне відновлення
-    const successMessage = selectedLang === 'en'
-        ? `Code successfully restored from ${new Date(lastSnapshot.date).toLocaleString()}`
-        : `Відновлено код від ${new Date(lastSnapshot.date).toLocaleString()}`;
-    PythonIDE.showHint(successMessage);
-    
-    console.log("Код відновлено з резервної копії від:", new Date(lastSnapshot.date));
+    PythonIDE.showHint(`Восстановлен код от ${new Date(lastSnapshot.date).toLocaleString()}`);
 }
 
 	</script>
 
-<!-- Модальне вікно для гри     background: rgba(64, 64, 64, 0.6);
-    backdrop-filter: blur(8px); 
-    -webkit-backdrop-filter: blur(8px); /* для Safari */-->
+<!-- Модальное окно игры -->
 <div id="gameModal" style="
     display: none;
     position: fixed;
@@ -2145,7 +2075,7 @@ function restoreLastSavedCode() {
       border: solid 1px #222;
       overflow: hidden;
   ">
-    <!-- заголовок з кнопкою -->
+    <!-- заголовок с кнопкой -->
     <div style="
         display: flex;
         justify-content: space-between;
@@ -2177,7 +2107,7 @@ function restoreLastSavedCode() {
       ">×</button>
     </div>
 
-    <!-- Canvas під заголовком -->
+    <!-- Canvas под заголовком -->
     <canvas id="gameCanvas" style="
         flex: 1;
         background-color: #000;
@@ -2185,14 +2115,14 @@ function restoreLastSavedCode() {
     "></canvas>
   </div>
 <div id="virtual-gamepad">
-  <!-- Ліва сторона: B, вгору, вниз -->
+  <!-- Левая сторона: B, вверх, вниз -->
   <div class="left-side">
     <button class="action-btn semi-left" data-key="Z">B</button> 
       <button class="dpad-btn semi-left" data-key="UP">↑</button>
       <button class="dpad-btn semi-left" data-key="DOWN">↓</button> 
   </div>
   
-  <!-- Права сторона: A, праворуч, ліворуч -->
+  <!-- Правая сторона: A, вправо, влево -->
   <div class="right-side">
     <button class="action-btn semi-right" data-key="SPACE">A</button>
       <button class="dpad-btn semi-right" data-key="RIGHT">→</button>
@@ -2200,7 +2130,7 @@ function restoreLastSavedCode() {
   </div>
 </div>
 </div>
-<!-- вікно створення нового проєкту -->
+<!-- окно создания нового проекта -->
 <div id="newProjectModal" style="
     display: none;
     position: fixed;
@@ -2218,8 +2148,8 @@ function restoreLastSavedCode() {
    <div class="modal-content modal-dark"style="width:500px; overflow:auto;">
 
         <div class="modal-header">
-            <h3 class="modal-title" >Створити новий проєкт</h3>
-            <button class="modal-close" <button onclick="closeNewProjectModal()" aria-label="Close">&times;</button>
+            <h3 class="modal-title" >Создать новый проект</h3>
+            <button class="modal-close" <button onclick="closeNewProjectModal()" aria-label="Закрыть">&times;</button>
         </div>
  
  
@@ -2227,7 +2157,7 @@ function restoreLastSavedCode() {
 
             <div style="margin-bottom: 15px;">
                 <label style="display: block; margin-bottom: 5px; color: #ccc; font-size: 13px;">
-                    Назва проєкту:
+                    Название проекта:
                 </label>
                 <input type="text" id="projectFileName" 
                        placeholder="myWonderfulGame" 
@@ -2247,7 +2177,7 @@ function restoreLastSavedCode() {
 
             <div style="margin-bottom: 15px;">
                 <label style="display: block; margin-bottom: 5px; color: #ccc; font-size: 13px;">
-                    Заголовок вікна проєкту:
+                    Заголовок окна проекта:
                 </label>
                 <input type="text" id="projectWindowTitle" 
                        placeholder="Pygame Zero" 
@@ -2266,10 +2196,10 @@ function restoreLastSavedCode() {
 
             <div style="margin-bottom: 20px;">
                 <label style="display: block; margin-bottom: 10px; color: #ccc; font-size: 13px;">
-                    Розмір вікна проєкту:
+                    Размер окна проекта:
                 </label>
                 
-                <!-- Вибір зі списку -->
+                <!-- Выбор из списка -->
                 <div style="margin-bottom: 10px;">
                     <select id="presetWindowSize" style="
                         width: 100%;
@@ -2281,7 +2211,7 @@ function restoreLastSavedCode() {
                         font-size: 14px;
                         margin-bottom: 10px;
                     ">
-                        <option value="custom">Власний розмір</option>
+                        <option value="custom">Свой размер</option>
                         <option value="1280x1024">1280×1024</option>
                         <option value="1280x960">1280×960</option>
                         <option value="1024x768">1024×768</option>
@@ -2291,7 +2221,7 @@ function restoreLastSavedCode() {
                     </select>
                 </div>
                 
-                <!-- Поля для власного розміру -->
+                <!-- Поля для своего размера -->
                 <div style="display: flex; gap: 10px;">
                     <div style="flex: 1;">
                         <label style="display: block; margin-bottom: 3px; color: #888; font-size: 12px;">
@@ -2313,7 +2243,7 @@ function restoreLastSavedCode() {
                     </div>
                     <div style="flex: 1;">
                         <label style="display: block; margin-bottom: 3px; color: #888; font-size: 12px;">
-                            Висота:
+                            Высота:
                         </label>
                         <input type="number" id="windowHeight" 
                                value="600"
@@ -2332,13 +2262,13 @@ function restoreLastSavedCode() {
                 </div>
             </div>
 
-            <!-- опис проєкту -->
+            <!-- описание проекта -->
             <div style="margin-bottom: 20px;">
                 <label style="display: block; margin-bottom: 5px; color: #ccc; font-size: 13px;">
-                    Опис проєкту:
+                    Описание проекта:
                 </label>
                 <textarea id="projectDescription" 
-                          placeholder="Опишіть ваш проєкт тут..." 
+                          placeholder="Опишите ваш проект здесь..." 
                           rows="4"
                           style="
                               width: 100%;
@@ -2366,7 +2296,7 @@ function restoreLastSavedCode() {
                     cursor: pointer;
                     transition: background 0.3s;
                 " onmouseover="this.style.background='#666'" onmouseout="this.style.background='#555'">
-                    Скасувати
+                    Отмена
                 </button>
                 <button type="submit" style="
                     flex: 1;
@@ -2380,7 +2310,7 @@ function restoreLastSavedCode() {
                     cursor: pointer;
                     transition: background 0.3s;
                 " onmouseover="this.style.background='#45a049'" onmouseout="this.style.background='#4caf50'">
-                    Створити проєкт
+                    Создать проект
                 </button>
             </div>
         </form>
@@ -2400,23 +2330,12 @@ function showConsole() {
 			document.getElementById("consoleContainer").style.display = "block";
 		}	
 }
-function showHandbook() {
-	console.log("showHandbook")
-	if (document.getElementById("handbook").style.display != "none") {
-			document.getElementById("handbook").style.display = "none";
-			document.getElementById("splashImg").style.display = "block";
-		} else {
-			document.getElementById("handbook").style.display = "block";
-			document.getElementById("resourceGallery").style.display = "none";
-		    document.getElementById("splashImg").style.display = "none";
-		}
-}
 
-// створення проєкту
+// создание проекта
 async function createNewProject() {
     document.getElementById('newProjectModal').style.display = 'flex';
     
-    // Встановлюємо значення за замовчуванням
+    // Устанавливаем значения по умолчанию
     document.getElementById('projectFileName').value = generateProjectName();
     document.getElementById('projectWindowTitle').value = 'Pygame Zero';
     document.getElementById('windowWidth').value = '800';
@@ -2424,19 +2343,19 @@ async function createNewProject() {
     document.getElementById('presetWindowSize').value = 'custom';
     document.getElementById('projectDescription').value = '';
     
-    // Додаємо обробник події форми
+    // Добавляем обработчик отправки формы
     document.getElementById('newProjectForm').onsubmit = function(e) {
         e.preventDefault();
         createProjectFromModal();
     };
 }
 
-// закриття модального вікна
+// закрытие модального окна
 function closeNewProjectModal() {
     document.getElementById('newProjectModal').style.display = 'none';
 }
 
-// обробка вибору пресету розміру
+// обработка выбора готового размера
 document.getElementById('presetWindowSize').addEventListener('change', function() {
     const preset = this.value;
     const widthInput = document.getElementById('windowWidth');
@@ -2447,17 +2366,17 @@ document.getElementById('presetWindowSize').addEventListener('change', function(
         widthInput.value = width;
         heightInput.value = height;
         
-        // Заблокувати поля для пресетів
+        // Заблокировать поля для готовых размеров
         widthInput.disabled = true;
         heightInput.disabled = true;
     } else {
-        // Розблокувати поля для власного розміру
+        // Разблокировать поля для своего размера
         widthInput.disabled = false;
         heightInput.disabled = false;
     }
 });
 
-// створення проєкту з даних модального вікна
+// создание проекта по данным модального окна
 async function createProjectFromModal() {
     const fileName = document.getElementById('projectFileName').value.trim();
     const windowTitle = document.getElementById('projectWindowTitle').value.trim();
@@ -2465,31 +2384,31 @@ async function createProjectFromModal() {
     const height = parseInt(document.getElementById('windowHeight').value);
     const description = document.getElementById('projectDescription').value.trim();
     
-    // Валідація даних
+    // Проверка данных
     if (!fileName) {
-        await message('Помилка', 'Будь ласка, введіть назву файлу проєкту');
+        await message('Ошибка', 'Пожалуйста, введите название файла проекта');
         return;
     }
     
     if (!windowTitle) {
-        await message('Помилка', 'Будь ласка, введіть заголовок вікна проєкту');
+        await message('Ошибка', 'Пожалуйста, введите заголовок окна проекта');
         return;
     }
     
     if (isNaN(width) || width < 100 || width > 1920) {
-        await message('Помилка', 'Некоректна ширина вікна (100-1920)');
+        await message('Ошибка', 'Некорректная ширина окна (100–1920)');
         return;
     }
     
     if (isNaN(height) || height < 100 || height > 1080) {
-        await message('Помилка', 'Некоректна висота вікна (100-1080)');
+        await message('Ошибка', 'Некорректная высота окна (100–1080)');
         return;
     }
     
-    // підтвердження створення проєкту
+    // подтверждение создания проекта
     const confirm = await askConfirm(
-        'Створити проєкт',
-        `Ви дійсно хочете створити новий проєкт?\nНазва файлу: ${fileName}\nРозмір: ${width}×${height}\n\nУвага: всі файли поточного проєкту будуть видалені!`
+        'Создать проект',
+        `Вы действительно хотите создать новый проект?\nНазвание файла: ${fileName}\nРазмер: ${width}×${height}\n\nВнимание: все файлы текущего проекта будут удалены!`
     );    
     if (!confirm) {
         return;
@@ -2497,7 +2416,7 @@ async function createProjectFromModal() {
     
     await clearProjectResources();
     
-    // створення шаблону коду з параметрами
+    // создание шаблона кода с параметрами
     const pgzTemplate = `import pgzrun
 
 # ${description || 'Pygame Zero'}
@@ -2507,7 +2426,7 @@ HEIGHT = ${height}
 
 TITLE = "${windowTitle}"
 
-# Ваш код має бути тут
+# Ваш код должен быть здесь
 
 
 pgzrun.go()
@@ -2519,9 +2438,9 @@ pgzrun.go()
         if (PythonIDE.editor && typeof PythonIDE.editor.setValue === 'function') {
             PythonIDE.editor.setValue(pgzTemplate);
         }
-        console.log(`Проєкт ${fileName} створено з розміром ${width}×${height}`);
+        console.log(`Проект ${fileName} создан с размером ${width}×${height}`);
     } else {
-        console.warn('PythonIDE недоступний — код не завантажено.');
+        console.warn('PythonIDE недоступен — код не загружен.');
     }
     
     document.getElementById('projectNameInput').value = fileName;    
@@ -2529,7 +2448,7 @@ pgzrun.go()
 
 }
 
-// керування модальним вікном для message/confirm/input
+// управление модальным окном для message/confirm/input
 const ModalUI = {
             container: document.getElementById('modal-container'),
             title: document.getElementById('modal-title'),
@@ -2541,17 +2460,17 @@ const ModalUI = {
 
             show(title, text, type) {
                 return new Promise((resolve) => {
-                    // Налаштування контенту
+                    // Настройка содержимого
                     this.title.innerText = title;
                     this.text.innerText = text;
                     this.inputField.value = '';
                     
-                    // Налаштування видимості елементів
+                    // Настройка видимости элементов
                     this.inputWrapper.style.display = (type === 'input') ? 'block' : 'none';
                     this.cancelBtn.style.display = (type === 'message') ? 'none' : 'inline-block';
                     this.container.style.display = 'flex';
 
-                    // Обробка кнопок
+                    // Обработка кнопок
                     const cleanup = () => {
                         this.container.style.display = 'none';
                     };
@@ -2566,14 +2485,14 @@ const ModalUI = {
                         resolve(type === 'input' ? null : false);
                     };
 
-                    // Фокус на полі введення, якщо це input
+                    // Фокус на поле ввода, если это input
                     if (type === 'input') {
                         setTimeout(() => this.inputField.focus(), 100);
                     }
                 });
             }
         };
-// виведення та введення
+// вывод и ввод
 async function message(title, text) {
 			document.getElementById('modal-container').style.display = 'none'
             return await ModalUI.show(title, text, 'message');
@@ -2588,7 +2507,7 @@ async function input(title, text) {
             return await ModalUI.show(title, text, 'input');
 }  
 </script>
-<!-- Прихований input для завантаження файлів (потрібен для lib.js) -->
+<!-- Скрытый input для загрузки файлов (нужен для lib.js) -->
 <input type="file" id="file-btn" hidden> 
 <script>
   const urlParams = new URLSearchParams(window.location.search);
@@ -2604,13 +2523,11 @@ async function input(title, text) {
 				await loadProjectFromUrl(rawUrl);
 				}
 	});
-// зберегти назву проєкту при стоп	
+// при первом запуске подставляем сгенерированное название проекта
 if (coldStart) {  document.getElementById('projectNameInput').value = generateProjectName(); }
-// необроблені помилки з промісів
+// необработанные ошибки из промисов
 window.addEventListener('unhandledrejection', function(event) {
-    // Отримуємо об'єкт помилки з промісу
-    const errorData = event.reason;
-    PythonIDE.handleError(errorData);//"Uncaught Error
+    PythonIDE.handleError(event.reason);
 })
 
 </script>

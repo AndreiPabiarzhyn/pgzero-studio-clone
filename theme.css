@@ -1,0 +1,263 @@
+/* PGZero Studio — собственная тема оформления */
+:root {
+  --pz-bg: #0b1020;
+  --pz-bg-elevated: #121a2f;
+  --pz-bg-panel: #161f38;
+  --pz-surface: #1c2644;
+  --pz-border: #2a3658;
+  --pz-text: #e8edf8;
+  --pz-text-muted: #93a0c3;
+  --pz-accent: #6366f1;
+  --pz-accent-hover: #818cf8;
+  --pz-accent-soft: rgba(99, 102, 241, 0.15);
+  --pz-cyan: #22d3ee;
+  --pz-success: #10b981;
+  --pz-danger: #ef4444;
+  --pz-radius: 10px;
+  --pz-font: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+html, body {
+  font-family: var(--pz-font);
+  background: var(--pz-bg);
+  color: var(--pz-text);
+}
+
+#page-loader {
+  background: var(--pz-bg);
+}
+
+.spinner {
+  border-color: var(--pz-border);
+  border-top-color: var(--pz-cyan);
+}
+
+#topPanel {
+  background: linear-gradient(180deg, var(--pz-bg-elevated) 0%, var(--pz-bg) 100%) !important;
+  border-bottom: 1px solid var(--pz-border);
+  height: auto !important;
+  min-height: 52px;
+  padding: 8px 12px !important;
+}
+
+#topPanel .toolPanel {
+  flex-wrap: wrap;
+  gap: 6px !important;
+  margin-top: 0 !important;
+}
+
+.tb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--pz-border);
+  border-radius: 8px;
+  background: var(--pz-surface);
+  color: var(--pz-text);
+  font-family: var(--pz-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  max-width: none !important;
+  max-height: none !important;
+  width: auto !important;
+}
+
+.tb-btn:hover {
+  background: var(--pz-accent-soft);
+  border-color: var(--pz-accent);
+}
+
+.tb-btn:active {
+  transform: scale(0.97);
+}
+
+.tb-btn.tb-primary {
+  background: linear-gradient(135deg, var(--pz-accent), #4f46e5);
+  border-color: transparent;
+  color: #fff;
+}
+
+.tb-btn.tb-primary:hover {
+  background: linear-gradient(135deg, var(--pz-accent-hover), #6366f1);
+}
+
+.tb-btn.tb-danger {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: var(--pz-danger);
+  color: #fca5a5;
+}
+
+#projectNameInput {
+  border: 1px solid var(--pz-border) !important;
+  border-radius: 8px !important;
+  background: var(--pz-surface) !important;
+  color: var(--pz-text) !important;
+  font-family: var(--pz-font) !important;
+  margin-top: 0 !important;
+}
+
+#mainLayout {
+  background: var(--pz-bg) !important;
+}
+
+#editorContainer {
+  border: 1px solid var(--pz-border) !important;
+  border-radius: var(--pz-radius) !important;
+  background: #fafbff !important;
+}
+
+#consoleContainer {
+  border: 1px solid var(--pz-border) !important;
+  border-radius: var(--pz-radius) !important;
+  background: #0a0e1a !important;
+}
+
+#rightBar {
+  background: var(--pz-bg) !important;
+}
+
+.brand-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-left: 10px;
+  border-radius: var(--pz-radius);
+  background: linear-gradient(160deg, var(--pz-bg-panel) 0%, #0d1225 100%);
+  border: 1px solid var(--pz-border);
+  padding: 24px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.brand-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--pz-accent), var(--pz-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+}
+
+.brand-panel h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pz-text);
+}
+
+.brand-panel p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--pz-text-muted);
+  line-height: 1.5;
+}
+
+.brand-panel .brand-tag {
+  margin-top: 16px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--pz-accent-soft);
+  color: var(--pz-cyan);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+#resourceGallery .frame {
+  background: var(--pz-bg-panel) !important;
+  border: 1px solid var(--pz-border) !important;
+  box-shadow: none !important;
+  color: var(--pz-text) !important;
+}
+
+#resourceGallery .frame h3 {
+  color: var(--pz-text) !important;
+}
+
+#resourceGallery button {
+  background: var(--pz-surface) !important;
+  border-color: var(--pz-border) !important;
+}
+
+.modal-dark,
+.modal-content.modal-dark {
+  background: var(--pz-bg-elevated) !important;
+  border: 1px solid var(--pz-border) !important;
+  color: var(--pz-text) !important;
+}
+
+.modal-dark .modal-title,
+.modal-dark h3,
+.modal-dark h4 {
+  color: var(--pz-text) !important;
+}
+
+.modal-dark .setting-label,
+.modal-dark .form-label,
+.modal-dark p {
+  color: var(--pz-text-muted) !important;
+}
+
+#hintBar {
+  color: var(--pz-cyan) !important;
+}
+
+/* Модальное окно «Файлы проекта» */
+#projectFilesModal .pf-list {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.pf-section {
+  margin-bottom: 16px;
+}
+
+.pf-section h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pz-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pf-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pf-section li {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--pz-surface);
+  border: 1px solid var(--pz-border);
+  margin-bottom: 4px;
+  font-family: Consolas, monospace;
+  font-size: 13px;
+  color: var(--pz-text);
+}
+
+.pf-empty, .pf-loading {
+  color: var(--pz-text-muted);
+  text-align: center;
+  padding: 24px;
+}
+
+.pf-count {
+  font-size: 12px;
+  color: var(--pz-text-muted);
+  margin-bottom: 12px;
+}

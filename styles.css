@@ -12,7 +12,7 @@ html, body {
   flex-direction: column;
   gap: 10px;
 }
-/* === СТИЛІ ГАЛЕРЕЇ РЕСУРСІВ === */
+/* === СТИЛИ ГАЛЕРЕИ РЕСУРСОВ === */
   .header {
     display: flex;
     justify-content: space-between;
@@ -44,7 +44,7 @@ html, body {
 #imagesFrame { max-height: 38vh; }
 #soundsFrame { max-height: 19vh; }
 #musicFrame  { max-height: 20vh; }
-  /* === Контейнер з прокруткою  === */
+  /* === Контейнер с прокруткой === */
 .items-scroll {
   display: flex;
   flex-direction: row; 
@@ -58,7 +58,7 @@ html, body {
 }
 
 .items-scroll::-webkit-scrollbar {
-  width: 6px; /* ← змінено з height на width (бо прокрутка вертикальна) */
+  width: 6px; /* width вместо height, потому что прокрутка вертикальная */
 }
   
   .items-scroll::-webkit-scrollbar-track {
@@ -87,7 +87,7 @@ html, body {
 .item.selected {
   outline: 2px solid #007bff !important;
   border-radius: 6px !important;
-  background-color: #e9f5ff !important; /* ← додано */
+  background-color: #e9f5ff !important; /* добавлено */
 }
   .thumb-container {
     width: 80px;
@@ -312,14 +312,14 @@ html {
   justify-content: space-between;
   padding: 0 15px;
   background: #2a2a2a;
-  z-index: 1000; /* гарантовано над усім */
+  z-index: 1000; /* гарантированно поверх всего */
   box-sizing: border-box;
 }
 
 #topPanel .toolPanel {
   display: flex;
   align-items: center;
-  gap: 8px; /* відступ між кнопками */
+  gap: 8px; /* отступ между кнопками */
   margin-top: 20px;
 }
 

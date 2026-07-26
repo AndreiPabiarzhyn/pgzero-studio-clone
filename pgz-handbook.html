@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Посібник з Pygame Zero</title>
+    <title>Справочник по Pygame Zero</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -104,41 +104,41 @@
     </style>
   </head>
   <body>
-    <h1>Посібник з Pygame Zero</h1>
+    <h1>Справочник по Pygame Zero</h1>
     <div class="toc">
-      <h2>Зміст</h2>
+      <h2>Содержание</h2>
       <ul>
-        <li><a href="#intro">1. Про Pygame Zero</a></li>
-        <li><a href="#objects">2. Об'єкти</a></li>
-        <li><a href="#window">3. Вікно</a></li>
-        <li><a href="#redraw">4. Перемалювання</a></li>
-        <li><a href="#sprites">5. Спрайти та їх властивості</a></li>
-        <li><a href="#movement">6. Переміщення спрайтів</a></li>
-        <li><a href="#keyboard">7. Використання клавіатури</a></li>
-        <li><a href="#mouse">8. Події миші</a></li>
-        <li><a href="#audio">9. Звуки та музика</a></li>
+        <li><a href="#intro">1. О Pygame Zero</a></li>
+        <li><a href="#objects">2. Объекты</a></li>
+        <li><a href="#window">3. Окно</a></li>
+        <li><a href="#redraw">4. Перерисовка</a></li>
+        <li><a href="#sprites">5. Спрайты и их свойства</a></li>
+        <li><a href="#movement">6. Перемещение спрайтов</a></li>
+        <li><a href="#keyboard">7. Использование клавиатуры</a></li>
+        <li><a href="#mouse">8. События мыши</a></li>
+        <li><a href="#audio">9. Звуки и музыка</a></li>
         <li><a href="#timer">10. Таймер</a></li>
       </ul>
     </div>
     <div class="section" id="intro">
-      <h2>1. Про Pygame Zero</h2>
-      <p>Pygame Zero — це бібліотека для початківців, що спрощує створення ігор
-        на Python. Вона базується на Pygame, але приховує складні деталі,
-        дозволяючи зосередитися на логіці гри.</p>
-      <p>Головні переваги:</p>
+      <h2>1. О Pygame Zero</h2>
+      <p>Pygame Zero — это библиотека для начинающих, которая упрощает создание
+        игр на Python. Она основана на Pygame, но скрывает сложные детали и
+        позволяет сосредоточиться на логике игры.</p>
+      <p>Главные преимущества:</p>
       <ul>
-        <li>Не потрібно писати головний цикл гри</li>
-        <li>Простий синтаксис для роботи з графікою та звуком</li>
-        <li>Ідеально підходить для навчання програмуванню</li>
+        <li>Не нужно писать главный цикл игры</li>
+        <li>Простой синтаксис для работы с графикой и звуком</li>
+        <li>Идеально подходит для обучения программированию</li>
       </ul>
-      <p>Приклад найпростішої програми:</p>
+      <p>Пример самой простой программы:</p>
       <pre>import pgzrun
 
 WIDTH = 800
 HEIGHT = 600
 
-# Створюємо актора (спрайт)
-actor = Actor('alien')  # alien.png має бути у теці images/
+# Создаём актёра (спрайт)
+actor = Actor('alien')  # alien.png должен лежать в папке images/
 actor.pos = (400, 300)
 
 def draw():
@@ -146,71 +146,73 @@ def draw():
     actor.draw()
 
 def on_mouse_move(pos):
-    actor.pos = pos<br><br>pgzrun.go()</pre>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+    actor.pos = pos
+
+pgzrun.go()</pre>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <div class="section" id="objects">
-      <h2>2. Об'єкти</h2>
-      <p>У Pygame Zero основні об'єкти — це <strong>спрайти</strong> , їх ще
-        називають <strong>акторами</strong> (Actor). Актор — це спрайт з
-        програмним керуванням (переміщення, поворот, тощо).</p>
-      <p>Створення актора:</p>
+      <h2>2. Объекты</h2>
+      <p>В Pygame Zero основные объекты — это <strong>спрайты</strong>, их ещё
+        называют <strong>актёрами</strong> (Actor). Актёр — это спрайт с
+        программным управлением (перемещение, поворот и так далее).</p>
+      <p>Создание актёра:</p>
       <pre>actor = Actor('image_name')</pre>
-      <p>де <code>'image_name'</code> — назва файлу зображення (без
-        розширення), який має знаходитися в папці <code>images</code>.</p>
-      <div class="note"> <strong>Порада:</strong> Зображення повинні бути у
-        форматах PNG або JPG і зберігатися в папці <code>images</code> поруч із
-        файлом гри. </div>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+      <p>где <code>'image_name'</code> — название файла изображения (без
+        расширения), который должен находиться в папке <code>images</code>.</p>
+      <div class="note"> <strong>Совет:</strong> Изображения должны быть в
+        форматах PNG или JPG и храниться в папке <code>images</code> рядом с
+        файлом игры. </div>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <div class="section" id="window">
-      <h2>3. Вікно</h2>
-      <p>Розмір вікна гри задається змінними <code>WIDTH</code> та <code>HEIGHT</code>.
-        Ці змінні повинні бути визначені на початку програми.</p>
+      <h2>3. Окно</h2>
+      <p>Размер окна игры задаётся переменными <code>WIDTH</code> и <code>HEIGHT</code>.
+        Эти переменные должны быть определены в начале программы.</p>
       <pre>WIDTH = 800
 HEIGHT = 600
 
 player = Actor('player')
 player.pos = 100, 56</pre>
-      <p>Координати в Pygame Zero починаються з верхнього лівого кута екрану (0,
-        0). Позиція актора задається через властивість <code>pos</code> (або
-        окремо <code>x</code> та <code>y</code>).</p>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+      <p>Координаты в Pygame Zero начинаются с верхнего левого угла экрана (0,
+        0). Позиция актёра задаётся через свойство <code>pos</code> (или
+        отдельно через <code>x</code> и <code>y</code>).</p>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <div class="section" id="redraw">
-      <h2>4. Перемалювання</h2>
-      <p>Функція <code>draw()</code> викликається автоматично для перемалювання
-        всіх об'єктів, які знаходяться на екрані.</p>
+      <h2>4. Перерисовка</h2>
+      <p>Функция <code>draw()</code> вызывается автоматически, чтобы
+        перерисовать все объекты, которые находятся на экране.</p>
       <pre>def draw():
     screen.clear()
     player.draw()
     enemy.draw()
-    screen.draw.text("Рахунок: " + str(score), (10, 10))</pre>
-      <p>Важливо завжди починати з <code>screen.clear()</code>, щоб очистити
-        попередній кадр. Для малювання тексту використовуйте <code>screen.draw.text()</code>.</p>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+    screen.draw.text("Счёт: " + str(score), (10, 10))</pre>
+      <p>Важно всегда начинать с <code>screen.clear()</code>, чтобы очистить
+        предыдущий кадр. Для рисования текста используйте <code>screen.draw.text()</code>.</p>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <div class="section" id="sprites">
-      <h2>5. Спрайти та їх властивості</h2>
-      <p>Актори мають багато корисних властивостей:</p>
+      <h2>5. Спрайты и их свойства</h2>
+      <p>У актёров есть много полезных свойств:</p>
       <ul>
-        <li><code>pos</code> — позиція (x, y)</li>
-        <li><code>x</code>, <code>y</code> — окремі координати</li>
-        <li><code>angle</code> — кут повороту (у градусах)</li>
-        <li><code>opacity</code> — непрозорість</li>
-        <li><code>scale</code> — масштаб (1.0 = оригінальний розмір)</li>
-        <li><code>image</code> — назва поточного зображення</li>
+        <li><code>pos</code> — позиция (x, y)</li>
+        <li><code>x</code>, <code>y</code> — отдельные координаты</li>
+        <li><code>angle</code> — угол поворота (в градусах)</li>
+        <li><code>opacity</code> — непрозрачность</li>
+        <li><code>scale</code> — масштаб (1.0 — исходный размер)</li>
+        <li><code>image</code> — название текущего изображения</li>
       </ul>
       <pre>player = Actor('hero')
 player.pos = (400, 300)
 player.angle = 45
 player.scale = 1.5
 
-# Зміна зображення
+# Смена изображения
 player.image = 'hero_angry'</pre>
-      <div class="note"> <strong>Порада:</strong> Для анімації можна змінювати
-        властивість <code>image</code> залежно від стану гри. </div>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+      <div class="note"> <strong>Совет:</strong> Для анимации можно менять
+        свойство <code>image</code> в зависимости от состояния игры. </div>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <div class="section" id="movement">
-      <h2>6. Переміщення спрайтів</h2>
-      <p>Переміщення об'єктів відбувається у функції <code>update()</code>, яка
-        викликається перед кожним перемалюванням.</p>
+      <h2>6. Перемещение спрайтов</h2>
+      <p>Перемещение объектов происходит в функции <code>update()</code>,
+        которая вызывается перед каждой перерисовкой.</p>
       <pre>def update():
     if keyboard.right:
         player.x += 5
@@ -220,10 +222,10 @@ player.image = 'hero_angry'</pre>
         player.y -= 5
     if keyboard.down:
         player.y += 5</pre>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <div class="section" id="keyboard">
-      <h2>7. Використання клавіатури</h2>
-      <p>Pygame Zero надає простий доступ до стану клавіш через об'єкт <code>keyboard</code>.</p>
+      <h2>7. Использование клавиатуры</h2>
+      <p>Pygame Zero даёт простой доступ к состоянию клавиш через объект <code>keyboard</code>.</p>
       <pre>def update():
     if keyboard.space:
         fire_bullet()
@@ -231,73 +233,72 @@ player.image = 'hero_angry'</pre>
         player.x -= 3
     if keyboard.d:
         player.x += 3</pre>
-      <p>Можна також використовувати спеціальні функції для обробки натискання
-        клавіш:</p>
+      <p>Можно также использовать специальные функции для обработки нажатия
+        клавиш:</p>
       <pre>def on_key_down(key):
     if key == keys.SPACE:
         create_explosion()
     elif key == keys.ESCAPE:
         exit()</pre>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <div class="section" id="mouse">
-      <h2>8. Події миші</h2>
-      <p>Обробка подій миші здійснюється через спеціальні функції:</p>
+      <h2>8. События мыши</h2>
+      <p>Обработка событий мыши выполняется через специальные функции:</p>
       <pre>def on_mouse_down(pos, button):
     if button == mouse.LEFT:
-        print("Ліва кнопка натиснута в", pos)
+        print("Левая кнопка нажата в", pos)
     elif button == mouse.RIGHT:
-        print("Права кнопка натиснута")
+        print("Правая кнопка нажата")
 
 def on_mouse_move(pos):
     player.pos = pos</pre>
-      <p>Ви також можете перевіряти стан кнопок миші у функції <code>update()</code>:</p>
+      <p>Вы также можете проверять состояние кнопок мыши в функции <code>update()</code>:</p>
       <pre>def update():
     if mouse.LEFT:
         player.angle += 2</pre>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <div class="section" id="audio">
-      <h2>9. Звуки та музика</h2>
-      <p>Для роботи зі звуком використовуйте модуль <code>music</code> та
-        функцію <code>play_sound()</code>.</p>
-      <pre># Відтворення звуку
+      <h2>9. Звуки и музыка</h2>
+      <p>Для работы со звуком используйте модуль <code>music</code> и объект
+        <code>sounds</code>.</p>
+      <pre># Воспроизведение звука
 def on_key_down(key):
     if key == keys.SPACE:
         sounds.jump.play()
 
-# Керування музикою
+# Управление музыкой
 music.play('background_theme')
 music.set_volume(0.5)
 
-# Зупинка музики
+# Остановка музыки
 music.stop()</pre>
-      <p>Звукові файли повинні знаходитися в папці <code>sounds</code> (для
-        коротких звуків) або <code>music</code> (для фонової музики).</p>
-      <div class="note"> <strong>Підтримувані формати:</strong> WAV, OGG, MP3
-        (залежно від системи). </div>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+      <p>Звуковые файлы должны находиться в папке <code>sounds</code> (для
+        коротких звуков) или <code>music</code> (для фоновой музыки).</p>
+      <div class="note"> <strong>Поддерживаемые форматы:</strong> WAV, OGG, MP3
+        (в зависимости от системы). </div>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <div class="section" id="timer">
       <h2>10. Таймер</h2>
-      <p>Для відкладеного виконання коду використовуйте функцію <code>clock.schedule()</code>.</p>
+      <p>Для отложенного выполнения кода используйте функции модуля <code>clock</code>.</p>
       <pre>def spawn_enemy():
     enemies.append(Actor('enemy'))
 
-# Створювати ворога кожні 3 секунди
+# Создавать врага каждые 3 секунды
 clock.schedule_interval(spawn_enemy, 3.0)
 
-# Виконати функцію через 5 секунд один раз
+# Выполнить функцию один раз через 5 секунд
 clock.schedule(game_over, 5.0)
 
 def game_over():
-    print("Час вичерпано!")</pre>
-      <p>Щоб скасувати заплановану подію, збережіть посилання на неї:</p>
+    print("Время вышло!")</pre>
+      <p>Чтобы отменить запланированное событие, сохраните ссылку на функцию:</p>
       <pre>def cancel_timer():
-    global spawn_event
-    clock.unschedule(spawn_event)
+    clock.unschedule(spawn_enemy)
 
-spawn_event = clock.schedule_interval(spawn_enemy, 2.0)</pre>
-      <a href="#" class="back-to-top">↑ До змісту</a> </div>
+clock.schedule_interval(spawn_enemy, 2.0)</pre>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <script>
-        // Плавна прокрутка до розділів
+        // Плавная прокрутка к разделам
         document.querySelectorAll('.toc a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -310,7 +311,7 @@ spawn_event = clock.schedule_interval(spawn_enemy, 2.0)</pre>
             });
         });
         
-        // Повернення до змісту
+        // Возврат к содержанию
         document.querySelectorAll('.back-to-top').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
