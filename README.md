@@ -60,6 +60,18 @@ python -m http.server 8100
 
 Подробный снимок версии: [CHECKPOINT.md](CHECKPOINT.md)
 
+## Attribution / Благодарности
+
+**PGZero Studio** — производная работа (fork) проекта [PGZ Studio](https://ed-info.github.io/pgz/), распространяемого под [GNU GPL v3](LICENSE).
+
+| | |
+|---|---|
+| **Оригинал** | [PGZ Studio](https://ed-info.github.io/pgz/) — браузерная IDE для Pygame Zero |
+| **Этот форк** | Русский интерфейс, свой дизайн, заготовки игр, галерея слотов, доработки движка |
+| **Автор форка** | Andrei Pabiarzhyn |
+
+Изменения в PGZero Studio распространяются на тех же условиях **GPL-3.0**: исходный код открыт, лицензия сохраняется, производные работы — тоже под GPL.
+
 ## Лицензия
 
-[GNU GPL v3](LICENSE) — как у исходного PGZ Studio.
+[GNU GPL v3](LICENSE) — как у исходного PGZ Studio. Полный текст лицензии — в файле [LICENSE](LICENSE).
