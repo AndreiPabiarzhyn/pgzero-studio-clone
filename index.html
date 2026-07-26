@@ -1419,11 +1419,11 @@
         <span class="tb-label">В слот</span>
       </button>
       <button type="button" id="btn_pgz_save" class="toolButton tb-btn tb-save-file" data-pz-icon="download" title="Скачать файл .pgz на компьютер" aria-label="Скачать на компьютер" onclick="exportGallery()"></button>
+      <button type="button" id="btn_pgz_open" class="toolButton tb-btn tb-open-file" data-pz-icon="folderOpen" title="Открыть проект с компьютера" aria-label="Открыть проект с компьютера" onclick="importGallery()"></button>
     </div>
     <div class="tb-group tb-group-icons">
       <button type="button" id="btn_toggle_sidebar" class="toolButton tb-btn" data-pz-icon="panel" title="Скрыть боковую панель"></button>
       <button type="button" class="toolButton tb-btn" data-pz-icon="gallery" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
-      <button type="button" id="btn_pgz_open" class="toolButton tb-btn" data-pz-icon="folderOpen" title="Открыть игру" onclick="importGallery()"></button>
       <button type="button" id="btn_project_gallery" class="toolButton tb-btn" data-pz-icon="projects" title="Сменить игру" onclick="PGZProjectGallery.openSwitchModal()"></button>
       <button type="button" id="btn_toggle_theme" class="toolButton tb-btn" data-pz-icon="themeDark" title="Тёмная тема"></button>
     </div>
@@ -1494,43 +1494,33 @@
 <!-- галерея ресурсов -->
 <div id="resourceGallery" style="display: none;">
   <div class="frame" id="imagesFrame">
-    <h3><span class="pz-icon-wrap" data-pz-icon="image"></span> Картинки</h3>
-    <div id="imagesList" class="assets-items-scroll"></div>
-    <div class="controls-bar">
-      <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
-      <span class="file-controls" id="imageControls" style="display:none;">
-        <button class="gallery-btn" data-pz-icon="gView" onclick="showSelected('image')" title="Посмотреть"></button>
-        <button class="gallery-btn" data-pz-icon="gRename" onclick="renameSelected('image')" title="Переименовать"></button>
-        <button class="gallery-btn" data-pz-icon="gDraw" onclick="showEditor('image')" title="Нарисовать"></button>
-        <button class="gallery-btn" data-pz-icon="gDelete" onclick="deleteSelected('image')" title="Удалить"></button>
-      </span>
+    <div class="frame-header">
+      <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="image"></span> Картинки</h3>
+      <div class="controls-bar">
+        <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
+      </div>
     </div>
+    <div id="imagesList" class="assets-items-scroll"></div>
   </div>
 
   <div class="frame" id="soundsFrame">
-    <h3><span class="pz-icon-wrap" data-pz-icon="sound"></span> Звуки</h3>
-    <div id="soundsList" class="assets-items-scroll"></div>
-    <div class="controls-bar">
-      <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('audio'))()" title="Добавить звук"></button>
-      <span class="file-controls" id="soundControls" style="display:none;">
-        <button class="gallery-btn" id="playBtn" data-pz-icon="gPlay" onclick="togglePlayPause()" title="Слушать"></button>
-        <button class="gallery-btn" data-pz-icon="gRename" onclick="renameSelected('audio')" title="Переименовать"></button>
-        <button class="gallery-btn" data-pz-icon="gDelete" onclick="deleteSelected('audio')" title="Удалить"></button>
-      </span>
+    <div class="frame-header">
+      <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="sound"></span> Звуки</h3>
+      <div class="controls-bar">
+        <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('audio'))()" title="Добавить звук"></button>
+      </div>
     </div>
+    <div id="soundsList" class="assets-items-scroll"></div>
   </div>
 
   <div class="frame" id="musicFrame">
-    <h3><span class="pz-icon-wrap" data-pz-icon="music"></span> Музыка</h3>
-    <div id="musicList" class="assets-items-scroll"></div>
-    <div class="controls-bar">
-      <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('music'))()" title="Добавить музыку"></button>
-      <span class="file-controls" id="musicControls" style="display:none;">
-        <button class="gallery-btn" id="playMusicBtn" data-pz-icon="gPlay" onclick="togglePlayPauseMusic()" title="Слушать"></button>
-        <button class="gallery-btn" data-pz-icon="gRename" onclick="renameSelected('music')" title="Переименовать"></button>
-        <button class="gallery-btn" data-pz-icon="gDelete" onclick="deleteSelected('music')" title="Удалить"></button>
-      </span>
+    <div class="frame-header">
+      <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="music"></span> Музыка</h3>
+      <div class="controls-bar">
+        <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('music'))()" title="Добавить музыку"></button>
+      </div>
     </div>
+    <div id="musicList" class="assets-items-scroll"></div>
   </div>
 
 </div>
@@ -1539,7 +1529,7 @@
 
 <footer id="appFooter" class="app-footer">
   <span id="footerProjectStatus" class="footer-project-status" aria-live="polite"></span>
-  <span class="footer-credits">Crafted by Andrei Pabiarzhyn</span>
+  <span class="footer-credits">Crafted by <strong>Andrei Pabiarzhyn</strong></span>
 </footer>
 
 <!-- Продолжить сессию -->
@@ -2110,7 +2100,8 @@
             if (event.source === iframe.contentWindow && event.data === 'closeEditor') {
                 modal.remove();
                 window.removeEventListener('message', messageHandler);
-                await initializeAssetsGallery(); 
+                await initializeAssetsGallery();
+                if (typeof scheduleProjectSave === 'function') scheduleProjectSave();
             }
         };
     
@@ -2712,15 +2703,21 @@ document.addEventListener('click', function(e) {
 			await PGZProjectGallery.promptStartup();
 			document.getElementById('topPanel').style.display = 'flex';
 			document.getElementById('mainLayout').style.display = 'flex';
+			if (typeof PythonIDE !== 'undefined' && PythonIDE.refreshEditorView) {
+				PythonIDE.refreshEditorView();
+			}
 			await showGallery();
 		} else if (!rawUrl) {
 			document.getElementById('topPanel').style.display = 'flex';
 			document.getElementById('mainLayout').style.display = 'flex';
 			document.getElementById('playGameBtn').style.display = 'none';
 
-			if (coldStart && !localStorage.loadAction && typeof PGZ_STARTER_CODE !== 'undefined' && typeof PythonIDE !== 'undefined') {
-				PythonIDE.files['my_pgz.py'] = PGZ_STARTER_CODE;
-				if (PythonIDE.editor) PythonIDE.editor.setValue(PGZ_STARTER_CODE);
+			if (coldStart && !localStorage.loadAction && typeof PythonIDE !== 'undefined') {
+				var starter = typeof PGZ_getNewProjectCode === 'function'
+					? PGZ_getNewProjectCode()
+					: (typeof PGZ_BASE_CODE !== 'undefined' ? PGZ_BASE_CODE : "import pgzrun\n\npgzrun.go()\n");
+				PythonIDE.files['my_pgz.py'] = starter;
+				if (PythonIDE.editor) PythonIDE.editor.setValue(starter);
 				document.getElementById('projectNameInput').value = generateProjectName();
 			}
 			await showGallery();

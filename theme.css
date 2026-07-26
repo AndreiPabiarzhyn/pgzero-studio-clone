@@ -271,6 +271,23 @@ body.app-ready {
   border-color: color-mix(in srgb, #14b8a6 70%, var(--pz-border));
 }
 
+.tb-btn.tb-open-file {
+  background: var(--pz-surface);
+  color: var(--pz-text);
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  min-width: 44px;
+  border-radius: 12px;
+  border: 1.5px dashed color-mix(in srgb, #fbbf24 60%, var(--pz-border));
+  box-shadow: none;
+}
+
+.tb-btn.tb-open-file:hover {
+  background: color-mix(in srgb, #fbbf24 12%, var(--pz-surface));
+  border-color: color-mix(in srgb, #fbbf24 75%, var(--pz-border));
+}
+
 .tb-btn.tb-save-slot .tb-label {
   display: inline;
   font-size: 13px;
@@ -756,8 +773,8 @@ body.app-ready {
   min-height: var(--pz-footer-h);
   max-height: var(--pz-footer-h);
   display: none;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
   padding: 0 14px;
   font-family: var(--pz-font);
@@ -769,12 +786,12 @@ body.app-ready {
   z-index: 900;
   letter-spacing: 0.01em;
   box-sizing: border-box;
-  flex-wrap: nowrap;
   overflow: hidden;
 }
 
 .footer-project-status {
-  flex: 1 1 auto;
+  grid-column: 1;
+  justify-self: start;
   min-width: 0;
   font-size: 12px;
   font-weight: 700;
@@ -797,12 +814,38 @@ body.app-ready {
 }
 
 .footer-credits {
+  grid-column: 2;
+  justify-self: center;
   flex-shrink: 0;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  color: var(--pz-text-muted);
-  opacity: 0.85;
+  color: color-mix(in srgb, var(--pz-accent) 72%, var(--pz-text));
   white-space: nowrap;
+  letter-spacing: 0.02em;
+  animation: footer-credits-soft 5s ease-in-out infinite;
+}
+
+.footer-credits strong {
+  font-weight: 800;
+  color: var(--pz-accent);
+}
+
+@keyframes footer-credits-soft {
+  0%, 100% {
+    opacity: 0.82;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-0.5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-credits {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 @media (max-width: 720px) {
@@ -816,7 +859,7 @@ body.app-ready {
 }
 
 body.app-ready .app-footer {
-  display: flex;
+  display: grid;
 }
 
 .layout-left {
@@ -859,13 +902,23 @@ body.app-ready .app-footer {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   flex: 1 1 auto;
   min-height: 0;
   display: none;
   flex-direction: column;
-  gap: 14px;
-  padding: 10px 10px 14px;
+  gap: 12px;
+  padding: 8px 6px 10px;
+}
+
+#resourceGallery::-webkit-scrollbar {
+  width: 8px;
+}
+
+#resourceGallery::-webkit-scrollbar-thumb {
+  background: var(--pz-border);
+  border-radius: 4px;
 }
 
 #resourceGallery .frame {
@@ -877,40 +930,47 @@ body.app-ready .app-footer {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
-  padding: 14px 12px 12px !important;
+  padding: 10px 10px 10px !important;
   box-sizing: border-box !important;
   min-width: 0;
   overflow: hidden;
   display: flex !important;
   flex-direction: column !important;
-  gap: 10px;
-  flex: 1 1 auto;
-  min-height: 0;
+  gap: 8px;
+  flex: 0 0 auto;
 }
 
-#imagesFrame {
-  flex: 2.2 1 0;
-  min-height: 150px;
-  max-height: min(46vh, 420px);
-}
-
-#soundsFrame,
-#musicFrame {
-  flex: 1 1 0;
-  min-height: 110px;
-  max-height: min(22vh, 200px);
-}
-
-#resourceGallery .frame h3 {
+.frame-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   flex-shrink: 0;
+  min-width: 0;
+}
+
+#resourceGallery .frame h3,
+#resourceGallery .frame-title {
+  flex: 1 1 auto;
+  min-width: 0;
   margin: 0 !important;
-  padding-bottom: 2px;
+  padding: 0;
   color: var(--pz-text) !important;
   font-family: var(--pz-font) !important;
+  font-size: 15px;
   font-weight: 800 !important;
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+#imagesFrame .assets-items-scroll {
+  max-height: min(240px, 30vh);
+}
+
+#soundsFrame .assets-items-scroll,
+#musicFrame .assets-items-scroll {
+  max-height: min(140px, 16vh);
 }
 
 .gallery-count {
@@ -935,8 +995,8 @@ body.app-ready .app-footer {
 
 #resourceGallery .assets-items-scroll,
 #resourceGallery .items-scroll {
-  flex: 1 1 auto;
-  min-height: 64px;
+  flex: 0 1 auto;
+  min-height: 72px;
   max-width: 100% !important;
   width: 100%;
   overflow-y: auto;
@@ -946,6 +1006,7 @@ body.app-ready .app-footer {
   border-radius: 10px;
   background: color-mix(in srgb, var(--pz-surface) 65%, transparent);
   border: 1px solid color-mix(in srgb, var(--pz-border) 70%, transparent);
+  overscroll-behavior: contain;
 }
 
 #resourceGallery .assets-items-scroll::-webkit-scrollbar,
@@ -961,15 +1022,72 @@ body.app-ready .app-footer {
 
 #resourceGallery .controls-bar {
   flex-shrink: 0;
-  margin-top: 0;
-  padding-top: 2px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+#resourceGallery .file-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: nowrap;
 }
 
 #resourceGallery .item {
+  position: relative;
   max-width: 88px;
   word-break: break-word;
   white-space: normal;
   line-height: 1.2;
+  cursor: pointer;
+}
+
+#resourceGallery .thumb-container,
+#resourceGallery .audio-icon {
+  position: relative;
+}
+
+.item-actions-popover {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 4px;
+  border-radius: 9px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+}
+
+[data-app-theme="light"] .item-actions-popover {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: var(--pz-border);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+}
+
+#resourceGallery .gallery-btn-pop {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 8px !important;
+}
+
+#resourceGallery .gallery-btn-pop .pz-icon-wrap {
+  transform: scale(0.88);
+}
+
+#resourceGallery .gallery-btn-pop:hover {
+  transform: translateY(-1px) scale(1.03);
 }
 
 .layout-right--hidden {
@@ -1301,12 +1419,15 @@ body.layout-dragging-h * {
 }
 
 /* ========== Галерея — цветные плитки ========== */
-#resourceGallery .controls-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
+#resourceGallery .gallery-btn {
+  width: 34px !important;
+  height: 34px !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  flex-shrink: 0;
 }
 
 .gallery-btn {
