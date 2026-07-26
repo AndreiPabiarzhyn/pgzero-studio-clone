@@ -27,3 +27,9 @@ test('keyboard.enter — алиас для return', () => {
     assert.match(pgzSource, /key === 'enter'\)\s*key = 'return'/);
     assert.match(pgzSource, /keysPressed\.enter = true/);
 });
+
+test('schedule_interval доступен как глобальная функция', () => {
+    const pgzSource = readFileSync(join(root, 'lib/skulpt/pgzrun/__init__.js'), 'utf8');
+    assert.match(pgzSource, /exposeClockGlobal\('schedule_interval', 2\)/);
+    assert.match(pgzSource, /Sk\.globals\.clock = clockInstance/);
+});
