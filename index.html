@@ -1530,6 +1530,7 @@
 <footer id="appFooter" class="app-footer">
   <span id="footerProjectStatus" class="footer-project-status" aria-live="polite"></span>
   <span class="footer-credits">Crafted by <strong>Andrei Pabiarzhyn</strong></span>
+  <span id="footerVersion" class="footer-version" title="PGZero Studio">v0.012</span>
 </footer>
 
 <!-- Продолжить сессию -->
@@ -2029,6 +2030,7 @@
     <script src="./lib/icons.js"></script>
     <script src="./lib/tooltips.js"></script>
     <script src="./lib/app-theme.js"></script>
+    <script src="./lib/version.js"></script>
     <script src="./lib/game-modal.js"></script>
     <script src="./lib/assets-gallery.js"></script>
     <script src="./lib/project-files.js"></script>
@@ -2710,6 +2712,7 @@ window.addEventListener('resize', function () {
 		try {
 		initPzIcons();
 		if (typeof AppTheme !== 'undefined') AppTheme.init();
+		if (typeof PGZVersion !== 'undefined') PGZVersion.load();
 		if (typeof PZTooltip !== 'undefined') PZTooltip.init();
 		if (typeof GameModal !== 'undefined') GameModal.init();
 		if (typeof PGZSession !== 'undefined') PGZSession.init();

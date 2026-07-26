@@ -848,6 +848,19 @@ body.app-ready {
   color: var(--pz-accent);
 }
 
+.footer-version {
+  grid-column: 3;
+  justify-self: end;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--pz-accent) 65%, var(--pz-text-muted));
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.03em;
+  padding-right: 2px;
+}
+
 @keyframes footer-credits-soft {
   0%, 100% {
     opacity: 0.82;
@@ -869,6 +882,12 @@ body.app-ready {
 @media (max-width: 720px) {
   .footer-credits {
     display: none;
+  }
+
+  .footer-version {
+    grid-column: 2;
+    justify-self: end;
+    font-size: 10px;
   }
 
   .footer-project-status {
