@@ -56,3 +56,8 @@ test('hasStoredAssets определяет наличие ресурсов в с
     assert.equal(hasStoredAssets({ images: [{ name: 'a.png', dataUrl: 'x' }] }), true);
     assert.equal(hasStoredAssets({ sounds: [{ name: 'a.wav', dataUrl: 'x' }] }), true);
 });
+
+test('MAX_SLOTS равен 6', () => {
+    const gallery = loadGallery();
+    assert.equal(gallery.MAX_SLOTS, 6);
+});
