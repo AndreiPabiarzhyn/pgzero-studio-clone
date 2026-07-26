@@ -26,3 +26,10 @@ test('Actor.collidepoint проверяет формат pos', () => {
         /\$loc\.collidepoint = new Sk\.builtin\.func\(function\(self, pos\)[\s\S]{0,220}TypeError\("collidepoint\(\) argument must be \(x, y\) tuple"\)/
     );
 });
+
+test('экран очищается перед каждым draw()', () => {
+    assert.match(
+        pgzSource,
+        /if \(Sk\.globals\.draw\) \{[\s\S]{0,180}fillRect\(0,\s*0,\s*width,\s*height\)[\s\S]{0,120}Sk\.globals\.draw/
+    );
+});
