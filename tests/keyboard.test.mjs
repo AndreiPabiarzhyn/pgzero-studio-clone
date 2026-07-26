@@ -21,3 +21,9 @@ test('F5 не запускает игру при перезагрузке стр
 test('Ctrl+Enter по-прежнему запускает игру', () => {
     assert.match(libSource, /case\s+13:[\s\S]{0,120}runCode/);
 });
+
+test('keyboard.enter — алиас для return', () => {
+    const pgzSource = readFileSync(join(root, 'lib/skulpt/pgzrun/__init__.js'), 'utf8');
+    assert.match(pgzSource, /key === 'enter'\)\s*key = 'return'/);
+    assert.match(pgzSource, /keysPressed\.enter = true/);
+});

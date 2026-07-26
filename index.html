@@ -1423,7 +1423,9 @@
       <button type="button" id="btn_pgz_open" class="toolButton tb-btn tb-open-file" data-pz-icon="folderOpen" title="Открыть проект с компьютера" aria-label="Открыть проект с компьютера" onclick="importGallery()"></button>
     </div>
     <div class="tb-group tb-group-icons">
-      <button type="button" id="btn_toggle_sidebar" class="toolButton tb-btn" data-pz-icon="panel" title="Скрыть боковую панель"></button>
+      <button type="button" id="btn_open_templates" class="toolButton tb-btn tb-wide" data-pz-icon="templates" title="Открыть заготовки" onclick="PGZGameTemplates.openModal()">
+        <span class="tb-label">Заготовки</span>
+      </button>
       <button type="button" class="toolButton tb-btn" data-pz-icon="gallery" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
       <button type="button" id="btn_project_gallery" class="toolButton tb-btn" data-pz-icon="projects" title="Сменить игру" onclick="PGZProjectGallery.openSwitchModal()"></button>
       <button type="button" id="btn_toggle_theme" class="toolButton tb-btn" data-pz-icon="themeDark" title="Тёмная тема"></button>
@@ -1924,6 +1926,22 @@
     </div>
 </div>
   
+<!-- Заготовки игр -->
+<div id="gameTemplatesModal" class="modal-overlay project-gallery-overlay" style="display: none;">
+    <div class="modal-content modal-dark project-gallery-modal game-templates-modal">
+        <div class="modal-header">
+            <h3 class="modal-title">Выбери проект</h3>
+            <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="modal-body project-gallery-body">
+            <div id="gameTemplatesGrid" class="project-gallery-grid game-templates-grid"></div>
+        </div>
+        <div class="modal-footer project-gallery-footer">
+            <button type="button" class="btn-modal-close" data-modal-close>Закрыть</button>
+        </div>
+    </div>
+</div>
+
 <!-- Галерея проектов / стартовый экран -->
 <div id="projectGalleryModal" class="modal-overlay project-gallery-overlay" style="display: none;">
     <div class="modal-content modal-dark project-gallery-modal">
@@ -2035,6 +2053,7 @@
     <script src="./lib/assets-gallery.js"></script>
     <script src="./lib/project-files.js"></script>
     <script src="./lib/project-gallery.js"></script>
+    <script src="./lib/game-templates.js"></script>
     <script src="./lib/layout-splitters.js"></script>
     <script src="./lib/modals.js"></script>
     <script>
