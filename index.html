@@ -1409,11 +1409,12 @@
         <span class="tb-brand-primary">PGZero</span><span class="tb-brand-secondary">Studio</span>
       </span>
     </a>
+    <input type="text" id="projectNameInput" class="tb-project-name" placeholder="Название игры" maxlength="32" aria-label="Название игры">
+    <span class="tb-divider" aria-hidden="true"></span>
     <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-wide" data-pz-icon="play" title="Запустить игру">
       <span class="tb-label">Играть</span>
     </button>
     <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" title="Остановить" style="display:none;"></button>
-    <span class="tb-divider" aria-hidden="true"></span>
     <div class="tb-group tb-group-save">
       <button type="button" id="btn_save_slot" class="toolButton tb-btn tb-save-slot tb-wide" data-pz-icon="save" title="Сохранить в слот браузера" onclick="PGZProjectGallery.saveActiveSlotNow()">
         <span class="tb-label">В слот</span>
@@ -1442,7 +1443,6 @@
     </div>
   </div>
   <div id="hintBar" aria-live="polite"></div>
-  <input type="text" id="projectNameInput" placeholder="Название игры" maxlength="32" hidden aria-hidden="true">
 </div>
 
 <!-- основной макет -->

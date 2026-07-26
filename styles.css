@@ -3,7 +3,17 @@ table, tr, td, tbody {
 }
 html, body {
   height: 100%;
+  width: 100%;
   margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+#topPanel,
+.app-layout {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 #resourceGallery {
