@@ -224,8 +224,10 @@ body.app-ready {
 .tb-btn.tb-save-file {
   background: var(--pz-surface);
   color: var(--pz-text);
-  padding: 0 12px;
-  min-width: auto;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  min-width: 44px;
   border-radius: 12px;
   border: 1.5px dashed color-mix(in srgb, #14b8a6 55%, var(--pz-border));
   box-shadow: none;
@@ -236,8 +238,7 @@ body.app-ready {
   border-color: color-mix(in srgb, #14b8a6 70%, var(--pz-border));
 }
 
-.tb-btn.tb-save-slot .tb-label,
-.tb-btn.tb-save-file .tb-label {
+.tb-btn.tb-save-slot .tb-label {
   display: inline;
   font-size: 13px;
   font-weight: 800;
