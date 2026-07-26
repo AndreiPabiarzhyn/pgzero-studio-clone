@@ -62,11 +62,11 @@ html, body {
 }
   
   .items-scroll::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--pz-surface, #f1f1f1);
     border-radius: 3px;
   }
   .items-scroll::-webkit-scrollbar-thumb {
-    background: #bbb;
+    background: var(--pz-border, #bbb);
     border-radius: 3px;
   }
 .item {
@@ -75,7 +75,7 @@ html, body {
   text-align: center;
   vertical-align: top;
   cursor: pointer;
-  color: #333;
+  color: var(--pz-text, #333);
   flex: 0 0 auto;
   width: 80px;
   margin: 2px;
@@ -85,9 +85,9 @@ html, body {
 }
 
 .item.selected {
-  outline: 2px solid #007bff !important;
+  outline: 2px solid var(--pz-accent, #007bff) !important;
   border-radius: 6px !important;
-  background-color: #e9f5ff !important; /* добавлено */
+  background-color: var(--pz-accent-soft, #e9f5ff) !important;
 }
   .thumb-container {
     width: 80px;
@@ -95,8 +95,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f9f9f9;
-    border: 1px solid #eee;
+    background: var(--pz-surface, #f9f9f9);
+    border: 1px solid var(--pz-border, #eee);
     border-radius: 6px;
   }
   .thumb {
@@ -334,7 +334,8 @@ html {
   height: 40px;
   width: auto;
   cursor: pointer;
-  z-index:100;
+  z-index: 100;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease !important;
 }
 
 

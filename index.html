@@ -104,7 +104,7 @@
   width: 90px;
   text-align: center;
   font-size: 12px;
-  color: #1e3a5f;
+  color: var(--pz-text);
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
@@ -117,7 +117,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #eee;
+  background: var(--pz-surface);
+  border: 1px solid var(--pz-border);
   border-radius: 4px;
   margin-bottom: 4px;
 }
@@ -1395,17 +1396,13 @@
 <!-- верхняя панель -->
 <div id="topPanel" style="display: none;">
   <div id="toolPanel" class="toolPanel toolPanel--kids">
-    <a class="tb-brand" href="https://github.com/AndreiPabiarzhyn/pgzero-studio-clone" target="_blank" rel="noopener noreferrer" title="PGZero Studio">
-      <img src="assets/logo.svg" alt="" class="tb-brand-logo" width="36" height="36">
-      <span class="tb-brand-name">PGZero Studio</span>
-    </a>
-    <div class="tb-group tb-group-main">
-      <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-wide" data-pz-icon="play" title="Запустить игру">
-        <span class="tb-label">Играть</span>
-      </button>
-      <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" title="Остановить" style="display:none;"></button>
-    </div>
-    <div class="tb-group">
+    <span class="tb-title" aria-label="PGZero Studio">PGZero Studio</span>
+    <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-wide" data-pz-icon="play" title="Запустить игру">
+      <span class="tb-label">Играть</span>
+    </button>
+    <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" title="Остановить" style="display:none;"></button>
+    <span class="tb-divider" aria-hidden="true"></span>
+    <div class="tb-group tb-group-icons">
       <button type="button" id="btn_toggle_sidebar" class="toolButton tb-btn" data-pz-icon="panel" title="Скрыть боковую панель"></button>
       <button type="button" class="toolButton tb-btn" data-pz-icon="gallery" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
       <button type="button" id="btn_pgz_save" class="toolButton tb-btn" data-pz-icon="save" title="Сохранить игру" onclick="exportGallery()"></button>
@@ -1416,7 +1413,7 @@
       <button type="button" id="btn_more" class="toolButton tb-btn tb-more" data-pz-icon="more" title="Ещё" onclick="toggleMoreMenu(event)"></button>
       <div id="moreMenu">
         <button type="button" class="toolButton tb-btn" data-pz-icon="files" title="Мои файлы" onclick="showProjectFiles(); closeMoreMenu();"><span class="tb-label">Мои файлы</span></button>
-        <button type="button" class="toolButton tb-btn" data-pz-icon="paint" title="Нарисовать спрайт" onclick="showEditor(); closeMoreMenu();"><span class="tb-label">Спрайт</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="paint" title="Нарисовать спрайт" onclick="showEditor(); closeMoreMenu();"><span class="tb-label">Нарисовать спрайт</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="plus" title="Новая игра" onclick="createNewProject(); closeMoreMenu();"><span class="tb-label">Новая игра</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="console" title="Консоль" onclick="showConsole(); closeMoreMenu();"><span class="tb-label">Консоль</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="book" title="Справочник по коду" onclick="showHandbook(); closeMoreMenu();"><span class="tb-label">Справочник</span></button>
@@ -1428,21 +1425,7 @@
   <div id="hintBar" style="left:50px;margin-top:20px;font-size: 14px;z-index: 3500;color: #FFF;"></div>
   <input type="text" id="projectNameInput" 
          placeholder="Название игры" 
-         maxlength="32"
-         style="
-           padding: 8px 14px;
-           border-radius: 999px;
-           border: 2px solid #c7ddff;
-           background-color: #f8fbff;
-           font-family: inherit;
-           font-size: 14px;
-           font-weight: 700;
-           min-width: 200px;
-           max-width: 240px;
-           box-sizing: border-box;
-           margin-top: 0;
-           z-index: 10;           
-         ">
+         maxlength="32">
 </div>
 
 <!-- основной макет -->
@@ -1473,7 +1456,6 @@
           <span class="ide-status-spacer"></span>
           <span id="ideStatusLang">Python · Pygame Zero</span>
           <span id="ideStatusHints">Ctrl+F · +/−</span>
-          <span class="ide-credit">Crafted by Andrei Pabiarzhyn</span>
         </div>
       </div>
     </div>
@@ -1492,7 +1474,6 @@
 			<h2>PGZero Studio</h2>
 			<p>Создай свою игру на Python!</p>
 			<span class="brand-tag">Для юных программистов</span>
-			<span class="brand-credit">Crafted by Andrei Pabiarzhyn</span>
 		</div>
 
 		<iframe src="./pgz-handbook.html" id="handbook"
@@ -1545,6 +1526,8 @@
 </div>
     </div>
  </div>
+
+<footer id="appFooter" class="app-footer">Crafted by Andrei Pabiarzhyn</footer>
  
 
  
