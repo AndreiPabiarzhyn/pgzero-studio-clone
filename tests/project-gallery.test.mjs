@@ -48,7 +48,11 @@ test('slotKey возвращает строковый индекс', () => {
     assert.equal(slotKey(5), '5');
 });
 
-test('MAX_SLOTS равен 6', () => {
-    const gallery = loadGallery();
-    assert.equal(gallery.MAX_SLOTS, 6);
+test('hasStoredAssets определяет наличие ресурсов в слоте', () => {
+    const { hasStoredAssets } = loadGallery()._test;
+    assert.equal(hasStoredAssets(null), false);
+    assert.equal(hasStoredAssets({}), false);
+    assert.equal(hasStoredAssets({ images: [] }), false);
+    assert.equal(hasStoredAssets({ images: [{ name: 'a.png', dataUrl: 'x' }] }), true);
+    assert.equal(hasStoredAssets({ sounds: [{ name: 'a.wav', dataUrl: 'x' }] }), true);
 });
