@@ -1,7 +1,7 @@
 # Checkpoint — PGZero Studio
 
 **Дата:** 2026-07-26  
-**Коммит:** *(после push — см. `git log -1`)*  
+**Коммит:** `36b62de`  
 **Ветка:** `master`  
 **Репозиторий:** https://github.com/AndreiPabiarzhyn/pgzero-studio-clone  
 **GitHub Pages:** https://andreipabiarzhyn.github.io/pgzero-studio-clone/
