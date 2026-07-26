@@ -1414,6 +1414,7 @@
       <button type="button" class="toolButton tb-btn" data-pz-icon="gallery" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
       <button type="button" id="btn_pgz_save" class="toolButton tb-btn" data-pz-icon="save" title="Сохранить игру" onclick="exportGallery()"></button>
       <button type="button" id="btn_pgz_open" class="toolButton tb-btn" data-pz-icon="folderOpen" title="Открыть игру" onclick="importGallery()"></button>
+      <button type="button" id="btn_project_gallery" class="toolButton tb-btn" data-pz-icon="projects" title="Галерея проектов (6 слотов)" onclick="PGZProjectGallery.openModal()"></button>
       <button type="button" id="btn_toggle_theme" class="toolButton tb-btn" data-pz-icon="themeDark" title="Тёмная тема"></button>
     </div>
     <div class="tb-more-wrap">
@@ -1584,13 +1585,17 @@
     </div>
 
 		<div id="modal-container" class="modal-overlay" style="display:none;">
-			<div class="modal-mcontent" style="width:400px; height:auto;background: #fff;padding: 20px;border-radius: 10px;font-family: sans-serif">
-				<h3 id="modal-title">Заголовок</h3>
-				<p id="modal-text">Текст сообщения...</p>
-				<div id="modal-input-wrapper" class="modal-input-wrapper" style="display: none;">
-					<input type="text" id="modal-input-field" placeholder="Введите текст здесь...">
+			<div class="modal-content modal-dark message-modal-box">
+				<div class="modal-header message-modal-header">
+					<h3 id="modal-title" class="modal-title">Заголовок</h3>
 				</div>
-				<div class="modal-buttons">
+				<div class="modal-body message-modal-body">
+					<p id="modal-text">Текст сообщения...</p>
+					<div id="modal-input-wrapper" class="modal-input-wrapper" style="display: none;">
+						<input type="text" id="modal-input-field" placeholder="Введите текст здесь...">
+					</div>
+				</div>
+				<div class="modal-footer message-modal-footer">
 					<button id="modal-cancel-btn" class="btn btn-cancel">Отмена</button>
 					<button id="modal-ok-btn" class="btn btn-ok">OK</button>
 				</div>
@@ -1925,6 +1930,22 @@
     </div>
 </div>
   
+<!-- Галерея проектов -->
+<div id="projectGalleryModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content modal-dark project-gallery-modal">
+        <div class="modal-header">
+            <h3 class="modal-title">Галерея проектов</h3>
+            <button class="modal-close" data-modal-close aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="modal-body project-gallery-body">
+            <div id="projectGalleryGrid" class="project-gallery-grid"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-modal-close" data-modal-close>Закрыть</button>
+        </div>
+    </div>
+</div>
+
 <!-- История версий кода -->
 <div id="codeHistoryModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark code-history-modal">
@@ -2016,6 +2037,7 @@
     <script src="./lib/game-modal.js"></script>
     <script src="./lib/assets-gallery.js"></script>
     <script src="./lib/project-files.js"></script>
+    <script src="./lib/project-gallery.js"></script>
     <script src="./lib/layout-splitters.js"></script>
     <script src="./lib/modals.js"></script>
     <script>
