@@ -411,8 +411,167 @@ body.layout-dragging-h * {
   font-weight: 800;
 }
 
+#ideStatusHints { color: #49483e; }
+
+/* ========== Тёмная тема приложения ========== */
+[data-app-theme="dark"] {
+  --pz-bg: #0f172a;
+  --pz-bg-elevated: #1e293b;
+  --pz-bg-panel: #1e293b;
+  --pz-surface: #334155;
+  --pz-border: #475569;
+  --pz-text: #e2e8f0;
+  --pz-text-muted: #94a3b8;
+  --pz-accent: #60a5fa;
+  --pz-accent-hover: #3b82f6;
+  --pz-accent-soft: rgba(96, 165, 250, 0.15);
+  --pz-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+[data-app-theme="dark"] #page-loader {
+  background: var(--pz-bg);
+}
+
+[data-app-theme="dark"] .brand-panel {
+  background: linear-gradient(160deg, #1e293b 0%, #0f172a 100%);
+}
+
+[data-app-theme="dark"] #resourceGallery .frame {
+  background: var(--pz-bg-elevated) !important;
+}
+
+[data-app-theme="dark"] #moreMenu {
+  background: var(--pz-bg-elevated);
+}
+
+[data-app-theme="dark"] .modal-content.modal-dark,
+[data-app-theme="dark"] .modal-dark {
+  background: var(--pz-bg-elevated) !important;
+}
+
+[data-app-theme="dark"] .modal-close {
+  background: var(--pz-surface) !important;
+}
+
+/* ========== Галерея — цветные плитки ========== */
+#resourceGallery .controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.gallery-btn {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+.gallery-btn .pz-icon-wrap {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.12));
+}
+
+.gallery-btn:hover {
+  transform: translateY(-1px) scale(1.04);
+  background: transparent !important;
+}
+
+.gallery-btn:active {
+  transform: scale(0.96);
+}
+
+/* ========== Окно игры (перетаскиваемое) ========== */
+.game-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  pointer-events: none;
+  background: transparent;
+}
+
+.game-modal-overlay.is-open {
+  display: block;
+}
+
+.game-modal-window {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: min(1280px, calc(100vw - 16px));
+  max-height: calc(100vh - 16px);
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 2px solid #334155;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.game-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: linear-gradient(180deg, #334155, #1e293b);
+  color: #f1f5f9;
+  font-weight: 800;
+  font-size: 14px;
+  font-family: var(--pz-font);
+  cursor: grab;
+  user-select: none;
+  border-bottom: 1px solid #475569;
+}
+
+body.game-modal-dragging .game-modal-header {
+  cursor: grabbing;
+}
+
+.game-modal-grip {
+  color: #64748b;
+  font-size: 12px;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.game-modal-title {
+  flex: 1;
+  text-align: center;
+}
+
+.game-modal-close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-modal-close:hover {
+  filter: brightness(1.08);
+}
+
+.game-modal-canvas {
+  display: block;
+  background: #000;
+  flex: 1;
+}
+
 #resourceGallery .frame {
-  background: #fff !important;
+  background: var(--pz-bg-elevated) !important;
   border: 2px solid var(--pz-border) !important;
   box-shadow: var(--pz-shadow) !important;
   color: var(--pz-text) !important;
@@ -431,22 +590,6 @@ body.layout-dragging-h * {
 #resourceGallery .frame h3 .pz-icon-wrap {
   display: inline-flex;
   color: var(--pz-accent);
-}
-
-#resourceGallery .controls-bar button,
-.gallery-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border-radius: 10px !important;
-  background: var(--pz-surface) !important;
-  border: 2px solid var(--pz-border) !important;
-  color: var(--pz-text) !important;
-  cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
 }
 
 /* Кнопки закрытия модалок — всегда видны */
@@ -505,17 +648,6 @@ body.layout-dragging-h * {
 
 .btn-modal-close:active {
   transform: scale(0.97);
-}
-
-#resourceGallery .controls-bar button:hover,
-.gallery-btn:hover {
-  background: var(--pz-accent-soft) !important;
-  border-color: var(--pz-accent) !important;
-}
-
-#resourceGallery .controls-bar button:active,
-.gallery-btn:active {
-  transform: scale(0.94);
 }
 
 .modal-dark,

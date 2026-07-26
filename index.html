@@ -1404,6 +1404,7 @@
       <button type="button" class="toolButton tb-btn" data-pz-icon="gallery" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
       <button type="button" id="btn_pgz_save" class="toolButton tb-btn" data-pz-icon="save" title="Сохранить игру" onclick="exportGallery()"></button>
       <button type="button" id="btn_pgz_open" class="toolButton tb-btn" data-pz-icon="folderOpen" title="Открыть игру" onclick="importGallery()"></button>
+      <button type="button" id="btn_toggle_theme" class="toolButton tb-btn" data-pz-icon="themeDark" title="Тёмная тема"></button>
     </div>
     <div class="tb-more-wrap">
       <button type="button" id="btn_more" class="toolButton tb-btn tb-more" data-pz-icon="more" title="Ещё" onclick="toggleMoreMenu(event)"></button>
@@ -1497,12 +1498,12 @@
     <h3><span class="pz-icon-wrap" data-pz-icon="image"></span> Картинки</h3>
     <div id="imagesList" class="assets-items-scroll"></div>
     <div class="controls-bar">
-      <button class="gallery-btn" data-pz-icon="add" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
+      <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
       <span class="file-controls" id="imageControls" style="display:none;">
-        <button class="gallery-btn" data-pz-icon="eye" onclick="showSelected('image')" title="Посмотреть"></button>
-        <button class="gallery-btn" data-pz-icon="edit" onclick="renameSelected('image')" title="Переименовать"></button>
-        <button class="gallery-btn" data-pz-icon="paint" onclick="showEditor('image')" title="Нарисовать"></button>
-        <button class="gallery-btn" data-pz-icon="trash" onclick="deleteSelected('image')" title="Удалить"></button>
+        <button class="gallery-btn" data-pz-icon="gView" onclick="showSelected('image')" title="Посмотреть"></button>
+        <button class="gallery-btn" data-pz-icon="gRename" onclick="renameSelected('image')" title="Переименовать"></button>
+        <button class="gallery-btn" data-pz-icon="gDraw" onclick="showEditor('image')" title="Нарисовать"></button>
+        <button class="gallery-btn" data-pz-icon="gDelete" onclick="deleteSelected('image')" title="Удалить"></button>
       </span>
     </div>
   </div>
@@ -1511,11 +1512,11 @@
     <h3><span class="pz-icon-wrap" data-pz-icon="sound"></span> Звуки</h3>
     <div id="soundsList" class="assets-items-scroll"></div>
     <div class="controls-bar">
-      <button class="gallery-btn" data-pz-icon="add" onclick="(async () => await addFile('audio'))()" title="Добавить звук"></button>
+      <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('audio'))()" title="Добавить звук"></button>
       <span class="file-controls" id="soundControls" style="display:none;">
-        <button class="gallery-btn" id="playBtn" data-pz-icon="play" onclick="togglePlayPause()" title="Слушать"></button>
-        <button class="gallery-btn" data-pz-icon="edit" onclick="renameSelected('audio')" title="Переименовать"></button>
-        <button class="gallery-btn" data-pz-icon="trash" onclick="deleteSelected('audio')" title="Удалить"></button>
+        <button class="gallery-btn" id="playBtn" data-pz-icon="gPlay" onclick="togglePlayPause()" title="Слушать"></button>
+        <button class="gallery-btn" data-pz-icon="gRename" onclick="renameSelected('audio')" title="Переименовать"></button>
+        <button class="gallery-btn" data-pz-icon="gDelete" onclick="deleteSelected('audio')" title="Удалить"></button>
       </span>
     </div>
   </div>
@@ -1524,11 +1525,11 @@
     <h3><span class="pz-icon-wrap" data-pz-icon="music"></span> Музыка</h3>
     <div id="musicList" class="assets-items-scroll"></div>
     <div class="controls-bar">
-      <button class="gallery-btn" data-pz-icon="add" onclick="(async () => await addFile('music'))()" title="Добавить музыку"></button>
+      <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('music'))()" title="Добавить музыку"></button>
       <span class="file-controls" id="musicControls" style="display:none;">
-        <button class="gallery-btn" id="playMusicBtn" data-pz-icon="play" onclick="togglePlayPauseMusic()" title="Слушать"></button>
-        <button class="gallery-btn" data-pz-icon="edit" onclick="renameSelected('music')" title="Переименовать"></button>
-        <button class="gallery-btn" data-pz-icon="trash" onclick="deleteSelected('music')" title="Удалить"></button>
+        <button class="gallery-btn" id="playMusicBtn" data-pz-icon="gPlay" onclick="togglePlayPauseMusic()" title="Слушать"></button>
+        <button class="gallery-btn" data-pz-icon="gRename" onclick="renameSelected('music')" title="Переименовать"></button>
+        <button class="gallery-btn" data-pz-icon="gDelete" onclick="deleteSelected('music')" title="Удалить"></button>
       </span>
     </div>
   </div>
@@ -1768,6 +1769,27 @@
                 </div>
             </div>
 
+            <!-- Тема приложения -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <h4>Тема приложения</h4>
+                </div>
+                <div class="section-content">
+                    <div class="radio-group" id="radio_app_theme">
+                        <label class="radio-label" for="radio_app_theme_light">
+                            <input type="radio" id="radio_app_theme_light" name="radio_app_theme" checked="checked">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">Светлая</span>
+                        </label>
+                        <label class="radio-label" for="radio_app_theme_dark">
+                            <input type="radio" id="radio_app_theme_dark" name="radio_app_theme">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">Тёмная</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
             <!-- Цвета редактора -->
             <div class="settings-section">
                 <div class="section-header">                    
@@ -1956,6 +1978,8 @@
     <!-- Галерея ресурсов -->
     <script src="./lib/starter-code.js"></script>
     <script src="./lib/icons.js"></script>
+    <script src="./lib/app-theme.js"></script>
+    <script src="./lib/game-modal.js"></script>
     <script src="./lib/assets-gallery.js"></script>
     <script src="./lib/project-files.js"></script>
     <script src="./lib/layout-splitters.js"></script>
@@ -2154,67 +2178,16 @@ function restoreLastSavedCode() {
 
 	</script>
 
-<!-- Модальное окно игры -->
-<div id="gameModal" style="
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 3000;
-    justify-content: center;
-    align-items: center;
-">
-  <div style="
-      position: relative;
-      max-width: 1280px;
-      max-height: 1024px;
-      display: flex;
-      flex-direction: column;
-      background: #1a1a1a;
-      border-radius: 8px;
-      border: solid 1px #222;
-      overflow: hidden;
-  ">
-    <!-- заголовок с кнопкой -->
-    <div style="
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 10px;
-        background: #2a2a2a;
-        color: white;
-        font-weight: bold;
-        font-size: 16px;
-        border-bottom: 1px solid #444;
-    ">
-      <div style="width: 28px;"></div>
-      <span id="gameTitle">Pygame Zero</span>
+<!-- Модальное окно игры (перетаскиваемое) -->
+<div id="gameModal" class="game-modal-overlay">
+  <div id="gameModalWindow" class="game-modal-window">
+    <div id="gameModalHeader" class="game-modal-header">
+      <span class="game-modal-grip" aria-hidden="true">⋮⋮</span>
+      <span id="gameTitle" class="game-modal-title">Pygame Zero</span>
       <div id="cgb" style="display: none; width: 28px;"></div>
-      <button id="closeGameBtn" style="
-          background: #ff0000;
-          color: white;
-          border: solid 1px #222;
-          border-radius: 5px;
-          width: 28px;
-          height: 24px;
-          font-weight: bold;
-          font-size: 18px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding-bottom: 10px;
-      ">×</button>
+      <button type="button" id="closeGameBtn" class="game-modal-close" title="Закрыть">×</button>
     </div>
-
-    <!-- Canvas под заголовком -->
-    <canvas id="gameCanvas" style="
-        flex: 1;
-        background-color: #000;
-        display: block;
-    "></canvas>
+    <canvas id="gameCanvas" class="game-modal-canvas"></canvas>
   </div>
 <div id="virtual-gamepad">
   <!-- Левая сторона: B, вверх, вниз -->
@@ -2616,7 +2589,7 @@ function initPzIcons() {
   if (typeof PZIcon === 'undefined') return;
   document.querySelectorAll('[data-pz-icon]').forEach(function(el) {
     var name = el.getAttribute('data-pz-icon');
-    var size = el.classList.contains('tb-play') ? 22 : (el.classList.contains('gallery-btn') ? 18 : 22);
+    var size = el.classList.contains('tb-play') ? 22 : (el.classList.contains('gallery-btn') ? 32 : 22);
     if (el.tagName === 'BUTTON') {
       PZIcon.setButtonIcon(el, name, size);
     } else {
@@ -2647,6 +2620,8 @@ document.addEventListener('click', function(e) {
   const rawUrl = urlParams.get('run') || urlParams.get('pgz');	
   window.addEventListener('load', async () => {
 		initPzIcons();
+		if (typeof AppTheme !== 'undefined') AppTheme.init();
+		if (typeof GameModal !== 'undefined') GameModal.init();
 		setupAppModals();
 		if (typeof LayoutSplitters !== 'undefined') LayoutSplitters.init();
 		document.body.classList.add('app-ready');
