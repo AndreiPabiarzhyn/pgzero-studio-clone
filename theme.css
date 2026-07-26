@@ -1081,12 +1081,12 @@ body.app-ready .app-footer {
   z-index: 10050;
   display: flex;
   align-items: center;
-  gap: 3px;
-  padding: 3px 4px;
-  border-radius: 9px;
+  gap: 2px;
+  padding: 2px 3px;
+  border-radius: 6px;
   background: rgba(15, 23, 42, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(8px);
   pointer-events: auto;
 }
@@ -1098,17 +1098,19 @@ body.app-ready .app-footer {
 }
 
 #resourceGallery .gallery-btn-pop {
-  width: 26px !important;
-  height: 26px !important;
-  border-radius: 8px !important;
+  width: 13px !important;
+  height: 13px !important;
+  min-width: 13px !important;
+  border-radius: 4px !important;
 }
 
 #resourceGallery .gallery-btn-pop .pz-icon-wrap {
-  transform: scale(0.88);
+  transform: scale(0.5);
+  line-height: 0;
 }
 
 #resourceGallery .gallery-btn-pop:hover {
-  transform: translateY(-1px) scale(1.03);
+  transform: translateY(-1px) scale(1.06);
 }
 
 .layout-right--hidden {
