@@ -27,6 +27,11 @@ test('Actor.collidepoint проверяет формат pos', () => {
     );
 });
 
+test('Actor.__init__ поддерживает topleft при создании', () => {
+    assert.match(pgzSource, /var positionKeys = \[[\s\S]{0,120}'topleft'/);
+    assert.match(pgzSource, /self\.attributes\.x = props\.x[\s\S]{0,80}self\.attributes\.y = props\.y/);
+});
+
 test('экран очищается перед каждым draw()', () => {
     assert.match(
         pgzSource,
