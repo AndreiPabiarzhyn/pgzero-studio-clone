@@ -28,8 +28,14 @@ test('список заготовок — 4 игры', () => {
     const list = loadTemplates()._test.TEMPLATES;
     assert.equal(list.length, 4);
     assert.equal(list[0].title, 'RunnerGame');
+    assert.equal(list[0].labelRu, 'Бегун');
     assert.equal(list[0].pgz, 'RunnerGame.pgz');
     assert.equal(list[1].title, 'MeteorGame');
     assert.equal(list[2].title, 'ClickerGame');
     assert.equal(list[3].title, 'Roguelike');
+});
+
+test('templateDisplayName показывает русское название', () => {
+    const { templateDisplayName, TEMPLATES } = loadTemplates()._test;
+    assert.equal(templateDisplayName(TEMPLATES[2]), 'Кликер');
 });

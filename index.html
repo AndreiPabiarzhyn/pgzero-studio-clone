@@ -1416,18 +1416,18 @@
     </button>
     <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" title="Остановить" style="display:none;"></button>
     <div class="tb-group tb-group-save">
-      <button type="button" id="btn_save_slot" class="toolButton tb-btn tb-save-slot tb-wide" data-pz-icon="save" title="Сохранить в слот браузера" onclick="PGZProjectGallery.saveActiveSlotNow()">
-        <span class="tb-label">В слот</span>
+      <button type="button" id="btn_save_slot" class="toolButton tb-btn tb-save-slot tb-wide" data-pz-icon="save" title="Сохранить игру в браузере" onclick="PGZProjectGallery.saveActiveSlotNow()">
+        <span class="tb-label">Сохранить</span>
       </button>
       <button type="button" id="btn_pgz_save" class="toolButton tb-btn tb-save-file" data-pz-icon="download" title="Скачать файл .pgz на компьютер" aria-label="Скачать на компьютер" onclick="exportGallery()"></button>
       <button type="button" id="btn_pgz_open" class="toolButton tb-btn tb-open-file" data-pz-icon="folderOpen" title="Открыть проект с компьютера" aria-label="Открыть проект с компьютера" onclick="importGallery()"></button>
     </div>
     <div class="tb-group tb-group-icons">
-      <button type="button" id="btn_open_templates" class="toolButton tb-btn tb-wide" data-pz-icon="templates" title="Открыть заготовки" onclick="PGZGameTemplates.openModal()">
-        <span class="tb-label">Заготовки</span>
+      <button type="button" id="btn_open_templates" class="toolButton tb-btn tb-wide" data-pz-icon="templates" title="Примеры игр с картинками" onclick="PGZGameTemplates.openModal()">
+        <span class="tb-label">Примеры</span>
       </button>
       <button type="button" class="toolButton tb-btn" data-pz-icon="gallery" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
-      <button type="button" id="btn_project_gallery" class="toolButton tb-btn" data-pz-icon="projects" title="Сменить игру" onclick="PGZProjectGallery.openSwitchModal()"></button>
+      <button type="button" id="btn_project_gallery" class="toolButton tb-btn" data-pz-icon="projects" title="Мои игры — 6 ячеек в браузере" onclick="PGZProjectGallery.openSwitchModal()"></button>
       <button type="button" id="btn_toggle_theme" class="toolButton tb-btn" data-pz-icon="themeDark" title="Тёмная тема"></button>
     </div>
     <div class="tb-more-wrap">
@@ -1926,14 +1926,15 @@
     </div>
 </div>
   
-<!-- Заготовки игр -->
+<!-- Примеры игр -->
 <div id="gameTemplatesModal" class="modal-overlay project-gallery-overlay" style="display: none;">
     <div class="modal-content modal-dark project-gallery-modal game-templates-modal">
         <div class="modal-header">
-            <h3 class="modal-title">Выбери проект</h3>
+            <h3 class="modal-title">Примеры игр</h3>
             <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body project-gallery-body">
+            <p class="ux-modal-hint">Выбери пример — загрузятся картинки и пустой код. Дальше допиши игру сам!</p>
             <div id="gameTemplatesGrid" class="project-gallery-grid game-templates-grid"></div>
         </div>
         <div class="modal-footer project-gallery-footer">
@@ -1942,14 +1943,41 @@
     </div>
 </div>
 
+<!-- Куда записать заготовку -->
+<div id="templateApplyModal" class="modal-overlay project-gallery-overlay" style="display: none;">
+    <div class="modal-content modal-dark project-gallery-modal template-apply-modal">
+        <div class="modal-header">
+            <h3 class="modal-title">Куда записать пример?</h3>
+            <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="modal-body project-gallery-body">
+            <p class="ux-modal-hint" id="templateApplyHint"></p>
+            <p class="template-apply-name">Пример: <strong id="templateApplyName"></strong></p>
+            <div class="template-apply-actions">
+                <button type="button" id="templateApplyCurrent" class="btn-primary template-apply-btn"></button>
+                <button type="button" id="templateApplyNew" class="btn-secondary template-apply-btn"></button>
+                <button type="button" id="templateApplyPick" class="btn-secondary template-apply-btn">Выбрать ячейку…</button>
+            </div>
+            <div id="templateApplySlotPicker" class="template-apply-picker" style="display: none;">
+                <p class="ux-modal-hint ux-modal-hint--compact">Нажми на ячейку. Если там уже есть игра — она будет заменена.</p>
+                <div id="templateApplySlotGrid" class="project-gallery-grid template-slot-grid"></div>
+            </div>
+        </div>
+        <div class="modal-footer project-gallery-footer">
+            <button type="button" class="btn-modal-close" data-modal-close>Отмена</button>
+        </div>
+    </div>
+</div>
+
 <!-- Галерея проектов / стартовый экран -->
 <div id="projectGalleryModal" class="modal-overlay project-gallery-overlay" style="display: none;">
     <div class="modal-content modal-dark project-gallery-modal">
         <div class="modal-header">
-            <h3 class="modal-title" id="projectGalleryTitle">Выбери игру</h3>
+            <h3 class="modal-title" id="projectGalleryTitle">Мои игры</h3>
             <button type="button" class="modal-close project-gallery-close" data-modal-close aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body project-gallery-body">
+            <p class="ux-modal-hint" id="projectGalleryHint"></p>
             <div id="projectGalleryGrid" class="project-gallery-grid"></div>
         </div>
         <div class="modal-footer project-gallery-footer">

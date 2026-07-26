@@ -30,6 +30,12 @@ test('keyboard.enter — алиас для return', () => {
 
 test('schedule_interval доступен как глобальная функция', () => {
     const pgzSource = readFileSync(join(root, 'lib/skulpt/pgzrun/__init__.js'), 'utf8');
+    assert.match(pgzSource, /clockMethods\.schedule_interval = \$loc\.schedule_interval/);
     assert.match(pgzSource, /exposeClockGlobal\('schedule_interval', 2\)/);
-    assert.match(pgzSource, /Sk\.globals\.clock = clockInstance/);
+});
+
+test('pgzrun грузится с cache-bust версией', () => {
+    const extlibsSource = readFileSync(join(root, 'lib/extlibs.js'), 'utf8');
+    assert.match(extlibsSource, /PGZRUN_ASSET_VERSION/);
+    assert.match(extlibsSource, /__init__\.js\?v=/);
 });

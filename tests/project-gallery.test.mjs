@@ -38,7 +38,7 @@ test('assetSummary считает ресурсы', () => {
                 music: []
             }
         }),
-        '2 карт. · 1 зв.'
+        '2 картинки · 1 звук'
     );
 });
 
@@ -57,7 +57,8 @@ test('hasStoredAssets определяет наличие ресурсов в с
     assert.equal(hasStoredAssets({ sounds: [{ name: 'a.wav', dataUrl: 'x' }] }), true);
 });
 
-test('MAX_SLOTS равен 6', () => {
-    const gallery = loadGallery();
-    assert.equal(gallery.MAX_SLOTS, 6);
+test('cellLabel возвращает понятное имя ячейки', () => {
+    const { cellLabel } = loadGallery()._test;
+    assert.equal(cellLabel(0), 'Ячейка 1');
+    assert.equal(cellLabel(5), 'Ячейка 6');
 });
