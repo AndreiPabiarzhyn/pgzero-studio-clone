@@ -302,6 +302,10 @@ body.app-ready {
   width: min(440px, 92vw);
 }
 
+#sessionResumeModal {
+  z-index: 1000000;
+}
+
 .session-resume-hint {
   margin: 12px 0 0;
   font-size: 13px;

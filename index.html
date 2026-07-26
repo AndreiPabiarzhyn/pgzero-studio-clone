@@ -2631,6 +2631,7 @@ document.addEventListener('click', function(e) {
   const urlParams = new URLSearchParams(window.location.search);
   const rawUrl = urlParams.get('run') || urlParams.get('pgz');	
   window.addEventListener('load', async () => {
+		try {
 		initPzIcons();
 		if (typeof AppTheme !== 'undefined') AppTheme.init();
 		if (typeof GameModal !== 'undefined') GameModal.init();
@@ -2638,6 +2639,13 @@ document.addEventListener('click', function(e) {
 		setupAppModals();
 		if (typeof LayoutSplitters !== 'undefined') LayoutSplitters.init();
 		document.body.classList.add('app-ready');
+
+		document.getElementById('page-loader')?.remove();
+		if (!rawUrl) {
+			document.getElementById('topPanel').style.display = 'flex';
+			document.getElementById('mainLayout').style.display = 'flex';
+			document.getElementById('playGameBtn').style.display = 'none';
+		}
 
 		var resumedSession = false;
 		if (!rawUrl && !localStorage.loadAction && typeof PGZSession !== 'undefined') {
@@ -2650,16 +2658,16 @@ document.addEventListener('click', function(e) {
 			document.getElementById('projectNameInput').value = generateProjectName();
 		}
 
-		document.getElementById("page-loader")?.remove();
 		if (!rawUrl) {
-			    document.getElementById('topPanel').style.display = 'flex';
-				document.getElementById('mainLayout').style.display = 'flex';
-				document.getElementById('playGameBtn').style.display = 'none';
 				await showGallery();
 			} else {
 			    document.getElementById('playGameBtn').style.display = 'block';
 				await loadProjectFromUrl(rawUrl);
 				}
+		} catch (err) {
+			console.error('Ошибка инициализации:', err);
+			document.getElementById('page-loader')?.remove();
+		}
 	});
 // необработанные ошибки из промисов
 window.addEventListener('unhandledrejection', function(event) {
