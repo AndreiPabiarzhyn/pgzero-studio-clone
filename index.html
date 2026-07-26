@@ -22,8 +22,8 @@
 .spinner {
   width: 60px;
   height: 60px;
-  border: 6px solid #444;
-  border-top-color: #4caf50;
+  border: 6px solid #c7ddff;
+  border-top-color: #5b8def;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="./lib/cm/codemirror.css">    
     <link rel="stylesheet" href="./lib/cm/cobalt.css">
     <link rel="stylesheet" href="./lib/cm/blackboard.css">
+    <link rel="stylesheet" href="./lib/cm/monokai.css">
+    <link rel="stylesheet" href="./lib/cm/pgz-ide.css">
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./theme.css">
     <link rel="stylesheet" href="./new-message.css">
@@ -58,6 +60,8 @@
     <script src="./lib/cm/searchcursor.js"></script>
     <script src="./lib/cm/search.js"></script>
     <script src="./lib/cm/searchbox.js"></script>   
+    <script src="./lib/cm/matchbrackets.js"></script>
+    <script src="./lib/editor-ide.js"></script>
     <!-- Библиотеки -->
     <script src="./lib/base.js"></script>
     <script src="./lib/lib.js"></script>
@@ -68,8 +72,7 @@
     <script src="./lib/jszip.min.js"></script>
     <script src="./lib/FileSaver.min.js"></script>
     <script>
-	var coldStart = true;	
-    console.log("localStorage.loadAction=",localStorage.loadAction)
+	var coldStart = true;
     if (localStorage.loadAction) { coldStart=false}
 
     </script>
@@ -99,7 +102,8 @@
   width: 90px;
   text-align: center;
   font-size: 12px;
-  color: #333;
+  color: #1e3a5f;
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -123,8 +127,16 @@
 }
 
 .audio-icon {
-  font-size: 24px;
-  margin-bottom: 4px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef6ff;
+  border-radius: 10px;
+  border: 2px solid #c7ddff;
+  color: #5b8def;
+  margin: 0 auto 4px;
 }
 
 /* ========================================
@@ -1380,98 +1392,143 @@
     "></button>	
 <!-- верхняя панель -->
 <div id="topPanel" style="display: none;">
-  <!-- левая часть: кнопки (инструменты) -->
-  <div id="toolPanel" class="toolPanel">
-    <button type="button" id="btn_run" class="toolButton tb-btn tb-primary" title="Запустить код">▶ Запуск</button>
-    <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" title="Остановить" style="display:none;">■ Стоп</button>
-    <button type="button" class="toolButton tb-btn" title="Консоль" onclick="showConsole()">⌨ Консоль</button>
-    <button type="button" class="toolButton tb-btn" title="Новый проект" onclick="createNewProject()">＋ Проект</button>
-    <button type="button" id="btn_pgz_open" class="toolButton tb-btn" title="Открыть проект" onclick="importGallery()">↓ Открыть</button>
-    <button type="button" id="btn_pgz_save" class="toolButton tb-btn" title="Сохранить проект" onclick="exportGallery()">↑ Сохранить</button>
-    <button type="button" id="btn_show_project_files" class="toolButton tb-btn" title="Файлы проекта" onclick="showProjectFiles()">📁 Файлы</button>
-    <button type="button" class="toolButton tb-btn" title="Ресурсы проекта" onclick="toggleShowGallery()">🎨 Ресурсы</button>
-    <button type="button" id="btn_show_share" class="toolButton tb-btn" title="Импорт и экспорт кода">💾 Код</button>
-    <button type="button" id="btn_show_settings" class="toolButton tb-btn" title="Настройки">⚙ Настройки</button>
+  <div id="toolPanel" class="toolPanel toolPanel--kids">
+    <div class="tb-group tb-group-main">
+      <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-wide" data-pz-icon="play" title="Запустить игру">
+        <span class="tb-label">Играть</span>
+      </button>
+      <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" title="Остановить" style="display:none;"></button>
+    </div>
+    <div class="tb-group">
+      <button type="button" id="btn_toggle_sidebar" class="toolButton tb-btn" data-pz-icon="panel" title="Скрыть боковую панель"></button>
+      <button type="button" id="btn_show_project_files" class="toolButton tb-btn" data-pz-icon="files" title="Мои файлы" onclick="showProjectFiles()"></button>
+      <button type="button" class="toolButton tb-btn" data-pz-icon="paint" title="Нарисовать спрайт" onclick="showEditor()"></button>
+      <button type="button" class="toolButton tb-btn" data-pz-icon="palette" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
+      <button type="button" id="btn_pgz_save" class="toolButton tb-btn" data-pz-icon="save" title="Сохранить игру" onclick="exportGallery()"></button>
+    </div>
+    <div class="tb-more-wrap">
+      <button type="button" id="btn_more" class="toolButton tb-btn tb-more" data-pz-icon="more" title="Ещё" onclick="toggleMoreMenu(event)"></button>
+      <div id="moreMenu">
+        <button type="button" class="toolButton tb-btn" data-pz-icon="plus" title="Новая игра" onclick="createNewProject(); closeMoreMenu();"><span class="tb-label">Новая игра</span></button>
+        <button type="button" id="btn_pgz_open" class="toolButton tb-btn" data-pz-icon="folderOpen" title="Открыть игру" onclick="importGallery(); closeMoreMenu();"><span class="tb-label">Открыть</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="console" title="Консоль" onclick="showConsole(); closeMoreMenu();"><span class="tb-label">Консоль</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="book" title="Справочник по коду" onclick="showHandbook(); closeMoreMenu();"><span class="tb-label">Справочник</span></button>
+        <button type="button" id="btn_show_share" class="toolButton tb-btn" data-pz-icon="code" title="Код" onclick="closeMoreMenu();"><span class="tb-label">Код</span></button>
+        <button type="button" id="btn_show_settings" class="toolButton tb-btn" data-pz-icon="settings" title="Настройки" onclick="closeMoreMenu();"><span class="tb-label">Настройки</span></button>
+      </div>
+    </div>
   </div>
   <div id="hintBar" style="left:50px;margin-top:20px;font-size: 14px;z-index: 3500;color: #FFF;"></div>
-  <!-- правая часть: поле названия проекта -->
   <input type="text" id="projectNameInput" 
-         placeholder="Название проекта" 
+         placeholder="Название игры" 
          maxlength="32"
          style="
-           padding: 6px 10px;
-           border-radius: 20px;
-           border: 2px solid #67ade8;
-           background-color: white;
+           padding: 8px 14px;
+           border-radius: 999px;
+           border: 2px solid #c7ddff;
+           background-color: #f8fbff;
            font-family: inherit;
            font-size: 14px;
-           min-width: 240px;
-           max-width: 280px;
+           font-weight: 700;
+           min-width: 200px;
+           max-width: 240px;
            box-sizing: border-box;
-           margin-top: 20px;
+           margin-top: 0;
            z-index: 10;           
          ">
 </div>
 
 <!-- основной макет -->
-<div id="mainLayout" style="display: none; height: calc(100vh - 60px);background-color: #2a2a2a;">
-  <!-- левая часть -->
-  <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;background-color: #2a2a2a;margin-bottom: 20px;">
-    <div id="editorContainer" style="flex: 1; min-height: 0; border: 1px solid #444; background-color: #fff;position: relative;margin-top: 20px;margin-left: 10px;border-radius: 12px;">
-      <span id="file_tabs" style="display:none;"><span class="file_tab file_tab_selected">my_pgz.py</span></span>
-      <div id="editor" style="position: absolute; height: 95%"></div>
+<div id="mainLayout" class="app-layout" style="display: none;">
+  <div id="leftColumn" class="layout-left">
+    <div id="editorPane" class="layout-editor-pane">
+      <div id="editorContainer" class="ide-editor-wrap">
+        <div class="ide-editor-tabs">
+          <div class="ide-tab ide-tab-active" id="ideActiveTab">
+            <span class="ide-tab-badge">PY</span>
+            <span id="ideActiveTabName">my_pgz.py</span>
+          </div>
+          <div class="ide-tab-spacer"></div>
+          <div class="ide-zoom-group">
+            <button type="button" class="ide-tab-btn ide-tab-zoom" id="ideBtnZoomOut" title="Уменьшить код (−)">−</button>
+            <span class="ide-zoom-label" id="ideZoomLabel">15</span>
+            <button type="button" class="ide-tab-btn ide-tab-zoom" id="ideBtnZoomIn" title="Увеличить код (+)">+</button>
+          </div>
+          <button type="button" class="ide-tab-btn" id="ideBtnFind" title="Поиск (Ctrl+F)">Поиск</button>
+          <button type="button" class="ide-tab-btn ide-tab-run" id="ideBtnRun" title="Запуск (F5)">F5 ▶</button>
+        </div>
+        <div class="ide-editor-body">
+          <div id="editor"></div>
+        </div>
+        <div class="ide-statusbar">
+          <span id="ideStatusPos">Стр. 1, кол. 1</span>
+          <span id="ideStatusSel"></span>
+          <span class="ide-status-spacer"></span>
+          <span id="ideStatusLang">Python · Pygame Zero</span>
+          <span id="ideStatusHints">Ctrl+F · +/− · F5</span>
+        </div>
+      </div>
     </div>
-    <div id="consoleContainer" style="min-height: 220px;max-height: 300px;border-top: 1px solid #444; overflow: auto; padding: 8px; background-color: #000; color: #fff; font-family: monospace; font-size: 14px;border-radius: 10px;margin-top: 10px;margin-left: 10px;">
-		<div id="output" style ="white-space: pre-wrap;word-break: break-word;"></div>		
+    <div id="splitterH" class="layout-splitter layout-splitter-h" title="Потяните — изменить высоту консоли"></div>
+    <div id="consolePane" class="layout-console-pane">
+      <div id="consoleContainer" class="ide-console-wrap">
+        <div class="ide-console-label">Консоль</div>
+        <div id="output"></div>
+      </div>
     </div>
   </div>
-     <!-- правая часть -->
-     <div id="rightBar" style="width: 20%;flex: 1; display: flex; flex-direction: column; min-width: 0;max-width:480px; background-color: #2a2a2a;margin-bottom: 20px;margin-right:20px;margin-top: 20px;">
+  <div id="splitterV" class="layout-splitter layout-splitter-v" title="Потяните — изменить ширину панели"></div>
+  <div id="rightBar" class="layout-right">
 		 <div id="splashImg" class="brand-panel">
-			<div class="brand-logo">PZ</div>
+			<div class="brand-logo"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
 			<h2>PGZero Studio</h2>
-			<p>Создавай игры на Python прямо в браузере</p>
-			<span class="brand-tag">Powered by Pygame Zero</span>
+			<p>Создай свою игру на Python!</p>
+			<span class="brand-tag">Для юных программистов</span>
 		</div>
+
+		<iframe src="./pgz-handbook.html" id="handbook"
+			style="display: none; margin-left: 10px; width: 100%; height: 100%; border: 2px solid #c7ddff; border-radius: 14px; background: #fff; box-sizing: border-box;"
+			title="Справочник по Pygame Zero">
+		</iframe>
 
 <!-- галерея ресурсов -->
 <div id="resourceGallery" style="display: none; margin-top: -20px;">
   <div class="frame" id="imagesFrame">
-    <h3>🖼️ Изображения</h3>
+    <h3><span class="pz-icon-wrap" data-pz-icon="image"></span> Картинки</h3>
     <div id="imagesList" class="assets-items-scroll"></div>
     <div class="controls-bar">
-      <button onclick="(async () => await addFile('image'))()" title="Добавить изображение">➕</button>
+      <button class="gallery-btn" data-pz-icon="add" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
       <span class="file-controls" id="imageControls" style="display:none;">
-        <button onclick="showSelected('image')" title="Показать">👁️</button>
-        <button onclick="renameSelected('image')" title="Переименовать">✏️</button>
-        <button onclick="showEditor('image')" title="Редактировать">🎨️</button>
-        <button onclick="deleteSelected('image')" title="Удалить">🗑️</button>
+        <button class="gallery-btn" data-pz-icon="eye" onclick="showSelected('image')" title="Посмотреть"></button>
+        <button class="gallery-btn" data-pz-icon="edit" onclick="renameSelected('image')" title="Переименовать"></button>
+        <button class="gallery-btn" data-pz-icon="paint" onclick="showEditor('image')" title="Нарисовать"></button>
+        <button class="gallery-btn" data-pz-icon="trash" onclick="deleteSelected('image')" title="Удалить"></button>
       </span>
     </div>
   </div>
 
   <div class="frame" id="soundsFrame">
-    <h3>🔊 Аудио</h3>
+    <h3><span class="pz-icon-wrap" data-pz-icon="sound"></span> Звуки</h3>
     <div id="soundsList" class="assets-items-scroll"></div>
     <div class="controls-bar">
-      <button onclick="(async () => await addFile('audio'))()" title="Добавить аудио">➕</button>
+      <button class="gallery-btn" data-pz-icon="add" onclick="(async () => await addFile('audio'))()" title="Добавить звук"></button>
       <span class="file-controls" id="soundControls" style="display:none;">
-        <button id="playBtn" onclick="togglePlayPause()" title="Воспроизвести">▶️</button>
-        <button onclick="renameSelected('audio')" title="Переименовать">✏️</button>
-        <button onclick="deleteSelected('audio')" title="Удалить">🗑️</button>
+        <button class="gallery-btn" id="playBtn" data-pz-icon="play" onclick="togglePlayPause()" title="Слушать"></button>
+        <button class="gallery-btn" data-pz-icon="edit" onclick="renameSelected('audio')" title="Переименовать"></button>
+        <button class="gallery-btn" data-pz-icon="trash" onclick="deleteSelected('audio')" title="Удалить"></button>
       </span>
     </div>
   </div>
 
   <div class="frame" id="musicFrame">
-    <h3>🎵 Музыка</h3>
+    <h3><span class="pz-icon-wrap" data-pz-icon="music"></span> Музыка</h3>
     <div id="musicList" class="assets-items-scroll"></div>
     <div class="controls-bar">
-      <button onclick="(async () => await addFile('music'))()" title="Добавить музыкальный файл">➕</button>
+      <button class="gallery-btn" data-pz-icon="add" onclick="(async () => await addFile('music'))()" title="Добавить музыку"></button>
       <span class="file-controls" id="musicControls" style="display:none;">
-        <button id="playMusicBtn" onclick="togglePlayPauseMusic()" title="Воспроизвести">▶️</button>
-        <button onclick="renameSelected('music')" title="Переименовать">✏️</button>
-        <button onclick="deleteSelected('music')" title="Удалить">🗑️</button>
+        <button class="gallery-btn" id="playMusicBtn" data-pz-icon="play" onclick="togglePlayPauseMusic()" title="Слушать"></button>
+        <button class="gallery-btn" data-pz-icon="edit" onclick="renameSelected('music')" title="Переименовать"></button>
+        <button class="gallery-btn" data-pz-icon="trash" onclick="deleteSelected('music')" title="Удалить"></button>
       </span>
     </div>
   </div>
@@ -1483,12 +1540,12 @@
 
  
 <!-- Модальное окно импорта -->
-<div id="importModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
+<div id="importModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
   <div class="modal-content modal-dark"style="height:70vh; overflow:auto;">
 
         <div class="modal-header">
-            <h3 class="modal-title" >📥 Импорт изображений</h3>
-            <button class="modal-close" <button onclick="closeImportModal()" aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title">Импорт картинок</h3>
+            <button class="modal-close" data-modal-close onclick="closeImportModal()" aria-label="Закрыть">&times;</button>
         </div>
 
     <!-- Категории -->
@@ -1696,7 +1753,7 @@
                         <label for="txt_code_size" class="setting-label">Размер шрифта редактора кода:</label>
                         <div class="slider-container-settings" style="display: flex;flex-direction: column;">
                             <input type="text" id="txt_code_size" class="slider-value" style="width: 50px;" readonly>
-                            <input type="range" id="slider_code_size" min="6" max="40" value="12" class="slider-native">
+                            <input type="range" id="slider_code_size" min="10" max="24" value="15" class="slider-native">
                         </div>
                     </div>
                     
@@ -1718,8 +1775,18 @@
                 </div>
                 <div class="section-content">
                     <div class="radio-group" id="radio_code_style">
+                        <label class="radio-label" for="radio_code_style_monokai">
+                            <input type="radio" id="radio_code_style_monokai" name="radio_code_style" checked="checked">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">Monokai</span>
+                        </label>
+                        <label class="radio-label" for="radio_code_style_pro">
+                            <input type="radio" id="radio_code_style_pro" name="radio_code_style">
+                            <span class="radio-custom"></span>
+                            <span class="radio-text">Профи (IDE)</span>
+                        </label>
                         <label class="radio-label" for="radio_code_style_light">
-                            <input type="radio" id="radio_code_style_light" name="radio_code_style" checked="checked">
+                            <input type="radio" id="radio_code_style_light" name="radio_code_style">
                             <span class="radio-custom"></span>
                             <span class="radio-text">День</span>
                         </label>
@@ -1808,11 +1875,14 @@
     <div class="modal-content modal-dark" style="width:480px;">
         <div class="modal-header">
             <h3 class="modal-title">Файлы проекта</h3>
-            <button class="modal-close" onclick="closeProjectFiles()" aria-label="Закрыть">&times;</button>
+            <button class="modal-close" data-modal-close onclick="closeProjectFiles()" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             <p id="projectFilesCount" class="pf-count"></p>
             <div id="projectFilesList" class="pf-list"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-modal-close" data-modal-close onclick="closeProjectFiles()">Закрыть</button>
         </div>
     </div>
 </div>
@@ -1884,8 +1954,12 @@
     </div>
 </div>
     <!-- Галерея ресурсов -->
+    <script src="./lib/starter-code.js"></script>
+    <script src="./lib/icons.js"></script>
     <script src="./lib/assets-gallery.js"></script>
     <script src="./lib/project-files.js"></script>
+    <script src="./lib/layout-splitters.js"></script>
+    <script src="./lib/modals.js"></script>
     <script>
 	PythonIDE.init('normal');	
 
@@ -1905,33 +1979,53 @@
             z-index: 10000;
         `;
 
-		const path = getPath(filename);
+		const path = filename ? getPath(filename) : null;
 
-        // Передаём имя файла через URL-параметр
         const editorUrl = path 
             ? `draw-editor.html?load=${encodeURIComponent(path)}`
             : 'draw-editor.html';
+
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'position:relative;width:80vw;height:90vh;';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'btn-modal-close';
+        closeBtn.textContent = 'Закрыть';
+        closeBtn.style.cssText = 'position:absolute;top:-48px;right:0;z-index:2;';
+        closeBtn.onclick = function() {
+            modal.remove();
+            window.removeEventListener('message', messageHandler);
+        };
     
         const iframe = document.createElement('iframe');
         iframe.src = editorUrl;
         iframe.style.cssText = `
-            width: 80vw;
-            height: 90vh;
+            width: 100%;
+            height: 100%;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             background: white;
         `;
         iframe.id = 'drawEditorFrame';
-    
-        modal.appendChild(iframe);
+
+        wrap.appendChild(closeBtn);
+        wrap.appendChild(iframe);
+        modal.appendChild(wrap);
         document.body.appendChild(modal);
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.remove();
+                window.removeEventListener('message', messageHandler);
+            }
+        });
     
         const messageHandler = async(event) => {
             if (event.source === iframe.contentWindow && event.data === 'closeEditor') {
                 modal.remove();
                 window.removeEventListener('message', messageHandler);
                 await initializeAssetsGallery(); 
-                console.log("Close editor")
             }
         };
     
@@ -1939,13 +2033,21 @@
     }	
 	async function showGallery() {
 			document.getElementById("splashImg").style.display = "none";
+			document.getElementById("handbook").style.display = "none";
 			document.getElementById("resourceGallery").style.display = "block";
 			await initializeAssetsGallery();
 	}
 
 	function showSplash() {
 		document.getElementById("resourceGallery").style.display = "none";
+		document.getElementById("handbook").style.display = "none";
 		document.getElementById("splashImg").style.display = "block";
+	}
+
+	function showHandbook() {
+		document.getElementById("splashImg").style.display = "none";
+		document.getElementById("resourceGallery").style.display = "none";
+		document.getElementById("handbook").style.display = "block";
 	}
 	function toggleShowGallery() {
 		const gallery = document.getElementById("resourceGallery").style.display;
@@ -2131,7 +2233,7 @@ function restoreLastSavedCode() {
 </div>
 </div>
 <!-- окно создания нового проекта -->
-<div id="newProjectModal" style="
+<div id="newProjectModal" class="modal-overlay" style="
     display: none;
     position: fixed;
     top: 0;
@@ -2148,8 +2250,8 @@ function restoreLastSavedCode() {
    <div class="modal-content modal-dark"style="width:500px; overflow:auto;">
 
         <div class="modal-header">
-            <h3 class="modal-title" >Создать новый проект</h3>
-            <button class="modal-close" <button onclick="closeNewProjectModal()" aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title">Создать новый проект</h3>
+            <button type="button" class="modal-close" data-modal-close onclick="closeNewProjectModal()" aria-label="Закрыть">&times;</button>
         </div>
  
  
@@ -2323,12 +2425,15 @@ document.getElementById('closeGameBtn').addEventListener('click', function() {
 
 
 function showConsole() {
-	console.log("showConsole")
-		if (document.getElementById("consoleContainer").style.display != "none") {
-			document.getElementById("consoleContainer").style.display = "none";
-		} else {
-			document.getElementById("consoleContainer").style.display = "block";
-		}	
+		var pane = document.getElementById('consolePane');
+		var splitter = document.getElementById('splitterH');
+		if (!pane) return;
+		var show = pane.style.display === 'none';
+		pane.style.display = show ? '' : 'none';
+		if (splitter) splitter.style.display = show ? '' : 'none';
+		if (typeof PythonIDE !== 'undefined' && PythonIDE.editor) {
+			setTimeout(function () { PythonIDE.editor.refresh(); }, 0);
+		}
 }
 
 // создание проекта
@@ -2505,7 +2610,35 @@ async function askConfirm(title, text) {
 
 async function input(title, text) {
             return await ModalUI.show(title, text, 'input');
-}  
+}
+
+function initPzIcons() {
+  if (typeof PZIcon === 'undefined') return;
+  document.querySelectorAll('[data-pz-icon]').forEach(function(el) {
+    var name = el.getAttribute('data-pz-icon');
+    var size = el.classList.contains('tb-play') ? 22 : (el.classList.contains('gallery-btn') ? 18 : 20);
+    if (el.tagName === 'BUTTON') {
+      PZIcon.setButtonIcon(el, name, size);
+    } else {
+      el.innerHTML = PZIcon.svg(name, 18);
+    }
+  });
+}
+
+function toggleMoreMenu(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('moreMenu')?.classList.toggle('is-open');
+}
+
+function closeMoreMenu() {
+  document.getElementById('moreMenu')?.classList.remove('is-open');
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.tb-more-wrap')) {
+    closeMoreMenu();
+  }
+});
 </script>
 <!-- Скрытый input для загрузки файлов (нужен для lib.js) -->
 <input type="file" id="file-btn" hidden> 
@@ -2513,6 +2646,14 @@ async function input(title, text) {
   const urlParams = new URLSearchParams(window.location.search);
   const rawUrl = urlParams.get('run') || urlParams.get('pgz');	
   window.addEventListener('load', async () => {
+		initPzIcons();
+		setupAppModals();
+		if (typeof LayoutSplitters !== 'undefined') LayoutSplitters.init();
+		document.body.classList.add('app-ready');
+		if (coldStart && !localStorage.loadAction && typeof PGZ_STARTER_CODE !== 'undefined' && typeof PythonIDE !== 'undefined') {
+			PythonIDE.files['my_pgz.py'] = PGZ_STARTER_CODE;
+			if (PythonIDE.editor) PythonIDE.editor.setValue(PGZ_STARTER_CODE);
+		}
 		document.getElementById("page-loader")?.remove();
 		if (!rawUrl) {
 			    document.getElementById('topPanel').style.display = 'flex';

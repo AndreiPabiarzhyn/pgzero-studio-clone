@@ -1,0 +1,98 @@
+/* PGZero Studio — профессиональная тема редактора (VS Code–style) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.cm-s-pgz-ide.CodeMirror {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.cm-s-pgz-ide .CodeMirror-gutters {
+  background: #181825;
+  border-right: 1px solid #313244;
+  min-width: 48px;
+}
+
+.cm-s-pgz-ide .CodeMirror-linenumber {
+  color: #6c7086;
+  padding: 0 10px 0 0;
+  font-size: 12px;
+}
+
+.cm-s-pgz-ide .CodeMirror-cursor {
+  border-left: 2px solid #f5e0dc;
+}
+
+.cm-s-pgz-ide .CodeMirror-selected,
+.cm-s-pgz-ide.CodeMirror-focused .CodeMirror-selected {
+  background: rgba(137, 180, 250, 0.18);
+}
+
+.cm-s-pgz-ide .CodeMirror-activeline-background {
+  background: rgba(49, 50, 68, 0.55);
+}
+
+.cm-s-pgz-ide .CodeMirror-activeline-gutter {
+  background: rgba(49, 50, 68, 0.85);
+  color: #cdd6f4;
+}
+
+.cm-s-pgz-ide .cm-keyword { color: #cba6f7; font-weight: 500; }
+.cm-s-pgz-ide .cm-builtin { color: #89b4fa; }
+.cm-s-pgz-ide .cm-def { color: #89dceb; }
+.cm-s-pgz-ide .cm-variable { color: #cdd6f4; }
+.cm-s-pgz-ide .cm-variable-2 { color: #f9e2af; }
+.cm-s-pgz-ide .cm-property { color: #94e2d5; }
+.cm-s-pgz-ide .cm-operator { color: #89dceb; }
+.cm-s-pgz-ide .cm-string { color: #a6e3a1; }
+.cm-s-pgz-ide .cm-string-2 { color: #a6e3a1; }
+.cm-s-pgz-ide .cm-number { color: #fab387; }
+.cm-s-pgz-ide .cm-comment { color: #6c7086; font-style: italic; }
+.cm-s-pgz-ide .cm-meta { color: #f38ba8; }
+.cm-s-pgz-ide .cm-atom { color: #fab387; }
+.cm-s-pgz-ide .cm-tag { color: #89b4fa; }
+.cm-s-pgz-ide .cm-attribute { color: #94e2d5; }
+.cm-s-pgz-ide .cm-error { color: #f38ba8; background: rgba(243, 139, 168, 0.12); }
+
+.cm-s-pgz-ide .CodeMirror-matchingbracket {
+  color: #a6e3a1 !important;
+  background: rgba(166, 227, 161, 0.15);
+  outline: 1px solid rgba(166, 227, 161, 0.5);
+  border-radius: 2px;
+}
+
+.cm-s-pgz-ide .CodeMirror-nonmatchingbracket {
+  color: #f38ba8 !important;
+  background: rgba(243, 139, 168, 0.12);
+}
+
+.cm-s-pgz-ide .CodeMirror-scroll {
+  scrollbar-color: #45475a #1e1e2e;
+}
+
+/* Подсказки автодополнения */
+.CodeMirror-hints {
+  font-family: 'JetBrains Mono', Consolas, monospace !important;
+  background: #181825 !important;
+  border: 1px solid #313244 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+  padding: 4px !important;
+}
+
+.CodeMirror-hint {
+  color: #cdd6f4 !important;
+  border-radius: 4px !important;
+  padding: 4px 8px !important;
+}
+
+li.CodeMirror-hint-active {
+  background: #45475a !important;
+  color: #fff !important;
+}
+
+.autocomplete-pgz { color: #89b4fa !important; }
+.autocomplete-def { color: #89dceb !important; }
+.autocomplete-mod { color: #cba6f7 !important; }

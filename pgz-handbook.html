@@ -118,6 +118,7 @@
         <li><a href="#mouse">8. События мыши</a></li>
         <li><a href="#audio">9. Звуки и музыка</a></li>
         <li><a href="#timer">10. Таймер</a></li>
+        <li><a href="#faq">11. FAQ — частые вопросы по коду</a></li>
       </ul>
     </div>
     <div class="section" id="intro">
@@ -296,6 +297,22 @@ def game_over():
     clock.unschedule(spawn_enemy)
 
 clock.schedule_interval(spawn_enemy, 2.0)</pre>
+      <a href="#" class="back-to-top">↑ К содержанию</a> </div>
+    <div class="section" id="faq">
+      <h2>11. FAQ — частые вопросы по коду</h2>
+      <p><strong>Почему игра не запускается?</strong><br>
+        Проверь, что в проекте есть файл <code>my_pgz.py</code>, в конце написано <code>pgzrun.go()</code>, а отступы в Python одинаковые (4 пробела).</p>
+      <p><strong>Что такое <code>draw()</code> и <code>update()</code>?</strong><br>
+        <code>draw()</code> рисует картинку на экране каждый кадр.<br>
+        <code>update()</code> меняет положение героев и проверяет нажатия клавиш.</p>
+      <p><strong>Как двигать героя?</strong><br>
+        Меняй <code>actor.x</code> и <code>actor.y</code> в <code>update()</code> или используй <code>keyboard.left</code>, <code>keyboard.right</code> и другие клавиши.</p>
+      <p><strong>Где хранятся картинки и звуки?</strong><br>
+        Картинки — в папке <code>images</code>, звуки — в <code>sounds</code>, музыка — в <code>music</code>. Имена файлов без пробелов, латиницей.</p>
+      <p><strong>Как нарисовать своего героя?</strong><br>
+        Нажми кнопку «Нарисовать» на панели или в галерее картинок, сохрани файл и используй его имя в <code>Actor('имя_файла')</code>.</p>
+      <p><strong>Что делать, если ошибка в коде?</strong><br>
+        Прочитай красное сообщение внизу, найди номер строки и исправь опечатку. Частые ошибки: забытая двоеточие <code>:</code>, неправильный отступ, неверное имя файла картинки.</p>
       <a href="#" class="back-to-top">↑ К содержанию</a> </div>
     <script>
         // Плавная прокрутка к разделам

@@ -104,9 +104,16 @@ html, body {
     max-height: 50px;
   }
   .audio-icon {
-    font-size: 24px;
-    line-height: 48px;
-    color: #555;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef6ff;
+    border-radius: 10px;
+    border: 2px solid #c7ddff;
+    color: #5b8def;
+    margin: 0 auto 4px;
   }
   .controls-bar {
     margin-bottom: -8px;
@@ -657,8 +664,9 @@ a{
  }
 
  .CodeMirror { 	
- 	position:unset;
- 	height: 100%;
+ 	position: absolute;
+  inset: 0;
+  height: 100% !important;
  }
 
  .CodeMirror-hints {
