@@ -1,50 +1,55 @@
-"""Generate favicon.png and favicon.ico from PGZero brand colors."""
+"""Generate favicon.png and favicon.ico from PGZero flat brand mark."""
 from PIL import Image, ImageDraw
-
-
-def lerp(a, b, t):
-    return int(a + (b - a) * t)
 
 
 def draw_icon(size):
     img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
-    radius = max(2, size // 5)
-    top = (91, 141, 239)
-    bottom = (52, 199, 89)
+    s = size / 32.0
+    radius = max(2, int(6 * s))
 
-    for y in range(size):
-        t = y / max(size - 1, 1)
-        color = (
-            lerp(top[0], bottom[0], t),
-            lerp(top[1], bottom[1], t),
-            lerp(top[2], bottom[2], t),
-            255,
-        )
-        draw.line([(0, y), (size, y)], fill=color)
+    bg = (30, 58, 95, 255)
+    stroke = (61, 90, 128, 255)
+    actor = (52, 199, 89, 255)
+    badge = (251, 191, 36, 255)
+    ink = (30, 58, 95, 255)
 
     mask = Image.new("L", (size, size), 0)
     ImageDraw.Draw(mask).rounded_rectangle((0, 0, size - 1, size - 1), radius=radius, fill=255)
-    img.putalpha(mask)
-
+    bg_img = Image.new("RGBA", (size, size), bg)
+    img = Image.composite(bg_img, img, mask)
     draw = ImageDraw.Draw(img)
-    pad = size * 0.18
-    x0, y0 = pad, pad * 1.1
-    x1, y1 = size - pad * 1.35, size - pad
-    bar_w = (x1 - x0) * 0.34
-    draw.rectangle((x0, y0, x0 + bar_w, y1), fill=(255, 255, 255, 255))
+
+    inset = int(2.5 * s)
+    draw.rounded_rectangle(
+        (inset, inset, size - inset - 1, size - inset - 1),
+        radius=max(1, int(5 * s)),
+        outline=stroke,
+        width=max(1, int(1.25 * s)),
+    )
+
+    cx, cy, r = int(13.5 * s), int(17.5 * s), int(8.25 * s)
+    draw.ellipse((cx - r, cy - r, cx + r, cy + r), fill=actor)
+
+    def eye(ex, ey, er, px, py, pr):
+        er = max(1, int(er * s))
+        pr = max(1, int(pr * s))
+        draw.ellipse((int(ex * s) - er, int(ey * s) - er, int(ex * s) + er, int(ey * s) + er), fill=(255, 255, 255, 255))
+        draw.ellipse((int(px * s) - pr, int(py * s) - pr, int(px * s) + pr, int(py * s) + pr), fill=ink)
+
+    eye(10.8, 15.4, 1.7, 11.1, 15.7, 0.85)
+    eye(16.2, 15.8, 1.45, 16.4, 16.0, 0.72)
+
+    bx0, by0 = int(20 * s), int(6.5 * s)
+    bx1, by1 = int(29 * s), int(15.5 * s)
+    draw.rounded_rectangle((bx0, by0, bx1, by1), radius=max(1, int(2 * s)), fill=badge)
     draw.polygon(
         [
-            (x0 + bar_w * 0.95, y0),
-            (x1, (y0 + y1) / 2),
-            (x0 + bar_w * 0.95, y1),
+            (int(22.3 * s), int(9.2 * s)),
+            (int(22.3 * s), int(14.3 * s)),
+            (int(26.4 * s), int(11.75 * s)),
         ],
-        fill=(255, 255, 255, 255),
-    )
-    dot_r = max(1, size // 16)
-    draw.ellipse(
-        (x1 - dot_r * 0.2, y0 - dot_r * 0.1, x1 + dot_r * 1.8, y0 + dot_r * 1.7),
-        fill=(255, 255, 255, 230),
+        fill=ink,
     )
     return img
 

@@ -104,24 +104,49 @@ body.app-ready {
   opacity: 0.55;
 }
 
-.tb-title {
+.tb-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-right: 4px;
   padding: 0 2px;
-  font-family: var(--pz-font);
-  font-size: 19px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
   user-select: none;
-  background: linear-gradient(120deg, var(--pz-accent) 0%, var(--pz-play) 52%, var(--pz-cyan) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  flex-shrink: 0;
+}
+
+.tb-brand-icon {
+  display: block;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.tb-brand-name {
+  font-family: var(--pz-font);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--pz-text);
+}
+
+.tb-brand-name em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--pz-play);
 }
 
 @media (max-width: 640px) {
-  .tb-title {
-    font-size: 16px;
+  .tb-brand-name {
+    font-size: 15px;
+  }
+
+  .tb-brand-icon {
+    width: 24px;
+    height: 24px;
   }
 
   .tb-divider {
