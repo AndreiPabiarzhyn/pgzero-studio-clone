@@ -1401,16 +1401,16 @@
     </div>
     <div class="tb-group">
       <button type="button" id="btn_toggle_sidebar" class="toolButton tb-btn" data-pz-icon="panel" title="Скрыть боковую панель"></button>
-      <button type="button" id="btn_show_project_files" class="toolButton tb-btn" data-pz-icon="files" title="Мои файлы" onclick="showProjectFiles()"></button>
-      <button type="button" class="toolButton tb-btn" data-pz-icon="paint" title="Нарисовать спрайт" onclick="showEditor()"></button>
-      <button type="button" class="toolButton tb-btn" data-pz-icon="palette" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
+      <button type="button" class="toolButton tb-btn" data-pz-icon="gallery" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
       <button type="button" id="btn_pgz_save" class="toolButton tb-btn" data-pz-icon="save" title="Сохранить игру" onclick="exportGallery()"></button>
+      <button type="button" id="btn_pgz_open" class="toolButton tb-btn" data-pz-icon="folderOpen" title="Открыть игру" onclick="importGallery()"></button>
     </div>
     <div class="tb-more-wrap">
       <button type="button" id="btn_more" class="toolButton tb-btn tb-more" data-pz-icon="more" title="Ещё" onclick="toggleMoreMenu(event)"></button>
       <div id="moreMenu">
+        <button type="button" class="toolButton tb-btn" data-pz-icon="files" title="Мои файлы" onclick="showProjectFiles(); closeMoreMenu();"><span class="tb-label">Мои файлы</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="paint" title="Нарисовать спрайт" onclick="showEditor(); closeMoreMenu();"><span class="tb-label">Спрайт</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="plus" title="Новая игра" onclick="createNewProject(); closeMoreMenu();"><span class="tb-label">Новая игра</span></button>
-        <button type="button" id="btn_pgz_open" class="toolButton tb-btn" data-pz-icon="folderOpen" title="Открыть игру" onclick="importGallery(); closeMoreMenu();"><span class="tb-label">Открыть</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="console" title="Консоль" onclick="showConsole(); closeMoreMenu();"><span class="tb-label">Консоль</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="book" title="Справочник по коду" onclick="showHandbook(); closeMoreMenu();"><span class="tb-label">Справочник</span></button>
         <button type="button" id="btn_show_share" class="toolButton tb-btn" data-pz-icon="code" title="Код" onclick="closeMoreMenu();"><span class="tb-label">Код</span></button>
@@ -2616,7 +2616,7 @@ function initPzIcons() {
   if (typeof PZIcon === 'undefined') return;
   document.querySelectorAll('[data-pz-icon]').forEach(function(el) {
     var name = el.getAttribute('data-pz-icon');
-    var size = el.classList.contains('tb-play') ? 22 : (el.classList.contains('gallery-btn') ? 18 : 20);
+    var size = el.classList.contains('tb-play') ? 22 : (el.classList.contains('gallery-btn') ? 18 : 22);
     if (el.tagName === 'BUTTON') {
       PZIcon.setButtonIcon(el, name, size);
     } else {
@@ -2659,6 +2659,7 @@ document.addEventListener('click', function(e) {
 			    document.getElementById('topPanel').style.display = 'flex';
 				document.getElementById('mainLayout').style.display = 'flex';
 				document.getElementById('playGameBtn').style.display = 'none';
+				await showGallery();
 			} else {
 			    document.getElementById('playGameBtn').style.display = 'block';
 				await loadProjectFromUrl(rawUrl);

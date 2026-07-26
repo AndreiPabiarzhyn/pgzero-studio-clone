@@ -28,8 +28,13 @@ python -m http.server 8100
 
 ## GitHub Pages
 
-1. Settings → Pages → Branch: `master`, folder `/ (root)`
-2. Файл `.nojekyll` уже в репозитории
+Сайт: **https://andreipabiarzhyn.github.io/pgzero-studio-clone/**
+
+Автодеплой при push в `master` (workflow `.github/workflows/deploy-pages.yml`).
+
+Первый раз: репозиторий → **Settings → Pages → Build and deployment → GitHub Actions**.
+
+Файл `.nojekyll` уже в корне.
 
 ## Структура
 
