@@ -41,9 +41,9 @@ html, body {
     margin-top:0px;
     margin-bottom:0px;
   }
-#imagesFrame { max-height: 38vh; }
-#soundsFrame { max-height: 19vh; }
-#musicFrame  { max-height: 20vh; }
+#imagesFrame { max-height: 36vh; }
+#soundsFrame { max-height: 18vh; }
+#musicFrame  { max-height: 18vh; }
   /* === Контейнер с прокруткой === */
 .items-scroll {
   display: flex;

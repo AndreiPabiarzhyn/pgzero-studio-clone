@@ -52,6 +52,8 @@ body.app-ready {
   min-height: 56px;
   padding: 8px 12px !important;
   box-shadow: var(--pz-shadow);
+  overflow-x: hidden;
+  gap: 8px;
 }
 
 #topPanel .toolPanel {
@@ -59,6 +61,8 @@ body.app-ready {
   gap: 8px !important;
   margin-top: 0 !important;
   align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 /* Сброс глобальных стилей button {} из styles.css */
@@ -249,11 +253,12 @@ body.app-ready {
 
 #projectNameInput {
   padding: 8px 14px !important;
-  min-width: 200px !important;
+  min-width: 160px !important;
   max-width: 240px !important;
   box-sizing: border-box !important;
   font-size: 14px !important;
   z-index: 10 !important;
+  flex-shrink: 1;
   border: 2px solid var(--pz-border) !important;
   border-radius: 999px !important;
   background: var(--pz-surface) !important;
@@ -336,6 +341,111 @@ body.app-ready {
   border-color: var(--pz-accent);
 }
 
+/* История кода */
+.code-history-modal {
+  width: min(480px, 92vw);
+}
+
+.code-history-intro {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: var(--pz-text-muted);
+  line-height: 1.5;
+}
+
+.code-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.code-history-empty {
+  margin: 0;
+  padding: 20px 12px;
+  text-align: center;
+  color: var(--pz-text-muted);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.code-history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--pz-surface);
+  border: 1px solid var(--pz-border);
+}
+
+.code-history-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.code-history-meta strong {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--pz-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.code-history-meta span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pz-text-muted);
+}
+
+.code-history-restore {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #5b8def, #4a7de0);
+  color: #fff;
+  font-family: var(--pz-font);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #3b6fc9;
+}
+
+.code-history-restore:hover {
+  filter: brightness(1.05);
+}
+
+.code-history-footer {
+  justify-content: space-between;
+}
+
+.code-history-footer .btn-secondary {
+  min-width: auto;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 2px solid var(--pz-border);
+  background: var(--pz-surface);
+  color: var(--pz-text);
+  font-family: var(--pz-font);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.code-history-footer .btn-secondary:hover {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
 @media (max-width: 720px) {
   .session-save-status {
     display: none;
@@ -411,11 +521,59 @@ body.app-ready .app-footer {
   width: var(--sidebar-width);
   flex-shrink: 0;
   min-width: 200px;
-  max-width: 640px;
+  max-width: min(640px, 42vw);
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+#resourceGallery {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 2px 4px 0;
+}
+
+#resourceGallery .frame {
+  background: var(--pz-bg-elevated) !important;
+  border: 2px solid var(--pz-border) !important;
+  box-shadow: var(--pz-shadow) !important;
+  color: var(--pz-text) !important;
+  border-radius: var(--pz-radius) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  box-sizing: border-box !important;
+  min-width: 0;
+  overflow: hidden;
+}
+
+#imagesFrame,
+#soundsFrame,
+#musicFrame {
+  flex-shrink: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+#resourceGallery .assets-items-scroll,
+#resourceGallery .items-scroll {
+  max-width: 100% !important;
+  width: 100%;
+}
+
+#resourceGallery .item {
+  max-width: 88px;
 }
 
 .layout-right--hidden {
@@ -854,14 +1012,6 @@ body.game-modal-dragging .game-modal-header {
   display: block;
   background: #000;
   flex: 1;
-}
-
-#resourceGallery .frame {
-  background: var(--pz-bg-elevated) !important;
-  border: 2px solid var(--pz-border) !important;
-  box-shadow: var(--pz-shadow) !important;
-  color: var(--pz-text) !important;
-  border-radius: var(--pz-radius) !important;
 }
 
 #resourceGallery .frame h3 {

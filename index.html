@@ -68,6 +68,8 @@
     <script src="./lib/base.js"></script>
     <script src="./lib/lib.js"></script>
     <script src="./lib/session.js"></script>
+    <script src="./lib/code-history.js"></script>
+    <script src="./lib/storage-guard.js"></script>
     <script src="./lib/skulpt/skulpt.min.js"></script>
     <script src="./lib/skulpt/skulpt-stdlib.js"></script>
     <script src="./lib/extlibs.js"></script>
@@ -92,9 +94,13 @@
   padding: 8px;
   margin: 0;
   min-height: 60px;
-  max-width: 400px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   overflow-y: auto;
+  overflow-x: hidden;
   align-items: flex-start;
+  align-content: flex-start;
 }
 
 .assets-item {
@@ -1417,6 +1423,7 @@
         <button type="button" class="toolButton tb-btn" data-pz-icon="paint" title="Нарисовать спрайт" onclick="showEditor(); closeMoreMenu();"><span class="tb-label">Нарисовать спрайт</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="plus" title="Новая игра" onclick="createNewProject(); closeMoreMenu();"><span class="tb-label">Новая игра</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="console" title="Консоль" onclick="showConsole(); closeMoreMenu();"><span class="tb-label">Консоль</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="history" title="История кода" onclick="PGZCodeHistory.openModal(); closeMoreMenu();"><span class="tb-label">История кода</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="book" title="Справочник по коду" onclick="showHandbook(); closeMoreMenu();"><span class="tb-label">Справочник</span></button>
         <button type="button" id="btn_show_share" class="toolButton tb-btn" data-pz-icon="code" title="Код" onclick="closeMoreMenu();"><span class="tb-label">Код</span></button>
         <button type="button" id="btn_show_settings" class="toolButton tb-btn" data-pz-icon="settings" title="Настройки" onclick="closeMoreMenu();"><span class="tb-label">Настройки</span></button>
@@ -1484,7 +1491,7 @@
 		</iframe>
 
 <!-- галерея ресурсов -->
-<div id="resourceGallery" style="display: none; margin-top: -20px;">
+<div id="resourceGallery" style="display: none;">
   <div class="frame" id="imagesFrame">
     <h3><span class="pz-icon-wrap" data-pz-icon="image"></span> Картинки</h3>
     <div id="imagesList" class="assets-items-scroll"></div>
@@ -1621,14 +1628,14 @@
             
             <div class="files-container">
                 
-                <!-- Кнопка «Восстановить» (сверху) -->
+                <!-- История версий кода -->
                 <label class="file-action-button" id="btn_show_recover_label">
                     <div class="card-header">
                         <i class="fa fa-history"></i>
-                        <h3>Восстановить</h3>
+                        <h3>История кода</h3>
                     </div>
                     <div class="card-body">
-                        <p>Просмотреть и восстановить предыдущие сохранённые версии вашего py-кода.</p>
+                        <p>До 5 последних версий — автосохранение и запуск игры.</p>
                     </div>
                 </label>
 
@@ -1918,7 +1925,25 @@
     </div>
 </div>
   
-<!-- Модальное окно восстановления кода -->
+<!-- История версий кода -->
+<div id="codeHistoryModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content modal-dark code-history-modal">
+        <div class="modal-header">
+            <h3 class="modal-title">История кода</h3>
+            <button class="modal-close" data-modal-close aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p class="code-history-intro">До 5 последних версий. Новая версия добавляется при автосохранении и при запуске игры.</p>
+            <div id="codeHistoryList" class="code-history-list"></div>
+        </div>
+        <div class="modal-footer code-history-footer">
+            <button type="button" id="codeHistoryClear" class="btn-secondary">Очистить историю</button>
+            <button type="button" class="btn-modal-close" data-modal-close>Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно восстановления кода (legacy) -->
 <div id="recoverModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark">
         <div class="modal-header">
@@ -2162,6 +2187,16 @@
 
 // Восстановить последний сохранённый код
 function restoreLastSavedCode() {
+    if (typeof PGZCodeHistory !== 'undefined') {
+        var entries = PGZCodeHistory.list();
+        if (!entries.length) {
+            PythonIDE.showHint('История кода пуста. Правьте код или запустите игру.');
+            return;
+        }
+        PGZCodeHistory.restore(0);
+        PythonIDE.showHint('Восстановлена последняя версия из истории');
+        return;
+    }
     if (!PythonIDE.vault || PythonIDE.vault.length === 0) {
         PythonIDE.showHint('Сохранённых копий кода не найдено. Сначала запустите код, чтобы создать резервную копию.');
         return;
@@ -2502,6 +2537,8 @@ async function createProjectFromModal() {
     }
     
     await clearProjectResources();
+    if (typeof PGZCodeHistory !== 'undefined') PGZCodeHistory.clear();
+    if (typeof PGZSession !== 'undefined') PGZSession.clear();
     
     // создание шаблона кода с параметрами
     const pgzTemplate = `import pgzrun
@@ -2636,6 +2673,7 @@ document.addEventListener('click', function(e) {
 		if (typeof AppTheme !== 'undefined') AppTheme.init();
 		if (typeof GameModal !== 'undefined') GameModal.init();
 		if (typeof PGZSession !== 'undefined') PGZSession.init();
+		if (typeof PGZCodeHistory !== 'undefined') PGZCodeHistory.init();
 		setupAppModals();
 		if (typeof LayoutSplitters !== 'undefined') LayoutSplitters.init();
 		document.body.classList.add('app-ready');
