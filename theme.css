@@ -107,8 +107,8 @@ body.app-ready {
 .tb-brand {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-right: 4px;
+  gap: 9px;
+  margin-right: 6px;
   padding: 0 2px;
   text-decoration: none;
   color: inherit;
@@ -118,35 +118,43 @@ body.app-ready {
 
 .tb-brand-icon {
   display: block;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   flex-shrink: 0;
 }
 
 .tb-brand-name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
   font-family: var(--pz-font);
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
   line-height: 1;
   white-space: nowrap;
+}
+
+.tb-brand-primary {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
   color: var(--pz-text);
 }
 
-.tb-brand-name em {
-  font-style: normal;
-  font-weight: 700;
-  color: var(--pz-play);
+.tb-brand-secondary {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--pz-text-muted);
 }
 
 @media (max-width: 640px) {
-  .tb-brand-name {
-    font-size: 15px;
+  .tb-brand-primary,
+  .tb-brand-secondary {
+    font-size: 14px;
   }
 
   .tb-brand-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 
   .tb-divider {
