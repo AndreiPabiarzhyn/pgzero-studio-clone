@@ -1119,9 +1119,9 @@ body.app-ready .app-footer {
   z-index: 10050;
   display: flex;
   align-items: center;
-  gap: 2px;
-  padding: 2px 3px;
-  border-radius: 6px;
+  gap: 3px;
+  padding: 3px 5px;
+  border-radius: 10px;
   background: rgba(15, 23, 42, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
@@ -1137,19 +1137,19 @@ body.app-ready .app-footer {
 
 .item-actions-popover .gallery-btn,
 .item-actions-popover .gallery-btn-pop {
-  width: 18px !important;
-  height: 18px !important;
-  min-width: 18px !important;
+  width: 29px !important;
+  height: 29px !important;
+  min-width: 29px !important;
   padding: 0 !important;
   border: none !important;
   background: transparent !important;
-  border-radius: 5px !important;
+  border-radius: 8px !important;
   box-shadow: none !important;
   flex-shrink: 0;
 }
 
 .item-actions-popover .gallery-btn-pop .pz-icon-wrap {
-  transform: scale(0.52);
+  transform: scale(0.83);
   transform-origin: center center;
   line-height: 0;
   display: flex;
