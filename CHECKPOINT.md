@@ -1,35 +1,45 @@
 # Checkpoint — PGZero Studio
 
 **Дата:** 2026-07-26  
-**Коммит:** `36b62de`  
+**Коммит:** `dc180ee`  
 **Ветка:** `master`  
 **Репозиторий:** https://github.com/AndreiPabiarzhyn/pgzero-studio-clone  
 **GitHub Pages:** https://andreipabiarzhyn.github.io/pgzero-studio-clone/
 
 ## Состояние на чекпоинт
 
+### Сессия и автосохранение (Фаза 1)
+- **`lib/session.js`** — автосохранение кода и названия проекта в `localStorage.pgz_session`
+- Debounce 2 с после правок в редакторе + сохранение при закрытии вкладки
+- При старте: модалка **«Продолжить игру?»** / **«Новая игра»**
+- Индикатор в тулбаре: «Сохранение…» / «Сохранено ✓»
+- «Новая игра» из модалки очищает сессию и IndexedDB-ассеты
+- Ctrl+S / кнопка Save → `.pgz` на диск (с flush сессии перед экспортом)
+- Fix: очистка `vault` теперь пишет в `localStorage`
+
 ### UI и панель
-- Основная панель: **Играть** · панель · галерея · сохранить · открыть · тема ☀/🌙 · «…»
-- В «…»: мои файлы, спрайт, новая игра, консоль, справочник, код, настройки
-- Цветные SVG-иконки (`lib/icons.js`), плитки в галерее (gAdd, gView, gRename…)
-- **Светлая / тёмная тема** всего приложения (`lib/app-theme.js`, `data-app-theme`)
-- При старте справа открыта **галерея «Картинки и звуки»**
+- Тулбар без двойных рамок; надпись **PGZero Studio** (градиент)
+- Credits в футере: *Crafted by Andrei Pabiarzhyn*
+- Светлая / тёмная тема; контраст галереи в dark mode
+- F5 убран — запуск только кнопкой **Играть**
+- Лого + favicon в `assets/logo.svg`, `favicon.svg/png/ico`
 
 ### Редактор и игра
-- Monokai IDE, splitters, без автозакрытия скобок
-- `Actor.size = (w, h)` — масштаб спрайта
-- Фикс кэша картинок (`PGZ_IMAGE_CACHE`) при запуске
-- **Окно игры перетаскиваемое** (`lib/game-modal.js`), позиция в localStorage
-- Редактор спрайтов упрощён (`draw-editor.html`, `lib/draw-editor.js`)
-
-### Макет и модалки
-- Splitter: редактор / консоль / sidebar
-- Закрытие модалок: Esc, клик снаружи (`lib/modals.js`)
+- Monokai IDE, splitters, `Actor.size`, фикс кэша картинок
+- Перетаскиваемое окно игры (`lib/game-modal.js`)
+- Редактор спрайтов (`draw-editor.html`)
 - Стартовый код — мини-раннер (`lib/starter-code.js`)
+
+### Персистентность (архитектура)
+| Слой | Где | Назначение |
+|------|-----|------------|
+| Сессия | `localStorage.pgz_session` | Код + имя проекта, автовосстановление |
+| Ассеты | IndexedDB `PGZfs` | Картинки, звуки, музыка |
+| Снимки | `localStorage.vault` | История при Run (legacy) |
+| Файл | `.pgz` ZIP | Перенос между компьютерами |
 
 ### Деплой
 - GitHub Actions: `.github/workflows/deploy-pages.yml`
-- Первый раз: Settings → Pages → Source: **GitHub Actions**
 
 ## Запуск локально
 
@@ -39,17 +49,9 @@ python -m http.server 8100
 
 http://localhost:8100/index.html
 
-> Один процесс на порт 8100 — иначе `ERR_EMPTY_RESPONSE`.
-
-## Безопасность (кратко)
-
-- Иконки: только статический SVG из `icons.js`
-- `gameTitle`: `textContent` (не HTML)
-- Тема / позиция окна игры: валидация localStorage
-- `postMessage`: проверка `event.source` для редактора спрайтов
-
 ## Следующие шаги (идеи)
 
+- Экспорт всех `.py` файлов в `.pgz`
+- История версий (3–5 снимков) вместо vault
 - Шаблоны игр при «Новая игра»
-- Tab-snippets (`def`, `draw`, `update`)
-- Пауза / play-pause для звука в галерее (иконка gPause)
+- PWA / офлайн-установка

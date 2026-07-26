@@ -268,6 +268,76 @@ body.app-ready {
   opacity: 0.85;
 }
 
+.session-save-status {
+  flex-shrink: 0;
+  font-family: var(--pz-font);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pz-text-muted);
+  white-space: nowrap;
+  min-width: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.session-save-status.is-saving,
+.session-save-status.is-saved,
+.session-save-status.is-error {
+  opacity: 1;
+}
+
+.session-save-status.is-saving {
+  color: var(--pz-accent);
+}
+
+.session-save-status.is-saved {
+  color: var(--pz-play);
+}
+
+.session-save-status.is-error {
+  color: #dc2626;
+}
+
+.session-resume-modal {
+  width: min(440px, 92vw);
+}
+
+.session-resume-hint {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--pz-text-muted);
+  line-height: 1.5;
+}
+
+.session-resume-actions {
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.session-resume-actions .btn-secondary {
+  min-width: 120px;
+  height: 40px;
+  border-radius: 12px;
+  border: 2px solid var(--pz-border);
+  background: var(--pz-surface);
+  color: var(--pz-text);
+  font-family: var(--pz-font);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.session-resume-actions .btn-secondary:hover {
+  background: var(--pz-accent-soft);
+  border-color: var(--pz-accent);
+}
+
+@media (max-width: 720px) {
+  .session-save-status {
+    display: none;
+  }
+}
+
 #mainLayout {
   background: var(--pz-bg) !important;
 }

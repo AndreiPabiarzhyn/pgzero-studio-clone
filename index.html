@@ -67,6 +67,7 @@
     <!-- Библиотеки -->
     <script src="./lib/base.js"></script>
     <script src="./lib/lib.js"></script>
+    <script src="./lib/session.js"></script>
     <script src="./lib/skulpt/skulpt.min.js"></script>
     <script src="./lib/skulpt/skulpt-stdlib.js"></script>
     <script src="./lib/extlibs.js"></script>
@@ -1426,6 +1427,7 @@
   <input type="text" id="projectNameInput" 
          placeholder="Название игры" 
          maxlength="32">
+  <span id="sessionSaveStatus" class="session-save-status" aria-live="polite"></span>
 </div>
 
 <!-- основной макет -->
@@ -1528,8 +1530,24 @@
  </div>
 
 <footer id="appFooter" class="app-footer">Crafted by Andrei Pabiarzhyn</footer>
- 
 
+<!-- Продолжить сессию -->
+<div id="sessionResumeModal" class="modal-overlay" style="display: none;">
+  <div class="modal-content modal-dark session-resume-modal">
+    <div class="modal-header">
+      <h3 class="modal-title">Продолжить игру?</h3>
+    </div>
+    <div class="modal-body">
+      <p id="sessionResumeText">Мы нашли вашу прошлую работу в браузере.</p>
+      <p class="session-resume-hint">Код и картинки сохраняются автоматически. Файл .pgz — чтобы перенести игру на другой компьютер.</p>
+    </div>
+    <div class="modal-footer session-resume-actions">
+      <button type="button" id="sessionResumeContinue" class="btn-modal-close">Продолжить</button>
+      <button type="button" id="sessionResumeNew" class="btn-secondary">Новая игра</button>
+    </div>
+  </div>
+</div>
+ 
  
 <!-- Модальное окно импорта -->
 <div id="importModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
@@ -2514,6 +2532,9 @@ pgzrun.go()
     
     document.getElementById('projectNameInput').value = fileName;    
     closeNewProjectModal();
+    if (typeof PGZSession !== 'undefined') {
+        PGZSession.save();
+    }
 
 }
 
@@ -2613,13 +2634,22 @@ document.addEventListener('click', function(e) {
 		initPzIcons();
 		if (typeof AppTheme !== 'undefined') AppTheme.init();
 		if (typeof GameModal !== 'undefined') GameModal.init();
+		if (typeof PGZSession !== 'undefined') PGZSession.init();
 		setupAppModals();
 		if (typeof LayoutSplitters !== 'undefined') LayoutSplitters.init();
 		document.body.classList.add('app-ready');
-		if (coldStart && !localStorage.loadAction && typeof PGZ_STARTER_CODE !== 'undefined' && typeof PythonIDE !== 'undefined') {
+
+		var resumedSession = false;
+		if (!rawUrl && !localStorage.loadAction && typeof PGZSession !== 'undefined') {
+			resumedSession = await PGZSession.promptResumeIfNeeded();
+		}
+
+		if (!resumedSession && coldStart && !localStorage.loadAction && typeof PGZ_STARTER_CODE !== 'undefined' && typeof PythonIDE !== 'undefined') {
 			PythonIDE.files['my_pgz.py'] = PGZ_STARTER_CODE;
 			if (PythonIDE.editor) PythonIDE.editor.setValue(PGZ_STARTER_CODE);
+			document.getElementById('projectNameInput').value = generateProjectName();
 		}
+
 		document.getElementById("page-loader")?.remove();
 		if (!rawUrl) {
 			    document.getElementById('topPanel').style.display = 'flex';
@@ -2631,8 +2661,6 @@ document.addEventListener('click', function(e) {
 				await loadProjectFromUrl(rawUrl);
 				}
 	});
-// при первом запуске подставляем сгенерированное название проекта
-if (coldStart) {  document.getElementById('projectNameInput').value = generateProjectName(); }
 // необработанные ошибки из промисов
 window.addEventListener('unhandledrejection', function(event) {
     PythonIDE.handleError(event.reason);
