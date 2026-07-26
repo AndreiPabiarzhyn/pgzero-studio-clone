@@ -77,13 +77,7 @@ body.app-ready {
   align-items: center;
   flex: 1 1 auto;
   min-width: 0;
-  overflow-x: auto;
-  overflow-y: visible;
-  scrollbar-width: none;
-}
-
-#topPanel .toolPanel::-webkit-scrollbar {
-  display: none;
+  overflow: visible !important;
 }
 
 /* Сброс глобальных стилей button {} из styles.css */
@@ -328,16 +322,14 @@ body.app-ready {
 
 #moreMenu {
   display: none;
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
+  position: fixed;
   min-width: 200px;
   padding: 6px;
   border-radius: 14px;
   background: var(--pz-bg-elevated);
   border: 1px solid color-mix(in srgb, var(--pz-border) 80%, transparent);
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
-  z-index: 10000;
+  z-index: 100000;
 }
 
 #moreMenu.is-open {
@@ -363,7 +355,8 @@ body.app-ready {
 
 .tb-more-wrap {
   position: relative;
-  z-index: 10001;
+  z-index: 100001;
+  flex-shrink: 0;
 }
 
 #projectNameInput,

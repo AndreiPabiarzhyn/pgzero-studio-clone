@@ -2661,18 +2661,43 @@ function initPzIcons() {
   });
 }
 
+function positionMoreMenu() {
+  var menu = document.getElementById('moreMenu');
+  var btn = document.getElementById('btn_more');
+  if (!menu || !btn) return;
+  var rect = btn.getBoundingClientRect();
+  var menuWidth = menu.offsetWidth || 200;
+  menu.style.top = (rect.bottom + 6) + 'px';
+  menu.style.left = Math.max(8, rect.right - menuWidth) + 'px';
+}
+
 function toggleMoreMenu(e) {
   if (e) e.stopPropagation();
-  document.getElementById('moreMenu')?.classList.toggle('is-open');
+  var menu = document.getElementById('moreMenu');
+  var btn = document.getElementById('btn_more');
+  if (!menu) return;
+  var willOpen = !menu.classList.contains('is-open');
+  menu.classList.toggle('is-open');
+  if (btn) btn.classList.toggle('tb-btn--active', willOpen);
+  if (willOpen) {
+    requestAnimationFrame(positionMoreMenu);
+  }
 }
 
 function closeMoreMenu() {
   document.getElementById('moreMenu')?.classList.remove('is-open');
+  document.getElementById('btn_more')?.classList.remove('tb-btn--active');
 }
 
 document.addEventListener('click', function(e) {
-  if (!e.target.closest('.tb-more-wrap')) {
+  if (!e.target.closest('.tb-more-wrap') && !e.target.closest('#moreMenu')) {
     closeMoreMenu();
+  }
+});
+
+window.addEventListener('resize', function () {
+  if (document.getElementById('moreMenu')?.classList.contains('is-open')) {
+    positionMoreMenu();
   }
 });
 </script>
