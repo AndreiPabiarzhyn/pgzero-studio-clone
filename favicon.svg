@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="PGZero Studio">
+  <defs>
+    <linearGradient id="fav-bg" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5b8def"/>
+      <stop offset="100%" stop-color="#34c759"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#fav-bg)"/>
+  <path d="M11 8h4.5c4.5 0 7.5 2.8 7.5 8s-3 8-7.5 8H11V8zm4.5 12c2.5 0 4-1.5 4-4s-1.5-4-4-4H14v8h1.5z" fill="#fff"/>
+  <circle cx="24" cy="10" r="1.6" fill="#fff" opacity="0.9"/>
+</svg>

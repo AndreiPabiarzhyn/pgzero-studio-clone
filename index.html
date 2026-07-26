@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>PGZero Studio</title>
-    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.png" type="image/png" sizes="256x256">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.png">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">  
 <style>
 /* ========================================
@@ -1393,6 +1395,10 @@
 <!-- верхняя панель -->
 <div id="topPanel" style="display: none;">
   <div id="toolPanel" class="toolPanel toolPanel--kids">
+    <a class="tb-brand" href="https://github.com/AndreiPabiarzhyn/pgzero-studio-clone" target="_blank" rel="noopener noreferrer" title="PGZero Studio">
+      <img src="assets/logo.svg" alt="" class="tb-brand-logo" width="36" height="36">
+      <span class="tb-brand-name">PGZero Studio</span>
+    </a>
     <div class="tb-group tb-group-main">
       <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-wide" data-pz-icon="play" title="Запустить игру">
         <span class="tb-label">Играть</span>
@@ -1456,7 +1462,7 @@
             <button type="button" class="ide-tab-btn ide-tab-zoom" id="ideBtnZoomIn" title="Увеличить код (+)">+</button>
           </div>
           <button type="button" class="ide-tab-btn" id="ideBtnFind" title="Поиск (Ctrl+F)">Поиск</button>
-          <button type="button" class="ide-tab-btn ide-tab-run" id="ideBtnRun" title="Запуск (F5)">F5 ▶</button>
+          <button type="button" class="ide-tab-btn ide-tab-run" id="ideBtnRun" title="Запустить игру">▶</button>
         </div>
         <div class="ide-editor-body">
           <div id="editor"></div>
@@ -1466,7 +1472,8 @@
           <span id="ideStatusSel"></span>
           <span class="ide-status-spacer"></span>
           <span id="ideStatusLang">Python · Pygame Zero</span>
-          <span id="ideStatusHints">Ctrl+F · +/− · F5</span>
+          <span id="ideStatusHints">Ctrl+F · +/−</span>
+          <span class="ide-credit">Crafted by Andrei Pabiarzhyn</span>
         </div>
       </div>
     </div>
@@ -1481,10 +1488,11 @@
   <div id="splitterV" class="layout-splitter layout-splitter-v" title="Потяните — изменить ширину панели"></div>
   <div id="rightBar" class="layout-right">
 		 <div id="splashImg" class="brand-panel">
-			<div class="brand-logo"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+			<img src="assets/logo.svg" alt="" class="brand-logo-img" width="88" height="88">
 			<h2>PGZero Studio</h2>
 			<p>Создай свою игру на Python!</p>
 			<span class="brand-tag">Для юных программистов</span>
+			<span class="brand-credit">Crafted by Andrei Pabiarzhyn</span>
 		</div>
 
 		<iframe src="./pgz-handbook.html" id="handbook"

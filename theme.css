@@ -69,6 +69,46 @@ body.app-ready {
   border: 1px solid var(--pz-border);
 }
 
+.tb-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 4px;
+  padding: 4px 10px 4px 4px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--pz-text);
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.tb-brand:hover {
+  background: var(--pz-accent-soft);
+  border-color: var(--pz-border);
+}
+
+.tb-brand-logo {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  box-shadow: 0 3px 0 rgba(59, 111, 201, 0.35);
+}
+
+.tb-brand-name {
+  font-family: var(--pz-font);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .tb-brand-name {
+    display: none;
+  }
+}
+
 .tb-btn {
   display: inline-flex;
   align-items: center;
@@ -368,22 +408,13 @@ body.layout-dragging-h * {
   box-shadow: var(--pz-shadow);
 }
 
-.brand-logo {
-  width: 72px;
-  height: 72px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, var(--pz-accent), var(--pz-cyan));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.brand-logo-img {
+  display: block;
+  width: 88px;
+  height: 88px;
   margin-bottom: 16px;
+  border-radius: 22px;
   box-shadow: 0 6px 0 #3b6fc9, 0 10px 20px rgba(91, 141, 239, 0.3);
-}
-
-.brand-logo svg {
-  width: 40px;
-  height: 40px;
-  color: #fff;
 }
 
 .brand-panel h2 {
@@ -408,7 +439,30 @@ body.layout-dragging-h * {
   background: var(--pz-accent-soft);
   color: var(--pz-accent);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
+}
+
+.brand-credit {
+  margin-top: 18px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pz-text-muted);
+  opacity: 0.9;
+}
+
+.ide-credit {
+  margin-left: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pz-text-muted);
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .ide-credit {
+    display: none;
+  }
 }
 
 #ideStatusHints { color: #49483e; }
