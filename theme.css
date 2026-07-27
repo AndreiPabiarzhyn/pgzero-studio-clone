@@ -209,6 +209,10 @@ body.app-ready {
 
 .tb-btn .tb-label {
   display: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 9em;
 }
 
 .tb-btn.tb-wide .tb-label {
@@ -293,6 +297,19 @@ body.app-ready {
 .tb-btn.tb-open-file:hover {
   background: color-mix(in srgb, #fbbf24 12%, var(--pz-surface));
   border-color: color-mix(in srgb, #fbbf24 75%, var(--pz-border));
+}
+
+.tb-btn.tb-publish {
+  background: color-mix(in srgb, #8b5cf6 14%, var(--pz-surface));
+  color: #7c3aed;
+  padding: 0 12px;
+  min-width: auto;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, #8b5cf6 32%, transparent);
+}
+
+.tb-btn.tb-publish:hover {
+  background: color-mix(in srgb, #8b5cf6 22%, var(--pz-surface));
 }
 
 .tb-btn.tb-save-slot .tb-label {
@@ -389,6 +406,31 @@ body.app-ready {
     width: min(130px, 24vw) !important;
     max-width: 130px !important;
   }
+}
+
+/* Узкая панель — только иконки на кнопках */
+#topPanel.topPanel--compact .toolPanel--kids .tb-btn .tb-label {
+  display: none !important;
+}
+
+#topPanel.topPanel--compact .toolPanel--kids .tb-btn.tb-wide,
+#topPanel.topPanel--compact .toolPanel--kids .tb-btn.tb-save-slot,
+#topPanel.topPanel--compact .toolPanel--kids .tb-btn.tb-publish {
+  width: 44px;
+  min-width: 44px;
+  max-width: 44px;
+  padding: 0;
+  gap: 0;
+}
+
+#topPanel.topPanel--compact .tb-brand-secondary {
+  display: none;
+}
+
+#topPanel.topPanel--compact .tb-project-name {
+  width: min(88px, 16vw) !important;
+  max-width: 88px !important;
+  min-width: 0 !important;
 }
 
 .session-save-status {
@@ -2064,12 +2106,6 @@ body.game-modal-dragging .game-modal-header {
   font-weight: 700;
 }
 
-@media (min-width: 900px) {
-  .tb-btn.tb-wide .tb-label {
-    display: inline;
-  }
-}
-
 /* Редактор кода — Monokai chrome */
 .ide-editor-wrap {
   --code-font-size: 15px;
@@ -2203,3 +2239,425 @@ body.game-modal-dragging .game-modal-header {
 .ide-status-spacer { flex: 1; }
 
 #ideStatusHints { color: #49483e; }
+
+/* ========== Публикация проекта ========== */
+.pg-publish-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100010;
+  display: flex;
+  background: linear-gradient(165deg, #eef4ff 0%, #f8fbff 45%, #e8f0fe 100%);
+  color: #1e293b;
+  font-family: var(--pz-font, system-ui, sans-serif);
+}
+
+.pg-publish-screen[hidden] { display: none !important; }
+
+.pg-publish-screen__layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+}
+
+.pg-publish-screen__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px 24px;
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.pg-publish-screen__icon { font-size: 48px; margin-bottom: 8px; }
+
+.pg-publish-screen__title {
+  margin: 0 0 8px;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+}
+
+.pg-publish-screen__game {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #5b8def;
+}
+
+.pg-publish-screen__hint {
+  margin: 0 0 20px;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.pg-publish-screen__url-label {
+  align-self: stretch;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.pg-publish-screen__url {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 2px solid #c7ddff;
+  border-radius: 12px;
+  background: #fff;
+  font-family: Consolas, monospace;
+  font-size: 0.85rem;
+  color: #334155;
+  margin-bottom: 16px;
+}
+
+.pg-publish-screen__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.pg-publish-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.pg-publish-btn--primary {
+  background: linear-gradient(180deg, #5b8def, #4f7fe0);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(91, 141, 239, 0.35);
+}
+
+.pg-publish-btn--secondary {
+  background: #fff;
+  color: #334155;
+  border: 2px solid #c7ddff;
+}
+
+.pg-publish-btn--ghost {
+  background: transparent;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.pg-publish-screen__note {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.pg-publish-screen__credit {
+  padding: 10px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+[data-app-theme="dark"] .pg-publish-screen {
+  background: linear-gradient(165deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+}
+
+[data-app-theme="dark"] .pg-publish-screen__url {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+/* ========== play.html — полноэкранная игра ========== */
+.pg-play-page {
+  margin: 0;
+  min-height: 100vh;
+  background: #0f172a;
+  color: #f1f5f9;
+  font-family: var(--pz-font, system-ui, sans-serif);
+}
+
+.pg-play-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pg-play-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid #334155;
+}
+
+.pg-play-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.pg-play-brand strong { color: #5b8def; }
+
+.pg-play-header__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: right;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pg-play-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 0;
+}
+
+.pg-play-panel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.pg-play-panel[hidden] { display: none !important; }
+
+.pg-play-loading {
+  text-align: center;
+  color: #94a3b8;
+}
+
+.pg-play-loading .spinner {
+  margin: 0 auto 16px;
+}
+
+.pg-play-intro {
+  text-align: center;
+  max-width: 420px;
+}
+
+.pg-play-intro__label {
+  margin: 0 0 8px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pg-play-intro__title {
+  margin: 0 0 28px;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  font-weight: 800;
+}
+
+.pg-play-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 36px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #34c759, #22a84a);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(52, 199, 89, 0.35);
+}
+
+.pg-play-start-btn__icon {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 1rem;
+}
+
+.pg-play-intro__note {
+  margin: 24px 0 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.pg-play-intro__note a { color: #5b8def; }
+
+.pg-play-error {
+  text-align: center;
+  max-width: 460px;
+  padding: 24px;
+}
+
+.pg-play-error h2 { margin-top: 0; }
+
+.pg-play-error__link {
+  display: inline-block;
+  margin-top: 16px;
+  color: #5b8def;
+}
+
+.pg-play-game-area {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-play-game-area[hidden] { display: none !important; }
+
+.pg-play-game-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0b1020;
+}
+
+.pg-play-game-overlay.is-open,
+.pg-play-page .pg-play-game-overlay[style*="flex"] {
+  display: flex !important;
+}
+
+.pg-play-game-window {
+  display: flex;
+  flex-direction: column;
+  max-width: min(100vw, 1280px);
+  max-height: calc(100vh - 80px);
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 2px solid #334155;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.pg-play-game-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(180deg, #334155, #1e293b);
+  border-bottom: 1px solid #475569;
+}
+
+.pg-play-game-bar__title {
+  flex: 1;
+  text-align: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.pg-play-game-bar__stop {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pg-play-game-canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.pg-play-footer {
+  padding: 8px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #64748b;
+  border-top: 1px solid #1e293b;
+}
+
+.pg-play-page #virtual-gamepad {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.pg-play-page #virtual-gamepad .left-side,
+.pg-play-page #virtual-gamepad .right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.pg-play-page #virtual-gamepad .action-btn,
+.pg-play-page #virtual-gamepad .dpad-btn {
+  width: 75px;
+  height: 75px;
+  color: #fff;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-play-page #virtual-gamepad .action-btn {
+  background: rgba(219, 68, 55, 1);
+  border: 2px solid #c53929;
+}
+
+.pg-play-page #virtual-gamepad .dpad-btn {
+  background: #000;
+  border: 2px solid #333;
+}
+
+.pg-play-page #virtual-gamepad .semi-left { border-radius: 0 50% 50% 0; }
+.pg-play-page #virtual-gamepad .semi-right { border-radius: 50% 0 0 50%; }
+
+@media (hover: hover) {
+  .pg-play-page #virtual-gamepad { display: none; }
+}
+
+@media (orientation: landscape) and (max-width: 768px) {
+  .pg-play-page #virtual-gamepad {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 20px;
+  }
+}

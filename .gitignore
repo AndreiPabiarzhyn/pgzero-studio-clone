@@ -6,3 +6,5 @@ Desktop.ini
 .idea/
 .cursor/
 _upstream/
+node_modules/
+.verify-screenshots/

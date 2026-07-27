@@ -2,6 +2,7 @@
   "name": "pgzero-studio",
   "private": true,
   "scripts": {
-    "test": "node tests/run-all.mjs"
+    "test": "node tests/run-all.mjs",
+    "dev": "python -m http.server 8100 --bind 127.0.0.1"
   }
 }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра — PGZero Studio</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.png" type="image/png" sizes="256x256">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./new-message.css">
+    <style>
+        #page-loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999999;
+            background: #0f172a;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid #334155;
+            border-top-color: #5b8def;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        #gameCanvas {
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            display: block;
+        }
+    </style>
+</head>
+<body class="pg-play-page">
+    <div id="page-loader"><div class="spinner"></div></div>
+
+    <div id="playPageShell" class="pg-play-shell">
+        <header class="pg-play-header">
+            <a class="pg-play-brand" href="./index.html" aria-label="PGZero Studio">
+                <img src="./favicon.svg" width="24" height="24" alt="">
+                <span><strong>PGZero</strong> Studio</span>
+            </a>
+            <h1 class="pg-play-header__title" data-play-title>Игра</h1>
+        </header>
+
+        <main class="pg-play-main">
+            <section id="playLoading" class="pg-play-panel">
+                <div class="pg-play-loading">
+                    <div class="spinner"></div>
+                    <p>Загружаем игру…</p>
+                </div>
+            </section>
+
+            <section id="playIntro" class="pg-play-panel" hidden>
+                <div class="pg-play-intro">
+                    <p class="pg-play-intro__label">Опубликованная игра</p>
+                    <h2 class="pg-play-intro__title" data-play-title>Игра</h2>
+                    <button type="button" id="playPageStartBtn" class="pg-play-start-btn" aria-label="Играть">
+                        <span class="pg-play-start-btn__icon">▶</span>
+                        <span>Играть</span>
+                    </button>
+                    <p class="pg-play-intro__note">Сделано в <a href="./index.html">PGZero Studio</a></p>
+                </div>
+            </section>
+
+            <section id="playError" class="pg-play-panel" hidden>
+                <div class="pg-play-error">
+                    <h2>Не удалось загрузить игру</h2>
+                    <p id="playErrorMessage"></p>
+                    <a class="pg-play-error__link" href="./index.html">Вернуться в Studio</a>
+                </div>
+            </section>
+
+            <section id="playGameArea" class="pg-play-game-area" hidden>
+                <div id="gameModal" class="pg-play-game-overlay">
+                    <div id="gameModalWindow" class="pg-play-game-window">
+                        <div id="gameModalHeader" class="pg-play-game-bar">
+                            <span id="gameTitle" class="pg-play-game-bar__title" data-play-title>Игра</span>
+                            <button type="button" id="closeGameBtn" class="pg-play-game-bar__stop" title="Остановить игру">✕</button>
+                        </div>
+                        <canvas id="gameCanvas" class="pg-play-game-canvas" tabindex="0"></canvas>
+                    </div>
+                    <div id="virtual-gamepad">
+                        <div class="left-side">
+                            <button class="action-btn semi-left" data-key="Z" type="button">B</button>
+                            <button class="dpad-btn semi-left" data-key="UP" type="button">↑</button>
+                            <button class="dpad-btn semi-left" data-key="DOWN" type="button">↓</button>
+                        </div>
+                        <div class="right-side">
+                            <button class="action-btn semi-right" data-key="SPACE" type="button">A</button>
+                            <button class="dpad-btn semi-right" data-key="RIGHT" type="button">→</button>
+                            <button class="dpad-btn semi-right" data-key="LEFT" type="button">←</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="pg-play-footer">Сделал Andrei Pabiarzhyn</footer>
+    </div>
+
+    <div id="output" hidden></div>
+    <button id="btn_run" hidden type="button"></button>
+    <button id="btn_stopRunning" hidden type="button"></button>
+
+    <script src="./lib/base.js"></script>
+    <script src="./lib/lib.js?v=0.026"></script>
+    <script src="./lib/storage-guard.js"></script>
+    <script src="./lib/skulpt/skulpt.min.js"></script>
+    <script src="./lib/skulpt/skulpt-stdlib.js"></script>
+    <script src="./lib/extlibs.js?v=0.026"></script>
+    <script src="./lib/jsfs2.js"></script>
+    <script src="./lib/jszip.min.js"></script>
+    <script src="./lib/pgz-project-io.js"></script>
+    <script src="./lib/project-publish.js"></script>
+    <script src="./lib/assets-gallery.js?v=0.026"></script>
+    <script src="./lib/play-page.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            PGZPlayPage.init();
+        });
+    </script>
+</body>
+</html>
