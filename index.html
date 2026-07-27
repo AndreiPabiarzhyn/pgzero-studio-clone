@@ -79,13 +79,13 @@
             <h1 class="pg-publish-screen__title">Игра опубликована!</h1>
             <p class="pg-publish-screen__game" id="publishSuccessTitle">«Моя игра»</p>
             <p class="pg-publish-screen__hint">Отправь ссылку друзьям — они смогут поиграть без редактора</p>
-            <label class="pg-publish-screen__url-label" for="publishSuccessUrl">Ссылка на игру (копируй целиком)</label>
-            <textarea id="publishSuccessUrl" class="pg-publish-screen__url" readonly rows="3" spellcheck="false"></textarea>
+            <label class="pg-publish-screen__url-label" for="publishSuccessUrl">Ссылка на игру</label>
+            <textarea id="publishSuccessUrl" class="pg-publish-screen__url" readonly rows="1" spellcheck="false"></textarea>
             <div class="pg-publish-screen__actions">
                 <button type="button" id="publishCopyLinkBtn" class="pg-publish-btn pg-publish-btn--primary">Скопировать ссылку</button>
                 <button type="button" id="publishOpenLinkBtn" class="pg-publish-btn pg-publish-btn--secondary">Открыть</button>
             </div>
-            <p class="pg-publish-screen__note">Ссылка работает в любом браузере и инкогнито. Если игра большая — уменьши картинки перед публикацией.</p>
+            <p class="pg-publish-screen__note">Короткая ссылка — игра на GitHub Pages, работает в РФ.</p>
             <button type="button" class="pg-publish-btn pg-publish-btn--ghost" onclick="PGZProjectPublish.hideSuccess()">Продолжить работу</button>
         </main>
         <footer class="pg-publish-screen__credit">Сделал Andrei Pabiarzhyn</footer>
@@ -119,6 +119,8 @@
     <script src="./lib/jszip.min.js"></script>
     <script src="./lib/FileSaver.min.js"></script>
     <script src="./lib/pgz-project-io.js"></script>
+    <script src="./lib/publish-config.js"></script>
+    <script src="./lib/publish-static.js"></script>
     <script src="./lib/publish-link.js"></script>
     <script src="./lib/project-publish.js"></script>
     <script>
@@ -1579,7 +1581,7 @@
 
 <footer id="appFooter" class="app-footer">
   <span id="footerProjectStatus" class="footer-project-status" aria-live="polite"></span>
-  <span class="footer-credits"><span class="footer-attribution">Форк <a href="https://ed-info.github.io/pgz/" target="_blank" rel="noopener noreferrer">PGZ Studio</a> (GPL-3.0)</span> · Crafted by <strong>Andrei Pabiarzhyn</strong></span>
+  <span class="footer-credits">Сделал <strong>Andrei Pabiarzhyn</strong></span>
   <span id="footerVersion" class="footer-version" title="PGZero Studio">v0.012</span>
 </footer>
 

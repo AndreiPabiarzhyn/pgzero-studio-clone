@@ -1149,21 +1149,6 @@ body.app-ready {
   animation: footer-credits-soft 5s ease-in-out infinite;
 }
 
-.footer-credits a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--pz-accent) 45%, transparent);
-  text-underline-offset: 2px;
-}
-
-.footer-credits a:hover {
-  color: var(--pz-accent);
-}
-
-.footer-attribution {
-  font-weight: 600;
-}
-
 .footer-credits strong {
   font-weight: 800;
   color: var(--pz-accent);

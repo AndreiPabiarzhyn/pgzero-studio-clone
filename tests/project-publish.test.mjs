@@ -74,10 +74,39 @@ test('toolbar-compact скрывает подписи при нехватке м
     assert.match(js, /measureNeedsCompact/);
 });
 
-test('переносимая ссылка использует hash pgz1=', () => {
-    const linkSource = readFileSync(join(__dirname, '../lib/publish-link.js'), 'utf8');
+test('короткая ссылка через GitHub Pages published/', () => {
+    const staticSource = readFileSync(join(__dirname, '../lib/publish-static.js'), 'utf8');
     const publishSource = readFileSync(join(__dirname, '../lib/project-publish.js'), 'utf8');
-    assert.match(linkSource, /#pgz1=/);
+    assert.match(staticSource, /published/);
+    assert.match(publishSource, /PGZPublishStatic\.uploadGame/);
     assert.match(publishSource, /PGZPublishLink\.encodePortableUrl/);
-    assert.match(readFileSync(join(__dirname, '../lib/play-page.js'), 'utf8'), /loadProjectFromPortable/);
+    assert.match(readFileSync(join(__dirname, '../lib/play-page.js'), 'utf8'), /loadProjectByStaticId/);
+});
+
+test('publish-static определяет repo на github.io', () => {
+    const staticSource = readFileSync(join(__dirname, '../lib/publish-static.js'), 'utf8');
+    const sandbox = {
+        PGZPublishConfig: { github: { token: '', path: 'published' } },
+        location: {
+            hostname: 'andreipabiarzhyn.github.io',
+            pathname: '/pgzero-studio-clone/index.html'
+        },
+        fetch: async () => ({ ok: true }),
+        console
+    };
+    sandbox.window = sandbox;
+    vm.createContext(sandbox);
+    vm.runInContext(staticSource, sandbox);
+    const detected = sandbox.window.PGZPublishStatic.detectFromLocation(sandbox.location);
+    assert.ok(detected);
+    assert.equal(detected.owner, 'andreipabiarzhyn');
+    assert.equal(detected.repo, 'pgzero-studio-clone');
+    const url = sandbox.window.PGZPublishStatic._test.getStaticUrl('abc123');
+    assert.equal(url, '/pgzero-studio-clone/published/abc123.pgz');
+});
+
+test('play.html подключает статическую публикацию', () => {
+    assert.match(playHtml, /publish-config\.js/);
+    assert.match(playHtml, /publish-static\.js/);
+    assert.doesNotMatch(playHtml, /publish-cloud\.js/);
 });

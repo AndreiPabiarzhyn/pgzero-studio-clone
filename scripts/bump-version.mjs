@@ -60,6 +60,8 @@ const playCacheBustFiles = [
     'lib/extlibs.js',
     'lib/assets-gallery.js',
     'lib/pgz-project-io.js',
+    'lib/publish-config.js',
+    'lib/publish-static.js',
     'lib/publish-link.js',
     'lib/project-publish.js',
     'lib/play-page.js'
