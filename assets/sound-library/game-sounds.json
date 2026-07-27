@@ -1,0 +1,39 @@
+[
+  { "id": "click", "label": "Кнопка", "group": "ui", "source": "kenney-interface", "file": "click_001.wav" },
+  { "id": "select", "label": "Выбор пункта", "group": "ui", "source": "kenney-interface", "file": "select_001.wav" },
+  { "id": "confirm", "label": "Подтверждение", "group": "ui", "source": "kenney-interface", "file": "confirmation_001.wav" },
+  { "id": "switch", "label": "Переключатель", "group": "ui", "source": "kenney-interface", "file": "switch_001.wav" },
+  { "id": "ui_error", "label": "Ошибка UI", "group": "ui", "source": "kenney-interface", "file": "error_001.wav" },
+  { "id": "tick", "label": "Тик таймера", "group": "ui", "source": "kenney-interface", "file": "tick_001.wav" },
+  { "id": "back", "label": "Назад", "group": "ui", "source": "kenney-interface", "file": "back_001.wav" },
+
+  { "id": "jump", "label": "Прыжок", "group": "player", "source": "scratch", "md5ext": "6fcd64d6357e4ea03704e5f96bfd35ba.wav", "scratchName": "Jump" },
+  { "id": "footsteps", "label": "Шаги", "group": "player", "source": "kenney-impact", "file": "footstep_grass_001.ogg" },
+  { "id": "land", "label": "Приземление", "group": "player", "source": "kenney-impact", "file": "impact_soft_medium_001.ogg" },
+  { "id": "dash", "label": "Рывок", "group": "player", "source": "scratch", "md5ext": "6a10c380af8c400f8f6eea84eb28bd12.wav", "scratchName": "High Whoosh" },
+
+  { "id": "shoot", "label": "Выстрел", "group": "combat", "source": "scratch", "md5ext": "27654ed2e3224f0a3f77c244e4fae9aa.wav", "scratchName": "Laser2" },
+  { "id": "laser", "label": "Лазер", "group": "combat", "source": "scratch", "md5ext": "46571f8ec0f2cc91666c80e312579082.wav", "scratchName": "Laser1" },
+  { "id": "hit", "label": "Попадание", "group": "combat", "source": "kenney-impact", "file": "impact_metal_light_002.ogg" },
+  { "id": "collision", "label": "Столкновение", "group": "combat", "source": "kenney-impact", "file": "impact_metal_medium_002.ogg" },
+  { "id": "punch", "label": "Удар", "group": "combat", "source": "kenney-impact", "file": "impact_punch_medium_001.ogg" },
+  { "id": "explosion", "label": "Взрыв", "group": "combat", "source": "scratch", "md5ext": "62d87dfb0f873735e59669d965bdbd7d.wav", "scratchName": "Boom Cloud" },
+  { "id": "glass_break", "label": "Разбить стекло", "group": "combat", "source": "kenney-impact", "file": "impact_glass_heavy_001.ogg" },
+
+  { "id": "coin", "label": "Монетка", "group": "items", "source": "scratch", "md5ext": "1f81d88fb419084f4d82ffb859b94ed6.wav", "scratchName": "Coin" },
+  { "id": "collect", "label": "Подбор предмета", "group": "items", "source": "scratch", "md5ext": "32514c51e03db680e9c63857b840ae78.wav", "scratchName": "Collect" },
+  { "id": "powerup", "label": "Бонус", "group": "items", "source": "scratch", "md5ext": "a434069c58e79d42f5d21abb1c318919.wav", "scratchName": "Goal Cheer" },
+  { "id": "magic", "label": "Магия", "group": "items", "source": "scratch", "md5ext": "1cb60ecdb1075c8769cb346d5c2a22c7.wav", "scratchName": "Magic Spell" },
+
+  { "id": "hurt", "label": "Поранение", "group": "life", "source": "kenney-impact", "file": "impact_punch_heavy_001.ogg" },
+  { "id": "death", "label": "Смерть персонажа", "group": "life", "source": "kenney-impact", "file": "impact_soft_heavy_003.ogg" },
+  { "id": "oops", "label": "Промах", "group": "life", "source": "scratch", "md5ext": "1139072c3d2d31fa5903c46632789d08.wav", "scratchName": "Oops" },
+
+  { "id": "win", "label": "Победа", "group": "game", "source": "scratch", "md5ext": "db480f6d5ae6d494dbb76ffb9bd995d5.wav", "scratchName": "Win" },
+  { "id": "success", "label": "Успех", "group": "game", "source": "scratch", "md5ext": "170e05c29d50918ae0b482c2955768c0.wav", "scratchName": "Cheer" },
+  { "id": "lose", "label": "Проигрыш", "group": "game", "source": "scratch", "md5ext": "d73eacaf5a905bf864041c7a70937ac4.wav", "scratchName": "Lose" },
+  { "id": "game_start", "label": "Старт игры", "group": "game", "source": "scratch", "md5ext": "fc6e9cc9ba13c7e4ebb1af6cd7c90c49.wav", "scratchName": "Video Game 1" },
+  { "id": "game_over", "label": "Конец игры", "group": "game", "source": "scratch", "md5ext": "287c477da485506c5b4ce37c57a64b5f.wav", "scratchName": "Video Game 2" },
+  { "id": "level_up", "label": "Новый уровень", "group": "game", "source": "kenney-interface", "file": "confirmation_004.wav" },
+  { "id": "alert", "label": "Опасность", "group": "game", "source": "scratch", "md5ext": "f62e3bfccab9c23eee781473c94a009c.wav", "scratchName": "Alert" }
+]

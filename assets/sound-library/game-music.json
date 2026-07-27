@@ -1,0 +1,20 @@
+[
+  { "id": "menu", "label": "Меню игры", "group": "menu", "source": "scratch", "md5ext": "fc6e9cc9ba13c7e4ebb1af6cd7c90c49.wav", "scratchName": "Video Game 1" },
+  { "id": "gameplay", "label": "Игровая", "group": "action", "source": "scratch", "md5ext": "e213e09ed852c621ba87cde7f95eec79.wav", "scratchName": "Dance Energetic" },
+  { "id": "action", "label": "Экшен", "group": "action", "source": "scratch", "md5ext": "8700dac70c8e08f4a5d21411980304bb.wav", "scratchName": "Techno" },
+  { "id": "space", "label": "Космос", "group": "action", "source": "scratch", "md5ext": "e15333f5ffaf08e145ace1610fccd67d.wav", "scratchName": "Dance Space" },
+  { "id": "fantasy", "label": "Волшебная", "group": "action", "source": "scratch", "md5ext": "042309f190183383c0b1c1fc3edc2e84.wav", "scratchName": "Dance Magic" },
+  { "id": "racing", "label": "Гонки", "group": "action", "source": "scratch", "md5ext": "a3a85fb8564b0266f50a9c091087b7aa.wav", "scratchName": "Drive Around" },
+
+  { "id": "calm", "label": "Спокойная", "group": "calm", "source": "scratch", "md5ext": "c4e9e84fd9244ca43986c2bdb6669ae8.wav", "scratchName": "Chill" },
+  { "id": "relaxed", "label": "Расслабленная", "group": "calm", "source": "scratch", "md5ext": "b235da45581b1f212c9e9cce70d2a2dc.wav", "scratchName": "Dance Chill Out" },
+  { "id": "cave", "label": "Пещера", "group": "calm", "source": "scratch", "md5ext": "881f1bf5f301a36efcce4204a44af9ab.wav", "scratchName": "Cave" },
+  { "id": "piano", "label": "Пианино", "group": "calm", "source": "scratch", "md5ext": "646ea2f42ab04b54f1359ccfac958561.wav", "scratchName": "Classical Piano" },
+  { "id": "lounge", "label": "Лаунж", "group": "calm", "source": "scratch", "md5ext": "04ccc72f32e909292adcaf40348be5f3.wav", "scratchName": "Bossa Nova" },
+  { "id": "reggae", "label": "Регги", "group": "calm", "source": "scratch", "md5ext": "19211d5ecd34214b6aba947790e63bb0.wav", "scratchName": "Reggae" },
+
+  { "id": "retro", "label": "Ретро-игра", "group": "retro", "source": "scratch", "md5ext": "287c477da485506c5b4ce37c57a64b5f.wav", "scratchName": "Video Game 2" },
+
+  { "id": "victory", "label": "Победа", "group": "jingle", "source": "kenney-mirror", "file": "kenney_musicjingles/Audio/Hit jingles/jingles_HIT00.ogg" },
+  { "id": "retro_jingle", "label": "8-bit заставка", "group": "jingle", "source": "kenney-mirror", "file": "kenney_musicjingles/Audio/8-Bit jingles/jingles_NES00.ogg" }
+]

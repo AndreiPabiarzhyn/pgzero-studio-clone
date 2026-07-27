@@ -1391,11 +1391,30 @@ body.app-ready .app-footer {
 
 #resourceGallery .item {
   position: relative;
-  max-width: 88px;
+  max-width: 76px;
+  font-size: 13px;
+  font-weight: 600;
   word-break: break-word;
   white-space: normal;
-  line-height: 1.2;
+  line-height: 1.25;
   cursor: pointer;
+}
+
+#resourceGallery .thumb-container {
+  width: 64px;
+  height: 40px;
+  margin: 0 auto 4px;
+}
+
+#resourceGallery .thumb {
+  max-width: 38px;
+  max-height: 38px;
+}
+
+#resourceGallery .audio-icon {
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 4px;
 }
 
 #resourceGallery .thumb-container,
@@ -1815,6 +1834,222 @@ body.layout-dragging-h * {
 
 .gallery-btn:active {
   transform: scale(0.96);
+}
+
+/* ========== Библиотека звуков ========== */
+.sound-library-overlay {
+  z-index: 2000;
+}
+
+.sound-library-modal {
+  width: min(640px, calc(100vw - 24px));
+  max-height: min(82vh, 720px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sound-library-hint {
+  margin: 0 16px 10px;
+  font-size: 13px;
+  color: var(--pz-text-muted);
+  line-height: 1.4;
+}
+
+.sound-library-search-wrap {
+  padding: 0 16px 10px;
+}
+
+.sound-library-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--pz-border);
+  background: var(--pz-bg);
+  color: var(--pz-text);
+  font-size: 14px;
+}
+
+.sound-library-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 8px;
+  max-height: 88px;
+  overflow-y: auto;
+}
+
+.sound-library-groups {
+  display: none;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 12px;
+}
+
+.sound-library-group {
+  border: 1px dashed var(--pz-border);
+  background: transparent;
+  color: var(--pz-text-muted);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.sound-library-group:hover {
+  border-color: #22c55e;
+  color: var(--pz-text);
+}
+
+.sound-library-group.active {
+  border-style: solid;
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.sound-library-cat {
+  border: 1px solid var(--pz-border);
+  background: var(--pz-bg-elevated);
+  color: var(--pz-text);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.sound-library-cat:hover {
+  border-color: var(--pz-accent);
+}
+
+.sound-library-cat.active {
+  background: var(--pz-accent);
+  border-color: var(--pz-accent);
+  color: #fff;
+}
+
+.sound-library-cat-game.active {
+  background: #22c55e;
+  border-color: #22c55e;
+}
+
+#musicLibraryGroups .sound-library-group.active {
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.12);
+  color: #a855f7;
+}
+
+#musicLibraryGroups .sound-library-group:hover {
+  border-color: #a855f7;
+}
+
+.sound-library-grid {
+  flex: 1;
+  min-height: 120px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 4px 12px 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+  align-content: start;
+}
+
+.sound-library-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--pz-border);
+  background: var(--pz-bg-elevated);
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  min-width: 0;
+}
+
+.sound-library-item:hover {
+  border-color: var(--pz-accent);
+}
+
+.sound-library-item.selected {
+  border-color: var(--pz-accent);
+  box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.25);
+}
+
+.sound-library-item.is-previewing {
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.sound-library-item-game {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.sound-library-item-game .sound-library-play {
+  align-self: flex-start;
+}
+
+.sound-library-code {
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--pz-text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sound-library-play {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.sound-library-play:hover {
+  background: rgba(139, 92, 246, 0.15);
+}
+
+.sound-library-name {
+  font-size: 13px;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.sound-library-status {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 24px 12px;
+  color: var(--pz-text-muted);
+  font-size: 14px;
+}
+
+.sound-library-error {
+  color: #ef4444;
+}
+
+.sound-library-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px 16px;
+  border-top: 1px solid var(--pz-border);
+}
+
+.sound-library-import-btn {
+  margin-right: auto;
 }
 
 /* ========== Окно игры (перетаскиваемое) ========== */
