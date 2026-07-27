@@ -53,3 +53,9 @@ test('GALLERY_POPOVER_ACTIONS image включает просмотр и уда�
   assert.ok(titles.includes('Посмотреть'));
   assert.ok(titles.includes('Удалить'));
 });
+
+test('после редактора сбрасывается кеш jsfs и обновляется галерея', () => {
+  assert.match(source, /invalidateMetadataCache/);
+  assert.match(source, /refreshAssetsAfterEditorChange/);
+  assert.match(readFileSync(join(__dirname, '../lib/draw-editor.js'), 'utf8'), /spriteSaved/);
+});

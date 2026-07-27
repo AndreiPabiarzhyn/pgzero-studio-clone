@@ -539,33 +539,156 @@ body.app-ready {
 }
 
 /* Галерея проектов */
+#projectGalleryModal.project-gallery-overlay,
+#gameTemplatesModal.project-gallery-overlay,
+#templateApplyModal.project-gallery-overlay {
+  z-index: 100000;
+}
+
 .project-gallery-overlay {
   z-index: 100000;
 }
 
-.project-gallery--startup {
-  background: var(--pz-bg) !important;
-  backdrop-filter: none;
+/* Стартовый экран — полная страница, не модалка */
+.pg-startup-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: none;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -8%, rgba(91, 141, 239, 0.2), transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(52, 199, 89, 0.08), transparent 40%),
+    var(--pz-bg);
+  overflow: auto;
 }
 
-.project-gallery--startup .project-gallery-modal {
-  width: min(760px, 96vw);
-  max-height: none;
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
+.pg-startup-screen__layout {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.project-gallery--startup .project-gallery-footer .project-gallery-close {
-  display: none !important;
+.pg-startup-screen__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vh, 32px);
+  width: min(860px, 100%);
+  margin: 0 auto;
+  padding: clamp(24px, 5vh, 48px) 20px 20px;
+  box-sizing: border-box;
 }
 
-.project-gallery--startup .modal-header .project-gallery-close {
-  display: none !important;
+.pg-startup-screen__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
 }
 
-.project-gallery--startup .project-gallery-import {
-  display: none !important;
+.pg-startup-screen__logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 112px;
+  border-radius: 30px;
+  background: var(--pz-bg-elevated);
+  border: 1px solid var(--pz-border);
+  box-shadow: 0 12px 32px rgba(91, 141, 239, 0.18);
+}
+
+.pg-startup-screen__logo {
+  display: block;
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+}
+
+.pg-startup-screen__brand {
+  margin: 10px 0 0;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--pz-text-muted);
+}
+
+.pg-startup-screen__brand span {
+  color: var(--pz-accent);
+}
+
+.pg-startup-screen__title {
+  margin: 2px 0 0;
+  font-size: clamp(2rem, 6vw, 2.875rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--pz-text);
+}
+
+.pg-startup-screen__subtitle {
+  margin: 0;
+  max-width: 28rem;
+  font-size: 0.975rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--pz-text-muted);
+}
+
+.pg-startup-screen__hint {
+  margin: 6px 0 0;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--pz-accent);
+}
+
+.pg-startup-screen__slots {
+  width: 100%;
+  padding: 18px 16px 20px;
+  border-radius: 22px;
+  background: var(--pz-bg-elevated);
+  border: 1px solid var(--pz-border);
+  box-shadow: var(--pz-shadow);
+}
+
+.pg-startup-grid {
+  gap: 12px;
+}
+
+.pg-startup-screen__credit {
+  flex-shrink: 0;
+  padding: 11px 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--pz-text-muted);
+  background: color-mix(in srgb, var(--pz-border) 40%, var(--pz-bg-elevated));
+  border-top: 1px solid var(--pz-border);
+}
+
+[data-app-theme="dark"] .pg-startup-screen {
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -8%, rgba(91, 141, 239, 0.14), transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(52, 199, 89, 0.06), transparent 40%),
+    var(--pz-bg);
+}
+
+[data-app-theme="dark"] .pg-startup-screen__logo-wrap {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+[data-app-theme="dark"] .pg-startup-screen__slots {
+  background: color-mix(in srgb, var(--pz-surface) 95%, #000);
+}
+
+[data-app-theme="dark"] .pg-startup-screen__credit {
+  background: color-mix(in srgb, var(--pz-bg-elevated) 88%, #000);
+  color: #94a3b8;
 }
 
 .project-gallery-modal {
@@ -739,6 +862,8 @@ body.app-ready {
   gap: 6px;
   min-height: 22px;
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .pg-slot-badge {
@@ -798,6 +923,8 @@ body.app-ready {
   justify-content: center;
   flex-shrink: 0;
   cursor: pointer;
+  position: relative;
+  z-index: 3;
   box-shadow: 0 2px 6px rgba(239, 68, 68, 0.35);
   transition: background 0.15s ease, transform 0.15s ease;
 }
@@ -806,6 +933,7 @@ body.app-ready {
   width: 14px;
   height: 14px;
   display: block;
+  pointer-events: none;
 }
 
 .pg-slot-clear-btn:hover {

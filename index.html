@@ -49,6 +49,27 @@
 	<div id="page-loader">
 		<div class="spinner"></div>
 	</div>
+
+<!-- Стартовый экран (не модалка) -->
+<div id="projectStartupScreen" class="pg-startup-screen" hidden>
+    <div class="pg-startup-screen__layout">
+        <main class="pg-startup-screen__main">
+            <header class="pg-startup-screen__hero">
+                <div class="pg-startup-screen__logo-wrap">
+                    <img class="pg-startup-screen__logo" src="./assets/logo.svg" width="96" height="96" alt="">
+                </div>
+                <p class="pg-startup-screen__brand"><span>PGZero</span> Studio</p>
+                <h1 class="pg-startup-screen__title">Привет!</h1>
+                <p class="pg-startup-screen__subtitle">Создавай игры прямо в браузере — код, картинки и звуки</p>
+                <p class="pg-startup-screen__hint">Выбери ячейку</p>
+            </header>
+            <div class="pg-startup-screen__slots">
+                <div id="projectStartupGrid" class="project-gallery-grid pg-startup-grid"></div>
+            </div>
+        </main>
+        <footer class="pg-startup-screen__credit">Сделал Andrei Pabiarzhyn</footer>
+    </div>
+</div>
 	<!-- CodeMirror -->
     <script src="./lib/cm/codemirror.js"></script>
     <script src="./lib/cm/active-line.js"></script>
@@ -66,13 +87,13 @@
     <script src="./lib/editor-ide.js"></script>
     <!-- Библиотеки -->
     <script src="./lib/base.js"></script>
-    <script src="./lib/lib.js?v=0.022"></script>
-    <script src="./lib/session.js?v=0.022"></script>
+    <script src="./lib/lib.js?v=0.024"></script>
+    <script src="./lib/session.js?v=0.024"></script>
     <script src="./lib/code-history.js"></script>
     <script src="./lib/storage-guard.js"></script>
     <script src="./lib/skulpt/skulpt.min.js"></script>
     <script src="./lib/skulpt/skulpt-stdlib.js"></script>
-    <script src="./lib/extlibs.js?v=0.022"></script>
+    <script src="./lib/extlibs.js?v=0.024"></script>
     <script src="./lib/jsfs2.js"></script>    
     <script src="./lib/jszip.min.js"></script>
     <script src="./lib/FileSaver.min.js"></script>
@@ -1969,10 +1990,10 @@
     </div>
 </div>
 
-<!-- Галерея проектов / стартовый экран -->
+<!-- Галерея проектов -->
 <div id="projectGalleryModal" class="modal-overlay project-gallery-overlay" style="display: none;">
     <div class="modal-content modal-dark project-gallery-modal">
-        <div class="modal-header">
+        <div class="modal-header project-gallery-header">
             <h3 class="modal-title" id="projectGalleryTitle">Мои игры</h3>
             <button type="button" class="modal-close project-gallery-close" data-modal-close aria-label="Закрыть">&times;</button>
         </div>
@@ -2078,10 +2099,10 @@
     <script src="./lib/app-theme.js"></script>
     <script src="./lib/version.js"></script>
     <script src="./lib/game-modal.js"></script>
-    <script src="./lib/assets-gallery.js?v=0.022"></script>
+    <script src="./lib/assets-gallery.js?v=0.024"></script>
     <script src="./lib/project-files.js"></script>
-    <script src="./lib/project-gallery.js?v=0.022"></script>
-    <script src="./lib/game-templates.js?v=0.022"></script>
+    <script src="./lib/project-gallery.js?v=0.024"></script>
+    <script src="./lib/game-templates.js?v=0.024"></script>
     <script src="./lib/layout-splitters.js"></script>
     <script src="./lib/modals.js"></script>
     <script>
@@ -2146,11 +2167,26 @@
         });
     
         const messageHandler = async(event) => {
-            if (event.source === iframe.contentWindow && event.data === 'closeEditor') {
+            if (event.source !== iframe.contentWindow || !event.data) return;
+
+            if (event.data.type === 'spriteSaved') {
+                if (typeof refreshAssetsAfterEditorChange === 'function') {
+                    await refreshAssetsAfterEditorChange();
+                } else {
+                    await initializeAssetsGallery();
+                }
+                return;
+            }
+
+            if (event.data === 'closeEditor') {
                 modal.remove();
                 window.removeEventListener('message', messageHandler);
-                await initializeAssetsGallery();
-                if (typeof scheduleProjectSave === 'function') scheduleProjectSave();
+                if (typeof refreshAssetsAfterEditorChange === 'function') {
+                    await refreshAssetsAfterEditorChange();
+                } else {
+                    await initializeAssetsGallery();
+                    if (typeof scheduleProjectSave === 'function') scheduleProjectSave();
+                }
             }
         };
     
@@ -2659,6 +2695,10 @@ const ModalUI = {
                     this.cancelBtn.innerText = 'Отмена';
                     this.inputWrapper.style.display = (type === 'input') ? 'block' : 'none';
                     this.cancelBtn.style.display = (type === 'message') ? 'none' : 'inline-block';
+                    if (this.container.parentNode !== document.body) {
+                        document.body.appendChild(this.container);
+                    }
+                    this.container.style.zIndex = '100020';
                     this.container.style.display = 'flex';
 
                     // Обработка кнопок
@@ -2666,14 +2706,24 @@ const ModalUI = {
                         this.container.style.display = 'none';
                     };
 
-                    this.okBtn.onclick = () => {
+                    const finish = (value) => {
                         cleanup();
-                        resolve(type === 'input' ? this.inputField.value : true);
+                        resolve(value);
+                    };
+
+                    this.okBtn.onclick = () => {
+                        finish(type === 'input' ? this.inputField.value : true);
                     };
 
                     this.cancelBtn.onclick = () => {
-                        cleanup();
-                        resolve(type === 'input' ? null : false);
+                        finish(type === 'input' ? null : false);
+                    };
+
+                    this.container.onclick = (e) => {
+                        if (e.target !== this.container) return;
+                        if (type === 'confirm' || type === 'input') {
+                            finish(type === 'input' ? null : false);
+                        }
                     };
 
                     // Фокус на поле ввода, если это input
