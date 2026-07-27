@@ -73,3 +73,11 @@ test('toolbar-compact скрывает подписи при нехватке м
     assert.match(css, /topPanel--compact/);
     assert.match(js, /measureNeedsCompact/);
 });
+
+test('переносимая ссылка использует hash pgz1=', () => {
+    const linkSource = readFileSync(join(__dirname, '../lib/publish-link.js'), 'utf8');
+    const publishSource = readFileSync(join(__dirname, '../lib/project-publish.js'), 'utf8');
+    assert.match(linkSource, /#pgz1=/);
+    assert.match(publishSource, /PGZPublishLink\.encodePortableUrl/);
+    assert.match(readFileSync(join(__dirname, '../lib/play-page.js'), 'utf8'), /loadProjectFromPortable/);
+});
