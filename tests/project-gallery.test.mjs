@@ -62,3 +62,10 @@ test('cellLabel возвращает понятное имя ячейки', () =
     assert.equal(cellLabel(0), 'Ячейка 1');
     assert.equal(cellLabel(5), 'Ячейка 6');
 });
+
+test('заполненные ячейки показывают кнопку очистки', () => {
+    assert.match(source, /function clearSlotButtonHtml/);
+    assert.match(source, /data-action="clear"/);
+    assert.match(source, /async function clearSlot/);
+    assert.match(source, /Точно очистить .*без восстановления/);
+});

@@ -32,6 +32,7 @@ test('Actor.__init__ поддерживает topleft при создании', 
     assert.match(pgzSource, /updateActorAttribute\(self, new Sk\.builtin\.str\(key\), value\)/);
     assert.match(pgzSource, /'topleft', 'topright', 'bottomleft', 'bottomright'/);
     assert.match(pgzSource, /init\.co_varnames = \['self', 'name', 'pos'\]/);
+    assert.match(pgzSource, /init\.\$defaults = \[Sk\.builtin\.none\.none\$\]/);
 });
 
 test('экран очищается перед каждым draw()', () => {
