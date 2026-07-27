@@ -244,6 +244,54 @@
             white-space: nowrap;
         }
 
+        .de-brush-cursor {
+            position: fixed;
+            pointer-events: none;
+            border: 1.5px solid rgba(30, 58, 95, 0.92);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.92);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            box-sizing: border-box;
+        }
+
+        .de-brush-cursor.is-square {
+            border-radius: 1px;
+        }
+
+        .de-brush-cursor.is-eraser {
+            border-style: dashed;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .de-brush-cursor[hidden] {
+            display: none !important;
+        }
+
+        .de-tool .de-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .de-tool .de-icon--stroke {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.75;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .de-btn .de-icon--stroke {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -310,8 +358,12 @@
         <div class="de-group">
             <button type="button" id="openBtn" class="de-btn" title="Открыть">Открыть</button>
             <button type="button" id="saveBtn" class="de-btn" title="Скачать PNG">Сохранить</button>
-            <button type="button" id="undoBtn" class="de-btn" title="Отменить">↩</button>
-            <button type="button" id="redoBtn" class="de-btn" title="Повторить">↪</button>
+            <button type="button" id="undoBtn" class="de-btn" title="Отменить">
+                <svg class="de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7H5v4"/><path d="M5 11c1.5-3 4.5-5 8-5 4.4 0 8 3.6 8 8s-3.6 8-8 8"/></svg>
+            </button>
+            <button type="button" id="redoBtn" class="de-btn" title="Повторить">
+                <svg class="de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7h4v4"/><path d="M19 11c-1.5-3-4.5-5-8-5-4.4 0-8 3.6-8 8s3.6 8 8 8"/></svg>
+            </button>
         </div>
 
         <div class="de-group">
@@ -323,7 +375,7 @@
         </div>
 
         <label class="de-size">
-            Кисть
+            <span id="brushSizeTitle">Кисть</span>
             <input type="range" id="brushSize" min="1" max="32" value="1">
             <span id="brushSizeLabel">1</span> px
         </label>
@@ -334,24 +386,61 @@
 
     <div class="de-main">
         <aside class="de-sidebar">
-            <button type="button" class="de-tool active" data-tool="brush" id="brushBtn" title="Кисть">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 3-9 9H3v-3l9-9zm7 7l2 2-2 2-2-2 2-2z"/></svg>
+            <button type="button" class="de-tool active" data-tool="brush" title="Кисть">
+                <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.4 3.6l2 2c.8.8.8 2 0 2.8l-9 9-3.8 1 1-3.8 9-9c.8-.8 2-.8 2.8 0z"/>
+                    <path d="M3 21h7.5"/>
+                </svg>
                 Кисть
             </button>
-            <button type="button" class="de-tool" data-tool="eraser" id="eraserBtn" title="Ластик">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3l5 5-10 10H6v-5L16 3zM4 20h16v2H4v-2z"/></svg>
+            <button type="button" class="de-tool" data-tool="pencil" title="Пиксельный карандаш">
+                <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="5" y="5" width="4" height="4" fill="currentColor" stroke="none"/>
+                    <rect x="9" y="9" width="4" height="4" fill="currentColor" stroke="none" opacity="0.65"/>
+                    <path d="M13 13l7 7"/>
+                    <path d="M16 16l3 3"/>
+                </svg>
+                Пиксель
+            </button>
+            <button type="button" class="de-tool" data-tool="mirror" title="Зеркальная кисть">
+                <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3v18"/>
+                    <path d="M6 9c1.5-1.5 3.5-1.5 5 0"/>
+                    <path d="M18 9c-1.5-1.5-3.5-1.5-5 0"/>
+                    <path d="M6 15c1.5 1.5 3.5 1.5 5 0"/>
+                    <path d="M18 15c-1.5 1.5-3.5 1.5-5 0"/>
+                </svg>
+                Зеркало
+            </button>
+            <button type="button" class="de-tool" data-tool="eraser" title="Ластик">
+                <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 20h10"/>
+                    <path d="M19 7l-4-4a2 2 0 0 0-2.8 0L5 14l5 5 9.2-9.2a2 2 0 0 0 0-2.8z"/>
+                </svg>
                 Ластик
             </button>
-            <button type="button" class="de-tool" data-tool="fill" id="fillBtn" title="Заливка">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.6l2.8 2.8-9.3 9.3-2.8-2.8 9.3-9.3zM5 19h14v2H5v-2z"/></svg>
+            <button type="button" class="de-tool" data-tool="fill" title="Заливка">
+                <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2l8 8-8 8-8-8 8-8z"/>
+                    <path d="M5 22h14"/>
+                </svg>
                 Заливка
             </button>
-            <button type="button" class="de-tool" data-tool="eyedropper" id="eyedropperBtn" title="Пипетка">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2l12 12-2 2-5-5-5 5-2-2 5-5L7 2zm12 12l2 2-2 2-2-2 2-2z"/></svg>
-                Цвет
+            <button type="button" class="de-tool" data-tool="eyedropper" title="Пипетка">
+                <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 20l4-4"/>
+                    <path d="M8 16l8-8 2 2-8 8-2-2z"/>
+                    <path d="M16 6l2 2"/>
+                </svg>
+                Пипетка
             </button>
-            <button type="button" class="de-tool de-tool-action" id="clearBtn" title="Очистить">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 7h12l-1 12H7L6 7zm3-3h6l1 2H8l1-2z"/></svg>
+            <button type="button" class="de-tool de-tool-action" id="clearBtn" title="Очистить холст">
+                <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 7h16"/>
+                    <path d="M7 7l1 12h8l1-12"/>
+                    <path d="M9 7V5h6v2"/>
+                    <path d="M10 11v5M14 11v5"/>
+                </svg>
                 Очистить
             </button>
         </aside>
@@ -369,9 +458,11 @@
     <footer class="de-bottom">
         <input type="color" id="colorPicker" value="#000000">
         <div id="colorPalette"></div>
-        <span class="de-hint">Ctrl + колёсико — зум</span>
+        <span class="de-hint">Круг у курсора — размер кисти · Ctrl + колёсико — зум</span>
     </footer>
 </div>
+
+<div id="brushCursor" class="de-brush-cursor" hidden aria-hidden="true"></div>
 
 <div id="modal-container" class="modal-overlay">
     <div class="modal-content">
