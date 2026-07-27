@@ -12,6 +12,10 @@
     backdrop-filter: blur(2px);
 }
 
+#modal-container {
+    z-index: 100010;
+}
+
 #modal-container .message-modal-box {
     width: min(420px, 92vw);
     max-height: 90vh;
