@@ -34,6 +34,14 @@ test('schedule_interval доступен как глобальная функц�
     assert.match(pgzSource, /exposeClockGlobal\('schedule_interval', 2\)/);
 });
 
+test('Tab в редакторе делает отступ как в Python IDE', () => {
+    const editorIdeSource = readFileSync(join(root, 'lib/editor-ide.js'), 'utf8');
+    assert.match(editorIdeSource, /function indentLikePython/);
+    assert.match(editorIdeSource, /insertSoftTab/);
+    assert.match(editorIdeSource, /'Shift-Tab': outdentLikePython/);
+    assert.doesNotMatch(libSource, /showHint\(\{ hint: PythonIDE\.autoComplete/);
+});
+
 test('pgzrun грузится с cache-bust версией', () => {
     const extlibsSource = readFileSync(join(root, 'lib/extlibs.js'), 'utf8');
     assert.match(extlibsSource, /PGZRUN_ASSET_VERSION/);

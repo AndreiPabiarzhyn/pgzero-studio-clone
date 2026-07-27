@@ -36,6 +36,7 @@ writeFileSync(
 
 const cacheBustFiles = [
     'lib/lib.js',
+    'lib/editor-ide.js',
     'lib/session.js',
     'lib/extlibs.js',
     'lib/assets-gallery.js',
