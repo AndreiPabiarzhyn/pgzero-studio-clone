@@ -1,3 +1,3 @@
 #!/bin/sh
 node scripts/bump-version.mjs
-git add version.json
+git add version.json lib/extlibs.js index.html play.html

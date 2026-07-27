@@ -40,6 +40,11 @@ const cacheBustFiles = [
     'lib/editor-ide.js',
     'lib/session.js',
     'lib/extlibs.js',
+    'lib/pgz-project-io.js',
+    'lib/publish-config.js',
+    'lib/publish-static.js',
+    'lib/publish-link.js',
+    'lib/project-publish.js',
     'lib/assets-gallery.js',
     'lib/project-gallery.js',
     'lib/game-templates.js'
@@ -53,6 +58,10 @@ for (const file of cacheBustFiles) {
         '$1?v=' + nextVersion
     );
 }
+indexHtml = indexHtml.replace(
+    /(id="footerVersion"[^>]*>)\s*v[0-9.]+/,
+    '$1v' + nextVersion
+);
 writeFileSync(indexPath, indexHtml, 'utf8');
 
 const playCacheBustFiles = [
