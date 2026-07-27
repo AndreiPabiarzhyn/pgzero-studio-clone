@@ -2311,9 +2311,13 @@ body.game-modal-dragging .game-modal-header {
   border-radius: 12px;
   background: #fff;
   font-family: Consolas, monospace;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
   color: #334155;
   margin-bottom: 16px;
+  resize: none;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .pg-publish-screen__actions {

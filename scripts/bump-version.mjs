@@ -11,6 +11,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const versionPath = join(root, 'version.json');
 const extlibsPath = join(root, 'lib/extlibs.js');
 const indexPath = join(root, 'index.html');
+const playHtmlPath = join(root, 'play.html');
 
 const data = JSON.parse(readFileSync(versionPath, 'utf8'));
 const current = Number.parseFloat(data.version);
@@ -53,5 +54,25 @@ for (const file of cacheBustFiles) {
     );
 }
 writeFileSync(indexPath, indexHtml, 'utf8');
+
+const playCacheBustFiles = [
+    'lib/lib.js',
+    'lib/extlibs.js',
+    'lib/assets-gallery.js',
+    'lib/pgz-project-io.js',
+    'lib/publish-link.js',
+    'lib/project-publish.js',
+    'lib/play-page.js'
+];
+
+let playHtml = readFileSync(playHtmlPath, 'utf8');
+for (const file of playCacheBustFiles) {
+    const escaped = file.replace(/\./g, '\\.');
+    playHtml = playHtml.replace(
+        new RegExp('(' + escaped + ')(\\?v=[^"\']+)?', 'g'),
+        '$1?v=' + nextVersion
+    );
+}
+writeFileSync(playHtmlPath, playHtml, 'utf8');
 
 console.log('Version bumped to ' + nextVersion);
