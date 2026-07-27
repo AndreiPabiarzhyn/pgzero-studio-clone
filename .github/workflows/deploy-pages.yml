@@ -29,6 +29,11 @@ jobs:
         with:
           enablement: true
 
+      - name: Inject publish token
+        env:
+          PGZ_PUBLISH_TOKEN: ${{ secrets.PGZ_PUBLISH_TOKEN }}
+        run: node scripts/inject-publish-token.mjs
+
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
