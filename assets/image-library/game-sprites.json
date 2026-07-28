@@ -1,39 +1,322 @@
 [
-  { "id": "coddy", "label": "Кодди (бег)", "group": "characters", "source": "local", "file": "assets/image-library/pixel/characters/coddy.png" },
-  { "id": "coddy_left", "label": "Кодди (влево)", "group": "characters", "source": "local", "file": "assets/image-library/pixel/characters/coddy_left.png" },
-  { "id": "coddy_up", "label": "Кодди (вверх)", "group": "characters", "source": "local", "file": "assets/image-library/pixel/characters/coddy_up.png" },
-  { "id": "evasion", "label": "Уклонение", "group": "characters", "source": "local", "file": "assets/image-library/pixel/characters/evasion.png" },
-  { "id": "ship", "label": "Корабль", "group": "characters", "source": "local", "file": "assets/image-library/pixel/characters/ship.png" },
-  { "id": "ship_2", "label": "Корабль 2", "group": "characters", "source": "local", "file": "assets/image-library/pixel/characters/ship_2.png" },
-  { "id": "ship_3", "label": "Корабль 3", "group": "characters", "source": "local", "file": "assets/image-library/pixel/characters/ship_3.png" },
-  { "id": "rogue", "label": "Герой (стоя)", "group": "characters", "source": "local", "file": "assets/image-library/pixel/characters/rogue.png" },
-  { "id": "rogue_left", "label": "Герой (влево)", "group": "characters", "source": "local", "file": "assets/image-library/pixel/characters/rogue_left.png" },
-  { "id": "leviathan", "label": "Левиафан", "group": "enemies", "source": "local", "file": "assets/image-library/pixel/enemies/leviathan.png" },
-  { "id": "meteor_enemy", "label": "Враг (космос)", "group": "enemies", "source": "local", "file": "assets/image-library/pixel/enemies/meteor_enemy.png" },
-  { "id": "clicker_enemy", "label": "Монстр 1", "group": "enemies", "source": "local", "file": "assets/image-library/pixel/enemies/clicker_enemy.png" },
-  { "id": "clicker_enemy_2", "label": "Монстр 2", "group": "enemies", "source": "local", "file": "assets/image-library/pixel/enemies/clicker_enemy_2.png" },
-  { "id": "clicker_enemy_3", "label": "Монстр 3", "group": "enemies", "source": "local", "file": "assets/image-library/pixel/enemies/clicker_enemy_3.png" },
-  { "id": "clicker_enemy_4", "label": "Монстр 4", "group": "enemies", "source": "local", "file": "assets/image-library/pixel/enemies/clicker_enemy_4.png" },
-  { "id": "clicker_enemy_5", "label": "Монстр 5", "group": "enemies", "source": "local", "file": "assets/image-library/pixel/enemies/clicker_enemy_5.png" },
-  { "id": "rogue_enemy", "label": "Враг (подземелье)", "group": "enemies", "source": "local", "file": "assets/image-library/pixel/enemies/rogue_enemy.png" },
-  { "id": "bonus", "label": "Бонус", "group": "items", "source": "local", "file": "assets/image-library/pixel/items/bonus.png" },
-  { "id": "sword", "label": "Меч", "group": "items", "source": "local", "file": "assets/image-library/pixel/items/sword.png" },
-  { "id": "heart", "label": "Сердце", "group": "items", "source": "local", "file": "assets/image-library/pixel/items/heart.png" },
-  { "id": "bones", "label": "Кости", "group": "items", "source": "local", "file": "assets/image-library/pixel/items/bones.png" },
-  { "id": "fireball", "label": "Огненный шар", "group": "effects", "source": "local", "file": "assets/image-library/pixel/effects/fireball.png" },
-  { "id": "fireball_2", "label": "Огненный шар 2", "group": "effects", "source": "local", "file": "assets/image-library/pixel/effects/fireball_2.png" },
-  { "id": "hurt", "label": "Урон", "group": "effects", "source": "local", "file": "assets/image-library/pixel/effects/hurt.png" },
-  { "id": "bullet", "label": "Пуля", "group": "effects", "source": "local", "file": "assets/image-library/pixel/effects/bullet.png" },
-  { "id": "missiles", "label": "Ракеты", "group": "effects", "source": "local", "file": "assets/image-library/pixel/effects/missiles.png" },
-  { "id": "meteor", "label": "Метеор", "group": "effects", "source": "local", "file": "assets/image-library/pixel/effects/meteor.png" },
-  { "id": "floor", "label": "Пол", "group": "tiles", "source": "local", "file": "assets/image-library/pixel/tiles/floor.png" },
-  { "id": "crack", "label": "Трещина", "group": "tiles", "source": "local", "file": "assets/image-library/pixel/tiles/crack.png" },
-  { "id": "border", "label": "Стена", "group": "tiles", "source": "local", "file": "assets/image-library/pixel/tiles/border.png" },
-  { "id": "game_over", "label": "Game Over", "group": "ui", "source": "local", "file": "assets/image-library/pixel/ui/game_over.png" },
-  { "id": "win", "label": "Победа", "group": "ui", "source": "local", "file": "assets/image-library/pixel/ui/win.png" },
-  { "id": "fon_main", "label": "Фон: меню", "group": "backgrounds", "source": "local", "file": "assets/image-library/backgrounds/fon_main.png" },
-  { "id": "fon_city", "label": "Фон: город", "group": "backgrounds", "source": "local", "file": "assets/image-library/backgrounds/fon_city.png" },
-  { "id": "fon_mountains", "label": "Фон: горы", "group": "backgrounds", "source": "local", "file": "assets/image-library/backgrounds/fon_mountains.png" },
-  { "id": "space", "label": "Фон: космос", "group": "backgrounds", "source": "local", "file": "assets/image-library/backgrounds/space.jpg" },
-  { "id": "clicker_fon", "label": "Фон: кликер", "group": "backgrounds", "source": "local", "file": "assets/image-library/backgrounds/clicker_fon.jpg" }
+  {
+    "id": "hero_green_idle",
+    "label": "Герой (зелёный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_idle.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "hero_green_run",
+    "label": "Герой бежит",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_run.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "hero_green_jump",
+    "label": "Герой прыгает",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_jump.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "hero_pink_idle",
+    "label": "Герой (розовый)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_pink_idle.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "hero_pink_run",
+    "label": "Розовый бежит",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_pink_run.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "hero_yellow_idle",
+    "label": "Герой (жёлтый)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_yellow_idle.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "hero_yellow_run",
+    "label": "Жёлтый бежит",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_yellow_run.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "hero_purple_idle",
+    "label": "Герой (фиолетовый)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_purple_idle.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "hero_purple_run",
+    "label": "Фиолетовый бежит",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_purple_run.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "slime_green",
+    "label": "Слайм (зелёный)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/slime_green.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "slime_pink",
+    "label": "Слайм (розовый)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/slime_pink.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "slime_yellow",
+    "label": "Слайм (жёлтый)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/slime_yellow.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "slime_purple",
+    "label": "Слайм (фиолетовый)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/slime_purple.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "bee",
+    "label": "Пчела",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/bee.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "snail",
+    "label": "Улитка",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/snail.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "fish",
+    "label": "Рыба",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/fish.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "frog",
+    "label": "Лягушка",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/frog.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "coin",
+    "label": "Монетка",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/coin.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "gem",
+    "label": "Кристалл",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/gem.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "key",
+    "label": "Ключ",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/key.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "heart",
+    "label": "Сердце",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/heart.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "flag",
+    "label": "Флаг",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/flag.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "chest",
+    "label": "Сундук",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/chest.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "star",
+    "label": "Звезда",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/star.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "bomb",
+    "label": "Бомба",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/bomb.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "fire",
+    "label": "Огонь",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "grass_block",
+    "label": "Блок (трава)",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/grass_block.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "dirt_block",
+    "label": "Блок (земля)",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/dirt_block.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "stone_block",
+    "label": "Блок (камень)",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/stone_block.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "brick_block",
+    "label": "Кирпич",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/brick_block.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "spike",
+    "label": "Шипы",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/spike.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "ladder",
+    "label": "Лестница",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/ladder.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "btn_play",
+    "label": "Кнопка Play",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/btn_play.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "btn_pause",
+    "label": "Кнопка Pause",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/btn_pause.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "btn_home",
+    "label": "Кнопка Home",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/btn_home.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "bg_sky",
+    "label": "Фон: небо",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_sky.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "bg_hills",
+    "label": "Фон: холмы",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_hills.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "bg_clouds",
+    "label": "Фон: облака",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_clouds.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "bg_city",
+    "label": "Фон: город",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_city.png",
+    "pack": "kenney-pixel-platformer"
+  },
+  {
+    "id": "bg_night",
+    "label": "Фон: ночь",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_night.png",
+    "pack": "kenney-pixel-platformer"
+  }
 ]
