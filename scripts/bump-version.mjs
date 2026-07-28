@@ -47,7 +47,10 @@ const cacheBustFiles = [
     'lib/project-publish.js',
     'lib/assets-gallery.js',
     'lib/project-gallery.js',
-    'lib/game-templates.js'
+    'lib/game-templates.js',
+    'lib/wav-adpcm.js',
+    'lib/sound-library.js',
+    'lib/music-library.js'
 ];
 
 let indexHtml = readFileSync(indexPath, 'utf8');
@@ -61,6 +64,10 @@ for (const file of cacheBustFiles) {
 indexHtml = indexHtml.replace(
     /(id="footerVersion"[^>]*>)\s*v[0-9.]+/,
     '$1v' + nextVersion
+);
+indexHtml = indexHtml.replace(
+    /href="\.\/theme\.css(\?v=[^"]*)?"/,
+    'href="./theme.css?v=' + nextVersion + '"'
 );
 writeFileSync(indexPath, indexHtml, 'utf8');
 
