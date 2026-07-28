@@ -10,7 +10,7 @@ import vm from 'node:vm';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-function loadImageLibraryTest() {
+function loadImageLibraryTest(version) {
   const source = readFileSync(join(__dirname, '../lib/image-library.js'), 'utf8');
   const sandbox = {
     window: {},
@@ -20,6 +20,7 @@ function loadImageLibraryTest() {
       querySelectorAll: () => [],
       readyState: 'complete'
     },
+    PGZRUN_ASSET_VERSION: version || '0.036',
     console
   };
   sandbox.window = sandbox;
@@ -46,7 +47,7 @@ test('resolveSpriteUrl поддерживает локальные файлы', 
   assert.equal(resolveSpriteUrl({
     source: 'local',
     file: 'assets/image-library/kenney/characters/hero_green_idle.png'
-  }), './assets/image-library/kenney/characters/hero_green_idle.png');
+  }), './assets/image-library/kenney/characters/hero_green_idle.png?v=0.036');
 });
 
 test('mapSpriteEntry задаёт имя для Actor', () => {
@@ -60,5 +61,5 @@ test('mapSpriteEntry задаёт имя для Actor', () => {
   });
   assert.equal(mapped.importName, 'hero_green_idle');
   assert.equal(mapped.ext, 'png');
-  assert.match(mapped.url, /hero_green_idle\.png$/);
+  assert.match(mapped.url, /hero_green_idle\.png\?v=0\.036$/);
 });
