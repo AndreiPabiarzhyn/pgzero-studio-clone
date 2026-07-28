@@ -8,11 +8,19 @@
     "pack": "platformer-redux"
   },
   {
-    "id": "hero_green_walk",
-    "label": "Герой зелёный (шаг)",
+    "id": "hero_green_walk1",
+    "label": "Герой зелёный (шаг 1)",
     "group": "characters",
     "source": "local",
-    "file": "assets/image-library/kenney/characters/hero_green_walk.png",
+    "file": "assets/image-library/kenney/characters/hero_green_walk1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_green_walk2",
+    "label": "Герой зелёный (шаг 2)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_walk2.png",
     "pack": "platformer-redux"
   },
   {
@@ -32,6 +40,54 @@
     "pack": "platformer-redux"
   },
   {
+    "id": "hero_green_hit",
+    "label": "Герой зелёный (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_hit.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_green_climb1",
+    "label": "Герой зелёный (лазает 1)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_climb1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_green_climb2",
+    "label": "Герой зелёный (лазает 2)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_climb2.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_green_swim1",
+    "label": "Герой зелёный (плавает 1)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_swim1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_green_swim2",
+    "label": "Герой зелёный (плавает 2)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_swim2.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_green_front",
+    "label": "Герой зелёный (вперёд)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_green_front.png",
+    "pack": "platformer-redux"
+  },
+  {
     "id": "hero_blue_stand",
     "label": "Герой синий (стоит)",
     "group": "characters",
@@ -40,11 +96,43 @@
     "pack": "platformer-redux"
   },
   {
-    "id": "hero_blue_walk",
-    "label": "Герой синий (шаг)",
+    "id": "hero_blue_walk1",
+    "label": "Герой синий (шаг 1)",
     "group": "characters",
     "source": "local",
-    "file": "assets/image-library/kenney/characters/hero_blue_walk.png",
+    "file": "assets/image-library/kenney/characters/hero_blue_walk1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_blue_walk2",
+    "label": "Герой синий (шаг 2)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_blue_walk2.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_blue_jump",
+    "label": "Герой синий (прыжок)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_blue_jump.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_blue_duck",
+    "label": "Герой синий (присел)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_blue_duck.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_blue_hit",
+    "label": "Герой синий (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_blue_hit.png",
     "pack": "platformer-redux"
   },
   {
@@ -56,11 +144,227 @@
     "pack": "platformer-redux"
   },
   {
+    "id": "hero_pink_walk1",
+    "label": "Герой розовый (шаг 1)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_pink_walk1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_pink_walk2",
+    "label": "Герой розовый (шаг 2)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_pink_walk2.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_pink_jump",
+    "label": "Герой розовый (прыжок)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_pink_jump.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_pink_duck",
+    "label": "Герой розовый (присел)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_pink_duck.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_pink_hit",
+    "label": "Герой розовый (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_pink_hit.png",
+    "pack": "platformer-redux"
+  },
+  {
     "id": "hero_yellow_stand",
     "label": "Герой жёлтый (стоит)",
     "group": "characters",
     "source": "local",
     "file": "assets/image-library/kenney/characters/hero_yellow_stand.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_yellow_walk1",
+    "label": "Герой жёлтый (шаг 1)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_yellow_walk1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_yellow_walk2",
+    "label": "Герой жёлтый (шаг 2)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_yellow_walk2.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_yellow_jump",
+    "label": "Герой жёлтый (прыжок)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_yellow_jump.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_yellow_duck",
+    "label": "Герой жёлтый (присел)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_yellow_duck.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_yellow_hit",
+    "label": "Герой жёлтый (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_yellow_hit.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_beige_stand",
+    "label": "Герой бежевый (стоит)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_beige_stand.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_beige_walk1",
+    "label": "Герой бежевый (шаг 1)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_beige_walk1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_beige_walk2",
+    "label": "Герой бежевый (шаг 2)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_beige_walk2.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_beige_jump",
+    "label": "Герой бежевый (прыжок)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_beige_jump.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_beige_duck",
+    "label": "Герой бежевый (присел)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_beige_duck.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hero_beige_hit",
+    "label": "Герой бежевый (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/hero_beige_hit.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bee",
+    "label": "Пчела",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/bee.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "fish_blue",
+    "label": "Рыба синяя",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/fish_blue.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "fish_green",
+    "label": "Рыба зелёная",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/fish_green.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "fish_pink",
+    "label": "Рыба розовая",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/fish_pink.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "fly",
+    "label": "Муха",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/fly.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "frog",
+    "label": "Лягушка",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/frog.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "ladybug",
+    "label": "Божья коровка",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/ladybug.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "mouse",
+    "label": "Мышь",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/mouse.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "saw",
+    "label": "Пила",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/saw.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "saw_half",
+    "label": "Пила (половина)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/saw_half.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "slime_block",
+    "label": "Слайм-блок",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/slime_block.png",
     "pack": "platformer-redux"
   },
   {
@@ -80,19 +384,11 @@
     "pack": "platformer-redux"
   },
   {
-    "id": "bee",
-    "label": "Пчела",
+    "id": "slime_purple",
+    "label": "Слайм фиолетовый",
     "group": "enemies",
     "source": "local",
-    "file": "assets/image-library/kenney/enemies/bee.png",
-    "pack": "platformer-redux"
-  },
-  {
-    "id": "fish_blue",
-    "label": "Рыба",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/fish_blue.png",
+    "file": "assets/image-library/kenney/enemies/slime_purple.png",
     "pack": "platformer-redux"
   },
   {
@@ -104,16 +400,40 @@
     "pack": "platformer-redux"
   },
   {
-    "id": "frog",
-    "label": "Лягушка",
+    "id": "worm_green",
+    "label": "Червь зелёный",
     "group": "enemies",
     "source": "local",
-    "file": "assets/image-library/kenney/enemies/frog.png",
+    "file": "assets/image-library/kenney/enemies/worm_green.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "worm_pink",
+    "label": "Червь розовый",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/worm_pink.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "barnacle",
+    "label": "Утконос",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/barnacle.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "coin_bronze",
+    "label": "Монета бронза",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/coin_bronze.png",
     "pack": "platformer-redux"
   },
   {
     "id": "coin_gold",
-    "label": "Монетка золото",
+    "label": "Монета золото",
     "group": "items",
     "source": "local",
     "file": "assets/image-library/kenney/items/coin_gold.png",
@@ -121,7 +441,7 @@
   },
   {
     "id": "coin_silver",
-    "label": "Монетка серебро",
+    "label": "Монета серебро",
     "group": "items",
     "source": "local",
     "file": "assets/image-library/kenney/items/coin_silver.png",
@@ -129,18 +449,66 @@
   },
   {
     "id": "gem_blue",
-    "label": "Кристалл",
+    "label": "Кристалл синий",
     "group": "items",
     "source": "local",
     "file": "assets/image-library/kenney/items/gem_blue.png",
     "pack": "platformer-redux"
   },
   {
+    "id": "gem_green",
+    "label": "Кристалл зелёный",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/gem_green.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "gem_red",
+    "label": "Кристалл красный",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/gem_red.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "gem_yellow",
+    "label": "Кристалл жёлтый",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/gem_yellow.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "key_blue",
+    "label": "Ключ синий",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/key_blue.png",
+    "pack": "platformer-redux"
+  },
+  {
     "id": "key_green",
-    "label": "Ключ",
+    "label": "Ключ зелёный",
     "group": "items",
     "source": "local",
     "file": "assets/image-library/kenney/items/key_green.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "key_red",
+    "label": "Ключ красный",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/key_red.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "key_yellow",
+    "label": "Ключ жёлтый",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/key_yellow.png",
     "pack": "platformer-redux"
   },
   {
@@ -152,11 +520,35 @@
     "pack": "platformer-redux"
   },
   {
-    "id": "flag_green",
-    "label": "Флаг",
+    "id": "flag_green1",
+    "label": "Флаг зелёный",
     "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/items/flag_green.png",
+    "file": "assets/image-library/kenney/items/flag_green1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "flag_blue1",
+    "label": "Флаг синий",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/flag_blue1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "flag_red1",
+    "label": "Флаг красный",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/flag_red1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "flag_yellow1",
+    "label": "Флаг жёлтый",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/flag_yellow1.png",
     "pack": "platformer-redux"
   },
   {
@@ -168,11 +560,19 @@
     "pack": "platformer-redux"
   },
   {
-    "id": "brick",
-    "label": "Кирпич",
+    "id": "brick_brown",
+    "label": "Кирпич коричн.",
     "group": "tiles",
     "source": "local",
-    "file": "assets/image-library/kenney/tiles/brick.png",
+    "file": "assets/image-library/kenney/tiles/brick_brown.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "brick_grey",
+    "label": "Кирпич серый",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/brick_grey.png",
     "pack": "platformer-redux"
   },
   {
@@ -184,51 +584,307 @@
     "pack": "platformer-redux"
   },
   {
-    "id": "ladder",
+    "id": "ladder_mid",
     "label": "Лестница",
     "group": "tiles",
     "source": "local",
-    "file": "assets/image-library/kenney/tiles/ladder.png",
+    "file": "assets/image-library/kenney/tiles/ladder_mid.png",
     "pack": "platformer-redux"
   },
   {
-    "id": "crate",
+    "id": "ladder_top",
+    "label": "Лестница (верх)",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/ladder_top.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "box_crate",
     "label": "Ящик",
     "group": "tiles",
     "source": "local",
-    "file": "assets/image-library/kenney/tiles/crate.png",
+    "file": "assets/image-library/kenney/tiles/box_crate.png",
     "pack": "platformer-redux"
   },
   {
-    "id": "bg_grass",
+    "id": "box_coin",
+    "label": "Блок с монетой",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/box_coin.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bomb",
+    "label": "Бомба",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/bomb.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bridge_a",
+    "label": "Мост A",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/bridge_a.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bridge_b",
+    "label": "Мост B",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/bridge_b.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "cactus",
+    "label": "Кактус",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/cactus.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "door_closed_mid",
+    "label": "Дверь закрыта",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/door_closed_mid.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "door_open_mid",
+    "label": "Дверь открыта",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/door_open_mid.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "lava",
+    "label": "Лава",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/lava.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "water",
+    "label": "Вода",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/water.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "spring",
+    "label": "Пружина",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/spring.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "mushroom_brown",
+    "label": "Гриб коричн.",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/mushroom_brown.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "mushroom_red",
+    "label": "Гриб красный",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/mushroom_red.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "rock",
+    "label": "Камень",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/rock.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "sign_exit",
+    "label": "Выход",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/sign_exit.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "snow",
+    "label": "Снег",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/snow.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "torch1",
+    "label": "Факел",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/torch1.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "fence",
+    "label": "Забор",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/fence.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bush",
+    "label": "Куст",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/bush.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "chain",
+    "label": "Цепь",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/chain.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "window",
+    "label": "Окно",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/window.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bg_colored_grass",
     "label": "Фон: луг",
     "group": "backgrounds",
     "source": "local",
-    "file": "assets/image-library/kenney/backgrounds/bg_grass.png",
+    "file": "assets/image-library/kenney/backgrounds/bg_colored_grass.png",
     "pack": "platformer-redux"
   },
   {
-    "id": "bg_desert",
+    "id": "bg_colored_desert",
     "label": "Фон: пустыня",
     "group": "backgrounds",
     "source": "local",
-    "file": "assets/image-library/kenney/backgrounds/bg_desert.png",
+    "file": "assets/image-library/kenney/backgrounds/bg_colored_desert.png",
     "pack": "platformer-redux"
   },
   {
-    "id": "bg_land",
+    "id": "bg_colored_land",
     "label": "Фон: холмы",
     "group": "backgrounds",
     "source": "local",
-    "file": "assets/image-library/kenney/backgrounds/bg_land.png",
+    "file": "assets/image-library/kenney/backgrounds/bg_colored_land.png",
     "pack": "platformer-redux"
   },
   {
-    "id": "bg_shroom",
+    "id": "bg_colored_shroom",
     "label": "Фон: грибы",
     "group": "backgrounds",
     "source": "local",
-    "file": "assets/image-library/kenney/backgrounds/bg_shroom.png",
+    "file": "assets/image-library/kenney/backgrounds/bg_colored_shroom.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bg_blue_grass",
+    "label": "Фон: луг (синий)",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_blue_grass.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bg_blue_desert",
+    "label": "Фон: пустыня (синий)",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_blue_desert.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bg_blue_land",
+    "label": "Фон: холмы (синий)",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_blue_land.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "bg_blue_shroom",
+    "label": "Фон: грибы (синий)",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_blue_shroom.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hud_heart_full",
+    "label": "Сердце",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/hud_heart_full.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hud_heart_half",
+    "label": "Сердце (половина)",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/hud_heart_half.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hud_heart_empty",
+    "label": "Сердце (пустое)",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/hud_heart_empty.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hud_coin",
+    "label": "Монетка HUD",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/hud_coin.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hud_player_green",
+    "label": "Иконка игрока",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/hud_player_green.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hud_key_green",
+    "label": "Ключ HUD",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/hud_key_green.png",
+    "pack": "platformer-redux"
+  },
+  {
+    "id": "hud_jewel_blue",
+    "label": "Кристалл HUD",
+    "group": "ui",
+    "source": "local",
+    "file": "assets/image-library/kenney/ui/hud_jewel_blue.png",
     "pack": "platformer-redux"
   },
   {
@@ -248,6 +904,22 @@
     "pack": "background-elements"
   },
   {
+    "id": "bg_desert2",
+    "label": "Фон: пустыня 2",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_desert2.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "bg_talltrees",
+    "label": "Фон: высокие деревья",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_talltrees.png",
+    "pack": "background-elements"
+  },
+  {
     "id": "bg_peaks",
     "label": "Фон: горы",
     "group": "backgrounds",
@@ -264,19 +936,651 @@
     "pack": "background-elements"
   },
   {
-    "id": "heart_full",
-    "label": "Сердце (HUD)",
-    "group": "ui",
+    "id": "bg_hills",
+    "label": "Фон: холмы 2",
+    "group": "backgrounds",
     "source": "local",
-    "file": "assets/image-library/kenney/ui/heart_full.png",
-    "pack": "platformer-redux"
+    "file": "assets/image-library/kenney/backgrounds/bg_hills.png",
+    "pack": "background-elements"
   },
   {
-    "id": "hud_player",
-    "label": "Иконка игрока",
-    "group": "ui",
+    "id": "bg_forest2",
+    "label": "Фон: лес 2",
+    "group": "backgrounds",
     "source": "local",
-    "file": "assets/image-library/kenney/ui/hud_player.png",
-    "pack": "platformer-redux"
+    "file": "assets/image-library/kenney/backgrounds/bg_forest2.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "bg_desert3",
+    "label": "Фон: пустыня 3",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_desert3.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "bg_castle2",
+    "label": "Фон: замок 2",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_castle2.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "bg_pyramids",
+    "label": "Фон: пирамиды",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_pyramids.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "bg_talltrees2",
+    "label": "Фон: деревья 2",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/bg_talltrees2.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_cloud1",
+    "label": "Облако 1",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_cloud1.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_cloud2",
+    "label": "Облако 2",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_cloud2.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_cloud3",
+    "label": "Облако 3",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_cloud3.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_hills1",
+    "label": "Холмы (слой)",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_hills1.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_hills2",
+    "label": "Холмы 2 (слой)",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_hills2.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_mountain1",
+    "label": "Гора 1",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_mountain1.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_mountain2",
+    "label": "Гора 2",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_mountain2.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_mountain3",
+    "label": "Гора 3",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_mountain3.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_tree01",
+    "label": "Дерево 1",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_tree01.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_tree02",
+    "label": "Дерево 2",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_tree02.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_tree03",
+    "label": "Дерево 3",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_tree03.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_castle",
+    "label": "Замок (слой)",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_castle.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "layer_sky",
+    "label": "Небо (слой)",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/layer_sky.png",
+    "pack": "background-elements"
+  },
+  {
+    "id": "np_green_idle",
+    "label": "Персонаж зелёный (стоит)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_green_idle.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_green_walk_a",
+    "label": "Персонаж зелёный (шаг)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_green_walk_a.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_green_jump",
+    "label": "Персонаж зелёный (прыжок)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_green_jump.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_green_duck",
+    "label": "Персонаж зелёный (присел)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_green_duck.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_green_hit",
+    "label": "Персонаж зелёный (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_green_hit.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_pink_idle",
+    "label": "Персонаж розовый (стоит)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_pink_idle.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_pink_walk_a",
+    "label": "Персонаж розовый (шаг)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_pink_walk_a.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_pink_jump",
+    "label": "Персонаж розовый (прыжок)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_pink_jump.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_pink_duck",
+    "label": "Персонаж розовый (присел)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_pink_duck.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_pink_hit",
+    "label": "Персонаж розовый (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_pink_hit.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_yellow_idle",
+    "label": "Персонаж жёлтый (стоит)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_yellow_idle.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_yellow_walk_a",
+    "label": "Персонаж жёлтый (шаг)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_yellow_walk_a.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_yellow_jump",
+    "label": "Персонаж жёлтый (прыжок)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_yellow_jump.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_yellow_duck",
+    "label": "Персонаж жёлтый (присел)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_yellow_duck.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_yellow_hit",
+    "label": "Персонаж жёлтый (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_yellow_hit.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_purple_idle",
+    "label": "Персонаж фиолетовый (стоит)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_purple_idle.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_purple_walk_a",
+    "label": "Персонаж фиолетовый (шаг)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_purple_walk_a.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_purple_jump",
+    "label": "Персонаж фиолетовый (прыжок)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_purple_jump.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_purple_duck",
+    "label": "Персонаж фиолетовый (присел)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_purple_duck.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_purple_hit",
+    "label": "Персонаж фиолетовый (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_purple_hit.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_beige_idle",
+    "label": "Персонаж бежевый (стоит)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_beige_idle.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_beige_walk_a",
+    "label": "Персонаж бежевый (шаг)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_beige_walk_a.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_beige_jump",
+    "label": "Персонаж бежевый (прыжок)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_beige_jump.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_beige_duck",
+    "label": "Персонаж бежевый (присел)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_beige_duck.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_beige_hit",
+    "label": "Персонаж бежевый (удар)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/np_beige_hit.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_bee_rest",
+    "label": "Пчела (NP)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/np_bee_rest.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_fish_blue_rest",
+    "label": "Рыба синяя (NP)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/np_fish_blue_rest.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_fish_purple_rest",
+    "label": "Рыба фиол. (NP)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/np_fish_purple_rest.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_frog_rest",
+    "label": "Лягушка (NP)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/np_frog_rest.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_snail_rest",
+    "label": "Улитка (NP)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/np_snail_rest.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_worm_normal_rest",
+    "label": "Червь (NP)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/np_worm_normal_rest.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_block_idle",
+    "label": "Блок-враг (NP)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/np_block_idle.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_barnacle_attack_rest",
+    "label": "Утконос (NP)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/np_barnacle_attack_rest.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_block_green",
+    "label": "Блок зелёный",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_block_green.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_block_blue",
+    "label": "Блок синий",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_block_blue.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_block_red",
+    "label": "Блок красный",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_block_red.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_block_spikes",
+    "label": "Блок шипы",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_block_spikes.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_block_coin",
+    "label": "Блок монета",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_block_coin.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_block_plank",
+    "label": "Доска",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_block_plank.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_block_planks",
+    "label": "Доски",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_block_planks.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_terrain_grass_block_center",
+    "label": "Земля трава",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_terrain_grass_block_center.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_terrain_stone_block_center",
+    "label": "Земля камень",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_terrain_stone_block_center.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_terrain_sand_block_center",
+    "label": "Земля песок",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_terrain_sand_block_center.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_terrain_snow_block_center",
+    "label": "Земля снег",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_terrain_snow_block_center.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_spikes",
+    "label": "Шипы (NP)",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_spikes.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_ladder_top",
+    "label": "Лестница верх (NP)",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_ladder_top.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_ladder_middle",
+    "label": "Лестница (NP)",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_ladder_middle.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_door_closed_top",
+    "label": "Дверь (NP)",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_door_closed_top.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_sign",
+    "label": "Табличка (NP)",
+    "group": "tiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/tiles/np_sign.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_background_color_hills",
+    "label": "Фон NP: холмы",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/np_background_color_hills.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_background_color_desert",
+    "label": "Фон NP: пустыня",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/np_background_color_desert.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_background_color_trees",
+    "label": "Фон NP: деревья",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/np_background_color_trees.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_background_color_mushrooms",
+    "label": "Фон NP: грибы",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/np_background_color_mushrooms.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_background_fade_hills",
+    "label": "Фон NP: холмы fade",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/np_background_fade_hills.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_background_fade_desert",
+    "label": "Фон NP: пустыня fade",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/np_background_fade_desert.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_background_solid_sky",
+    "label": "Фон NP: небо",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/np_background_solid_sky.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_background_solid_dirt",
+    "label": "Фон NP: земля",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/np_background_solid_dirt.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_gem_blue",
+    "label": "Кристалл (NP)",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/np_gem_blue.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_heart",
+    "label": "Сердце (NP)",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/np_heart.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_key_green",
+    "label": "Ключ (NP)",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/np_key_green.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_star",
+    "label": "Звезда (NP)",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/np_star.png",
+    "pack": "new-platformer"
+  },
+  {
+    "id": "np_flag_green_a",
+    "label": "Флаг (NP)",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/np_flag_green_a.png",
+    "pack": "new-platformer"
   }
 ]

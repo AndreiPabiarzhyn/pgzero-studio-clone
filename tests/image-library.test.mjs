@@ -31,7 +31,7 @@ function loadImageLibraryTest(version) {
 
 test('game-sprites.json содержит Kenney-спрайты', () => {
   const json = JSON.parse(readFileSync(join(__dirname, '../assets/image-library/game-sprites.json'), 'utf8'));
-  assert.ok(json.length >= 30);
+  assert.ok(json.length >= 150);
   const ids = json.map(function (e) { return e.id; });
   assert.ok(ids.includes('hero_green_stand'));
   assert.ok(ids.includes('slime_blue'));

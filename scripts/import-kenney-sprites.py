@@ -2,15 +2,15 @@
 """
 Import Kenney CC0 sprite sets into assets/image-library.
 
-Sources:
-- Platformer Pack Redux (128x256 players, 128x128 enemies/items, 1024 backgrounds)
-  https://opengameart.org/content/platformer-pack-redux-360-assets
-- Background Elements (1024 sample backdrops)
-  https://opengameart.org/content/background-elements
+Sources (all CC0):
+- Platformer Pack Redux — 128x256 players, 128 enemies/items/tiles, 1024 backgrounds
+- Background Elements — 1024 sample backdrops + parallax pieces
+- New Platformer Pack — 128 characters, 64 tiles/enemies, 256 backgrounds
 """
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import urllib.parse
 import urllib.request
@@ -26,96 +26,308 @@ REDUX_URL = (
     + urllib.parse.quote("Platformer Pack Redux (360 assets).zip")
 )
 BG_URL = "https://opengameart.org/sites/default/files/kenney_backgroundElements.zip"
+NEW_URL = "https://opengameart.org/sites/default/files/kenney_new-platformer-pack-1.0.zip"
 
-# id, label, group, zip_name, path_inside_zip
-CATALOG = [
-    # Characters 128x256
-    {"id": "hero_green_stand", "label": "Герой зелёный (стоит)", "group": "characters",
-     "zip": "redux", "path": "PNG/Players/128x256/Green/alienGreen_stand.png", "pack": "platformer-redux"},
-    {"id": "hero_green_walk", "label": "Герой зелёный (шаг)", "group": "characters",
-     "zip": "redux", "path": "PNG/Players/128x256/Green/alienGreen_walk1.png", "pack": "platformer-redux"},
-    {"id": "hero_green_jump", "label": "Герой зелёный (прыжок)", "group": "characters",
-     "zip": "redux", "path": "PNG/Players/128x256/Green/alienGreen_jump.png", "pack": "platformer-redux"},
-    {"id": "hero_green_duck", "label": "Герой зелёный (присел)", "group": "characters",
-     "zip": "redux", "path": "PNG/Players/128x256/Green/alienGreen_duck.png", "pack": "platformer-redux"},
-    {"id": "hero_blue_stand", "label": "Герой синий (стоит)", "group": "characters",
-     "zip": "redux", "path": "PNG/Players/128x256/Blue/alienBlue_stand.png", "pack": "platformer-redux"},
-    {"id": "hero_blue_walk", "label": "Герой синий (шаг)", "group": "characters",
-     "zip": "redux", "path": "PNG/Players/128x256/Blue/alienBlue_walk1.png", "pack": "platformer-redux"},
-    {"id": "hero_pink_stand", "label": "Герой розовый (стоит)", "group": "characters",
-     "zip": "redux", "path": "PNG/Players/128x256/Pink/alienPink_stand.png", "pack": "platformer-redux"},
-    {"id": "hero_yellow_stand", "label": "Герой жёлтый (стоит)", "group": "characters",
-     "zip": "redux", "path": "PNG/Players/128x256/Yellow/alienYellow_stand.png", "pack": "platformer-redux"},
+COLOR_RU = {
+    "Green": "зелёный",
+    "Blue": "синий",
+    "Pink": "розовый",
+    "Yellow": "жёлтый",
+    "Beige": "бежевый",
+    "Purple": "фиолетовый",
+}
 
-    # Enemies 128x128
-    {"id": "slime_blue", "label": "Слайм синий", "group": "enemies",
-     "zip": "redux", "path": "PNG/Enemies/slimeBlue.png", "pack": "platformer-redux"},
-    {"id": "slime_green", "label": "Слайм зелёный", "group": "enemies",
-     "zip": "redux", "path": "PNG/Enemies/slimeGreen.png", "pack": "platformer-redux"},
-    {"id": "bee", "label": "Пчела", "group": "enemies",
-     "zip": "redux", "path": "PNG/Enemies/bee.png", "pack": "platformer-redux"},
-    {"id": "fish_blue", "label": "Рыба", "group": "enemies",
-     "zip": "redux", "path": "PNG/Enemies/fishBlue.png", "pack": "platformer-redux"},
-    {"id": "snail", "label": "Улитка", "group": "enemies",
-     "zip": "redux", "path": "PNG/Enemies/snail.png", "pack": "platformer-redux"},
-    {"id": "frog", "label": "Лягушка", "group": "enemies",
-     "zip": "redux", "path": "PNG/Enemies/frog.png", "pack": "platformer-redux"},
+POSE_RU = {
+    "stand": "стоит",
+    "walk1": "шаг 1",
+    "walk2": "шаг 2",
+    "jump": "прыжок",
+    "duck": "присел",
+    "hit": "удар",
+    "climb1": "лазает 1",
+    "climb2": "лазает 2",
+    "swim1": "плавает 1",
+    "swim2": "плавает 2",
+    "front": "вперёд",
+}
 
-    # Items
-    {"id": "coin_gold", "label": "Монетка золото", "group": "items",
-     "zip": "redux", "path": "PNG/Items/coinGold.png", "pack": "platformer-redux"},
-    {"id": "coin_silver", "label": "Монетка серебро", "group": "items",
-     "zip": "redux", "path": "PNG/Items/coinSilver.png", "pack": "platformer-redux"},
-    {"id": "gem_blue", "label": "Кристалл", "group": "items",
-     "zip": "redux", "path": "PNG/Items/gemBlue.png", "pack": "platformer-redux"},
-    {"id": "key_green", "label": "Ключ", "group": "items",
-     "zip": "redux", "path": "PNG/Items/keyGreen.png", "pack": "platformer-redux"},
-    {"id": "star", "label": "Звезда", "group": "items",
-     "zip": "redux", "path": "PNG/Items/star.png", "pack": "platformer-redux"},
-    {"id": "flag_green", "label": "Флаг", "group": "items",
-     "zip": "redux", "path": "PNG/Items/flagGreen1.png", "pack": "platformer-redux"},
+TILE_RU = {
+    "grass": "Трава",
+    "brickBrown": "Кирпич коричн.",
+    "brickGrey": "Кирпич серый",
+    "spikes": "Шипы",
+    "ladderMid": "Лестница",
+    "ladderTop": "Лестница (верх)",
+    "boxCrate": "Ящик",
+    "boxCoin": "Блок с монетой",
+    "bomb": "Бомба",
+    "bridgeA": "Мост A",
+    "bridgeB": "Мост B",
+    "cactus": "Кактус",
+    "doorClosed_mid": "Дверь закрыта",
+    "doorOpen_mid": "Дверь открыта",
+    "lava": "Лава",
+    "water": "Вода",
+    "spring": "Пружина",
+    "mushroomBrown": "Гриб коричн.",
+    "mushroomRed": "Гриб красный",
+    "rock": "Камень",
+    "signExit": "Выход",
+    "snow": "Снег",
+    "torch1": "Факел",
+    "fence": "Забор",
+    "bush": "Куст",
+    "chain": "Цепь",
+    "window": "Окно",
+}
 
-    # Tiles
-    {"id": "grass", "label": "Трава", "group": "tiles",
-     "zip": "redux", "path": "PNG/Tiles/grass.png", "pack": "platformer-redux"},
-    {"id": "brick", "label": "Кирпич", "group": "tiles",
-     "zip": "redux", "path": "PNG/Tiles/brickBrown.png", "pack": "platformer-redux"},
-    {"id": "spikes", "label": "Шипы", "group": "tiles",
-     "zip": "redux", "path": "PNG/Tiles/spikes.png", "pack": "platformer-redux"},
-    {"id": "ladder", "label": "Лестница", "group": "tiles",
-     "zip": "redux", "path": "PNG/Tiles/ladderMid.png", "pack": "platformer-redux"},
-    {"id": "crate", "label": "Ящик", "group": "tiles",
-     "zip": "redux", "path": "PNG/Tiles/boxCrate.png", "pack": "platformer-redux"},
+ITEM_RU = {
+    "coinBronze": "Монета бронза",
+    "coinGold": "Монета золото",
+    "coinSilver": "Монета серебро",
+    "gemBlue": "Кристалл синий",
+    "gemGreen": "Кристалл зелёный",
+    "gemRed": "Кристалл красный",
+    "gemYellow": "Кристалл жёлтый",
+    "keyBlue": "Ключ синий",
+    "keyGreen": "Ключ зелёный",
+    "keyRed": "Ключ красный",
+    "keyYellow": "Ключ жёлтый",
+    "star": "Звезда",
+    "flagGreen1": "Флаг зелёный",
+    "flagBlue1": "Флаг синий",
+    "flagRed1": "Флаг красный",
+    "flagYellow1": "Флаг жёлтый",
+}
 
-    # Full backgrounds 1024 (Redux)
-    {"id": "bg_grass", "label": "Фон: луг", "group": "backgrounds",
-     "zip": "redux", "path": "PNG/Backgrounds/colored_grass.png", "pack": "platformer-redux"},
-    {"id": "bg_desert", "label": "Фон: пустыня", "group": "backgrounds",
-     "zip": "redux", "path": "PNG/Backgrounds/colored_desert.png", "pack": "platformer-redux"},
-    {"id": "bg_land", "label": "Фон: холмы", "group": "backgrounds",
-     "zip": "redux", "path": "PNG/Backgrounds/colored_land.png", "pack": "platformer-redux"},
-    {"id": "bg_shroom", "label": "Фон: грибы", "group": "backgrounds",
-     "zip": "redux", "path": "PNG/Backgrounds/colored_shroom.png", "pack": "platformer-redux"},
+ENEMY_RU = {
+    "bee": "Пчела",
+    "fishBlue": "Рыба синяя",
+    "fishGreen": "Рыба зелёная",
+    "fishPink": "Рыба розовая",
+    "fly": "Муха",
+    "frog": "Лягушка",
+    "ladybug": "Божья коровка",
+    "mouse": "Мышь",
+    "saw": "Пила",
+    "sawHalf": "Пила (половина)",
+    "slimeBlock": "Слайм-блок",
+    "slimeBlue": "Слайм синий",
+    "slimeGreen": "Слайм зелёный",
+    "slimePurple": "Слайм фиолетовый",
+    "snail": "Улитка",
+    "wormGreen": "Червь зелёный",
+    "wormPink": "Червь розовый",
+    "barnacle": "Утконос",
+}
 
-    # Full backgrounds 1024 (Background Elements)
-    {"id": "bg_forest", "label": "Фон: лес", "group": "backgrounds",
-     "zip": "bg", "path": "Samples/colored_forest.png", "pack": "background-elements"},
-    {"id": "bg_castle", "label": "Фон: замок", "group": "backgrounds",
-     "zip": "bg", "path": "Samples/colored_castle.png", "pack": "background-elements"},
-    {"id": "bg_peaks", "label": "Фон: горы", "group": "backgrounds",
-     "zip": "bg", "path": "Samples/uncolored_peaks.png", "pack": "background-elements"},
-    {"id": "bg_plain", "label": "Фон: равнина", "group": "backgrounds",
-     "zip": "bg", "path": "Samples/uncolored_plain.png", "pack": "background-elements"},
 
-    # UI / HUD
-    {"id": "heart_full", "label": "Сердце (HUD)", "group": "ui",
-     "zip": "redux", "path": "PNG/HUD/hudHeart_full.png", "pack": "platformer-redux"},
-    {"id": "hud_player", "label": "Иконка игрока", "group": "ui",
-     "zip": "redux", "path": "PNG/HUD/hudPlayer_green.png", "pack": "platformer-redux"},
-]
+def slug(text: str) -> str:
+    text = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", text)
+    text = text.lower().replace(" ", "_")
+    text = re.sub(r"[^a-z0-9_]+", "", text)
+    text = re.sub(r"_+", "_", text).strip("_")
+    return text or "sprite"
+
+
+def add(catalog: list, entry_id: str, label: str, group: str, zip_key: str, path: str, pack: str) -> None:
+    catalog.append({
+        "id": entry_id,
+        "label": label,
+        "group": group,
+        "zip": zip_key,
+        "path": path,
+        "pack": pack,
+    })
+
+
+def build_catalog() -> list:
+    catalog: list = []
+
+    # --- Redux characters ---
+    green_poses = [
+        "stand", "walk1", "walk2", "jump", "duck", "hit", "climb1", "climb2", "swim1", "swim2", "front"
+    ]
+    basic_poses = ["stand", "walk1", "walk2", "jump", "duck", "hit"]
+    for color in ["Green", "Blue", "Pink", "Yellow", "Beige"]:
+        poses = green_poses if color == "Green" else basic_poses
+        color_ru = COLOR_RU[color]
+        prefix = f"alien{color}"
+        for pose in poses:
+            fname = f"{prefix}_{pose}.png"
+            pose_ru = POSE_RU.get(pose, pose)
+            entry_id = slug(f"hero_{color.lower()}_{pose}")
+            add(
+                catalog,
+                entry_id,
+                f"Герой {color_ru} ({pose_ru})",
+                "characters",
+                "redux",
+                f"PNG/Players/128x256/{color}/{fname}",
+                "platformer-redux",
+            )
+
+    # --- Redux enemies (idle/base frames) ---
+    for name, label in ENEMY_RU.items():
+        add(catalog, slug(name), label, "enemies", "redux", f"PNG/Enemies/{name}.png", "platformer-redux")
+
+    # --- Redux items ---
+    for fname, label in ITEM_RU.items():
+        add(catalog, slug(fname.replace("coin", "coin_")), label, "items", "redux", f"PNG/Items/{fname}.png", "platformer-redux")
+
+    # --- Redux tiles ---
+    for fname, label in TILE_RU.items():
+        add(catalog, slug(fname), label, "tiles", "redux", f"PNG/Tiles/{fname}.png", "platformer-redux")
+
+    # --- Redux backgrounds ---
+    for name, label in [
+        ("colored_grass", "Фон: луг"),
+        ("colored_desert", "Фон: пустыня"),
+        ("colored_land", "Фон: холмы"),
+        ("colored_shroom", "Фон: грибы"),
+        ("blue_grass", "Фон: луг (синий)"),
+        ("blue_desert", "Фон: пустыня (синий)"),
+        ("blue_land", "Фон: холмы (синий)"),
+        ("blue_shroom", "Фон: грибы (синий)"),
+    ]:
+        add(catalog, slug(f"bg_{name}"), label, "backgrounds", "redux", f"PNG/Backgrounds/{name}.png", "platformer-redux")
+
+    # --- Redux HUD ---
+    for name, label in [
+        ("hudHeart_full", "Сердце"),
+        ("hudHeart_half", "Сердце (половина)"),
+        ("hudHeart_empty", "Сердце (пустое)"),
+        ("hudCoin", "Монетка HUD"),
+        ("hudPlayer_green", "Иконка игрока"),
+        ("hudKey_green", "Ключ HUD"),
+        ("hudJewel_blue", "Кристалл HUD"),
+    ]:
+        add(catalog, slug(name), label, "ui", "redux", f"PNG/HUD/{name}.png", "platformer-redux")
+
+    # --- Background Elements: full samples ---
+    for path, entry_id, label in [
+        ("Samples/colored_forest.png", "bg_forest", "Фон: лес"),
+        ("Samples/colored_castle.png", "bg_castle", "Фон: замок"),
+        ("Samples/colored_desert.png", "bg_desert2", "Фон: пустыня 2"),
+        ("Samples/colored_talltrees.png", "bg_talltrees", "Фон: высокие деревья"),
+        ("Samples/uncolored_peaks.png", "bg_peaks", "Фон: горы"),
+        ("Samples/uncolored_plain.png", "bg_plain", "Фон: равнина"),
+        ("Samples/uncolored_hills.png", "bg_hills", "Фон: холмы 2"),
+        ("Samples/uncolored_forest.png", "bg_forest2", "Фон: лес 2"),
+        ("Samples/uncolored_desert.png", "bg_desert3", "Фон: пустыня 3"),
+        ("Samples/uncolored_castle.png", "bg_castle2", "Фон: замок 2"),
+        ("Samples/uncolored_piramids.png", "bg_pyramids", "Фон: пирамиды"),
+        ("Samples/uncolored_talltrees.png", "bg_talltrees2", "Фон: деревья 2"),
+    ]:
+        add(catalog, entry_id, label, "backgrounds", "bg", path, "background-elements")
+
+    # --- Background Elements: parallax pieces ---
+    for fname, label in [
+        ("cloud1.png", "Облако 1"),
+        ("cloud2.png", "Облако 2"),
+        ("cloud3.png", "Облако 3"),
+        ("hills1.png", "Холмы (слой)"),
+        ("hills2.png", "Холмы 2 (слой)"),
+        ("mountain1.png", "Гора 1"),
+        ("mountain2.png", "Гора 2"),
+        ("mountain3.png", "Гора 3"),
+        ("tree01.png", "Дерево 1"),
+        ("tree02.png", "Дерево 2"),
+        ("tree03.png", "Дерево 3"),
+        ("castle.png", "Замок (слой)"),
+        ("sky.png", "Небо (слой)"),
+    ]:
+        entry_id = slug(f"layer_{fname.replace('.png', '')}")
+        add(catalog, entry_id, label, "backgrounds", "bg", f"PNG/Flat/{fname}", "background-elements")
+
+    # --- New Platformer Pack: characters ---
+    for color in ["green", "pink", "yellow", "purple", "beige"]:
+        color_ru = COLOR_RU.get(color.capitalize(), color)
+        for pose, pose_ru in [("idle", "стоит"), ("walk_a", "шаг"), ("jump", "прыжок"), ("duck", "присел"), ("hit", "удар")]:
+            fname = f"character_{color}_{pose}.png"
+            add(
+                catalog,
+                slug(f"np_{color}_{pose}"),
+                f"Персонаж {color_ru} ({pose_ru})",
+                "characters",
+                "new",
+                f"Sprites/Characters/Default/{fname}",
+                "new-platformer",
+            )
+
+    # --- New Platformer Pack: enemies ---
+    for fname, label in [
+        ("bee_rest.png", "Пчела (NP)"),
+        ("fish_blue_rest.png", "Рыба синяя (NP)"),
+        ("fish_purple_rest.png", "Рыба фиол. (NP)"),
+        ("frog_rest.png", "Лягушка (NP)"),
+        ("snail_rest.png", "Улитка (NP)"),
+        ("worm_normal_rest.png", "Червь (NP)"),
+        ("block_idle.png", "Блок-враг (NP)"),
+        ("barnacle_attack_rest.png", "Утконос (NP)"),
+    ]:
+        add(catalog, slug(f"np_{fname.replace('.png', '')}"), label, "enemies", "new", f"Sprites/Enemies/Default/{fname}", "new-platformer")
+
+    # --- New Platformer Pack: tiles ---
+    for fname, label in [
+        ("block_green.png", "Блок зелёный"),
+        ("block_blue.png", "Блок синий"),
+        ("block_red.png", "Блок красный"),
+        ("block_spikes.png", "Блок шипы"),
+        ("block_coin.png", "Блок монета"),
+        ("block_plank.png", "Доска"),
+        ("block_planks.png", "Доски"),
+        ("terrain_grass_block_center.png", "Земля трава"),
+        ("terrain_stone_block_center.png", "Земля камень"),
+        ("terrain_sand_block_center.png", "Земля песок"),
+        ("terrain_snow_block_center.png", "Земля снег"),
+        ("spikes.png", "Шипы (NP)"),
+        ("ladder_top.png", "Лестница верх (NP)"),
+        ("ladder_middle.png", "Лестница (NP)"),
+        ("door_closed_top.png", "Дверь (NP)"),
+        ("sign.png", "Табличка (NP)"),
+    ]:
+        add(catalog, slug(f"np_{fname.replace('.png', '')}"), label, "tiles", "new", f"Sprites/Tiles/Default/{fname}", "new-platformer")
+
+    # --- New Platformer Pack: backgrounds (256) ---
+    for fname, label in [
+        ("background_color_hills.png", "Фон NP: холмы"),
+        ("background_color_desert.png", "Фон NP: пустыня"),
+        ("background_color_trees.png", "Фон NP: деревья"),
+        ("background_color_mushrooms.png", "Фон NP: грибы"),
+        ("background_fade_hills.png", "Фон NP: холмы fade"),
+        ("background_fade_desert.png", "Фон NP: пустыня fade"),
+        ("background_solid_sky.png", "Фон NP: небо"),
+        ("background_solid_dirt.png", "Фон NP: земля"),
+    ]:
+        add(catalog, slug(f"np_{fname.replace('.png', '')}"), label, "backgrounds", "new", f"Sprites/Backgrounds/Default/{fname}", "new-platformer")
+
+    # --- New Platformer Pack: collectibles ---
+    for path, entry_id, label in [
+        ("Sprites/Tiles/Default/gem_blue.png", "np_gem_blue", "Кристалл (NP)"),
+        ("Sprites/Tiles/Default/heart.png", "np_heart", "Сердце (NP)"),
+        ("Sprites/Tiles/Default/hud_key_green.png", "np_key_green", "Ключ (NP)"),
+        ("Sprites/Tiles/Default/star.png", "np_star", "Звезда (NP)"),
+        ("Sprites/Tiles/Default/flag_green_a.png", "np_flag_green_a", "Флаг (NP)"),
+        ("Sprites/Tiles/Default/block_coin.png", "np_block_coin", "Монета (NP)"),
+    ]:
+        add(catalog, entry_id, label, "items", "new", path, "new-platformer")
+
+    # Deduplicate ids (keep first)
+    seen: set[str] = set()
+    unique: list = []
+    for entry in catalog:
+        if entry["id"] in seen:
+            continue
+        seen.add(entry["id"])
+        unique.append(entry)
+    return unique
 
 
 def download(url: str, dest: Path) -> None:
+    if dest.is_file() and dest.stat().st_size > 1000:
+        print("Using cached", dest.name)
+        return
     print("Downloading", dest.name, "...")
     req = urllib.request.Request(url, headers={"User-Agent": "pgz-studio"})
     with urllib.request.urlopen(req) as response, dest.open("wb") as out:
@@ -123,32 +335,36 @@ def download(url: str, dest: Path) -> None:
 
 
 def extract_all() -> None:
+    catalog = build_catalog()
     if LIB.exists():
         shutil.rmtree(LIB)
     LIB.mkdir(parents=True)
-
     TMP.mkdir(parents=True, exist_ok=True)
+
     redux_zip = TMP / "redux.zip"
     bg_zip = TMP / "bg.zip"
+    new_zip = TMP / "new.zip"
 
     download(REDUX_URL, redux_zip)
     download(BG_URL, bg_zip)
+    download(NEW_URL, new_zip)
 
     archives = {
         "redux": zipfile.ZipFile(redux_zip),
         "bg": zipfile.ZipFile(bg_zip),
+        "new": zipfile.ZipFile(new_zip),
     }
 
+    missing: list[str] = []
     try:
-        for entry in CATALOG:
+        for entry in catalog:
             archive = archives[entry["zip"]]
             src = entry["path"]
-            names = set(archive.namelist())
-            if src not in names:
-                raise SystemExit(f"Missing in {entry['zip']}: {src}")
+            if src not in set(archive.namelist()):
+                missing.append(f"{entry['zip']}:{src}")
+                continue
 
-            rel = f"{entry['group']}/{entry['id']}.png"
-            dest = LIB / "kenney" / rel
+            dest = LIB / "kenney" / entry["group"] / f"{entry['id']}.png"
             dest.parent.mkdir(parents=True, exist_ok=True)
             with archive.open(src) as src_file, dest.open("wb") as dest_file:
                 dest_file.write(src_file.read())
@@ -156,8 +372,14 @@ def extract_all() -> None:
         for archive in archives.values():
             archive.close()
 
+    if missing:
+        print(f"Warning: skipped {len(missing)} missing files")
+        for line in missing[:10]:
+            print(" ", line)
+        catalog = [e for e in catalog if f"{e['zip']}:{e['path']}" not in missing]
+
     json_entries = []
-    for entry in CATALOG:
+    for entry in catalog:
         rel = f"assets/image-library/kenney/{entry['group']}/{entry['id']}.png"
         json_entries.append({
             "id": entry["id"],
@@ -177,9 +399,9 @@ def extract_all() -> None:
         "Kenney.nl — CC0 1.0 Universal (public domain)\n\n"
         "Packs used:\n"
         "- Platformer Pack Redux\n"
-        "  https://kenney.nl/assets/platformer-pack-redux\n"
         "- Background Elements\n"
-        "  https://kenney.nl/assets/background-elements\n\n"
+        "- New Platformer Pack\n"
+        "  https://kenney.nl\n\n"
         "Author: Kenney Vleugels\n",
         encoding="utf-8",
     )

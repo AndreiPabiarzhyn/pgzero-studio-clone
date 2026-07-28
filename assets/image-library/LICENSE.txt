@@ -2,8 +2,8 @@ Kenney.nl — CC0 1.0 Universal (public domain)
 
 Packs used:
 - Platformer Pack Redux
-  https://kenney.nl/assets/platformer-pack-redux
 - Background Elements
-  https://kenney.nl/assets/background-elements
+- New Platformer Pack
+  https://kenney.nl
 
 Author: Kenney Vleugels
