@@ -14,6 +14,7 @@ Sources (all CC0):
 """
 from __future__ import annotations
 
+import io
 import json
 import re
 import shutil
@@ -140,15 +141,39 @@ def slug(text: str) -> str:
     return text or "sprite"
 
 
-def add(catalog: list, entry_id: str, label: str, group: str, zip_key: str, path: str, pack: str) -> None:
-    catalog.append({
+def add(
+    catalog: list,
+    entry_id: str,
+    label: str,
+    group: str,
+    zip_key: str,
+    path: str,
+    pack: str,
+    crop: tuple[int, int, int, int] | None = None,
+) -> None:
+    entry = {
         "id": entry_id,
         "label": label,
         "group": group,
         "zip": zip_key,
         "path": path,
         "pack": pack,
-    })
+    }
+    if crop:
+        entry["crop"] = crop
+    catalog.append(entry)
+
+
+def crop_sprite_frame(raw: bytes, frame_w: int, frame_h: int, col: int = 0, row: int = 0) -> bytes:
+    from PIL import Image
+
+    image = Image.open(io.BytesIO(raw)).convert("RGBA")
+    left = col * frame_w
+    top = row * frame_h
+    frame = image.crop((left, top, left + frame_w, top + frame_h))
+    out = io.BytesIO()
+    frame.save(out, format="PNG")
+    return out.getvalue()
 
 
 def build_catalog() -> list:
@@ -566,43 +591,46 @@ def build_dungeon_catalog(catalog: list) -> None:
 
 
 def build_skeleton_catalog(catalog: list) -> None:
-    for fname, entry_id, label in [
-        ("skeleton-36x48.png", "skeleton_white", "Скелет"),
-        ("skeleton-green-36x48.png", "skeleton_green", "Скелет зелёный"),
-        ("ghost-25x35.png", "ghost_white", "Призрак"),
-        ("ghost-green-25x35.png", "ghost_green", "Призрак зелёный"),
-        ("ghost-red-25x35.png", "ghost_red", "Призрак красный"),
+    # Spritesheets — import only one frame (frame size from filename).
+    for fname, entry_id, label, crop in [
+        ("skeleton-36x48.png", "skeleton_white", "Скелет", (36, 48, 0, 0)),
+        ("skeleton-green-36x48.png", "skeleton_green", "Скелет зелёный", (36, 48, 0, 0)),
+        ("ghost-25x35.png", "ghost_white", "Призрак", (25, 35, 0, 0)),
+        ("ghost-green-25x35.png", "ghost_green", "Призрак зелёный", (25, 35, 0, 0)),
+        ("ghost-red-25x35.png", "ghost_red", "Призрак красный", (25, 35, 0, 0)),
     ]:
-        add(catalog, entry_id, label, "enemies", "skeleton", fname, "skeleton-ghost")
+        add(catalog, entry_id, label, "enemies", "skeleton", fname, "skeleton-ghost", crop=crop)
 
 
 def build_spells_catalog(catalog: list) -> None:
+    # Animation strips — one representative frame per spell.
+    frame16 = (16, 16, 2, 0)
     spells = [
-        ("Pixelart Spells/PNG Files/Fireball.png", "spell_fireball", "Огненный шар", "projectiles"),
-        ("Pixelart Spells/PNG Files/Firebomb.png", "spell_firebomb", "Огненная бомба", "projectiles"),
-        ("Pixelart Spells/PNG Files/Ice Lance.png", "spell_ice_lance", "Ледяное копьё", "projectiles"),
-        ("Pixelart Spells/PNG Files/Light Bolt.png", "spell_light_bolt", "Световой болт", "projectiles"),
-        ("Pixelart Spells/PNG Files/Darkness Bolt.png", "spell_dark_bolt", "Болт тьмы", "projectiles"),
-        ("Pixelart Spells/PNG Files/Wind Bolt.png", "spell_wind_bolt", "Болт ветра", "projectiles"),
-        ("Pixelart Spells/PNG Files/Water Bolt.png", "spell_water_bolt", "Водяной болт", "projectiles"),
-        ("Pixelart Spells/PNG Files/Arcane Bolt.png", "spell_arcane_bolt", "Тайный болт", "projectiles"),
-        ("Pixelart Spells/PNG Files/Bolt Of Purity.png", "spell_purity_bolt", "Болт чистоты", "projectiles"),
-        ("Pixelart Spells/PNG Files/Pure Bolt 2.png", "spell_pure_bolt", "Чистый болт", "projectiles"),
-        ("Pixelart Spells/PNG Files/Magic Ray.png", "spell_magic_ray", "Магический луч", "projectiles"),
-        ("Pixelart Spells/PNG Files/Black And White Ray.png", "spell_bw_ray", "Луч (ч/б)", "projectiles"),
-        ("Pixelart Spells/PNG Files/Plant Missle.png", "spell_plant_missile", "Растительная ракета", "projectiles"),
-        ("Pixelart Spells/PNG Files/Rock Sling.png", "spell_rock_sling", "Камень-праща", "projectiles"),
-        ("Pixelart Spells/PNG Files/Magic Orb.png", "spell_magic_orb", "Магическая сфера", "projectiles"),
-        ("Pixelart Spells/PNG Files/Darkness Orb.png", "spell_dark_orb", "Сфера тьмы", "projectiles"),
-        ("Pixelart Spells/PNG Files/Water Orb.png", "spell_water_orb", "Водяная сфера", "projectiles"),
-        ("Pixelart Spells/PNG Files/Magic Sparks.png", "spell_magic_sparks", "Магические искры", "effects"),
-        ("Pixelart Spells/PNG Files/Black And White Sparks.png", "spell_bw_sparks", "Искры (ч/б)", "effects"),
-        ("Pixelart Spells/PNG Files/Splash.png", "spell_splash", "Брызги", "effects"),
-        ("Pixelart Spells/PNG Files/Pixelart Shield.png", "spell_shield", "Магический щит", "effects"),
-        ("Pixelart Spells/PNG Files/Water Blast.png", "spell_water_blast", "Водяной взрыв", "effects"),
+        ("Pixelart Spells/PNG Files/Fireball.png", "spell_fireball", "Огненный шар", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Firebomb.png", "spell_firebomb", "Огненная бомба", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Ice Lance.png", "spell_ice_lance", "Ледяное копьё", "projectiles", (16, 16, 1, 0)),
+        ("Pixelart Spells/PNG Files/Light Bolt.png", "spell_light_bolt", "Световой болт", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Darkness Bolt.png", "spell_dark_bolt", "Болт тьмы", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Wind Bolt.png", "spell_wind_bolt", "Болт ветра", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Water Bolt.png", "spell_water_bolt", "Водяной болт", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Arcane Bolt.png", "spell_arcane_bolt", "Тайный болт", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Bolt Of Purity.png", "spell_purity_bolt", "Болт чистоты", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Pure Bolt 2.png", "spell_pure_bolt", "Чистый болт", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Magic Ray.png", "spell_magic_ray", "Магический луч", "projectiles", (16, 16, 3, 0)),
+        ("Pixelart Spells/PNG Files/Black And White Ray.png", "spell_bw_ray", "Луч (ч/б)", "projectiles", (16, 16, 3, 0)),
+        ("Pixelart Spells/PNG Files/Plant Missle.png", "spell_plant_missile", "Растительная ракета", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Rock Sling.png", "spell_rock_sling", "Камень-праща", "projectiles", None),
+        ("Pixelart Spells/PNG Files/Magic Orb.png", "spell_magic_orb", "Магическая сфера", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Darkness Orb.png", "spell_dark_orb", "Сфера тьмы", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Water Orb.png", "spell_water_orb", "Водяная сфера", "projectiles", frame16),
+        ("Pixelart Spells/PNG Files/Magic Sparks.png", "spell_magic_sparks", "Магические искры", "effects", frame16),
+        ("Pixelart Spells/PNG Files/Black And White Sparks.png", "spell_bw_sparks", "Искры (ч/б)", "effects", frame16),
+        ("Pixelart Spells/PNG Files/Splash.png", "spell_splash", "Брызги", "effects", (32, 32, 2, 0)),
+        ("Pixelart Spells/PNG Files/Pixelart Shield.png", "spell_shield", "Магический щит", "effects", (48, 48, 0, 0)),
+        ("Pixelart Spells/PNG Files/Water Blast.png", "spell_water_blast", "Водяной взрыв", "effects", frame16),
     ]
-    for path, entry_id, label, group in spells:
-        add(catalog, entry_id, label, group, "spells", path, "pixel-art-spells")
+    for path, entry_id, label, group, crop in spells:
+        add(catalog, entry_id, label, group, "spells", path, "pixel-art-spells", crop=crop)
 
 
 def download(url: str, dest: Path) -> None:
@@ -662,8 +690,14 @@ def extract_all() -> None:
 
             dest = LIB / "kenney" / entry["group"] / f"{entry['id']}.png"
             dest.parent.mkdir(parents=True, exist_ok=True)
-            with archive.open(src) as src_file, dest.open("wb") as dest_file:
-                dest_file.write(src_file.read())
+            with archive.open(src) as src_file:
+                raw = src_file.read()
+            crop = entry.get("crop")
+            if crop:
+                fw, fh, col, row = crop
+                raw = crop_sprite_frame(raw, fw, fh, col, row)
+            with dest.open("wb") as dest_file:
+                dest_file.write(raw)
     finally:
         for archive in archives.values():
             archive.close()
