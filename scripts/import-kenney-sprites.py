@@ -9,12 +9,9 @@ Sources (all CC0):
 - Space Shooter Redux — ships, enemies, lasers, meteors, fire
 - Space Shooter Extension — ships, rockets, missiles, astronauts
 - Tiny Dungeon — knights, monsters, weapons (16x16)
-- Skeleton & Ghost (Balmer) — skeleton/ghost sprites
-- Pixel Art Spells (DevWizard) — fireballs, magic bolts
 """
 from __future__ import annotations
 
-import io
 import json
 import re
 import shutil
@@ -36,8 +33,6 @@ NEW_URL = "https://opengameart.org/sites/default/files/kenney_new-platformer-pac
 SPACE_URL = "https://opengameart.org/sites/default/files/SpaceShooterRedux.zip"
 SPACE_EXT_URL = "https://opengameart.org/sites/default/files/kenney_spaceShooterExtension.zip"
 DUNGEON_URL = "https://opengameart.org/sites/default/files/kenney_tinydungeon.zip"
-SKELETON_URL = "https://opengameart.org/sites/default/files/skeleton-ghost.zip"
-SPELLS_URL = "https://opengameart.org/sites/default/files/pixelart_spells.zip"
 
 COLOR_RU = {
     "Green": "зелёный",
@@ -149,31 +144,15 @@ def add(
     zip_key: str,
     path: str,
     pack: str,
-    crop: tuple[int, int, int, int] | None = None,
 ) -> None:
-    entry = {
+    catalog.append({
         "id": entry_id,
         "label": label,
         "group": group,
         "zip": zip_key,
         "path": path,
         "pack": pack,
-    }
-    if crop:
-        entry["crop"] = crop
-    catalog.append(entry)
-
-
-def crop_sprite_frame(raw: bytes, frame_w: int, frame_h: int, col: int = 0, row: int = 0) -> bytes:
-    from PIL import Image
-
-    image = Image.open(io.BytesIO(raw)).convert("RGBA")
-    left = col * frame_w
-    top = row * frame_h
-    frame = image.crop((left, top, left + frame_w, top + frame_h))
-    out = io.BytesIO()
-    frame.save(out, format="PNG")
-    return out.getvalue()
+    })
 
 
 def build_catalog() -> list:
@@ -350,8 +329,6 @@ def build_catalog() -> list:
 
     build_space_catalog(catalog)
     build_dungeon_catalog(catalog)
-    build_skeleton_catalog(catalog)
-    build_spells_catalog(catalog)
 
     # Deduplicate ids (keep first)
     seen: set[str] = set()
@@ -590,49 +567,6 @@ def build_dungeon_catalog(catalog: list) -> None:
         )
 
 
-def build_skeleton_catalog(catalog: list) -> None:
-    # Spritesheets — import only one frame (frame size from filename).
-    for fname, entry_id, label, crop in [
-        ("skeleton-36x48.png", "skeleton_white", "Скелет", (36, 48, 0, 0)),
-        ("skeleton-green-36x48.png", "skeleton_green", "Скелет зелёный", (36, 48, 0, 0)),
-        ("ghost-25x35.png", "ghost_white", "Призрак", (25, 35, 0, 0)),
-        ("ghost-green-25x35.png", "ghost_green", "Призрак зелёный", (25, 35, 0, 0)),
-        ("ghost-red-25x35.png", "ghost_red", "Призрак красный", (25, 35, 0, 0)),
-    ]:
-        add(catalog, entry_id, label, "enemies", "skeleton", fname, "skeleton-ghost", crop=crop)
-
-
-def build_spells_catalog(catalog: list) -> None:
-    # Animation strips — one representative frame per spell.
-    frame16 = (16, 16, 2, 0)
-    spells = [
-        ("Pixelart Spells/PNG Files/Fireball.png", "spell_fireball", "Огненный шар", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Firebomb.png", "spell_firebomb", "Огненная бомба", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Ice Lance.png", "spell_ice_lance", "Ледяное копьё", "projectiles", (16, 16, 1, 0)),
-        ("Pixelart Spells/PNG Files/Light Bolt.png", "spell_light_bolt", "Световой болт", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Darkness Bolt.png", "spell_dark_bolt", "Болт тьмы", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Wind Bolt.png", "spell_wind_bolt", "Болт ветра", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Water Bolt.png", "spell_water_bolt", "Водяной болт", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Arcane Bolt.png", "spell_arcane_bolt", "Тайный болт", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Bolt Of Purity.png", "spell_purity_bolt", "Болт чистоты", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Pure Bolt 2.png", "spell_pure_bolt", "Чистый болт", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Magic Ray.png", "spell_magic_ray", "Магический луч", "projectiles", (16, 16, 3, 0)),
-        ("Pixelart Spells/PNG Files/Black And White Ray.png", "spell_bw_ray", "Луч (ч/б)", "projectiles", (16, 16, 3, 0)),
-        ("Pixelart Spells/PNG Files/Plant Missle.png", "spell_plant_missile", "Растительная ракета", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Rock Sling.png", "spell_rock_sling", "Камень-праща", "projectiles", None),
-        ("Pixelart Spells/PNG Files/Magic Orb.png", "spell_magic_orb", "Магическая сфера", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Darkness Orb.png", "spell_dark_orb", "Сфера тьмы", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Water Orb.png", "spell_water_orb", "Водяная сфера", "projectiles", frame16),
-        ("Pixelart Spells/PNG Files/Magic Sparks.png", "spell_magic_sparks", "Магические искры", "effects", frame16),
-        ("Pixelart Spells/PNG Files/Black And White Sparks.png", "spell_bw_sparks", "Искры (ч/б)", "effects", frame16),
-        ("Pixelart Spells/PNG Files/Splash.png", "spell_splash", "Брызги", "effects", (32, 32, 2, 0)),
-        ("Pixelart Spells/PNG Files/Pixelart Shield.png", "spell_shield", "Магический щит", "effects", (48, 48, 0, 0)),
-        ("Pixelart Spells/PNG Files/Water Blast.png", "spell_water_blast", "Водяной взрыв", "effects", frame16),
-    ]
-    for path, entry_id, label, group, crop in spells:
-        add(catalog, entry_id, label, group, "spells", path, "pixel-art-spells", crop=crop)
-
-
 def download(url: str, dest: Path) -> None:
     if dest.is_file() and dest.stat().st_size > 1000:
         print("Using cached", dest.name)
@@ -656,8 +590,6 @@ def extract_all() -> None:
     space_zip = TMP / "space.zip"
     space_ext_zip = TMP / "space_ext.zip"
     dungeon_zip = TMP / "dungeon.zip"
-    skeleton_zip = TMP / "skeleton.zip"
-    spells_zip = TMP / "spells.zip"
 
     download(REDUX_URL, redux_zip)
     download(BG_URL, bg_zip)
@@ -665,8 +597,6 @@ def extract_all() -> None:
     download(SPACE_URL, space_zip)
     download(SPACE_EXT_URL, space_ext_zip)
     download(DUNGEON_URL, dungeon_zip)
-    download(SKELETON_URL, skeleton_zip)
-    download(SPELLS_URL, spells_zip)
 
     archives = {
         "redux": zipfile.ZipFile(redux_zip),
@@ -675,8 +605,6 @@ def extract_all() -> None:
         "space": zipfile.ZipFile(space_zip),
         "space_ext": zipfile.ZipFile(space_ext_zip),
         "dungeon": zipfile.ZipFile(dungeon_zip),
-        "skeleton": zipfile.ZipFile(skeleton_zip),
-        "spells": zipfile.ZipFile(spells_zip),
     }
 
     missing: list[str] = []
@@ -690,14 +618,8 @@ def extract_all() -> None:
 
             dest = LIB / "kenney" / entry["group"] / f"{entry['id']}.png"
             dest.parent.mkdir(parents=True, exist_ok=True)
-            with archive.open(src) as src_file:
-                raw = src_file.read()
-            crop = entry.get("crop")
-            if crop:
-                fw, fh, col, row = crop
-                raw = crop_sprite_frame(raw, fw, fh, col, row)
-            with dest.open("wb") as dest_file:
-                dest_file.write(raw)
+            with archive.open(src) as src_file, dest.open("wb") as dest_file:
+                dest_file.write(src_file.read())
     finally:
         for archive in archives.values():
             archive.close()
@@ -734,10 +656,7 @@ def extract_all() -> None:
         "- Space Shooter Redux\n"
         "- Space Shooter Extension\n"
         "- Tiny Dungeon\n"
-        "  https://kenney.nl\n\n"
-        "Other CC0 packs:\n"
-        "- Skeleton & Ghost spritesheets — Balmer (Ars Notoria)\n"
-        "- Pixel Art Spells — DevWizard\n",
+        "  https://kenney.nl\n",
         encoding="utf-8",
     )
 

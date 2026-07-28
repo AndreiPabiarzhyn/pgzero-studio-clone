@@ -31,7 +31,7 @@ function loadImageLibraryTest(version) {
 
 test('game-sprites.json содержит Kenney-спрайты', () => {
   const json = JSON.parse(readFileSync(join(__dirname, '../assets/image-library/game-sprites.json'), 'utf8'));
-  assert.ok(json.length >= 340);
+  assert.ok(json.length >= 320);
   const ids = json.map(function (e) { return e.id; });
   assert.ok(ids.includes('hero_green_stand'));
   assert.ok(ids.includes('slime_blue'));
@@ -40,7 +40,7 @@ test('game-sprites.json содержит Kenney-спрайты', () => {
   assert.ok(ids.includes('ship1_blue'));
   assert.ok(ids.includes('dungeon_wizard'));
   assert.ok(ids.includes('dungeon_cyclops'));
-  assert.ok(ids.includes('spell_fireball'));
+  assert.ok(ids.includes('fire_00'));
   assert.equal(json[0].pack, 'platformer-redux');
   const groups = new Set(json.map(function (e) { return e.group; }));
   assert.ok(groups.has('characters'));

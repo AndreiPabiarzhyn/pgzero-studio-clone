@@ -8,7 +8,3 @@ Kenney.nl packs:
 - Space Shooter Extension
 - Tiny Dungeon
   https://kenney.nl
-
-Other CC0 packs:
-- Skeleton & Ghost spritesheets — Balmer (Ars Notoria)
-- Pixel Art Spells — DevWizard
