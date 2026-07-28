@@ -12,6 +12,7 @@ Sources (all CC0):
 """
 from __future__ import annotations
 
+import io
 import json
 import re
 import shutil
@@ -126,6 +127,38 @@ ENEMY_RU = {
     "wormPink": "Червь розовый",
     "barnacle": "Утконос",
 }
+
+
+UPSCALE_BY_PACK = {
+    "tiny-dungeon": 4,
+}
+UPSCALE_SMALL_MAX = 24
+UPSCALE_SMALL_FACTOR = 3
+
+
+def upscale_nearest(raw: bytes, scale: int) -> bytes:
+    from PIL import Image
+
+    if scale <= 1:
+        return raw
+    image = Image.open(io.BytesIO(raw))
+    width, height = image.size
+    upscaled = image.resize((width * scale, height * scale), Image.NEAREST)
+    out = io.BytesIO()
+    upscaled.save(out, format="PNG")
+    return out.getvalue()
+
+
+def maybe_upscale_sprite(raw: bytes, pack: str) -> bytes:
+    pack_scale = UPSCALE_BY_PACK.get(pack)
+    if pack_scale:
+        return upscale_nearest(raw, pack_scale)
+    from PIL import Image
+
+    image = Image.open(io.BytesIO(raw))
+    if max(image.size) <= UPSCALE_SMALL_MAX:
+        return upscale_nearest(raw, UPSCALE_SMALL_FACTOR)
+    return raw
 
 
 def slug(text: str) -> str:
@@ -618,8 +651,10 @@ def extract_all() -> None:
 
             dest = LIB / "kenney" / entry["group"] / f"{entry['id']}.png"
             dest.parent.mkdir(parents=True, exist_ok=True)
-            with archive.open(src) as src_file, dest.open("wb") as dest_file:
-                dest_file.write(src_file.read())
+            with archive.open(src) as src_file:
+                raw = maybe_upscale_sprite(src_file.read(), entry["pack"])
+            with dest.open("wb") as dest_file:
+                dest_file.write(raw)
     finally:
         for archive in archives.values():
             archive.close()
