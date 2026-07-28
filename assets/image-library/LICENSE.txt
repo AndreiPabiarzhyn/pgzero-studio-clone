@@ -1,9 +1,14 @@
-Kenney.nl — CC0 1.0 Universal (public domain)
+All assets — CC0 1.0 Universal (public domain)
 
-Packs used:
+Kenney.nl packs:
 - Platformer Pack Redux
 - Background Elements
 - New Platformer Pack
+- Space Shooter Redux
+- Space Shooter Extension
+- Tiny Dungeon
   https://kenney.nl
 
-Author: Kenney Vleugels
+Other CC0 packs:
+- Skeleton & Ghost spritesheets — Balmer (Ars Notoria)
+- Pixel Art Spells — DevWizard

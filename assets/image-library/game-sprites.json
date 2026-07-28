@@ -1582,5 +1582,2213 @@
     "source": "local",
     "file": "assets/image-library/kenney/items/np_flag_green_a.png",
     "pack": "new-platformer"
+  },
+  {
+    "id": "ship1_blue",
+    "label": "Космический корабль 1 (синий)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship1_blue.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship1_green",
+    "label": "Космический корабль 1 (зелёный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship1_green.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship1_orange",
+    "label": "Космический корабль 1 (оранжевый)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship1_orange.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship1_red",
+    "label": "Космический корабль 1 (красный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship1_red.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship2_blue",
+    "label": "Космический корабль 2 (синий)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship2_blue.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship2_green",
+    "label": "Космический корабль 2 (зелёный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship2_green.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship2_orange",
+    "label": "Космический корабль 2 (оранжевый)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship2_orange.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship2_red",
+    "label": "Космический корабль 2 (красный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship2_red.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship3_blue",
+    "label": "Космический корабль 3 (синий)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship3_blue.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship3_green",
+    "label": "Космический корабль 3 (зелёный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship3_green.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship3_orange",
+    "label": "Космический корабль 3 (оранжевый)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship3_orange.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "ship3_red",
+    "label": "Космический корабль 3 (красный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/ship3_red.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_black_1",
+    "label": "Вражеский корабль (чёрный 1)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_black_1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_black_2",
+    "label": "Вражеский корабль (чёрный 2)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_black_2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_black_3",
+    "label": "Вражеский корабль (чёрный 3)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_black_3.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_black_4",
+    "label": "Вражеский корабль (чёрный 4)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_black_4.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_black_5",
+    "label": "Вражеский корабль (чёрный 5)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_black_5.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_blue_1",
+    "label": "Вражеский корабль (синий 1)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_blue_1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_blue_2",
+    "label": "Вражеский корабль (синий 2)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_blue_2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_blue_3",
+    "label": "Вражеский корабль (синий 3)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_blue_3.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_blue_4",
+    "label": "Вражеский корабль (синий 4)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_blue_4.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_blue_5",
+    "label": "Вражеский корабль (синий 5)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_blue_5.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_green_1",
+    "label": "Вражеский корабль (зелёный 1)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_green_1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_green_2",
+    "label": "Вражеский корабль (зелёный 2)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_green_2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_green_3",
+    "label": "Вражеский корабль (зелёный 3)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_green_3.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_green_4",
+    "label": "Вражеский корабль (зелёный 4)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_green_4.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_green_5",
+    "label": "Вражеский корабль (зелёный 5)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_green_5.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_red_1",
+    "label": "Вражеский корабль (красный 1)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_red_1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_red_2",
+    "label": "Вражеский корабль (красный 2)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_red_2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_red_3",
+    "label": "Вражеский корабль (красный 3)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_red_3.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_red_4",
+    "label": "Вражеский корабль (красный 4)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_red_4.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "enemy_red_5",
+    "label": "Вражеский корабль (красный 5)",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/enemy_red_5.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_01",
+    "label": "Лазер синий (1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_01.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_02",
+    "label": "Лазер синий (2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_02.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_03",
+    "label": "Лазер синий (3)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_03.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_04",
+    "label": "Лазер синий (4)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_04.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_05",
+    "label": "Лазер синий (5)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_05.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_06",
+    "label": "Лазер синий (6)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_06.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_07",
+    "label": "Лазер синий (7)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_07.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_08",
+    "label": "Лазер синий (8)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_08.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_09",
+    "label": "Лазер синий (9)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_09.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_10",
+    "label": "Лазер синий (10)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_10.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_11",
+    "label": "Лазер синий (11)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_11.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_12",
+    "label": "Лазер синий (12)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_12.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_13",
+    "label": "Лазер синий (13)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_13.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_14",
+    "label": "Лазер синий (14)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_14.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_15",
+    "label": "Лазер синий (15)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_15.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_blue_16",
+    "label": "Лазер синий (16)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_blue_16.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_01",
+    "label": "Лазер зелёный (1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_01.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_02",
+    "label": "Лазер зелёный (2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_02.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_03",
+    "label": "Лазер зелёный (3)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_03.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_04",
+    "label": "Лазер зелёный (4)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_04.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_05",
+    "label": "Лазер зелёный (5)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_05.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_06",
+    "label": "Лазер зелёный (6)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_06.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_07",
+    "label": "Лазер зелёный (7)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_07.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_08",
+    "label": "Лазер зелёный (8)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_08.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_09",
+    "label": "Лазер зелёный (9)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_09.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_10",
+    "label": "Лазер зелёный (10)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_10.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_11",
+    "label": "Лазер зелёный (11)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_11.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_12",
+    "label": "Лазер зелёный (12)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_12.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_13",
+    "label": "Лазер зелёный (13)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_13.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_14",
+    "label": "Лазер зелёный (14)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_14.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_15",
+    "label": "Лазер зелёный (15)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_15.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_green_16",
+    "label": "Лазер зелёный (16)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_green_16.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_01",
+    "label": "Лазер красный (1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_01.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_02",
+    "label": "Лазер красный (2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_02.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_03",
+    "label": "Лазер красный (3)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_03.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_04",
+    "label": "Лазер красный (4)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_04.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_05",
+    "label": "Лазер красный (5)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_05.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_06",
+    "label": "Лазер красный (6)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_06.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_07",
+    "label": "Лазер красный (7)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_07.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_08",
+    "label": "Лазер красный (8)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_08.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_09",
+    "label": "Лазер красный (9)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_09.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_10",
+    "label": "Лазер красный (10)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_10.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_11",
+    "label": "Лазер красный (11)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_11.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_12",
+    "label": "Лазер красный (12)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_12.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_13",
+    "label": "Лазер красный (13)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_13.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_14",
+    "label": "Лазер красный (14)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_14.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_15",
+    "label": "Лазер красный (15)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_15.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "laser_red_16",
+    "label": "Лазер красный (16)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/laser_red_16.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_big1",
+    "label": "Метеорит коричн. (большой 1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_big1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_big2",
+    "label": "Метеорит коричн. (большой 2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_big2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_big3",
+    "label": "Метеорит коричн. (большой 3)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_big3.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_big4",
+    "label": "Метеорит коричн. (большой 4)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_big4.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_med1",
+    "label": "Метеорит коричн. (средний 1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_med1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_med3",
+    "label": "Метеорит коричн. (средний 2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_med3.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_small1",
+    "label": "Метеорит коричн. (малый 1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_small1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_small2",
+    "label": "Метеорит коричн. (малый 2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_small2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_tiny1",
+    "label": "Метеорит коричн. (крошечный 1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_tiny1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_brown_tiny2",
+    "label": "Метеорит коричн. (крошечный 2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_brown_tiny2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_big1",
+    "label": "Метеорит серый (большой 1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_big1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_big2",
+    "label": "Метеорит серый (большой 2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_big2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_big3",
+    "label": "Метеорит серый (большой 3)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_big3.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_big4",
+    "label": "Метеорит серый (большой 4)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_big4.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_med1",
+    "label": "Метеорит серый (средний 1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_med1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_med2",
+    "label": "Метеорит серый (средний 2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_med2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_small1",
+    "label": "Метеорит серый (малый 1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_small1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_small2",
+    "label": "Метеорит серый (малый 2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_small2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_tiny1",
+    "label": "Метеорит серый (крошечный 1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_tiny1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "meteor_grey_tiny2",
+    "label": "Метеорит серый (крошечный 2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/meteor_grey_tiny2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_00",
+    "label": "Огонь (1)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_00.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_01",
+    "label": "Огонь (2)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_01.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_02",
+    "label": "Огонь (3)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_02.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_03",
+    "label": "Огонь (4)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_03.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_04",
+    "label": "Огонь (5)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_04.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_05",
+    "label": "Огонь (6)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_05.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_06",
+    "label": "Огонь (7)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_06.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_07",
+    "label": "Огонь (8)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_07.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_08",
+    "label": "Огонь (9)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_08.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_09",
+    "label": "Огонь (10)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_09.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_10",
+    "label": "Огонь (11)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_10.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_11",
+    "label": "Огонь (12)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_11.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_12",
+    "label": "Огонь (13)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_12.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_13",
+    "label": "Огонь (14)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_13.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_14",
+    "label": "Огонь (15)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_14.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_15",
+    "label": "Огонь (16)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_15.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_16",
+    "label": "Огонь (17)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_16.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_17",
+    "label": "Огонь (18)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_17.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_18",
+    "label": "Огонь (19)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_18.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "fire_19",
+    "label": "Огонь (20)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/fire_19.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_shield1",
+    "label": "Щит (эффект 1)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/space_shield1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_shield2",
+    "label": "Щит (эффект 2)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/space_shield2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_shield3",
+    "label": "Щит (эффект 3)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/space_shield3.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_speed",
+    "label": "Ускорение",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/space_speed.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_star1",
+    "label": "Звезда (эффект 1)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/space_star1.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_star2",
+    "label": "Звезда (эффект 2)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/space_star2.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_star3",
+    "label": "Звезда (эффект 3)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/space_star3.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_bg_black",
+    "label": "Космос: чёрный",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/space_bg_black.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_bg_blue",
+    "label": "Космос: синий",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/space_bg_blue.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_bg_dark_purple",
+    "label": "Космос: тёмно-фиолетовый",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/space_bg_dark_purple.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_bg_purple",
+    "label": "Космос: фиолетовый",
+    "group": "backgrounds",
+    "source": "local",
+    "file": "assets/image-library/kenney/backgrounds/space_bg_purple.png",
+    "pack": "space-shooter-redux"
+  },
+  {
+    "id": "space_ext_ship_001",
+    "label": "Космический корабль (1)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/space_ext_ship_001.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "space_ext_ship_002",
+    "label": "Космический корабль (2)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/space_ext_ship_002.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "space_ext_ship_003",
+    "label": "Космический корабль (3)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/space_ext_ship_003.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "space_ext_ship_004",
+    "label": "Космический корабль (4)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/space_ext_ship_004.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "space_ext_ship_005",
+    "label": "Космический корабль (5)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/space_ext_ship_005.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "space_ext_ship_006",
+    "label": "Космический корабль (6)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/space_ext_ship_006.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "space_ext_ship_007",
+    "label": "Космический корабль (7)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/space_ext_ship_007.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "space_ext_ship_008",
+    "label": "Космический корабль (8)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/space_ext_ship_008.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "space_ext_ship_009",
+    "label": "Космический корабль (9)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/space_ext_ship_009.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "rocket_001",
+    "label": "Ракета (1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/rocket_001.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "rocket_002",
+    "label": "Ракета (2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/rocket_002.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "rocket_003",
+    "label": "Ракета (3)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/rocket_003.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "rocket_004",
+    "label": "Ракета (4)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/rocket_004.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_001",
+    "label": "Ракета-снаряд (1)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_001.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_002",
+    "label": "Ракета-снаряд (2)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_002.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_003",
+    "label": "Ракета-снаряд (3)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_003.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_004",
+    "label": "Ракета-снаряд (4)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_004.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_005",
+    "label": "Ракета-снаряд (5)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_005.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_006",
+    "label": "Ракета-снаряд (6)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_006.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_007",
+    "label": "Ракета-снаряд (7)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_007.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_008",
+    "label": "Ракета-снаряд (8)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_008.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_009",
+    "label": "Ракета-снаряд (9)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_009.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_010",
+    "label": "Ракета-снаряд (10)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_010.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_011",
+    "label": "Ракета-снаряд (11)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_011.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_012",
+    "label": "Ракета-снаряд (12)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_012.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_013",
+    "label": "Ракета-снаряд (13)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_013.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_014",
+    "label": "Ракета-снаряд (14)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_014.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_015",
+    "label": "Ракета-снаряд (15)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_015.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_016",
+    "label": "Ракета-снаряд (16)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_016.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_017",
+    "label": "Ракета-снаряд (17)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_017.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_018",
+    "label": "Ракета-снаряд (18)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_018.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_019",
+    "label": "Ракета-снаряд (19)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_019.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_020",
+    "label": "Ракета-снаряд (20)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_020.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_021",
+    "label": "Ракета-снаряд (21)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_021.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_022",
+    "label": "Ракета-снаряд (22)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_022.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_023",
+    "label": "Ракета-снаряд (23)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_023.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_024",
+    "label": "Ракета-снаряд (24)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_024.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_025",
+    "label": "Ракета-снаряд (25)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_025.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_026",
+    "label": "Ракета-снаряд (26)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_026.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_027",
+    "label": "Ракета-снаряд (27)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_027.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_028",
+    "label": "Ракета-снаряд (28)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_028.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_029",
+    "label": "Ракета-снаряд (29)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_029.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_030",
+    "label": "Ракета-снаряд (30)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_030.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_031",
+    "label": "Ракета-снаряд (31)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_031.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_032",
+    "label": "Ракета-снаряд (32)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_032.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_033",
+    "label": "Ракета-снаряд (33)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_033.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_034",
+    "label": "Ракета-снаряд (34)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_034.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_035",
+    "label": "Ракета-снаряд (35)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_035.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_036",
+    "label": "Ракета-снаряд (36)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_036.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_037",
+    "label": "Ракета-снаряд (37)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_037.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_038",
+    "label": "Ракета-снаряд (38)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_038.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_039",
+    "label": "Ракета-снаряд (39)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_039.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "missile_040",
+    "label": "Ракета-снаряд (40)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/missile_040.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_001",
+    "label": "Космонавт (1)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_001.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_002",
+    "label": "Космонавт (2)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_002.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_003",
+    "label": "Космонавт (3)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_003.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_004",
+    "label": "Космонавт (4)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_004.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_005",
+    "label": "Космонавт (5)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_005.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_006",
+    "label": "Космонавт (6)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_006.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_007",
+    "label": "Космонавт (7)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_007.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_008",
+    "label": "Космонавт (8)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_008.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_009",
+    "label": "Космонавт (9)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_009.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_010",
+    "label": "Космонавт (10)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_010.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_011",
+    "label": "Космонавт (11)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_011.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_012",
+    "label": "Космонавт (12)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_012.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_013",
+    "label": "Космонавт (13)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_013.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_014",
+    "label": "Космонавт (14)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_014.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_015",
+    "label": "Космонавт (15)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_015.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_016",
+    "label": "Космонавт (16)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_016.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_017",
+    "label": "Космонавт (17)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_017.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "astronaut_018",
+    "label": "Космонавт (18)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/astronaut_018.png",
+    "pack": "space-shooter-extension"
+  },
+  {
+    "id": "dungeon_knight_white",
+    "label": "Рыцарь (белый)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_knight_white.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_knight_red",
+    "label": "Рыцарь (красный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_knight_red.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_knight_yellow",
+    "label": "Рыцарь (жёлтый)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_knight_yellow.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_knight_blue",
+    "label": "Рыцарь (синий)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_knight_blue.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_knight_silver",
+    "label": "Рыцарь (серебро)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_knight_silver.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_knight_dark",
+    "label": "Рыцарь (тёмный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_knight_dark.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_dwarf_brown",
+    "label": "Гном (коричн.)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_dwarf_brown.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_dwarf_red",
+    "label": "Гном (красный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_dwarf_red.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_dwarf_blue",
+    "label": "Гном (синий)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_dwarf_blue.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_dwarf_green",
+    "label": "Гном (зелёный)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_dwarf_green.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_dwarf_purple",
+    "label": "Гном (фиолет.)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_dwarf_purple.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_dwarf_grey",
+    "label": "Гном (серый)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_dwarf_grey.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_wizard",
+    "label": "Маг",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_wizard.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_priest",
+    "label": "Жрец",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_priest.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_king",
+    "label": "Король",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_king.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_slime",
+    "label": "Слайм",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_slime.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_bat",
+    "label": "Летучая мышь",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_bat.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_skeleton",
+    "label": "Скелет",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_skeleton.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_ghost",
+    "label": "Призрак",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_ghost.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_spider",
+    "label": "Паук",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_spider.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_snake",
+    "label": "Змея",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_snake.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_crab",
+    "label": "Краб",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_crab.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_goblin",
+    "label": "Гоблин",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_goblin.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_orc",
+    "label": "Орк",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_orc.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_rat",
+    "label": "Крыса",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_rat.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_slime_green",
+    "label": "Слайм зелёный",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_slime_green.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_eye",
+    "label": "Циклоп",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_eye.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_ogre",
+    "label": "Огр",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_ogre.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_imp",
+    "label": "Бес",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_imp.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_demon",
+    "label": "Демон",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_demon.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_mummy",
+    "label": "Мумия",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_mummy.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_vampire",
+    "label": "Вампир",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_vampire.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_witch",
+    "label": "Ведьма",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_witch.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_zombie",
+    "label": "Зомби",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_zombie.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_sword1",
+    "label": "Меч 1",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_sword1.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_sword2",
+    "label": "Меч 2",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_sword2.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_axe1",
+    "label": "Топор 1",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_axe1.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_axe2",
+    "label": "Топор 2",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_axe2.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_shield",
+    "label": "Щит",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_shield.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_bow",
+    "label": "Лук",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_bow.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_arrow",
+    "label": "Стрела",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/dungeon_arrow.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_potion_red",
+    "label": "Зелье красное",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_potion_red.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_potion_blue",
+    "label": "Зелье синее",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_potion_blue.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_potion_green",
+    "label": "Зелье зелёное",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_potion_green.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_key_gold",
+    "label": "Ключ золотой",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_key_gold.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_key_silver",
+    "label": "Ключ серебряный",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_key_silver.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_skull",
+    "label": "Череп",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_skull.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "skeleton_white",
+    "label": "Скелет",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/skeleton_white.png",
+    "pack": "skeleton-ghost"
+  },
+  {
+    "id": "skeleton_green",
+    "label": "Скелет зелёный",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/skeleton_green.png",
+    "pack": "skeleton-ghost"
+  },
+  {
+    "id": "ghost_white",
+    "label": "Призрак",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/ghost_white.png",
+    "pack": "skeleton-ghost"
+  },
+  {
+    "id": "ghost_green",
+    "label": "Призрак зелёный",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/ghost_green.png",
+    "pack": "skeleton-ghost"
+  },
+  {
+    "id": "ghost_red",
+    "label": "Призрак красный",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/ghost_red.png",
+    "pack": "skeleton-ghost"
+  },
+  {
+    "id": "spell_fireball",
+    "label": "Огненный шар",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_fireball.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_firebomb",
+    "label": "Огненная бомба",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_firebomb.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_ice_lance",
+    "label": "Ледяное копьё",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_ice_lance.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_light_bolt",
+    "label": "Световой болт",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_light_bolt.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_dark_bolt",
+    "label": "Болт тьмы",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_dark_bolt.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_wind_bolt",
+    "label": "Болт ветра",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_wind_bolt.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_water_bolt",
+    "label": "Водяной болт",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_water_bolt.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_arcane_bolt",
+    "label": "Тайный болт",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_arcane_bolt.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_purity_bolt",
+    "label": "Болт чистоты",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_purity_bolt.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_pure_bolt",
+    "label": "Чистый болт",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_pure_bolt.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_magic_ray",
+    "label": "Магический луч",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_magic_ray.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_bw_ray",
+    "label": "Луч (ч/б)",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_bw_ray.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_plant_missile",
+    "label": "Растительная ракета",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_plant_missile.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_rock_sling",
+    "label": "Камень-праща",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_rock_sling.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_magic_orb",
+    "label": "Магическая сфера",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_magic_orb.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_dark_orb",
+    "label": "Сфера тьмы",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_dark_orb.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_water_orb",
+    "label": "Водяная сфера",
+    "group": "projectiles",
+    "source": "local",
+    "file": "assets/image-library/kenney/projectiles/spell_water_orb.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_magic_sparks",
+    "label": "Магические искры",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/spell_magic_sparks.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_bw_sparks",
+    "label": "Искры (ч/б)",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/spell_bw_sparks.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_splash",
+    "label": "Брызги",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/spell_splash.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_shield",
+    "label": "Магический щит",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/spell_shield.png",
+    "pack": "pixel-art-spells"
+  },
+  {
+    "id": "spell_water_blast",
+    "label": "Водяной взрыв",
+    "group": "effects",
+    "source": "local",
+    "file": "assets/image-library/kenney/effects/spell_water_blast.png",
+    "pack": "pixel-art-spells"
   }
 ]

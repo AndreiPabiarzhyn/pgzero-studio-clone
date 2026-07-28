@@ -8,3 +8,7 @@ Desktop.ini
 _upstream/
 node_modules/
 .verify-screenshots/
+.tmp-probe/
+.tmp-tiny-preview.png
+.tmp-tiny-sheet.txt
+.tmp-kenney-import/

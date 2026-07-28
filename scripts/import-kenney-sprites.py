@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 """
-Import Kenney CC0 sprite sets into assets/image-library.
+Import CC0 sprite sets into assets/image-library.
 
 Sources (all CC0):
 - Platformer Pack Redux — 128x256 players, 128 enemies/items/tiles, 1024 backgrounds
 - Background Elements — 1024 sample backdrops + parallax pieces
 - New Platformer Pack — 128 characters, 64 tiles/enemies, 256 backgrounds
+- Space Shooter Redux — ships, enemies, lasers, meteors, fire
+- Space Shooter Extension — ships, rockets, missiles, astronauts
+- Tiny Dungeon — knights, monsters, weapons (16x16)
+- Skeleton & Ghost (Balmer) — skeleton/ghost sprites
+- Pixel Art Spells (DevWizard) — fireballs, magic bolts
 """
 from __future__ import annotations
 
@@ -27,6 +32,11 @@ REDUX_URL = (
 )
 BG_URL = "https://opengameart.org/sites/default/files/kenney_backgroundElements.zip"
 NEW_URL = "https://opengameart.org/sites/default/files/kenney_new-platformer-pack-1.0.zip"
+SPACE_URL = "https://opengameart.org/sites/default/files/SpaceShooterRedux.zip"
+SPACE_EXT_URL = "https://opengameart.org/sites/default/files/kenney_spaceShooterExtension.zip"
+DUNGEON_URL = "https://opengameart.org/sites/default/files/kenney_tinydungeon.zip"
+SKELETON_URL = "https://opengameart.org/sites/default/files/skeleton-ghost.zip"
+SPELLS_URL = "https://opengameart.org/sites/default/files/pixelart_spells.zip"
 
 COLOR_RU = {
     "Green": "зелёный",
@@ -313,6 +323,11 @@ def build_catalog() -> list:
     ]:
         add(catalog, entry_id, label, "items", "new", path, "new-platformer")
 
+    build_space_catalog(catalog)
+    build_dungeon_catalog(catalog)
+    build_skeleton_catalog(catalog)
+    build_spells_catalog(catalog)
+
     # Deduplicate ids (keep first)
     seen: set[str] = set()
     unique: list = []
@@ -322,6 +337,270 @@ def build_catalog() -> list:
         seen.add(entry["id"])
         unique.append(entry)
     return unique
+
+
+def build_space_catalog(catalog: list) -> None:
+    ship_colors = {
+        "blue": "синий",
+        "green": "зелёный",
+        "orange": "оранжевый",
+        "red": "красный",
+    }
+    for ship_num in (1, 2, 3):
+        for color, color_ru in ship_colors.items():
+            fname = f"playerShip{ship_num}_{color}.png"
+            add(
+                catalog,
+                slug(f"ship{ship_num}_{color}"),
+                f"Космический корабль {ship_num} ({color_ru})",
+                "characters",
+                "space",
+                f"PNG/{fname}",
+                "space-shooter-redux",
+            )
+
+    enemy_colors = {
+        "Black": "чёрный",
+        "Blue": "синий",
+        "Green": "зелёный",
+        "Red": "красный",
+    }
+    for color, color_ru in enemy_colors.items():
+        for variant in range(1, 6):
+            fname = f"enemy{color}{variant}.png"
+            add(
+                catalog,
+                slug(f"enemy_{color.lower()}_{variant}"),
+                f"Вражеский корабль ({color_ru} {variant})",
+                "enemies",
+                "space",
+                f"PNG/Enemies/{fname}",
+                "space-shooter-redux",
+            )
+
+    laser_colors = {
+        "laserBlue": "синий",
+        "laserGreen": "зелёный",
+        "laserRed": "красный",
+    }
+    for prefix, color_ru in laser_colors.items():
+        for num in range(1, 17):
+            fname = f"{prefix}{num:02d}.png"
+            add(
+                catalog,
+                slug(f"{prefix}_{num:02d}"),
+                f"Лазер {color_ru} ({num})",
+                "projectiles",
+                "space",
+                f"PNG/Lasers/{fname}",
+                "space-shooter-redux",
+            )
+
+    meteor_labels = {
+        "meteorBrown_big1": "Метеорит коричн. (большой 1)",
+        "meteorBrown_big2": "Метеорит коричн. (большой 2)",
+        "meteorBrown_big3": "Метеорит коричн. (большой 3)",
+        "meteorBrown_big4": "Метеорит коричн. (большой 4)",
+        "meteorBrown_med1": "Метеорит коричн. (средний 1)",
+        "meteorBrown_med3": "Метеорит коричн. (средний 2)",
+        "meteorBrown_small1": "Метеорит коричн. (малый 1)",
+        "meteorBrown_small2": "Метеорит коричн. (малый 2)",
+        "meteorBrown_tiny1": "Метеорит коричн. (крошечный 1)",
+        "meteorBrown_tiny2": "Метеорит коричн. (крошечный 2)",
+        "meteorGrey_big1": "Метеорит серый (большой 1)",
+        "meteorGrey_big2": "Метеорит серый (большой 2)",
+        "meteorGrey_big3": "Метеорит серый (большой 3)",
+        "meteorGrey_big4": "Метеорит серый (большой 4)",
+        "meteorGrey_med1": "Метеорит серый (средний 1)",
+        "meteorGrey_med2": "Метеорит серый (средний 2)",
+        "meteorGrey_small1": "Метеорит серый (малый 1)",
+        "meteorGrey_small2": "Метеорит серый (малый 2)",
+        "meteorGrey_tiny1": "Метеорит серый (крошечный 1)",
+        "meteorGrey_tiny2": "Метеорит серый (крошечный 2)",
+    }
+    for fname, label in meteor_labels.items():
+        add(catalog, slug(fname), label, "projectiles", "space", f"PNG/Meteors/{fname}.png", "space-shooter-redux")
+
+    for num in range(20):
+        fname = f"fire{num:02d}.png"
+        add(
+            catalog,
+            slug(f"fire_{num:02d}"),
+            f"Огонь ({num + 1})",
+            "effects",
+            "space",
+            f"PNG/Effects/{fname}",
+            "space-shooter-redux",
+        )
+
+    for fname, label in [
+        ("shield1.png", "Щит (эффект 1)"),
+        ("shield2.png", "Щит (эффект 2)"),
+        ("shield3.png", "Щит (эффект 3)"),
+        ("speed.png", "Ускорение"),
+        ("star1.png", "Звезда (эффект 1)"),
+        ("star2.png", "Звезда (эффект 2)"),
+        ("star3.png", "Звезда (эффект 3)"),
+    ]:
+        add(catalog, slug(f"space_{fname.replace('.png', '')}"), label, "effects", "space", f"PNG/Effects/{fname}", "space-shooter-redux")
+
+    for fname, label in [
+        ("black.png", "Космос: чёрный"),
+        ("blue.png", "Космос: синий"),
+        ("darkPurple.png", "Космос: тёмно-фиолетовый"),
+        ("purple.png", "Космос: фиолетовый"),
+    ]:
+        add(catalog, slug(f"space_bg_{fname.replace('.png', '')}"), label, "backgrounds", "space", f"Backgrounds/{fname}", "space-shooter-redux")
+
+    for num in range(1, 10):
+        fname = f"spaceShips_{num:03d}.png"
+        add(
+            catalog,
+            slug(f"space_ext_ship_{num:03d}"),
+            f"Космический корабль ({num})",
+            "characters",
+            "space_ext",
+            f"PNG/Sprites X2/Ships/{fname}",
+            "space-shooter-extension",
+        )
+
+    for num in range(1, 5):
+        fname = f"spaceRockets_{num:03d}.png"
+        add(
+            catalog,
+            slug(f"rocket_{num:03d}"),
+            f"Ракета ({num})",
+            "projectiles",
+            "space_ext",
+            f"PNG/Sprites X2/Rockets/{fname}",
+            "space-shooter-extension",
+        )
+
+    for num in range(1, 41):
+        fname = f"spaceMissiles_{num:03d}.png"
+        add(
+            catalog,
+            slug(f"missile_{num:03d}"),
+            f"Ракета-снаряд ({num})",
+            "projectiles",
+            "space_ext",
+            f"PNG/Sprites X2/Missiles/{fname}",
+            "space-shooter-extension",
+        )
+
+    for num in range(1, 19):
+        fname = f"spaceAstronauts_{num:03d}.png"
+        add(
+            catalog,
+            slug(f"astronaut_{num:03d}"),
+            f"Космонавт ({num})",
+            "characters",
+            "space_ext",
+            f"PNG/Sprites X2/Astronauts/{fname}",
+            "space-shooter-extension",
+        )
+
+
+def build_dungeon_catalog(catalog: list) -> None:
+    tiles = [
+        (96, "dungeon_knight_white", "Рыцарь (белый)", "characters"),
+        (97, "dungeon_knight_red", "Рыцарь (красный)", "characters"),
+        (98, "dungeon_knight_yellow", "Рыцарь (жёлтый)", "characters"),
+        (99, "dungeon_knight_blue", "Рыцарь (синий)", "characters"),
+        (100, "dungeon_knight_silver", "Рыцарь (серебро)", "characters"),
+        (101, "dungeon_knight_dark", "Рыцарь (тёмный)", "characters"),
+        (102, "dungeon_dwarf_brown", "Гном (коричн.)", "characters"),
+        (103, "dungeon_dwarf_red", "Гном (красный)", "characters"),
+        (104, "dungeon_dwarf_blue", "Гном (синий)", "characters"),
+        (105, "dungeon_dwarf_green", "Гном (зелёный)", "characters"),
+        (106, "dungeon_dwarf_purple", "Гном (фиолет.)", "characters"),
+        (107, "dungeon_dwarf_grey", "Гном (серый)", "characters"),
+        (120, "dungeon_wizard", "Маг", "characters"),
+        (121, "dungeon_priest", "Жрец", "characters"),
+        (124, "dungeon_king", "Король", "characters"),
+        (108, "dungeon_slime", "Слайм", "enemies"),
+        (109, "dungeon_bat", "Летучая мышь", "enemies"),
+        (110, "dungeon_skeleton", "Скелет", "enemies"),
+        (111, "dungeon_ghost", "Призрак", "enemies"),
+        (112, "dungeon_spider", "Паук", "enemies"),
+        (113, "dungeon_snake", "Змея", "enemies"),
+        (114, "dungeon_crab", "Краб", "enemies"),
+        (115, "dungeon_goblin", "Гоблин", "enemies"),
+        (116, "dungeon_orc", "Орк", "enemies"),
+        (117, "dungeon_rat", "Крыса", "enemies"),
+        (118, "dungeon_slime_green", "Слайм зелёный", "enemies"),
+        (119, "dungeon_eye", "Циклоп", "enemies"),
+        (125, "dungeon_ogre", "Огр", "enemies"),
+        (126, "dungeon_imp", "Бес", "enemies"),
+        (127, "dungeon_demon", "Демон", "enemies"),
+        (128, "dungeon_mummy", "Мумия", "enemies"),
+        (129, "dungeon_vampire", "Вампир", "enemies"),
+        (130, "dungeon_witch", "Ведьма", "enemies"),
+        (131, "dungeon_zombie", "Зомби", "enemies"),
+        (84, "dungeon_sword1", "Меч 1", "items"),
+        (85, "dungeon_sword2", "Меч 2", "items"),
+        (86, "dungeon_axe1", "Топор 1", "items"),
+        (87, "dungeon_axe2", "Топор 2", "items"),
+        (88, "dungeon_shield", "Щит", "items"),
+        (89, "dungeon_bow", "Лук", "items"),
+        (90, "dungeon_arrow", "Стрела", "projectiles"),
+        (91, "dungeon_potion_red", "Зелье красное", "items"),
+        (92, "dungeon_potion_blue", "Зелье синее", "items"),
+        (93, "dungeon_potion_green", "Зелье зелёное", "items"),
+        (94, "dungeon_key_gold", "Ключ золотой", "items"),
+        (95, "dungeon_key_silver", "Ключ серебряный", "items"),
+        (61, "dungeon_skull", "Череп", "items"),
+    ]
+    for index, entry_id, label, group in tiles:
+        add(
+            catalog,
+            entry_id,
+            label,
+            group,
+            "dungeon",
+            f"Tiles/tile_{index:04d}.png",
+            "tiny-dungeon",
+        )
+
+
+def build_skeleton_catalog(catalog: list) -> None:
+    for fname, entry_id, label in [
+        ("skeleton-36x48.png", "skeleton_white", "Скелет"),
+        ("skeleton-green-36x48.png", "skeleton_green", "Скелет зелёный"),
+        ("ghost-25x35.png", "ghost_white", "Призрак"),
+        ("ghost-green-25x35.png", "ghost_green", "Призрак зелёный"),
+        ("ghost-red-25x35.png", "ghost_red", "Призрак красный"),
+    ]:
+        add(catalog, entry_id, label, "enemies", "skeleton", fname, "skeleton-ghost")
+
+
+def build_spells_catalog(catalog: list) -> None:
+    spells = [
+        ("Pixelart Spells/PNG Files/Fireball.png", "spell_fireball", "Огненный шар", "projectiles"),
+        ("Pixelart Spells/PNG Files/Firebomb.png", "spell_firebomb", "Огненная бомба", "projectiles"),
+        ("Pixelart Spells/PNG Files/Ice Lance.png", "spell_ice_lance", "Ледяное копьё", "projectiles"),
+        ("Pixelart Spells/PNG Files/Light Bolt.png", "spell_light_bolt", "Световой болт", "projectiles"),
+        ("Pixelart Spells/PNG Files/Darkness Bolt.png", "spell_dark_bolt", "Болт тьмы", "projectiles"),
+        ("Pixelart Spells/PNG Files/Wind Bolt.png", "spell_wind_bolt", "Болт ветра", "projectiles"),
+        ("Pixelart Spells/PNG Files/Water Bolt.png", "spell_water_bolt", "Водяной болт", "projectiles"),
+        ("Pixelart Spells/PNG Files/Arcane Bolt.png", "spell_arcane_bolt", "Тайный болт", "projectiles"),
+        ("Pixelart Spells/PNG Files/Bolt Of Purity.png", "spell_purity_bolt", "Болт чистоты", "projectiles"),
+        ("Pixelart Spells/PNG Files/Pure Bolt 2.png", "spell_pure_bolt", "Чистый болт", "projectiles"),
+        ("Pixelart Spells/PNG Files/Magic Ray.png", "spell_magic_ray", "Магический луч", "projectiles"),
+        ("Pixelart Spells/PNG Files/Black And White Ray.png", "spell_bw_ray", "Луч (ч/б)", "projectiles"),
+        ("Pixelart Spells/PNG Files/Plant Missle.png", "spell_plant_missile", "Растительная ракета", "projectiles"),
+        ("Pixelart Spells/PNG Files/Rock Sling.png", "spell_rock_sling", "Камень-праща", "projectiles"),
+        ("Pixelart Spells/PNG Files/Magic Orb.png", "spell_magic_orb", "Магическая сфера", "projectiles"),
+        ("Pixelart Spells/PNG Files/Darkness Orb.png", "spell_dark_orb", "Сфера тьмы", "projectiles"),
+        ("Pixelart Spells/PNG Files/Water Orb.png", "spell_water_orb", "Водяная сфера", "projectiles"),
+        ("Pixelart Spells/PNG Files/Magic Sparks.png", "spell_magic_sparks", "Магические искры", "effects"),
+        ("Pixelart Spells/PNG Files/Black And White Sparks.png", "spell_bw_sparks", "Искры (ч/б)", "effects"),
+        ("Pixelart Spells/PNG Files/Splash.png", "spell_splash", "Брызги", "effects"),
+        ("Pixelart Spells/PNG Files/Pixelart Shield.png", "spell_shield", "Магический щит", "effects"),
+        ("Pixelart Spells/PNG Files/Water Blast.png", "spell_water_blast", "Водяной взрыв", "effects"),
+    ]
+    for path, entry_id, label, group in spells:
+        add(catalog, entry_id, label, group, "spells", path, "pixel-art-spells")
 
 
 def download(url: str, dest: Path) -> None:
@@ -344,15 +623,30 @@ def extract_all() -> None:
     redux_zip = TMP / "redux.zip"
     bg_zip = TMP / "bg.zip"
     new_zip = TMP / "new.zip"
+    space_zip = TMP / "space.zip"
+    space_ext_zip = TMP / "space_ext.zip"
+    dungeon_zip = TMP / "dungeon.zip"
+    skeleton_zip = TMP / "skeleton.zip"
+    spells_zip = TMP / "spells.zip"
 
     download(REDUX_URL, redux_zip)
     download(BG_URL, bg_zip)
     download(NEW_URL, new_zip)
+    download(SPACE_URL, space_zip)
+    download(SPACE_EXT_URL, space_ext_zip)
+    download(DUNGEON_URL, dungeon_zip)
+    download(SKELETON_URL, skeleton_zip)
+    download(SPELLS_URL, spells_zip)
 
     archives = {
         "redux": zipfile.ZipFile(redux_zip),
         "bg": zipfile.ZipFile(bg_zip),
         "new": zipfile.ZipFile(new_zip),
+        "space": zipfile.ZipFile(space_zip),
+        "space_ext": zipfile.ZipFile(space_ext_zip),
+        "dungeon": zipfile.ZipFile(dungeon_zip),
+        "skeleton": zipfile.ZipFile(skeleton_zip),
+        "spells": zipfile.ZipFile(spells_zip),
     }
 
     missing: list[str] = []
@@ -396,13 +690,18 @@ def extract_all() -> None:
     )
 
     (LIB / "LICENSE.txt").write_text(
-        "Kenney.nl — CC0 1.0 Universal (public domain)\n\n"
-        "Packs used:\n"
+        "All assets — CC0 1.0 Universal (public domain)\n\n"
+        "Kenney.nl packs:\n"
         "- Platformer Pack Redux\n"
         "- Background Elements\n"
         "- New Platformer Pack\n"
+        "- Space Shooter Redux\n"
+        "- Space Shooter Extension\n"
+        "- Tiny Dungeon\n"
         "  https://kenney.nl\n\n"
-        "Author: Kenney Vleugels\n",
+        "Other CC0 packs:\n"
+        "- Skeleton & Ghost spritesheets — Balmer (Ars Notoria)\n"
+        "- Pixel Art Spells — DevWizard\n",
         encoding="utf-8",
     )
 
