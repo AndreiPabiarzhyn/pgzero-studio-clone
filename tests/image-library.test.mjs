@@ -31,14 +31,15 @@ function loadImageLibraryTest(version) {
 
 test('game-sprites.json содержит Kenney-спрайты', () => {
   const json = JSON.parse(readFileSync(join(__dirname, '../assets/image-library/game-sprites.json'), 'utf8'));
-  assert.ok(json.length >= 350);
+  assert.ok(json.length >= 340);
   const ids = json.map(function (e) { return e.id; });
   assert.ok(ids.includes('hero_green_stand'));
   assert.ok(ids.includes('slime_blue'));
   assert.ok(ids.includes('bg_colored_grass'));
   assert.ok(ids.includes('bg_forest'));
   assert.ok(ids.includes('ship1_blue'));
-  assert.ok(ids.includes('dungeon_knight_red'));
+  assert.ok(ids.includes('dungeon_wizard'));
+  assert.ok(ids.includes('dungeon_cyclops'));
   assert.ok(ids.includes('spell_fireball'));
   assert.equal(json[0].pack, 'platformer-redux');
   const groups = new Set(json.map(function (e) { return e.group; }));

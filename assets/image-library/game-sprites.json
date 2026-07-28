@@ -3200,102 +3200,6 @@
     "pack": "space-shooter-extension"
   },
   {
-    "id": "dungeon_knight_white",
-    "label": "Рыцарь (белый)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_knight_white.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_knight_red",
-    "label": "Рыцарь (красный)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_knight_red.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_knight_yellow",
-    "label": "Рыцарь (жёлтый)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_knight_yellow.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_knight_blue",
-    "label": "Рыцарь (синий)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_knight_blue.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_knight_silver",
-    "label": "Рыцарь (серебро)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_knight_silver.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_knight_dark",
-    "label": "Рыцарь (тёмный)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_knight_dark.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_dwarf_brown",
-    "label": "Гном (коричн.)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_dwarf_brown.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_dwarf_red",
-    "label": "Гном (красный)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_dwarf_red.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_dwarf_blue",
-    "label": "Гном (синий)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_dwarf_blue.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_dwarf_green",
-    "label": "Гном (зелёный)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_dwarf_green.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_dwarf_purple",
-    "label": "Гном (фиолет.)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_dwarf_purple.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_dwarf_grey",
-    "label": "Гном (серый)",
-    "group": "characters",
-    "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_dwarf_grey.png",
-    "pack": "tiny-dungeon"
-  },
-  {
     "id": "dungeon_wizard",
     "label": "Маг",
     "group": "characters",
@@ -3304,27 +3208,123 @@
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_priest",
-    "label": "Жрец",
+    "id": "dungeon_villager",
+    "label": "Селянин",
     "group": "characters",
     "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_priest.png",
+    "file": "assets/image-library/kenney/characters/dungeon_villager.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_king",
-    "label": "Король",
+    "id": "dungeon_bearded_man",
+    "label": "Бородач",
     "group": "characters",
     "source": "local",
-    "file": "assets/image-library/kenney/characters/dungeon_king.png",
+    "file": "assets/image-library/kenney/characters/dungeon_bearded_man.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_slime",
-    "label": "Слайм",
+    "id": "dungeon_viking",
+    "label": "Викинг",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_viking.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_traveler",
+    "label": "Путник",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_traveler.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_knight_helmet",
+    "label": "Рыцарь (шлем)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_knight_helmet.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_knight_grille",
+    "label": "Рыцарь (решётка)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_knight_grille.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_knight_face",
+    "label": "Рыцарь (лицо)",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_knight_face.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_heroine",
+    "label": "Героиня",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_heroine.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_elder",
+    "label": "Старуха",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_elder.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_rogue",
+    "label": "Разбойник",
+    "group": "characters",
+    "source": "local",
+    "file": "assets/image-library/kenney/characters/dungeon_rogue.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_mimic",
+    "label": "Мимик",
     "group": "enemies",
     "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_slime.png",
+    "file": "assets/image-library/kenney/enemies/dungeon_mimic.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_wisp",
+    "label": "Дух",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_wisp.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_cyclops",
+    "label": "Циклоп",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_cyclops.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_crab",
+    "label": "Краб",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_crab.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_cultist",
+    "label": "Культист",
+    "group": "enemies",
+    "source": "local",
+    "file": "assets/image-library/kenney/enemies/dungeon_cultist.png",
     "pack": "tiny-dungeon"
   },
   {
@@ -3333,14 +3333,6 @@
     "group": "enemies",
     "source": "local",
     "file": "assets/image-library/kenney/enemies/dungeon_bat.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_skeleton",
-    "label": "Скелет",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_skeleton.png",
     "pack": "tiny-dungeon"
   },
   {
@@ -3360,147 +3352,43 @@
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_snake",
-    "label": "Змея",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_snake.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_crab",
-    "label": "Краб",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_crab.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_goblin",
-    "label": "Гоблин",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_goblin.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_orc",
-    "label": "Орк",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_orc.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_rat",
+    "id": "dungeon_rat_brown",
     "label": "Крыса",
     "group": "enemies",
     "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_rat.png",
+    "file": "assets/image-library/kenney/enemies/dungeon_rat_brown.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_slime_green",
-    "label": "Слайм зелёный",
+    "id": "dungeon_rat_grey",
+    "label": "Крыса (серая)",
     "group": "enemies",
     "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_slime_green.png",
+    "file": "assets/image-library/kenney/enemies/dungeon_rat_grey.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_eye",
-    "label": "Циклоп",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_eye.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_ogre",
-    "label": "Огр",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_ogre.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_imp",
-    "label": "Бес",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_imp.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_demon",
-    "label": "Демон",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_demon.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_mummy",
-    "label": "Мумия",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_mummy.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_vampire",
-    "label": "Вампир",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_vampire.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_witch",
-    "label": "Ведьма",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_witch.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_zombie",
-    "label": "Зомби",
-    "group": "enemies",
-    "source": "local",
-    "file": "assets/image-library/kenney/enemies/dungeon_zombie.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_sword1",
-    "label": "Меч 1",
+    "id": "dungeon_chest_closed",
+    "label": "Сундук (закрыт)",
     "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/items/dungeon_sword1.png",
+    "file": "assets/image-library/kenney/items/dungeon_chest_closed.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_sword2",
-    "label": "Меч 2",
+    "id": "dungeon_chest_half",
+    "label": "Сундук (приоткрыт)",
     "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/items/dungeon_sword2.png",
+    "file": "assets/image-library/kenney/items/dungeon_chest_half.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_axe1",
-    "label": "Топор 1",
+    "id": "dungeon_chest_open",
+    "label": "Сундук (открыт)",
     "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/items/dungeon_axe1.png",
-    "pack": "tiny-dungeon"
-  },
-  {
-    "id": "dungeon_axe2",
-    "label": "Топор 2",
-    "group": "items",
-    "source": "local",
-    "file": "assets/image-library/kenney/items/dungeon_axe2.png",
+    "file": "assets/image-library/kenney/items/dungeon_chest_open.png",
     "pack": "tiny-dungeon"
   },
   {
@@ -3512,19 +3400,59 @@
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_bow",
-    "label": "Лук",
+    "id": "dungeon_dagger",
+    "label": "Кинжал",
     "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/items/dungeon_bow.png",
+    "file": "assets/image-library/kenney/items/dungeon_dagger.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_arrow",
-    "label": "Стрела",
-    "group": "projectiles",
+    "id": "dungeon_sword",
+    "label": "Меч",
+    "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/projectiles/dungeon_arrow.png",
+    "file": "assets/image-library/kenney/items/dungeon_sword.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_scimitar",
+    "label": "Сабля",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_scimitar.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_broadsword",
+    "label": "Палаш",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_broadsword.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_wooden_sword",
+    "label": "Деревянный меч",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_wooden_sword.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_potion_empty",
+    "label": "Зелье (пустое)",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_potion_empty.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_potion_green",
+    "label": "Зелье зелёное",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_potion_green.png",
     "pack": "tiny-dungeon"
   },
   {
@@ -3544,35 +3472,83 @@
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_potion_green",
-    "label": "Зелье зелёное",
+    "id": "dungeon_scroll",
+    "label": "Свиток",
     "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/items/dungeon_potion_green.png",
+    "file": "assets/image-library/kenney/items/dungeon_scroll.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_key_gold",
-    "label": "Ключ золотой",
+    "id": "dungeon_vial_green",
+    "label": "Флакон зелёный",
     "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/items/dungeon_key_gold.png",
+    "file": "assets/image-library/kenney/items/dungeon_vial_green.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_key_silver",
-    "label": "Ключ серебряный",
+    "id": "dungeon_vial_red",
+    "label": "Флакон красный",
     "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/items/dungeon_key_silver.png",
+    "file": "assets/image-library/kenney/items/dungeon_vial_red.png",
     "pack": "tiny-dungeon"
   },
   {
-    "id": "dungeon_skull",
-    "label": "Череп",
+    "id": "dungeon_vial_blue",
+    "label": "Флакон синий",
     "group": "items",
     "source": "local",
-    "file": "assets/image-library/kenney/items/dungeon_skull.png",
+    "file": "assets/image-library/kenney/items/dungeon_vial_blue.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_hammer",
+    "label": "Молот",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_hammer.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_battle_axe",
+    "label": "Боевой топор",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_battle_axe.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_hand_axe",
+    "label": "Топор",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_hand_axe.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_staff_purple",
+    "label": "Посох (фиолет.)",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_staff_purple.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_staff_blue",
+    "label": "Посох (синий)",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_staff_blue.png",
+    "pack": "tiny-dungeon"
+  },
+  {
+    "id": "dungeon_staff_silver",
+    "label": "Посох (серебр.)",
+    "group": "items",
+    "source": "local",
+    "file": "assets/image-library/kenney/items/dungeon_staff_silver.png",
     "pack": "tiny-dungeon"
   },
   {
