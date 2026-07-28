@@ -28,16 +28,18 @@ function loadMusicLibraryTest() {
   return sandbox.window._musicLibraryTest;
 }
 
-test('game-music.json содержит 15 треков', () => {
+test('game-music.json содержит 20 треков', () => {
   const json = JSON.parse(readFileSync(join(__dirname, '../assets/sound-library/game-music.json'), 'utf8'));
-  assert.equal(json.length, 15);
+  assert.equal(json.length, 20);
   const ids = json.map(function (e) { return e.id; });
   assert.ok(ids.includes('menu'));
   assert.ok(ids.includes('gameplay'));
   assert.ok(ids.includes('victory'));
+  assert.ok(ids.includes('retro_beat'));
+  assert.ok(ids.includes('retro_mystic'));
 });
 
-test('resolveTrackUrl поддерживает Scratch и Kenney', () => {
+test('resolveTrackUrl поддерживает Scratch, Kenney и локальные файлы', () => {
   const { resolveTrackUrl } = loadMusicLibraryTest();
   assert.match(resolveTrackUrl({
     source: 'scratch',
@@ -47,6 +49,10 @@ test('resolveTrackUrl поддерживает Scratch и Kenney', () => {
     source: 'kenney-mirror',
     file: 'kenney_musicjingles/Audio/Hit jingles/jingles_HIT00.ogg'
   }), /ETdoFresh\/kenney\.nl/);
+  assert.equal(resolveTrackUrl({
+    source: 'local',
+    file: 'assets/sound-library/retro/retro-beat.ogg'
+  }), './assets/sound-library/retro/retro-beat.ogg');
 });
 
 test('mapMusicEntry задаёт имя для music.play', () => {

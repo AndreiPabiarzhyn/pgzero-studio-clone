@@ -1458,42 +1458,45 @@
     </a>
     <input type="text" id="projectNameInput" class="tb-project-name" placeholder="Название игры" maxlength="32" aria-label="Название игры">
     <span class="tb-divider" aria-hidden="true"></span>
-    <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-wide" data-pz-icon="play" title="Запустить игру">
+    <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-play--hero tb-wide" data-pz-icon="play" title="Запустить игру (F5)">
       <span class="tb-label">Играть</span>
     </button>
     <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" title="Остановить" style="display:none;"></button>
+    <span class="tb-divider" aria-hidden="true"></span>
     <div class="tb-group tb-group-save">
       <button type="button" id="btn_save_slot" class="toolButton tb-btn tb-save-slot tb-wide" data-pz-icon="save" title="Сохранить игру в браузере" onclick="PGZProjectGallery.saveActiveSlotNow()">
         <span class="tb-label">Сохранить</span>
       </button>
-      <button type="button" id="btn_pgz_save" class="toolButton tb-btn tb-save-file" data-pz-icon="download" title="Скачать файл .pgz на компьютер" aria-label="Скачать на компьютер" onclick="exportGallery()"></button>
       <button type="button" id="btn_pgz_publish" class="toolButton tb-btn tb-publish tb-wide" data-pz-icon="publish" title="Опубликовать и получить ссылку" aria-label="Опубликовать" onclick="PGZProjectPublish.publishFromUi()">
         <span class="tb-label">Опубликовать</span>
       </button>
-      <button type="button" id="btn_pgz_open" class="toolButton tb-btn tb-open-file" data-pz-icon="folderOpen" title="Открыть проект с компьютера" aria-label="Открыть проект с компьютера" onclick="importGallery()"></button>
     </div>
-    <div class="tb-group tb-group-icons">
+    <div class="tb-group tb-group-files">
+      <button type="button" id="btn_pgz_open" class="toolButton tb-btn tb-open-file" data-pz-icon="folderOpen" title="Открыть проект с компьютера" aria-label="Открыть проект" onclick="importGallery()"></button>
+      <button type="button" id="btn_pgz_save" class="toolButton tb-btn tb-save-file" data-pz-icon="download" title="Скачать файл .pgz на компьютер" aria-label="Скачать на компьютер" onclick="exportGallery()"></button>
+    </div>
+    <div class="tb-group tb-group-learn">
+      <button type="button" id="btn_project_gallery" class="toolButton tb-btn tb-wide" data-pz-icon="projects" title="Мои игры — 6 ячеек в браузере" onclick="PGZProjectGallery.openSwitchModal()">
+        <span class="tb-label">Мои игры</span>
+      </button>
       <button type="button" id="btn_open_templates" class="toolButton tb-btn tb-wide" data-pz-icon="templates" title="Примеры игр с картинками" onclick="PGZGameTemplates.openModal()">
         <span class="tb-label">Примеры</span>
       </button>
-      <button type="button" class="toolButton tb-btn" data-pz-icon="gallery" title="Картинки и звуки" onclick="toggleShowGallery()"></button>
-      <button type="button" id="btn_project_gallery" class="toolButton tb-btn" data-pz-icon="projects" title="Мои игры — 6 ячеек в браузере" onclick="PGZProjectGallery.openSwitchModal()"></button>
-      <button type="button" id="btn_toggle_theme" class="toolButton tb-btn" data-pz-icon="themeDark" title="Тёмная тема"></button>
     </div>
     <div class="tb-more-wrap">
       <button type="button" id="btn_more" class="toolButton tb-btn tb-more" data-pz-icon="more" title="Ещё" onclick="toggleMoreMenu(event)"></button>
       <div id="moreMenu">
-        <button type="button" class="toolButton tb-btn" data-pz-icon="files" title="Мои файлы" onclick="showProjectFiles(); closeMoreMenu();"><span class="tb-label">Мои файлы</span></button>
-        <button type="button" class="toolButton tb-btn" data-pz-icon="paint" title="Нарисовать спрайт" onclick="showEditor(); closeMoreMenu();"><span class="tb-label">Нарисовать спрайт</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="plus" title="Новая игра" onclick="createNewProject(); closeMoreMenu();"><span class="tb-label">Новая игра</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="paint" title="Нарисовать спрайт" onclick="showEditor(); closeMoreMenu();"><span class="tb-label">Нарисовать спрайт</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="files" title="Мои файлы" onclick="showProjectFiles(); closeMoreMenu();"><span class="tb-label">Мои файлы</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="console" title="Консоль" onclick="showConsole(); closeMoreMenu();"><span class="tb-label">Консоль</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="history" title="История кода" onclick="PGZCodeHistory.openModal(); closeMoreMenu();"><span class="tb-label">История кода</span></button>
-        <button type="button" class="toolButton tb-btn" data-pz-icon="book" title="Справочник по коду" onclick="showHandbook(); closeMoreMenu();"><span class="tb-label">Справочник</span></button>
-        <button type="button" id="btn_show_share" class="toolButton tb-btn" data-pz-icon="code" title="Код" onclick="closeMoreMenu();"><span class="tb-label">Код</span></button>
+        <button type="button" id="btn_show_share" class="toolButton tb-btn" data-pz-icon="code" title="Экспорт кода" onclick="closeMoreMenu();"><span class="tb-label">Экспорт кода</span></button>
         <button type="button" id="btn_show_settings" class="toolButton tb-btn" data-pz-icon="settings" title="Настройки" onclick="closeMoreMenu();"><span class="tb-label">Настройки</span></button>
       </div>
     </div>
   </div>
+  <button type="button" id="btn_toggle_theme" class="toolButton tb-btn tb-theme-toggle" data-pz-icon="themeDark" title="Тёмная тема" aria-label="Сменить тему"></button>
   <div id="hintBar" aria-live="polite"></div>
 </div>
 
@@ -1514,7 +1517,6 @@
             <button type="button" class="ide-tab-btn ide-tab-zoom" id="ideBtnZoomIn" title="Увеличить код (+)">+</button>
           </div>
           <button type="button" class="ide-tab-btn" id="ideBtnFind" title="Поиск (Ctrl+F)">Поиск</button>
-          <button type="button" class="ide-tab-btn ide-tab-run" id="ideBtnRun" title="Запустить игру">▶</button>
         </div>
         <div class="ide-editor-body">
           <div id="editor"></div>
@@ -1538,13 +1540,20 @@
   </div>
   <div id="splitterV" class="layout-splitter layout-splitter-v" title="Потяните — изменить ширину панели"></div>
   <div id="rightBar" class="layout-right">
-		<iframe src="./pgz-handbook.html" id="handbook"
-			style="display: none; margin-left: 10px; width: 100%; height: 100%; border: 2px solid #c7ddff; border-radius: 14px; background: #fff; box-sizing: border-box;"
-			title="Справочник по Pygame Zero">
-		</iframe>
-
+    <div class="sidebar-tabs" role="tablist" aria-label="Боковая панель">
+      <button type="button" class="sidebar-tab sidebar-tab--active" data-sidebar-tab="assets" role="tab" aria-selected="true" title="Картинки, звуки и музыка">
+        <span class="pz-icon-wrap" data-pz-icon="gallery"></span>
+        <span class="sidebar-tab-label">Ресурсы</span>
+      </button>
+      <button type="button" class="sidebar-tab" data-sidebar-tab="handbook" role="tab" aria-selected="false" title="Справочник по Pygame Zero">
+        <span class="pz-icon-wrap" data-pz-icon="book"></span>
+        <span class="sidebar-tab-label">Справочник</span>
+      </button>
+    </div>
+    <div class="sidebar-panels">
+      <div id="sidebarPanelAssets" class="sidebar-panel sidebar-panel--active" role="tabpanel">
 <!-- галерея ресурсов -->
-<div id="resourceGallery" style="display: none;">
+<div id="resourceGallery">
   <div class="frame" id="imagesFrame">
     <div class="frame-header">
       <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="image"></span> Картинки</h3>
@@ -1578,7 +1587,12 @@
   </div>
 
 </div>
+      </div>
+      <div id="sidebarPanelHandbook" class="sidebar-panel" role="tabpanel" hidden>
+        <iframe src="./pgz-handbook.html" id="handbook" title="Справочник по Pygame Zero"></iframe>
+      </div>
     </div>
+  </div>
  </div>
 
 <footer id="appFooter" class="app-footer">
@@ -1633,7 +1647,7 @@
       <h3 class="modal-title">Библиотека музыки</h3>
       <button type="button" class="modal-close" data-modal-close onclick="closeMusicLibraryModal()" aria-label="Закрыть">&times;</button>
     </div>
-    <p class="sound-library-hint">15 фоновых треков и джинглов для игр (Scratch + Kenney CC0). WAV/OGG для pgzero.</p>
+    <p class="sound-library-hint">20 фоновых треков для игр (Scratch + Kenney CC0). В «Ретро» — полноценные 8-bit лупы. WAV/OGG для pgzero.</p>
     <div class="sound-library-search-wrap">
       <input type="search" id="musicLibrarySearch" class="sound-library-search" placeholder="Поиск: menu, calm, retro…" autocomplete="off">
     </div>
@@ -2180,6 +2194,7 @@
     <script src="./lib/project-gallery.js?v=0.032"></script>
     <script src="./lib/game-templates.js?v=0.032"></script>
     <script src="./lib/layout-splitters.js"></script>
+    <script src="./lib/sidebar-tabs.js"></script>
     <script src="./lib/modals.js"></script>
     <script>
 	PythonIDE.init('normal');	
@@ -2268,29 +2283,6 @@
     
         window.addEventListener('message', messageHandler);
     }	
-	async function showGallery() {
-			document.getElementById("handbook").style.display = "none";
-			document.getElementById("resourceGallery").style.display = "flex";
-			await initializeAssetsGallery();
-	}
-
-	function hideGallery() {
-		document.getElementById("resourceGallery").style.display = "none";
-	}
-
-	function showHandbook() {
-		hideGallery();
-		document.getElementById("handbook").style.display = "block";
-	}
-	function toggleShowGallery() {
-		const gallery = document.getElementById("resourceGallery").style.display;
-		if (gallery === "none" || !gallery) {
-			showGallery();
-		} else {
-			hideGallery();
-		}
-	}
-
 	function generateProjectName() {
     const project_names = [
         "HiddenJourney",
@@ -2828,7 +2820,9 @@ function initPzIcons() {
   if (typeof PZIcon === 'undefined') return;
   document.querySelectorAll('[data-pz-icon]').forEach(function(el) {
     var name = el.getAttribute('data-pz-icon');
-    var size = el.classList.contains('tb-play') ? 22 : (el.classList.contains('gallery-btn') ? 32 : 22);
+    var size = el.classList.contains('tb-theme-toggle') ? 24
+      : el.classList.contains('tb-play') ? 22
+      : el.classList.contains('gallery-btn') ? 32 : 22;
     if (el.tagName === 'BUTTON') {
       PZIcon.setButtonIcon(el, name, size);
     } else {
@@ -2894,6 +2888,7 @@ window.addEventListener('resize', function () {
 		if (typeof PGZCodeHistory !== 'undefined') PGZCodeHistory.init();
 		setupAppModals();
 		if (typeof LayoutSplitters !== 'undefined') LayoutSplitters.init();
+		if (typeof PGZSidebarTabs !== 'undefined') PGZSidebarTabs.init();
 		document.body.classList.add('app-ready');
 
 		document.getElementById('page-loader')?.remove();

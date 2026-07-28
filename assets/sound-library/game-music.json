@@ -14,6 +14,11 @@
   { "id": "reggae", "label": "Регги", "group": "calm", "source": "scratch", "md5ext": "19211d5ecd34214b6aba947790e63bb0.wav", "scratchName": "Reggae" },
 
   { "id": "retro", "label": "Ретро-игра", "group": "retro", "source": "scratch", "md5ext": "287c477da485506c5b4ce37c57a64b5f.wav", "scratchName": "Video Game 2" },
+  { "id": "retro_beat", "label": "8-bit бит", "group": "retro", "source": "local", "file": "assets/sound-library/retro/retro-beat.ogg", "scratchName": "Kenney Retro Beat (CC0)" },
+  { "id": "retro_comedy", "label": "8-bit весёлая", "group": "retro", "source": "local", "file": "assets/sound-library/retro/retro-comedy.ogg", "scratchName": "Kenney Retro Comedy (CC0)" },
+  { "id": "retro_mystic", "label": "8-bit мистика", "group": "retro", "source": "local", "file": "assets/sound-library/retro/retro-mystic.ogg", "scratchName": "Kenney Retro Mystic (CC0)" },
+  { "id": "retro_polka", "label": "8-bit аркада", "group": "retro", "source": "local", "file": "assets/sound-library/retro/retro-polka.ogg", "scratchName": "Kenney Retro Polka (CC0)" },
+  { "id": "retro_reggae", "label": "8-bit чиптюн", "group": "retro", "source": "local", "file": "assets/sound-library/retro/retro-reggae.ogg", "scratchName": "Kenney Retro Reggae (CC0)" },
 
   { "id": "victory", "label": "Победа", "group": "jingle", "source": "kenney-mirror", "file": "kenney_musicjingles/Audio/Hit jingles/jingles_HIT00.ogg" },
   { "id": "retro_jingle", "label": "8-bit заставка", "group": "jingle", "source": "kenney-mirror", "file": "kenney_musicjingles/Audio/8-Bit jingles/jingles_NES00.ogg" }
