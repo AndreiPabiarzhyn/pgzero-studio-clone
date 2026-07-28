@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="./lib/cm/monokai.css">
     <link rel="stylesheet" href="./lib/cm/pgz-ide.css">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./theme.css?v=0.034">
+    <link rel="stylesheet" href="./theme.css?v=0.035">
     <link rel="stylesheet" href="./new-message.css">
     <link rel="stylesheet" href="./lib/font-awesome.min.css">   
     <link rel="stylesheet" href="./jquery/ui/1.13.3/themes/base/jquery-ui.css">
@@ -105,24 +105,24 @@
     <script src="./lib/cm/search.js"></script>
     <script src="./lib/cm/searchbox.js"></script>   
     <script src="./lib/cm/matchbrackets.js"></script>
-    <script src="./lib/editor-ide.js?v=0.034"></script>
+    <script src="./lib/editor-ide.js?v=0.035"></script>
     <!-- Библиотеки -->
     <script src="./lib/base.js"></script>
-    <script src="./lib/lib.js?v=0.034"></script>
-    <script src="./lib/session.js?v=0.034"></script>
+    <script src="./lib/lib.js?v=0.035"></script>
+    <script src="./lib/session.js?v=0.035"></script>
     <script src="./lib/code-history.js"></script>
     <script src="./lib/storage-guard.js"></script>
     <script src="./lib/skulpt/skulpt.min.js"></script>
     <script src="./lib/skulpt/skulpt-stdlib.js"></script>
-    <script src="./lib/extlibs.js?v=0.034"></script>
+    <script src="./lib/extlibs.js?v=0.035"></script>
     <script src="./lib/jsfs2.js"></script>    
     <script src="./lib/jszip.min.js"></script>
     <script src="./lib/FileSaver.min.js"></script>
-    <script src="./lib/pgz-project-io.js?v=0.034"></script>
-    <script src="./lib/publish-config.js?v=0.034"></script>
-    <script src="./lib/publish-static.js?v=0.034"></script>
-    <script src="./lib/publish-link.js?v=0.034"></script>
-    <script src="./lib/project-publish.js?v=0.034"></script>
+    <script src="./lib/pgz-project-io.js?v=0.035"></script>
+    <script src="./lib/publish-config.js?v=0.035"></script>
+    <script src="./lib/publish-static.js?v=0.035"></script>
+    <script src="./lib/publish-link.js?v=0.035"></script>
+    <script src="./lib/project-publish.js?v=0.035"></script>
     <script>
 	var coldStart = true;
     if (localStorage.loadAction) { coldStart=false}
@@ -1558,6 +1558,7 @@
     <div class="frame-header">
       <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="image"></span> Картинки</h3>
       <div class="controls-bar">
+        <button class="gallery-btn" data-pz-icon="gLibrary" onclick="openImageLibraryModal()" title="Библиотека спрайтов"></button>
         <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
       </div>
     </div>
@@ -1598,7 +1599,7 @@
 <footer id="appFooter" class="app-footer">
   <span id="footerProjectStatus" class="footer-project-status" aria-live="polite"></span>
   <span class="footer-credits">Сделал <strong>Andrei Pabiarzhyn</strong></span>
-  <span id="footerVersion" class="footer-version" title="PGZero Studio">v0.034</span>
+  <span id="footerVersion" class="footer-version" title="PGZero Studio">v0.035</span>
 </footer>
 
 <!-- Продолжить сессию -->
@@ -1636,6 +1637,26 @@
     <div class="sound-library-footer">
       <button type="button" id="soundLibraryImportBtn" class="btn-modal-close sound-library-import-btn" style="display:none;" onclick="importSelectedSound()">Добавить в проект</button>
       <button type="button" class="btn-secondary" data-modal-close onclick="closeSoundLibraryModal()">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<!-- Библиотека 8-bit спрайтов -->
+<div id="imageLibraryModal" class="modal-overlay sound-library-overlay" style="display:none;">
+  <div class="modal-content modal-dark sound-library-modal">
+    <div class="modal-header">
+      <h3 class="modal-title">Библиотека спрайтов</h3>
+      <button type="button" class="modal-close" data-modal-close onclick="closeImageLibraryModal()" aria-label="Закрыть">&times;</button>
+    </div>
+    <p class="sound-library-hint">8-bit пиксельные персонажи, враги, предметы и фоны из шаблонов игр. Выберите спрайт и добавьте в проект — в коде: <code>Actor('имя')</code>.</p>
+    <div class="sound-library-search-wrap">
+      <input type="search" id="imageLibrarySearch" class="sound-library-search" placeholder="Поиск: coddy, ship, enemy…" autocomplete="off">
+    </div>
+    <div id="imageLibraryGroups" class="sound-library-groups" style="display:flex;"></div>
+    <div id="imageLibraryGrid" class="sound-library-grid image-library-grid"></div>
+    <div class="sound-library-footer">
+      <button type="button" id="imageLibraryImportBtn" class="btn-modal-close sound-library-import-btn" style="display:none;" onclick="importSelectedImageFromLibrary()">Добавить в проект</button>
+      <button type="button" class="btn-secondary" data-modal-close onclick="closeImageLibraryModal()">Закрыть</button>
     </div>
   </div>
 </div>
@@ -2186,13 +2207,14 @@
     <script src="./lib/toolbar-compact.js"></script>
     <script src="./lib/version.js"></script>
     <script src="./lib/game-modal.js"></script>
-    <script src="./lib/wav-adpcm.js?v=0.034"></script>
-    <script src="./lib/assets-gallery.js?v=0.034"></script>
-    <script src="./lib/sound-library.js?v=0.034"></script>
-    <script src="./lib/music-library.js?v=0.034"></script>
+    <script src="./lib/wav-adpcm.js?v=0.035"></script>
+    <script src="./lib/assets-gallery.js?v=0.035"></script>
+    <script src="./lib/sound-library.js?v=0.035"></script>
+    <script src="./lib/music-library.js?v=0.035"></script>
+    <script src="./lib/image-library.js?v=0.035"></script>
     <script src="./lib/project-files.js"></script>
-    <script src="./lib/project-gallery.js?v=0.034"></script>
-    <script src="./lib/game-templates.js?v=0.034"></script>
+    <script src="./lib/project-gallery.js?v=0.035"></script>
+    <script src="./lib/game-templates.js?v=0.035"></script>
     <script src="./lib/layout-splitters.js"></script>
     <script src="./lib/sidebar-tabs.js"></script>
     <script src="./lib/modals.js"></script>

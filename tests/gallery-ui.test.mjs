@@ -59,3 +59,12 @@ test('после редактора сбрасывается кеш jsfs и об
   assert.match(source, /refreshAssetsAfterEditorChange/);
   assert.match(readFileSync(join(__dirname, '../lib/draw-editor.js'), 'utf8'), /spriteSaved/);
 });
+
+test('имя ресурса в отдельном span с классом item-name', () => {
+  const { isAssetNameInteraction } = loadGalleryUiTest();
+  const themeCss = readFileSync(join(__dirname, '../theme.css'), 'utf8');
+  assert.match(source, /function appendItemName/);
+  assert.match(source, /className = 'item-name'/);
+  assert.match(themeCss, /#resourceGallery \.item-name[\s\S]*user-select: text/);
+  assert.equal(isAssetNameInteraction({ closest: function (sel) { return sel === '.item-name' ? {} : null; } }), true);
+});

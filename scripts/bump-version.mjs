@@ -50,7 +50,8 @@ const cacheBustFiles = [
     'lib/game-templates.js',
     'lib/wav-adpcm.js',
     'lib/sound-library.js',
-    'lib/music-library.js'
+    'lib/music-library.js',
+    'lib/image-library.js'
 ];
 
 let indexHtml = readFileSync(indexPath, 'utf8');

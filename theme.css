@@ -1570,6 +1570,24 @@ body.app-ready .app-footer {
   word-break: break-word;
   white-space: normal;
   line-height: 1.25;
+  cursor: default;
+}
+
+#resourceGallery .item-name {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  word-break: break-all;
+  color: inherit;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+#resourceGallery .thumb-container,
+#resourceGallery .audio-icon {
   cursor: pointer;
 }
 
@@ -2251,6 +2269,37 @@ body.layout-dragging-h * {
 
 .sound-library-import-btn {
   margin-right: auto;
+}
+
+#imageLibraryGroups .sound-library-group.active {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+}
+
+#imageLibraryGroups .sound-library-group:hover {
+  border-color: #f59e0b;
+}
+
+.image-library-grid {
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+}
+
+.image-library-item {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  padding: 6px;
+}
+
+.image-library-thumb {
+  width: 100%;
+  height: 72px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 /* ========== Окно игры (перетаскиваемое) ========== */
