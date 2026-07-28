@@ -35,7 +35,7 @@ test('game-sprites.json содержит Kenney-спрайты', () => {
   const ids = json.map(function (e) { return e.id; });
   assert.ok(ids.includes('hero_green_stand'));
   assert.ok(ids.includes('slime_blue'));
-  assert.ok(ids.includes('bg_grass'));
+  assert.ok(ids.includes('bg_colored_grass'));
   assert.ok(ids.includes('bg_forest'));
   assert.equal(json[0].pack, 'platformer-redux');
   const groups = new Set(json.map(function (e) { return e.group; }));
