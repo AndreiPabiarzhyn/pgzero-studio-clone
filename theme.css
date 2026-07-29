@@ -354,6 +354,12 @@ body.app-ready {
   background: color-mix(in srgb, #8b5cf6 22%, var(--pz-surface));
 }
 
+.tb-btn.tb-publish:disabled {
+  opacity: 0.55;
+  cursor: wait;
+  pointer-events: none;
+}
+
 .tb-btn.tb-save-slot .tb-label {
   display: inline;
   font-size: 13px;
@@ -3526,6 +3532,64 @@ body.game-modal-dragging .game-modal-header {
 #ideStatusHints { color: #49483e; }
 
 /* ========== Публикация проекта ========== */
+.pg-publish-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 100005;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.42);
+  backdrop-filter: blur(4px);
+}
+
+.pg-publish-loading[hidden] { display: none !important; }
+
+.pg-publish-loading__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 28px;
+  border-radius: 20px;
+  background: linear-gradient(165deg, #eef4ff 0%, #f8fbff 45%, #e8f0fe 100%);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+  max-width: min(360px, 92vw);
+}
+
+.pg-publish-loading .spinner {
+  width: 48px;
+  height: 48px;
+  border-width: 5px;
+}
+
+.pg-publish-loading__text {
+  margin: 16px 0 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.pg-publish-loading__hint {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+[data-app-theme="dark"] .pg-publish-loading__panel {
+  background: linear-gradient(165deg, #1e293b 0%, #0f172a 100%);
+}
+
+[data-app-theme="dark"] .pg-publish-loading__text {
+  color: #e2e8f0;
+}
+
+[data-app-theme="dark"] .pg-publish-loading__hint {
+  color: #94a3b8;
+}
+
 .pg-publish-screen {
   position: fixed;
   inset: 0;

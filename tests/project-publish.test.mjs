@@ -49,6 +49,7 @@ test('getAppBasePath учитывает index.html и play.html', () => {
 test('кнопка Опубликовать и экран успеха в index.html', () => {
     assert.match(indexHtml, /btn_pgz_publish/);
     assert.match(indexHtml, /projectPublishScreen/);
+    assert.match(indexHtml, /projectPublishLoading/);
     assert.match(indexHtml, /publishCopyLinkBtn/);
     assert.match(indexHtml, /project-publish\.js/);
 });
