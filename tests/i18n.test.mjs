@@ -69,7 +69,7 @@ test('locales содержат ключи фазы 4 (drawEditor, ide, handbook)
     assert.ok(json.ide.errorModalTitle);
     assert.ok(json.ide.running);
     const handbook = JSON.parse(readFileSync(join(__dirname, '../locales/handbook.' + lang + '.json'), 'utf8'));
-    assert.equal(handbook.sections.length, 11);
+    assert.equal(handbook.sections.length, 14);
     assert.ok(handbook.sections[0].body);
   }
 });

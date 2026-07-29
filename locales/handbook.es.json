@@ -13,61 +13,79 @@
       "id": "objects",
       "toc": "2. Objetos",
       "title": "2. Objetos",
-      "body": "<p>En Pygame Zero los objetos principales son <strong>sprites</strong>, también llamados <strong>actores</strong> (Actor). Un actor es un sprite controlado por código (mover, girar, etc.).</p><p>Crear un actor:</p><pre>actor = Actor('image_name')</pre><p>donde <code>'image_name'</code> es el nombre del archivo de imagen (sin extensión) en la carpeta <code>images</code>.</p><div class=\"note\"><strong>Consejo:</strong> Las imágenes deben ser PNG o JPG y guardarse en la carpeta <code>images</code> junto al juego.</div>"
+      "body": "<p>En Pygame Zero los objetos principales son <strong>sprites</strong>, también llamados <strong>actores</strong> (Actor). Un actor es un sprite que controlas en código (mover, rotar, etc.).</p><p>Crear un actor:</p><pre>actor = Actor('image_name')\n\n# Puedes indicar posición y tamaño al crear\nhero = Actor('hero', pos=(400, 300), size=(64, 64))</pre><p>donde <code>'image_name'</code> es el nombre del archivo de imagen (sin extensión) en la carpeta <code>images</code>.</p><div class=\"note\"><strong>Consejo:</strong> Las imágenes deben ser PNG o JPG y guardarse en la carpeta <code>images</code>.</div>"
     },
     {
       "id": "window",
       "toc": "3. Ventana",
       "title": "3. Ventana",
-      "body": "<p>El tamaño de la ventana se define con <code>WIDTH</code> y <code>HEIGHT</code> al inicio del programa.</p><pre>WIDTH = 800\nHEIGHT = 600\n\nplayer = Actor('player')\nplayer.pos = 100, 56</pre><p>Las coordenadas empiezan en la esquina superior izquierda (0, 0). La posición del actor se define con <code>pos</code> o con <code>x</code> e <code>y</code> por separado.</p>"
+      "body": "<p>El tamaño de la ventana se define con <code>WIDTH</code> y <code>HEIGHT</code> al inicio del programa. El título con <code>TITLE</code>.</p><pre>WIDTH = 800\nHEIGHT = 600\nTITLE = \"Mi juego\"\n\nplayer = Actor('player')\nplayer.pos = 100, 56</pre><p>Las coordenadas empiezan en la esquina superior izquierda (0, 0). La posición del actor se define con <code>pos</code> o por separado con <code>x</code> e <code>y</code>.</p>"
     },
     {
       "id": "redraw",
       "toc": "4. Redibujado",
       "title": "4. Redibujado",
-      "body": "<p>La función <code>draw()</code> se llama automáticamente para redibujar todo en pantalla.</p><pre>def draw():\n    screen.clear()\n    player.draw()\n    enemy.draw()\n    screen.draw.text(\"Puntos: \" + str(score), (10, 10))</pre><p>Siempre empieza con <code>screen.clear()</code> para borrar el fotograma anterior. Usa <code>screen.draw.text()</code> para dibujar texto.</p>"
+      "body": "<p>La función <code>draw()</code> se llama automáticamente para redibujar todo en pantalla.</p><pre>def draw():\n    screen.fill((135, 206, 250))  # cielo\n    player.draw()\n    enemy.draw()\n    screen.draw.text(\"Puntos: \" + str(score), (10, 10), fontsize=22)</pre><p>En PGZero Studio la pantalla se limpia automáticamente antes de cada <code>draw()</code>. Usa <code>screen.fill(color)</code> para el fondo o <code>screen.clear()</code> para pantalla negra. Para texto: <code>screen.draw.text()</code>.</p>"
     },
     {
       "id": "sprites",
       "toc": "5. Sprites y propiedades",
       "title": "5. Sprites y propiedades",
-      "body": "<p>Los actores tienen muchas propiedades útiles:</p><ul><li><code>pos</code> — posición (x, y)</li><li><code>x</code>, <code>y</code> — coordenadas por separado</li><li><code>angle</code> — ángulo de rotación (grados)</li><li><code>opacity</code> — opacidad</li><li><code>scale</code> — escala (1.0 = tamaño original)</li><li><code>image</code> — nombre de la imagen actual</li></ul><pre>player = Actor('hero')\nplayer.pos = (400, 300)\nplayer.angle = 45\nplayer.scale = 1.5\n\n# Cambiar imagen\nplayer.image = 'hero_angry'</pre><div class=\"note\"><strong>Consejo:</strong> Para animar, cambia <code>image</code> según el estado del juego.</div>"
+      "body": "<p>Los actores tienen muchas propiedades útiles:</p><ul><li><code>pos</code> — posición del centro (x, y)</li><li><code>x</code>, <code>y</code> — coordenadas del punto de anclaje</li><li><code>size</code> — tamaño (ancho, alto) en píxeles</li><li><code>width</code>, <code>height</code> — ancho y alto por separado</li><li><code>angle</code> — ángulo de rotación en grados</li><li><code>scale</code> — escala (1.0 = tamaño original)</li><li><code>opacity</code> — opacidad (0.0–1.0)</li><li><code>image</code> — nombre de la imagen actual</li><li><code>anchor</code> — punto de anclaje, p. ej. <code>('center', 'bottom')</code></li><li><code>flip_x</code>, <code>flip_y</code> — volteo horizontal/vertical</li><li><code>center</code>, <code>topleft</code>, <code>bottomright</code> — esquinas y centro</li></ul><pre>player = Actor('hero', pos=(400, 300), size=(80, 80))\nplayer.angle = 45\nplayer.scale = 1.5\n\n# Cambiar tamaño después\nplayer.size = (100, 100)\nplayer.width = 90\nplayer.height = 60\n\n# Cambiar imagen\nplayer.image = 'hero_angry'</pre><p>Métodos de movimiento útiles:</p><pre>player.move_forward(5)\nplayer.move_towards(enemy, 3)\nplayer.point_towards(enemy)\ndist = player.distance_to(enemy)</pre><div class=\"note\"><strong>size y scale:</strong> <code>size</code> define píxeles. <code>scale</code> multiplica la imagen — para empezar suele ser más fácil <code>size</code>.</div>"
     },
     {
       "id": "movement",
       "toc": "6. Movimiento de sprites",
       "title": "6. Movimiento de sprites",
-      "body": "<p>El movimiento ocurre en <code>update()</code>, que se ejecuta antes de cada redibujado.</p><pre>def update():\n    if keyboard.right:\n        player.x += 5\n    if keyboard.left:\n        player.x -= 5\n    if keyboard.up:\n        player.y -= 5\n    if keyboard.down:\n        player.y += 5</pre>"
+      "body": "<p>El movimiento ocurre en <code>update()</code>, que se ejecuta antes de cada redibujado. Puedes recibir el argumento <code>dt</code> — segundos desde el último fotograma:</p><pre>SPEED = 200  # píxeles por segundo\n\ndef update(dt):\n    if keyboard.right:\n        player.x += SPEED * dt\n    if keyboard.left:\n        player.x -= SPEED * dt\n    if keyboard.up:\n        player.y -= SPEED * dt\n    if keyboard.down:\n        player.y += SPEED * dt</pre><p>Si no necesitas <code>dt</code>, escribe <code>def update():</code> y mueve un número fijo de píxeles.</p>"
     },
     {
       "id": "keyboard",
       "toc": "7. Teclado",
       "title": "7. Teclado",
-      "body": "<p>Pygame Zero ofrece acceso sencillo al teclado mediante el objeto <code>keyboard</code>.</p><pre>def update():\n    if keyboard.space:\n        fire_bullet()\n    if keyboard.a:\n        player.x -= 3\n    if keyboard.d:\n        player.x += 3</pre><p>También puedes usar funciones especiales para pulsaciones:</p><pre>def on_key_down(key):\n    if key == keys.SPACE:\n        create_explosion()\n    elif key == keys.ESCAPE:\n        exit()</pre>"
+      "body": "<p>Pygame Zero da acceso a las teclas con el objeto <code>keyboard</code> — útil para comprobar si una tecla está pulsada ahora:</p><pre>def update():\n    if keyboard.space:\n        fire_bullet()\n    if keyboard.a:\n        player.x -= 3\n    if keyboard.d:\n        player.x += 3</pre><p>Para pulsaciones únicas usa funciones especiales y constantes <code>keys</code>:</p><pre>def on_key_down(key):\n    if key == keys.SPACE:\n        create_explosion()\n    elif key == keys.ESCAPE:\n        exit()\n\ndef on_key_up(key):\n    if key == keys.SPACE:\n        stop_charging()</pre><p>Constantes frecuentes: <code>keys.SPACE</code>, <code>keys.ESCAPE</code>, <code>keys.UP</code>, <code>keys.DOWN</code>, <code>keys.LEFT</code>, <code>keys.RIGHT</code>, <code>keys.A</code> … <code>keys.Z</code>.</p>"
     },
     {
       "id": "mouse",
       "toc": "8. Eventos del ratón",
       "title": "8. Eventos del ratón",
-      "body": "<p>Los eventos del ratón se manejan con funciones especiales:</p><pre>def on_mouse_down(pos, button):\n    if button == mouse.LEFT:\n        print(\"Botón izquierdo en\", pos)\n    elif button == mouse.RIGHT:\n        print(\"Botón derecho pulsado\")\n\ndef on_mouse_move(pos):\n    player.pos = pos</pre><p>También puedes comprobar botones del ratón en <code>update()</code>:</p><pre>def update():\n    if mouse.LEFT:\n        player.angle += 2</pre>"
+      "body": "<p>Los eventos del ratón usan funciones especiales. Argumentos: <code>pos</code> — coordenadas (x, y), <code>button</code> — <code>mouse.LEFT</code>, <code>mouse.RIGHT</code> o <code>mouse.MIDDLE</code>:</p><pre>def on_mouse_down(pos, button):\n    if button == mouse.LEFT:\n        print(\"Clic en\", pos)\n\ndef on_mouse_up(pos, button):\n    if button == mouse.LEFT:\n        print(\"Botón soltado\")\n\ndef on_mouse_move(pos):\n    player.pos = pos</pre><p>También puedes comprobar botones pulsados en <code>update()</code>:</p><pre>def update():\n    if mouse.LEFT:\n        player.angle += 2</pre><p>En móvil y tablet puedes mostrar botones en pantalla:</p><pre>gamepad_show()   # mostrar mando virtual\ngamepad_hide()   # ocultar</pre>"
     },
     {
       "id": "audio",
       "toc": "9. Sonido y música",
       "title": "9. Sonido y música",
-      "body": "<p>Usa el módulo <code>music</code> y el objeto <code>sounds</code> para el audio.</p><pre># Reproducir un sonido\ndef on_key_down(key):\n    if key == keys.SPACE:\n        sounds.jump.play()\n\n# Control de música\nmusic.play('background_theme')\nmusic.set_volume(0.5)\n\n# Detener música\nmusic.stop()</pre><p>Los archivos de sonido van en <code>sounds</code> (efectos cortos) o <code>music</code> (música de fondo).</p><div class=\"note\"><strong>Formatos compatibles:</strong> WAV, OGG, MP3 (según el sistema).</div>"
+      "body": "<p>Los sonidos cortos usan <code>sounds</code>; la música de fondo usa <code>music</code>.</p><pre># Efecto de sonido\ndef on_key_down(key):\n    if key == keys.SPACE:\n        sounds.jump.play()\n        sounds.jump.play(-1)  # en bucle\n        sounds.jump.stop()\n\n# Música\nmusic.play('background_theme')       # en bucle\nmusic.play_once('intro')             # una vez\nmusic.set_volume(0.5)\nmusic.pause()\nmusic.unpause()\nmusic.fadeout(2.0)\nmusic.stop()</pre><p>Archivos: sonidos en <code>sounds</code>, música en <code>music</code>. Formatos: WAV, OGG, MP3.</p>"
     },
     {
       "id": "timer",
       "toc": "10. Temporizador",
       "title": "10. Temporizador",
-      "body": "<p>Usa funciones de <code>clock</code> para código retrasado o repetido.</p><pre>def spawn_enemy():\n    enemies.append(Actor('enemy'))\n\n# Crear enemigo cada 3 segundos\nclock.schedule_interval(spawn_enemy, 3.0)\n\n# Ejecutar una vez tras 5 segundos\nclock.schedule(game_over, 5.0)\n\ndef game_over():\n    print(\"¡Se acabó el tiempo!\")</pre><p>Para cancelar un evento programado, guarda la referencia a la función:</p><pre>def cancel_timer():\n    clock.unschedule(spawn_enemy)\n\nclock.schedule_interval(spawn_enemy, 2.0)</pre>"
+      "body": "<p>El código diferido usa el módulo <code>clock</code> (o las mismas funciones sin <code>clock.</code>):</p><pre>def spawn_enemy():\n    enemies.append(Actor('enemy'))\n\n# Cada 3 segundos\nclock.schedule_interval(spawn_enemy, 3.0)\n\n# Una vez tras 5 segundos\nclock.schedule(game_over, 5.0)\n\n# No duplicar si ya está programado\nclock.schedule_unique(reminder, 10.0)\n\n# Cada fotograma (~60 veces por segundo)\nclock.each_tick(tick_animation)\n\ndef cancel_timer():\n    clock.unschedule(spawn_enemy)</pre>"
+    },
+    {
+      "id": "drawing",
+      "toc": "11. Dibujar formas",
+      "title": "11. Dibujar formas",
+      "body": "<p>Además de sprites puedes dibujar formas y rellenos. Usa <code>Rect</code> para rectángulos:</p><pre>def draw():\n    screen.fill((135, 206, 250))  # fondo — color RGB\n    ground = Rect(0, 500, WIDTH, 100)\n    screen.draw.filled_rect(ground, (76, 175, 80))\n    screen.draw.filled_circle((400, 300), 30, (255, 99, 71))\n    screen.draw.line((0, 0), (WIDTH, HEIGHT), (255, 255, 255))\n    screen.draw.rect(Rect(10, 10, 100, 50), (0, 0, 0))\n    screen.draw.text(\"¡Hola!\", (20, 20), fontsize=24, color=\"white\")</pre><p><code>Rect(x, y, ancho, alto)</code> crea un rectángulo. <code>screen.fill</code> llena toda la pantalla; <code>filled_rect</code> y <code>filled_circle</code> dibujan formas individuales.</p>"
+    },
+    {
+      "id": "collisions",
+      "toc": "12. Colisiones",
+      "title": "12. Colisiones",
+      "body": "<p>Comprueba colisiones con métodos del actor y <code>Rect</code>:</p><pre>def update():\n    if hero.colliderect(coin):\n        score += 1\n        coin.x = random.randint(50, WIDTH - 50)\n\n    if hero.collidepoint(mouse_pos):\n        hero.opacity = 0.5</pre><p>Métodos principales:</p><ul><li><code>actor.colliderect(other)</code> — ¿solapa con otro actor o Rect?</li><li><code>actor.collidepoint((x, y))</code> — ¿punto dentro del actor?</li><li><code>actor.circle_collidepoint((x, y))</code> — punto dentro del círculo del centro</li><li><code>Rect(...).collidepoint(x, y)</code> — punto dentro del rectángulo</li></ul><p>El actor hereda de <code>Rect</code>, así que también tiene <code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>.</p>"
+    },
+    {
+      "id": "animation",
+      "toc": "13. Animación",
+      "title": "13. Animación",
+      "body": "<p>Hay dos formas de animar un sprite.</p><p><strong>1. Lista de fotogramas</strong> — varias imágenes que cambian automáticamente:</p><pre>hero = Actor('hero_walk1')\nhero.images = ['hero_walk1', 'hero_walk2', 'hero_walk3']\nhero.fps = 8  # fotogramas por segundo\n\ndef update():\n    hero.animate()  # avanza fotogramas</pre><p><strong>2. Movimiento suave</strong> — la función <code>animate()</code>:</p><pre>animate(hero, pos=(500, 300), duration=1.0, tween='accel_decel')\n\n# tween disponibles: linear, accelerate, decelerate,\n# accel_decel, bounce_start, bounce_end, bounce_start_end</pre><p>También puedes cambiar <code>hero.image</code> manualmente o llamar <code>hero.next_image()</code>.</p>"
     },
     {
       "id": "faq",
-      "toc": "11. FAQ — preguntas frecuentes",
-      "title": "11. FAQ — preguntas frecuentes",
-      "body": "<p><strong>¿Por qué no arranca el juego?</strong><br>Comprueba que el proyecto tenga <code>my_pgz.py</code>, termine con <code>pgzrun.go()</code> y la indentación de Python sea uniforme (4 espacios).</p><p><strong>¿Qué son <code>draw()</code> y <code>update()</code>?</strong><br><code>draw()</code> dibuja la pantalla en cada fotograma.<br><code>update()</code> mueve personajes y comprueba el teclado.</p><p><strong>¿Cómo muevo al héroe?</strong><br>Cambia <code>actor.x</code> y <code>actor.y</code> en <code>update()</code>, o usa <code>keyboard.left</code>, <code>keyboard.right</code> y otras teclas.</p><p><strong>¿Dónde se guardan imágenes y sonidos?</strong><br>Imágenes en <code>images</code>, sonidos en <code>sounds</code>, música en <code>music</code>. Nombres sin espacios, en latín.</p><p><strong>¿Cómo dibujo mi propio héroe?</strong><br>Pulsa Dibujar en la barra o en la galería de imágenes, guarda el archivo y usa su nombre en <code>Actor('nombre_archivo')</code>.</p><p><strong>¿Qué hago si hay un error en el código?</strong><br>Lee el mensaje rojo abajo, encuentra el número de línea y corrige. Errores frecuentes: falta <code>:</code>, indentación incorrecta, nombre de imagen erróneo.</p>"
+      "toc": "14. FAQ — preguntas frecuentes",
+      "title": "14. FAQ — preguntas frecuentes",
+      "body": "<p><strong>¿Por qué no arranca el juego?</strong><br>Comprueba que el proyecto tenga <code>my_pgz.py</code>, termine con <code>pgzrun.go()</code> y la indentación sea uniforme (4 espacios).</p><p><strong>¿Qué son <code>draw()</code> y <code>update()</code>?</strong><br><code>draw()</code> dibuja la pantalla en cada fotograma.<br><code>update()</code> mueve personajes y comprueba la entrada.</p><p><strong>¿Cómo muevo al héroe?</strong><br>Cambia <code>actor.x</code> y <code>actor.y</code> en <code>update()</code>, o usa <code>keyboard.left</code>, <code>keyboard.right</code> y otras teclas.</p><p><strong>¿Cómo cambio el tamaño del sprite?</strong><br>Indica <code>size=(ancho, alto)</code> al crear el actor o después: <code>actor.size = (64, 64)</code>. O usa <code>actor.width</code> y <code>actor.height</code> por separado.</p><p><strong>¿Por qué la pantalla está negra o vacía?</strong><br>Añade <code>screen.fill(color)</code> o <code>screen.clear()</code> al inicio de <code>draw()</code>, luego dibuja actores y formas.</p><p><strong>¿Dónde se guardan imágenes y sonidos?</strong><br>Imágenes en <code>images</code>, sonidos en <code>sounds</code>, música en <code>music</code>. Nombres sin espacios, en latín.</p><p><strong>¿Cómo dibujo mi propio héroe?</strong><br>Pulsa Dibujar en la barra o en la galería, guarda el archivo y usa su nombre en <code>Actor('nombre_archivo')</code>.</p><p><strong>¿Qué hago si hay un error en el código?</strong><br>Lee el mensaje rojo abajo, encuentra el número de línea. Errores frecuentes: falta <code>:</code>, indentación incorrecta, nombre de imagen erróneo.</p>"
     }
   ]
 }
