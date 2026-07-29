@@ -1946,7 +1946,7 @@ body.app-ready {
 
 /* === Макет с изменяемыми панелями (splitter) === */
 .app-layout {
-  --sidebar-width: 320px;
+  --sidebar-width: 380px;
   --console-height: 220px;
   display: flex;
   flex-direction: row;
@@ -2017,16 +2017,15 @@ body.app-ready {
   justify-self: center;
   flex-shrink: 0;
   font-size: 12px;
-  font-weight: 600;
-  color: color-mix(in srgb, var(--pz-accent) 72%, var(--pz-text));
+  font-weight: 700;
+  color: var(--pz-text-muted);
   white-space: nowrap;
   letter-spacing: 0.02em;
-  animation: footer-credits-soft 5s ease-in-out infinite;
 }
 
 .footer-credits strong {
   font-weight: 800;
-  color: var(--pz-accent);
+  color: var(--pz-accent-hover);
 }
 
 .footer-version {
@@ -2035,7 +2034,7 @@ body.app-ready {
   flex-shrink: 0;
   font-size: 11px;
   font-weight: 800;
-  color: color-mix(in srgb, var(--pz-accent) 65%, var(--pz-text-muted));
+  color: var(--pz-text-muted);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.03em;
@@ -2812,6 +2811,20 @@ body.layout-dragging-h * {
   background: var(--pz-bg-elevated);
   border-top-color: var(--pz-border);
   color: var(--pz-text-muted);
+}
+
+[data-app-theme="dark"] .footer-credits {
+  font-weight: 600;
+  color: color-mix(in srgb, var(--pz-accent) 72%, var(--pz-text));
+  animation: footer-credits-soft 5s ease-in-out infinite;
+}
+
+[data-app-theme="dark"] .footer-credits strong {
+  color: var(--pz-accent);
+}
+
+[data-app-theme="dark"] .footer-version {
+  color: color-mix(in srgb, var(--pz-accent) 65%, var(--pz-text-muted));
 }
 
 /* ========== Галерея — цветные плитки ========== */
