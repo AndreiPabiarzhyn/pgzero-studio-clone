@@ -71,13 +71,15 @@ test('заполненные ячейки показывают кнопку оч
     assert.match(source, /Точно очистить .*без восстановления/);
 });
 
-test('стартовый экран — отдельная страница с автором', () => {
+test('стартовый экран — hero, chips, i18n и автор', () => {
     const html = readFileSync(join(__dirname, '../index.html'), 'utf8');
     assert.match(source, /projectStartupScreen/);
     assert.match(source, /projectStartupGrid/);
     assert.match(source, /function showStartupScreen/);
     assert.match(html, /pg-startup-screen__title/);
-    assert.match(html, /Сделал Andrei Pabiarzhyn/);
-    assert.match(html, /Выбери ячейку/);
+    assert.match(html, /data-i18n="startup.credit"/);
+    assert.match(html, /data-i18n="startup.hint"/);
+    assert.match(html, /pg-startup-screen__chips/);
+    assert.match(html, /pg-lang-switch/);
     assert.doesNotMatch(html, /То, что сделал я/);
 });

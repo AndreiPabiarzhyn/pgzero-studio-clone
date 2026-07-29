@@ -1,0 +1,22 @@
+{
+  "startup": {
+    "title": "Welcome",
+    "subtitle": "Create games in your browser — code, art, and sound",
+    "hint": "Pick a slot for a new or saved game",
+    "credit": "Made by Andrei Pabiarzhyn",
+    "slotsTitle": "Your games",
+    "chipCode": "Browser IDE",
+    "chipSprites": "Sprites & sounds",
+    "chipPublish": "Publish your game",
+    "chipNoInstall": "No install"
+  },
+  "slot": {
+    "label": "Slot {n}",
+    "empty": "Empty",
+    "emptyAction": "Start a new game",
+    "active": "Active now"
+  },
+  "lang": {
+    "label": "Language"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "startup": {
+    "title": "Bienvenido",
+    "subtitle": "Crea juegos en el navegador — código, gráficos y sonido",
+    "hint": "Elige una ranura para un juego nuevo o guardado",
+    "credit": "Hecho por Andrei Pabiarzhyn",
+    "slotsTitle": "Tus juegos",
+    "chipCode": "Código en el navegador",
+    "chipSprites": "Sprites y sonidos",
+    "chipPublish": "Publicar juego",
+    "chipNoInstall": "Sin instalación"
+  },
+  "slot": {
+    "label": "Ranura {n}",
+    "empty": "Vacío",
+    "emptyAction": "Empezar juego nuevo",
+    "active": "Activo ahora"
+  },
+  "lang": {
+    "label": "Idioma"
+  }
+}
