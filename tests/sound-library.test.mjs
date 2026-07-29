@@ -12,7 +12,7 @@ import vm from 'node:vm';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const source = readFileSync(join(__dirname, '../lib/sound-library.js'), 'utf8');
 
-function loadSoundLibraryTest() {
+function loadSoundLibraryTest(lang) {
   const sandbox = {
     window: {},
     document: {
@@ -24,6 +24,9 @@ function loadSoundLibraryTest() {
     console
   };
   sandbox.window = sandbox;
+  if (lang) {
+    sandbox.PGZI18n = { getLang: () => lang };
+  }
   vm.createContext(sandbox);
   vm.runInContext(source, sandbox);
   return sandbox.window._soundLibraryTest;
@@ -64,6 +67,29 @@ test('mapGameSoundEntry задаёт имя файла для pgzero', () => {
   assert.equal(mapped.name, 'Прыжок');
   assert.equal(mapped.ext, 'wav');
   assert.equal(mapped.isGamePack, true);
+});
+
+test('soundDisplayName использует перевод для en/es', () => {
+  const testApi = loadSoundLibraryTest('en');
+  testApi.setSoundLabels({ jump: 'Jump' }, 'en');
+  const mapped = testApi.mapGameSoundEntry({
+    id: 'jump',
+    label: 'Прыжок',
+    group: 'player',
+    source: 'scratch',
+    md5ext: '6fcd64d6357e4ea03704e5f96bfd35ba.wav'
+  });
+  assert.equal(mapped.name, 'Jump');
+});
+
+test('sound-labels покрывают все id из game-sounds.json', () => {
+  const json = JSON.parse(readFileSync(join(__dirname, '../assets/sound-library/game-sounds.json'), 'utf8'));
+  const en = JSON.parse(readFileSync(join(__dirname, '../locales/sound-labels.en.json'), 'utf8'));
+  const es = JSON.parse(readFileSync(join(__dirname, '../locales/sound-labels.es.json'), 'utf8'));
+  json.forEach(function (entry) {
+    assert.ok(en[entry.id], 'missing en label for ' + entry.id);
+    assert.ok(es[entry.id], 'missing es label for ' + entry.id);
+  });
 });
 
 test('game-sounds.json содержит набор для игр', () => {

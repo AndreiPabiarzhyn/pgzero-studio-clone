@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Редактор спрайтов — PGZero Studio</title>
+    <title data-i18n="drawEditor.pageTitle">Редактор спрайтов — PGZero Studio</title>
     <link rel="stylesheet" href="theme.css">
     <style>
         html, body {
@@ -353,56 +353,56 @@
 <body>
 <div id="drawEditorApp">
     <header class="de-topbar">
-        <span class="de-brand">Спрайт</span>
+        <span class="de-brand" data-i18n="drawEditor.brand">Спрайт</span>
 
         <div class="de-group">
-            <button type="button" id="openBtn" class="de-btn" title="Открыть">Открыть</button>
-            <button type="button" id="saveBtn" class="de-btn" title="Скачать PNG">Сохранить</button>
-            <button type="button" id="undoBtn" class="de-btn" title="Отменить">
+            <button type="button" id="openBtn" class="de-btn" data-i18n-title="drawEditor.open" title="Открыть"><span data-i18n="drawEditor.open">Открыть</span></button>
+            <button type="button" id="saveBtn" class="de-btn" data-i18n-title="drawEditor.saveDownloadTitle" title="Скачать PNG"><span data-i18n="drawEditor.save">Сохранить</span></button>
+            <button type="button" id="undoBtn" class="de-btn" data-i18n-title="drawEditor.undo" title="Отменить">
                 <svg class="de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7H5v4"/><path d="M5 11c1.5-3 4.5-5 8-5 4.4 0 8 3.6 8 8s-3.6 8-8 8"/></svg>
             </button>
-            <button type="button" id="redoBtn" class="de-btn" title="Повторить">
+            <button type="button" id="redoBtn" class="de-btn" data-i18n-title="drawEditor.redo" title="Повторить">
                 <svg class="de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 7h4v4"/><path d="M19 11c-1.5-3-4.5-5-8-5-4.4 0-8 3.6-8 8s3.6 8 8 8"/></svg>
             </button>
         </div>
 
         <div class="de-group">
-            <button type="button" id="zoomOutBtn" class="de-btn" title="Уменьшить">−</button>
+            <button type="button" id="zoomOutBtn" class="de-btn" data-i18n-title="drawEditor.zoomOut" title="Уменьшить">−</button>
             <span id="zoomLabel" class="de-size" style="min-width:3ch;text-align:center;">4×</span>
-            <button type="button" id="zoomInBtn" class="de-btn" title="Увеличить">+</button>
-            <button type="button" id="zoom11Btn" class="de-btn" title="100%">1:1</button>
-            <button type="button" id="zoomFitBtn" class="de-btn" title="Вписать">⊡</button>
+            <button type="button" id="zoomInBtn" class="de-btn" data-i18n-title="drawEditor.zoomIn" title="Увеличить">+</button>
+            <button type="button" id="zoom11Btn" class="de-btn" data-i18n-title="drawEditor.zoom100" title="100%">1:1</button>
+            <button type="button" id="zoomFitBtn" class="de-btn" data-i18n-title="drawEditor.zoomFit" title="Вписать">⊡</button>
         </div>
 
         <label class="de-size">
-            <span id="brushSizeTitle">Кисть</span>
+            <span id="brushSizeTitle" data-i18n="drawEditor.brush">Кисть</span>
             <input type="range" id="brushSize" min="1" max="32" value="1">
             <span id="brushSizeLabel">1</span> px
         </label>
 
-        <button type="button" id="closeBtn" class="de-btn de-btn--accent" style="margin-left:auto;">Готово</button>
+        <button type="button" id="closeBtn" class="de-btn de-btn--accent" style="margin-left:auto;" data-i18n="drawEditor.done">Готово</button>
         <input type="file" id="fileInput" accept="image/*" hidden>
     </header>
 
     <div class="de-main">
         <aside class="de-sidebar">
-            <button type="button" class="de-tool active" data-tool="brush" title="Кисть">
+            <button type="button" class="de-tool active" data-tool="brush" data-i18n-title="drawEditor.brush" title="Кисть">
                 <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M18.4 3.6l2 2c.8.8.8 2 0 2.8l-9 9-3.8 1 1-3.8 9-9c.8-.8 2-.8 2.8 0z"/>
                     <path d="M3 21h7.5"/>
                 </svg>
-                Кисть
+                <span data-i18n="drawEditor.brush">Кисть</span>
             </button>
-            <button type="button" class="de-tool" data-tool="pencil" title="Пиксельный карандаш">
+            <button type="button" class="de-tool" data-tool="pencil" data-i18n-title="drawEditor.pencilTitle" title="Пиксельный карандаш">
                 <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
                     <rect x="5" y="5" width="4" height="4" fill="currentColor" stroke="none"/>
                     <rect x="9" y="9" width="4" height="4" fill="currentColor" stroke="none" opacity="0.65"/>
                     <path d="M13 13l7 7"/>
                     <path d="M16 16l3 3"/>
                 </svg>
-                Пиксель
+                <span data-i18n="drawEditor.pencil">Пиксель</span>
             </button>
-            <button type="button" class="de-tool" data-tool="mirror" title="Зеркальная кисть">
+            <button type="button" class="de-tool" data-tool="mirror" data-i18n-title="drawEditor.mirrorBrushTitle" title="Зеркальная кисть">
                 <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 3v18"/>
                     <path d="M6 9c1.5-1.5 3.5-1.5 5 0"/>
@@ -410,38 +410,38 @@
                     <path d="M6 15c1.5 1.5 3.5 1.5 5 0"/>
                     <path d="M18 15c-1.5 1.5-3.5 1.5-5 0"/>
                 </svg>
-                Зеркало
+                <span data-i18n="drawEditor.mirror">Зеркало</span>
             </button>
-            <button type="button" class="de-tool" data-tool="eraser" title="Ластик">
+            <button type="button" class="de-tool" data-tool="eraser" data-i18n-title="drawEditor.eraser" title="Ластик">
                 <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M7 20h10"/>
                     <path d="M19 7l-4-4a2 2 0 0 0-2.8 0L5 14l5 5 9.2-9.2a2 2 0 0 0 0-2.8z"/>
                 </svg>
-                Ластик
+                <span data-i18n="drawEditor.eraser">Ластик</span>
             </button>
-            <button type="button" class="de-tool" data-tool="fill" title="Заливка">
+            <button type="button" class="de-tool" data-tool="fill" data-i18n-title="drawEditor.fill" title="Заливка">
                 <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 2l8 8-8 8-8-8 8-8z"/>
                     <path d="M5 22h14"/>
                 </svg>
-                Заливка
+                <span data-i18n="drawEditor.fill">Заливка</span>
             </button>
-            <button type="button" class="de-tool" data-tool="eyedropper" title="Пипетка">
+            <button type="button" class="de-tool" data-tool="eyedropper" data-i18n-title="drawEditor.eyedropper" title="Пипетка">
                 <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M4 20l4-4"/>
                     <path d="M8 16l8-8 2 2-8 8-2-2z"/>
                     <path d="M16 6l2 2"/>
                 </svg>
-                Пипетка
+                <span data-i18n="drawEditor.eyedropper">Пипетка</span>
             </button>
-            <button type="button" class="de-tool de-tool-action" id="clearBtn" title="Очистить холст">
+            <button type="button" class="de-tool de-tool-action" id="clearBtn" data-i18n-title="drawEditor.clearCanvasTitle" title="Очистить холст">
                 <svg class="de-icon de-icon--stroke" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M4 7h16"/>
                     <path d="M7 7l1 12h8l1-12"/>
                     <path d="M9 7V5h6v2"/>
                     <path d="M10 11v5M14 11v5"/>
                 </svg>
-                Очистить
+                <span data-i18n="drawEditor.clear">Очистить</span>
             </button>
         </aside>
 
@@ -449,7 +449,7 @@
             <div class="de-stage" id="canvasStage">
                 <div class="de-canvas-wrap" id="canvasContainer">
                     <canvas id="cd-canvas" width="128" height="128"></canvas>
-                    <div id="canvasResizeHandle" title="Изменить размер холста"></div>
+                    <div id="canvasResizeHandle" data-i18n-title="drawEditor.resizeHandle" title="Изменить размер холста"></div>
                 </div>
             </div>
         </div>
@@ -458,7 +458,7 @@
     <footer class="de-bottom">
         <input type="color" id="colorPicker" value="#000000">
         <div id="colorPalette"></div>
-        <span class="de-hint">Круг у курсора — размер кисти · Ctrl + колёсико — зум</span>
+        <span class="de-hint" data-i18n="drawEditor.hint">Круг у курсора — размер кисти · Ctrl + колёсико — зум</span>
     </footer>
 </div>
 
@@ -469,17 +469,18 @@
         <h3 id="modal-title"></h3>
         <p id="modal-text"></p>
         <div id="modal-input-wrapper" class="modal-input-wrapper" style="display:none;">
-            <input type="text" id="modal-input-field" placeholder="Введите текст…">
+            <input type="text" id="modal-input-field" data-i18n-placeholder="modal.inputPlaceholder" placeholder="Введите текст…">
         </div>
         <div class="modal-buttons">
-            <button type="button" id="modal-cancel-btn" class="btn btn-cancel">Отмена</button>
-            <button type="button" id="modal-ok-btn" class="btn btn-ok">OK</button>
+            <button type="button" id="modal-cancel-btn" class="btn btn-cancel" data-i18n="common.cancel">Отмена</button>
+            <button type="button" id="modal-ok-btn" class="btn btn-ok" data-i18n="common.ok">OK</button>
         </div>
     </div>
 </div>
 
+<script src="./lib/i18n.js?v=0.051"></script>
 <script src="./lib/jsfs2.js"></script>
-<script src="./lib/draw-editor.js"></script>
+<script src="./lib/draw-editor.js?v=0.051"></script>
 <script>
 var ModalUI = {
     container: document.getElementById('modal-container'),
@@ -526,7 +527,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (typeof window.FileSystem !== 'undefined') {
         window.jsfs = new window.FileSystem('PGZfs');
     }
-    initDrawEditor();
+    PGZI18n.init().then(function () {
+        document.title = PGZI18n.t('drawEditor.pageTitle');
+        if (typeof initDrawEditor === 'function') initDrawEditor();
+    });
 });
 </script>
 </body>

@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Игра — PGZero Studio</title>
+    <title data-i18n="play.pageTitle">Игра — PGZero Studio</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon.png" type="image/png" sizes="256x256">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
@@ -46,34 +46,34 @@
                 <img src="./favicon.svg" width="24" height="24" alt="">
                 <span><strong>PGZero</strong> Studio</span>
             </a>
-            <h1 class="pg-play-header__title" data-play-title>Игра</h1>
+            <h1 class="pg-play-header__title" data-play-title data-i18n="play.title">Игра</h1>
         </header>
 
         <main class="pg-play-main">
             <section id="playLoading" class="pg-play-panel">
                 <div class="pg-play-loading">
                     <div class="spinner"></div>
-                    <p>Загружаем игру…</p>
+                    <p data-i18n="play.loading">Загружаем игру…</p>
                 </div>
             </section>
 
             <section id="playIntro" class="pg-play-panel" hidden>
                 <div class="pg-play-intro">
-                    <p class="pg-play-intro__label">Опубликованная игра</p>
-                    <h2 class="pg-play-intro__title" data-play-title>Игра</h2>
-                    <button type="button" id="playPageStartBtn" class="pg-play-start-btn" aria-label="Играть">
+                    <p class="pg-play-intro__label" data-i18n="play.publishedLabel">Опубликованная игра</p>
+                    <h2 class="pg-play-intro__title" data-play-title data-i18n="play.title">Игра</h2>
+                    <button type="button" id="playPageStartBtn" class="pg-play-start-btn" data-i18n-aria-label="play.playBtn" aria-label="Играть">
                         <span class="pg-play-start-btn__icon">▶</span>
-                        <span>Играть</span>
+                        <span data-i18n="play.playBtn">Играть</span>
                     </button>
-                    <p class="pg-play-intro__note">Сделано в <a href="./index.html">PGZero Studio</a></p>
+                    <p class="pg-play-intro__note"><span data-i18n="play.madeIn">Сделано в</span> <a href="./index.html">PGZero Studio</a></p>
                 </div>
             </section>
 
             <section id="playError" class="pg-play-panel" hidden>
                 <div class="pg-play-error">
-                    <h2>Не удалось загрузить игру</h2>
+                    <h2 data-i18n="play.loadFailed">Не удалось загрузить игру</h2>
                     <p id="playErrorMessage"></p>
-                    <a class="pg-play-error__link" href="./index.html">Вернуться в Studio</a>
+                    <a class="pg-play-error__link" href="./index.html" data-i18n="play.backToStudio">Вернуться в Studio</a>
                 </div>
             </section>
 
@@ -81,8 +81,8 @@
                 <div id="gameModal" class="pg-play-game-overlay">
                     <div id="gameModalWindow" class="pg-play-game-window">
                         <div id="gameModalHeader" class="pg-play-game-bar">
-                            <span id="gameTitle" class="pg-play-game-bar__title" data-play-title>Игра</span>
-                            <button type="button" id="closeGameBtn" class="pg-play-game-bar__stop" title="Остановить игру">✕</button>
+                            <span id="gameTitle" class="pg-play-game-bar__title" data-play-title data-i18n="play.title">Игра</span>
+                            <button type="button" id="closeGameBtn" class="pg-play-game-bar__stop" data-i18n-title="play.stopGame" title="Остановить игру">✕</button>
                         </div>
                         <canvas id="gameCanvas" class="pg-play-game-canvas" tabindex="0"></canvas>
                     </div>
@@ -110,23 +110,27 @@
     <button id="btn_stopRunning" hidden type="button"></button>
 
     <script src="./lib/base.js"></script>
-    <script src="./lib/lib.js?v=0.047"></script>
+    <script src="./lib/i18n.js?v=0.051"></script>
+    <script src="./lib/lib.js?v=0.052"></script>
     <script src="./lib/storage-guard.js"></script>
     <script src="./lib/skulpt/skulpt.min.js"></script>
     <script src="./lib/skulpt/skulpt-stdlib.js"></script>
-    <script src="./lib/extlibs.js?v=0.047"></script>
+    <script src="./lib/extlibs.js?v=0.052"></script>
     <script src="./lib/jsfs2.js"></script>
     <script src="./lib/jszip.min.js"></script>
-    <script src="./lib/pgz-project-io.js?v=0.047"></script>
-    <script src="./lib/publish-config.js?v=0.047"></script>
-    <script src="./lib/publish-static.js?v=0.047"></script>
-    <script src="./lib/publish-link.js?v=0.047"></script>
-    <script src="./lib/project-publish.js?v=0.047"></script>
-    <script src="./lib/assets-gallery.js?v=0.047"></script>
-    <script src="./lib/play-page.js?v=0.047"></script>
+    <script src="./lib/pgz-project-io.js?v=0.052"></script>
+    <script src="./lib/publish-config.js?v=0.052"></script>
+    <script src="./lib/publish-static.js?v=0.052"></script>
+    <script src="./lib/publish-link.js?v=0.052"></script>
+    <script src="./lib/project-publish.js?v=0.052"></script>
+    <script src="./lib/assets-gallery.js?v=0.052"></script>
+    <script src="./lib/play-page.js?v=0.052"></script>
     <script>
         window.addEventListener('load', function () {
-            PGZPlayPage.init();
+            PGZI18n.init().then(function () {
+                document.title = PGZI18n.t('play.pageTitle');
+                PGZPlayPage.init();
+            });
         });
     </script>
 </body>

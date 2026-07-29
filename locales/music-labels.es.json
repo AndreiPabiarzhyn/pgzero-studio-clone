@@ -1,0 +1,22 @@
+{
+  "menu": "Menú del juego",
+  "gameplay": "Jugabilidad",
+  "action": "Acción",
+  "space": "Espacio",
+  "fantasy": "Fantasía",
+  "racing": "Carreras",
+  "calm": "Calma",
+  "relaxed": "Relajada",
+  "cave": "Cueva",
+  "piano": "Piano",
+  "lounge": "Lounge",
+  "reggae": "Reggae",
+  "retro": "Juego retro",
+  "retro_beat": "Bit 8-bit",
+  "retro_comedy": "Comedia 8-bit",
+  "retro_mystic": "Mística 8-bit",
+  "retro_polka": "Arcade 8-bit",
+  "retro_reggae": "Chiptune 8-bit",
+  "victory": "Victoria",
+  "retro_jingle": "Jingle 8-bit"
+}

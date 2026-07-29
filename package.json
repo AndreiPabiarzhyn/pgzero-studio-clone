@@ -3,6 +3,9 @@
   "private": true,
   "scripts": {
     "test": "node tests/run-all.mjs",
-    "dev": "python -m http.server 8100 --bind 127.0.0.1"
+    "dev": "python -m http.server 8100 --bind 127.0.0.1",
+    "build:labels": "node scripts/build-sprite-labels.mjs && node scripts/build-audio-labels.mjs",
+    "build:sprite-labels": "node scripts/build-sprite-labels.mjs",
+    "build:audio-labels": "node scripts/build-audio-labels.mjs"
   }
 }

@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="./lib/cm/monokai.css">
     <link rel="stylesheet" href="./lib/cm/pgz-ide.css">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./theme.css?v=0.047">
+    <link rel="stylesheet" href="./theme.css?v=0.060">
     <link rel="stylesheet" href="./new-message.css">
     <link rel="stylesheet" href="./lib/font-awesome.min.css">   
     <link rel="stylesheet" href="./jquery/ui/1.13.3/themes/base/jquery-ui.css">
@@ -52,22 +52,83 @@
 
 <!-- Стартовый экран (не модалка) -->
 <div id="projectStartupScreen" class="pg-startup-screen" hidden>
+    <div class="pg-startup-screen__scene" aria-hidden="true">
+        <div class="pg-startup-screen__base"></div>
+        <div class="pg-startup-screen__glow pg-startup-screen__glow--indigo"></div>
+        <div class="pg-startup-screen__glow pg-startup-screen__glow--cyan"></div>
+        <div class="pg-startup-screen__glow pg-startup-screen__glow--violet"></div>
+        <div class="pg-startup-screen__stars"></div>
+        <div class="pg-startup-screen__retro-grid"></div>
+        <div class="pg-startup-screen__art">
+            <div class="pg-startup-diorama pg-startup-diorama--space">
+                <div class="pg-startup-diorama__glow pg-startup-diorama__glow--space"></div>
+                <img class="pg-startup-sprite pg-startup-sprite--ship" src="./assets/image-library/kenney/characters/ship2_blue.png" width="48" height="48" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--meteor" src="./assets/image-library/kenney/projectiles/meteor_grey_big3.png" width="32" height="32" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--star" src="./assets/image-library/kenney/effects/space_star1.png" width="16" height="16" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--star pg-startup-sprite--star-2" src="./assets/image-library/kenney/effects/space_star1.png" width="12" height="12" alt="">
+            </div>
+            <div class="pg-startup-diorama pg-startup-diorama--fantasy">
+                <div class="pg-startup-diorama__glow pg-startup-diorama__glow--fantasy"></div>
+                <img class="pg-startup-sprite pg-startup-sprite--wizard" src="./assets/image-library/kenney/characters/dungeon_wizard.png" width="32" height="32" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--ghost" src="./assets/image-library/kenney/enemies/dungeon_ghost.png" width="32" height="32" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--cultist" src="./assets/image-library/kenney/enemies/dungeon_cultist.png" width="32" height="32" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--knight" src="./assets/image-library/kenney/characters/dungeon_knight_grille.png" width="32" height="32" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--spider" src="./assets/image-library/kenney/enemies/dungeon_spider.png" width="32" height="32" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--bat" src="./assets/image-library/kenney/enemies/dungeon_wisp.png" width="24" height="24" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--gem" src="./assets/image-library/kenney/items/gem_green.png" width="24" height="24" alt="">
+            </div>
+            <div class="pg-startup-diorama pg-startup-diorama--nature">
+                <div class="pg-startup-diorama__glow pg-startup-diorama__glow--nature"></div>
+                <img class="pg-startup-sprite pg-startup-sprite--tree-a" src="./assets/image-library/kenney/backgrounds/layer_tree01.png" width="48" height="64" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--tree-b" src="./assets/image-library/kenney/backgrounds/layer_tree02.png" width="40" height="56" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--tree-c" src="./assets/image-library/kenney/backgrounds/layer_tree03.png" width="36" height="52" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--bush" src="./assets/image-library/kenney/tiles/bush.png" width="32" height="32" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--mushroom" src="./assets/image-library/kenney/tiles/mushroom_red.png" width="24" height="24" alt="">
+            </div>
+            <div class="pg-startup-diorama pg-startup-diorama--arcade">
+                <div class="pg-startup-diorama__glow pg-startup-diorama__glow--arcade"></div>
+                <img class="pg-startup-sprite pg-startup-sprite--hero" src="./assets/image-library/kenney/characters/hero_yellow_stand.png" width="32" height="32" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--coin" src="./assets/image-library/kenney/items/coin_gold.png" width="24" height="24" alt="">
+                <img class="pg-startup-sprite pg-startup-sprite--invader" src="./assets/image-library/kenney/enemies/enemy_blue_1.png" width="32" height="32" alt="">
+            </div>
+        </div>
+        <div class="pg-startup-screen__focus"></div>
+        <div class="pg-startup-screen__fog"></div>
+        <div class="pg-startup-screen__vignette"></div>
+    </div>
+    <div class="pg-startup-screen__topbar">
+        <div class="pg-lang-switch" role="group" aria-labelledby="startupLangLabel">
+            <span id="startupLangLabel" class="pg-lang-switch__label" data-i18n="lang.label">Язык интерфейса</span>
+            <div class="pg-lang-switch__buttons">
+                <button type="button" class="pg-lang-switch__btn" data-lang="ru" aria-pressed="false">RU</button>
+                <button type="button" class="pg-lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
+                <button type="button" class="pg-lang-switch__btn" data-lang="es" aria-pressed="false">ES</button>
+            </div>
+        </div>
+    </div>
     <div class="pg-startup-screen__layout">
         <main class="pg-startup-screen__main">
             <header class="pg-startup-screen__hero">
                 <div class="pg-startup-screen__logo-wrap">
-                    <img class="pg-startup-screen__logo" src="./assets/logo.svg" width="96" height="96" alt="">
+                    <img class="pg-startup-screen__logo" src="./assets/logo.svg" width="96" height="96" alt="PGZero Studio">
                 </div>
                 <p class="pg-startup-screen__brand"><span>PGZero</span> Studio</p>
-                <h1 class="pg-startup-screen__title">Привет!</h1>
-                <p class="pg-startup-screen__subtitle">Создавай игры прямо в браузере — код, картинки и звуки</p>
-                <p class="pg-startup-screen__hint">Выбери ячейку</p>
+                <h1 class="pg-startup-screen__title" data-i18n="startup.title">Добро пожаловать</h1>
+                <p class="pg-startup-screen__subtitle" data-i18n="startup.subtitle">Создавай игры прямо в браузере — код, картинки и звуки</p>
+                <ul class="pg-startup-screen__chips" aria-label="Features">
+                    <li class="pg-startup-screen__chip" data-i18n="startup.chipCode">Код в браузере</li>
+                    <li class="pg-startup-screen__chip" data-i18n="startup.chipSprites">Спрайты и звуки</li>
+                    <li class="pg-startup-screen__chip" data-i18n="startup.chipPublish">Публикация игры</li>
+                    <li class="pg-startup-screen__chip" data-i18n="startup.chipNoInstall">Без установки</li>
+                </ul>
+                <p class="pg-startup-screen__hint" data-i18n="startup.hint">Выбери ячейку для новой или сохранённой игры</p>
             </header>
-            <div class="pg-startup-screen__slots">
+            <section class="pg-startup-screen__slots" aria-labelledby="startupSlotsTitle">
+                <h2 id="startupSlotsTitle" class="pg-startup-screen__slots-title" data-i18n="startup.slotsTitle">Твои игры</h2>
                 <div id="projectStartupGrid" class="project-gallery-grid pg-startup-grid"></div>
-            </div>
+            </section>
         </main>
-        <footer class="pg-startup-screen__credit">Сделал Andrei Pabiarzhyn</footer>
+        <footer class="pg-startup-screen__credit"><span data-i18n="startup.credit">Сделал Andrei Pabiarzhyn</span></footer>
     </div>
 </div>
 
@@ -76,19 +137,19 @@
     <div class="pg-publish-screen__layout">
         <main class="pg-publish-screen__main">
             <div class="pg-publish-screen__icon" aria-hidden="true">🎮</div>
-            <h1 class="pg-publish-screen__title">Игра опубликована!</h1>
+            <h1 class="pg-publish-screen__title" data-i18n="publish.title">Игра опубликована!</h1>
             <p class="pg-publish-screen__game" id="publishSuccessTitle">«Моя игра»</p>
-            <p class="pg-publish-screen__hint">Отправь ссылку друзьям — они смогут поиграть без редактора</p>
-            <label class="pg-publish-screen__url-label" for="publishSuccessUrl">Ссылка на игру</label>
+            <p class="pg-publish-screen__hint" data-i18n="publish.hint">Отправь ссылку друзьям — они смогут поиграть без редактора</p>
+            <label class="pg-publish-screen__url-label" for="publishSuccessUrl" data-i18n="publish.urlLabel">Ссылка на игру</label>
             <textarea id="publishSuccessUrl" class="pg-publish-screen__url" readonly rows="1" spellcheck="false"></textarea>
             <div class="pg-publish-screen__actions">
-                <button type="button" id="publishCopyLinkBtn" class="pg-publish-btn pg-publish-btn--primary">Скопировать ссылку</button>
-                <button type="button" id="publishOpenLinkBtn" class="pg-publish-btn pg-publish-btn--secondary">Открыть</button>
+                <button type="button" id="publishCopyLinkBtn" class="pg-publish-btn pg-publish-btn--primary" data-i18n="publish.copyLink">Скопировать ссылку</button>
+                <button type="button" id="publishOpenLinkBtn" class="pg-publish-btn pg-publish-btn--secondary" data-i18n="publish.open">Открыть</button>
             </div>
-            <p class="pg-publish-screen__note">Короткая ссылка — игра на GitHub Pages, работает в РФ.</p>
-            <button type="button" class="pg-publish-btn pg-publish-btn--ghost" onclick="PGZProjectPublish.hideSuccess()">Продолжить работу</button>
+            <p class="pg-publish-screen__note" data-i18n="publish.noteShort">Короткая ссылка — игра на GitHub Pages, работает в РФ.</p>
+            <button type="button" class="pg-publish-btn pg-publish-btn--ghost" data-i18n="publish.continue" onclick="PGZProjectPublish.hideSuccess()">Продолжить работу</button>
         </main>
-        <footer class="pg-publish-screen__credit">Сделал Andrei Pabiarzhyn</footer>
+        <footer class="pg-publish-screen__credit"><span data-i18n="common.credit">Сделал Andrei Pabiarzhyn</span></footer>
     </div>
 </div>
 	<!-- CodeMirror -->
@@ -105,24 +166,24 @@
     <script src="./lib/cm/search.js"></script>
     <script src="./lib/cm/searchbox.js"></script>   
     <script src="./lib/cm/matchbrackets.js"></script>
-    <script src="./lib/editor-ide.js?v=0.047"></script>
+    <script src="./lib/editor-ide.js?v=0.052"></script>
     <!-- Библиотеки -->
     <script src="./lib/base.js"></script>
-    <script src="./lib/lib.js?v=0.047"></script>
-    <script src="./lib/session.js?v=0.047"></script>
+    <script src="./lib/lib.js?v=0.052"></script>
+    <script src="./lib/session.js?v=0.052"></script>
     <script src="./lib/code-history.js"></script>
     <script src="./lib/storage-guard.js"></script>
     <script src="./lib/skulpt/skulpt.min.js"></script>
     <script src="./lib/skulpt/skulpt-stdlib.js"></script>
-    <script src="./lib/extlibs.js?v=0.047"></script>
+    <script src="./lib/extlibs.js?v=0.052"></script>
     <script src="./lib/jsfs2.js"></script>    
     <script src="./lib/jszip.min.js"></script>
     <script src="./lib/FileSaver.min.js"></script>
-    <script src="./lib/pgz-project-io.js?v=0.047"></script>
-    <script src="./lib/publish-config.js?v=0.047"></script>
-    <script src="./lib/publish-static.js?v=0.047"></script>
-    <script src="./lib/publish-link.js?v=0.047"></script>
-    <script src="./lib/project-publish.js?v=0.047"></script>
+    <script src="./lib/pgz-project-io.js?v=0.052"></script>
+    <script src="./lib/publish-config.js?v=0.052"></script>
+    <script src="./lib/publish-static.js?v=0.052"></script>
+    <script src="./lib/publish-link.js?v=0.052"></script>
+    <script src="./lib/project-publish.js?v=0.052"></script>
     <script>
 	var coldStart = true;
     if (localStorage.loadAction) { coldStart=false}
@@ -1456,47 +1517,59 @@
         <span class="tb-brand-primary">PGZero</span><span class="tb-brand-secondary">Studio</span>
       </span>
     </a>
-    <input type="text" id="projectNameInput" class="tb-project-name" placeholder="Название игры" maxlength="32" aria-label="Название игры">
+    <input type="text" id="projectNameInput" class="tb-project-name" data-i18n-placeholder="toolbar.projectName" data-i18n-aria-label="toolbar.projectName" placeholder="Название игры" maxlength="32" aria-label="Название игры">
     <span class="tb-divider" aria-hidden="true"></span>
-    <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-play--hero tb-wide" data-pz-icon="play" title="Запустить игру (F5)">
-      <span class="tb-label">Играть</span>
+    <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-play--hero tb-wide" data-pz-icon="play" data-i18n-title="toolbar.playTitle" title="Запустить игру (F5)">
+      <span class="tb-label" data-i18n="toolbar.play">Играть</span>
     </button>
-    <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" title="Остановить" style="display:none;"></button>
+    <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" data-i18n-title="toolbar.stop" title="Остановить" style="display:none;"></button>
     <span class="tb-divider" aria-hidden="true"></span>
     <div class="tb-group tb-group-save">
-      <button type="button" id="btn_save_slot" class="toolButton tb-btn tb-save-slot tb-wide" data-pz-icon="save" title="Сохранить игру в браузере" onclick="PGZProjectGallery.saveActiveSlotNow()">
-        <span class="tb-label">Сохранить</span>
+      <button type="button" id="btn_save_slot" class="toolButton tb-btn tb-save-slot tb-wide" data-pz-icon="save" data-i18n-title="toolbar.saveTitle" title="Сохранить игру в браузере" onclick="PGZProjectGallery.saveActiveSlotNow()">
+        <span class="tb-label" data-i18n="toolbar.save">Сохранить</span>
       </button>
-      <button type="button" id="btn_pgz_publish" class="toolButton tb-btn tb-publish tb-wide" data-pz-icon="publish" title="Опубликовать и получить ссылку" aria-label="Опубликовать" onclick="PGZProjectPublish.publishFromUi()">
-        <span class="tb-label">Опубликовать</span>
+      <button type="button" id="btn_pgz_publish" class="toolButton tb-btn tb-publish tb-wide" data-pz-icon="publish" data-i18n-title="toolbar.publishTitle" data-i18n-aria-label="toolbar.publishAria" title="Опубликовать и получить ссылку" aria-label="Опубликовать" onclick="PGZProjectPublish.publishFromUi()">
+        <span class="tb-label" data-i18n="toolbar.publish">Опубликовать</span>
       </button>
     </div>
     <div class="tb-group tb-group-files">
-      <button type="button" id="btn_pgz_open" class="toolButton tb-btn tb-open-file" data-pz-icon="folderOpen" title="Открыть проект с компьютера" aria-label="Открыть проект" onclick="importGallery()"></button>
-      <button type="button" id="btn_pgz_save" class="toolButton tb-btn tb-save-file" data-pz-icon="download" title="Скачать файл .pgz на компьютер" aria-label="Скачать на компьютер" onclick="exportGallery()"></button>
+      <button type="button" id="btn_pgz_open" class="toolButton tb-btn tb-open-file" data-pz-icon="folderOpen" data-i18n-title="toolbar.openFile" data-i18n-aria-label="toolbar.openFileAria" title="Открыть проект с компьютера" aria-label="Открыть проект" onclick="importGallery()"></button>
+      <button type="button" id="btn_pgz_save" class="toolButton tb-btn tb-save-file" data-pz-icon="download" data-i18n-title="toolbar.downloadFile" data-i18n-aria-label="toolbar.downloadFileAria" title="Скачать файл .pgz на компьютер" aria-label="Скачать на компьютер" onclick="exportGallery()"></button>
     </div>
     <div class="tb-group tb-group-learn">
-      <button type="button" id="btn_project_gallery" class="toolButton tb-btn tb-wide" data-pz-icon="projects" title="Мои игры — 6 ячеек в браузере" onclick="PGZProjectGallery.openSwitchModal()">
-        <span class="tb-label">Мои игры</span>
+      <button type="button" id="btn_project_gallery" class="toolButton tb-btn tb-wide" data-pz-icon="projects" data-i18n-title="toolbar.myGamesTitle" title="Мои игры — 6 ячеек в браузере" onclick="PGZProjectGallery.openSwitchModal()">
+        <span class="tb-label" data-i18n="toolbar.myGames">Мои игры</span>
       </button>
-      <button type="button" id="btn_open_templates" class="toolButton tb-btn tb-wide" data-pz-icon="templates" title="Примеры игр с картинками" onclick="PGZGameTemplates.openModal()">
-        <span class="tb-label">Примеры</span>
+      <button type="button" id="btn_open_templates" class="toolButton tb-btn tb-wide" data-pz-icon="templates" data-i18n-title="toolbar.templatesTitle" title="Примеры игр с картинками" onclick="PGZGameTemplates.openModal()">
+        <span class="tb-label" data-i18n="toolbar.templates">Примеры</span>
       </button>
     </div>
     <div class="tb-more-wrap">
-      <button type="button" id="btn_more" class="toolButton tb-btn tb-more" data-pz-icon="more" title="Ещё" onclick="toggleMoreMenu(event)"></button>
+      <button type="button" id="btn_more" class="toolButton tb-btn tb-more" data-pz-icon="more" data-i18n-title="toolbar.more" title="Ещё" onclick="toggleMoreMenu(event)"></button>
       <div id="moreMenu">
-        <button type="button" class="toolButton tb-btn" data-pz-icon="plus" title="Новая игра" onclick="createNewProject(); closeMoreMenu();"><span class="tb-label">Новая игра</span></button>
-        <button type="button" class="toolButton tb-btn" data-pz-icon="paint" title="Нарисовать спрайт" onclick="showEditor(); closeMoreMenu();"><span class="tb-label">Нарисовать спрайт</span></button>
-        <button type="button" class="toolButton tb-btn" data-pz-icon="files" title="Мои файлы" onclick="showProjectFiles(); closeMoreMenu();"><span class="tb-label">Мои файлы</span></button>
-        <button type="button" class="toolButton tb-btn" data-pz-icon="console" title="Консоль" onclick="showConsole(); closeMoreMenu();"><span class="tb-label">Консоль</span></button>
-        <button type="button" class="toolButton tb-btn" data-pz-icon="history" title="История кода" onclick="PGZCodeHistory.openModal(); closeMoreMenu();"><span class="tb-label">История кода</span></button>
-        <button type="button" id="btn_show_share" class="toolButton tb-btn" data-pz-icon="code" title="Экспорт кода" onclick="closeMoreMenu();"><span class="tb-label">Экспорт кода</span></button>
-        <button type="button" id="btn_show_settings" class="toolButton tb-btn" data-pz-icon="settings" title="Настройки" onclick="closeMoreMenu();"><span class="tb-label">Настройки</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="plus" data-i18n-title="toolbar.newGameTitle" title="Новая игра" onclick="createNewProject(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.newGame">Новая игра</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="paint" data-i18n-title="toolbar.drawSpriteTitle" title="Нарисовать спрайт" onclick="showEditor(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.drawSprite">Нарисовать спрайт</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="files" data-i18n-title="toolbar.myFilesTitle" title="Мои файлы" onclick="showProjectFiles(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.myFiles">Мои файлы</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="console" data-i18n-title="toolbar.consoleTitle" title="Консоль" onclick="showConsole(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.console">Консоль</span></button>
+        <button type="button" class="toolButton tb-btn" data-pz-icon="history" data-i18n-title="toolbar.codeHistoryTitle" title="История кода" onclick="PGZCodeHistory.openModal(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.codeHistory">История кода</span></button>
+        <button type="button" id="btn_show_share" class="toolButton tb-btn" data-pz-icon="code" data-i18n-title="toolbar.exportCodeTitle" title="Экспорт кода" onclick="closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.exportCode">Экспорт кода</span></button>
+        <div class="more-menu-lang" id="editorLangWrap">
+          <button type="button" id="btn_editor_lang" class="toolButton tb-btn more-menu-lang__trigger" data-pz-icon="globe" data-i18n-title="lang.label" title="Язык интерфейса" aria-haspopup="listbox" aria-expanded="false" aria-controls="editorLangMenu">
+            <span class="tb-label" data-i18n="lang.label">Язык интерфейса</span>
+            <span class="more-menu-lang__badge" id="editorLangBadge">RU</span>
+            <span class="more-menu-lang__chevron" aria-hidden="true"></span>
+          </button>
+          <div id="editorLangMenu" class="more-menu-lang__dropdown" role="listbox" aria-labelledby="btn_editor_lang" hidden>
+            <button type="button" class="more-menu-lang__option" data-lang="ru" role="option"><span data-i18n="lang.ru">Русский</span></button>
+            <button type="button" class="more-menu-lang__option" data-lang="en" role="option"><span data-i18n="lang.en">English</span></button>
+            <button type="button" class="more-menu-lang__option" data-lang="es" role="option"><span data-i18n="lang.es">Español</span></button>
+          </div>
+        </div>
+        <button type="button" id="btn_show_settings" class="toolButton tb-btn" data-pz-icon="settings" data-i18n-title="toolbar.settingsTitle" title="Настройки" onclick="closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.settings">Настройки</span></button>
       </div>
     </div>
   </div>
-  <button type="button" id="btn_toggle_theme" class="toolButton tb-btn tb-theme-toggle" data-pz-icon="themeDark" title="Тёмная тема" aria-label="Сменить тему"></button>
+  <button type="button" id="btn_toggle_theme" class="toolButton tb-btn tb-theme-toggle" data-pz-icon="themeDark" data-i18n-title="toolbar.themeToggle" data-i18n-aria-label="toolbar.themeToggle" title="Тёмная тема" aria-label="Сменить тему"></button>
   <div id="hintBar" aria-live="polite"></div>
 </div>
 
@@ -1512,11 +1585,11 @@
           </div>
           <div class="ide-tab-spacer"></div>
           <div class="ide-zoom-group">
-            <button type="button" class="ide-tab-btn ide-tab-zoom" id="ideBtnZoomOut" title="Уменьшить код (−)">−</button>
+            <button type="button" class="ide-tab-btn ide-tab-zoom" id="ideBtnZoomOut" data-i18n-title="ide.zoomOut" title="Уменьшить код (−)">−</button>
             <span class="ide-zoom-label" id="ideZoomLabel">15</span>
-            <button type="button" class="ide-tab-btn ide-tab-zoom" id="ideBtnZoomIn" title="Увеличить код (+)">+</button>
+            <button type="button" class="ide-tab-btn ide-tab-zoom" id="ideBtnZoomIn" data-i18n-title="ide.zoomIn" title="Увеличить код (+)">+</button>
           </div>
-          <button type="button" class="ide-tab-btn" id="ideBtnFind" title="Поиск (Ctrl+F)">Поиск</button>
+          <button type="button" class="ide-tab-btn" id="ideBtnFind" data-i18n="ide.find" data-i18n-title="ide.findTitle" title="Поиск (Ctrl+F)">Поиск</button>
         </div>
         <div class="ide-editor-body">
           <div id="editor"></div>
@@ -1525,29 +1598,29 @@
           <span id="ideStatusPos">Стр. 1, кол. 1</span>
           <span id="ideStatusSel"></span>
           <span class="ide-status-spacer"></span>
-          <span id="ideStatusLang">Python · Pygame Zero</span>
-          <span id="ideStatusHints">Ctrl+F · +/−</span>
+          <span id="ideStatusLang" data-i18n="ide.statusLang">Python · Pygame Zero</span>
+          <span id="ideStatusHints" data-i18n="ide.statusHints">Ctrl+F · +/−</span>
         </div>
       </div>
     </div>
-    <div id="splitterH" class="layout-splitter layout-splitter-h" title="Потяните — изменить высоту консоли"></div>
+    <div id="splitterH" class="layout-splitter layout-splitter-h" data-i18n-title="ide.splitterH" title="Потяните — изменить высоту консоли"></div>
     <div id="consolePane" class="layout-console-pane">
       <div id="consoleContainer" class="ide-console-wrap">
-        <div class="ide-console-label">Консоль</div>
+        <div class="ide-console-label" data-i18n="ide.console">Консоль</div>
         <div id="output"></div>
       </div>
     </div>
   </div>
-  <div id="splitterV" class="layout-splitter layout-splitter-v" title="Потяните — изменить ширину панели"></div>
+  <div id="splitterV" class="layout-splitter layout-splitter-v" data-i18n-title="ide.splitterV" title="Потяните — изменить ширину панели"></div>
   <div id="rightBar" class="layout-right">
-    <div class="sidebar-tabs" role="tablist" aria-label="Боковая панель">
-      <button type="button" class="sidebar-tab sidebar-tab--active" data-sidebar-tab="assets" role="tab" aria-selected="true" title="Картинки, звуки и музыка">
+    <div class="sidebar-tabs" role="tablist" data-i18n-aria-label="sidebar.aria" aria-label="Боковая панель">
+      <button type="button" class="sidebar-tab sidebar-tab--active" data-sidebar-tab="assets" role="tab" aria-selected="true" data-i18n-title="sidebar.assetsTitle" title="Картинки, звуки и музыка">
         <span class="pz-icon-wrap" data-pz-icon="gallery"></span>
-        <span class="sidebar-tab-label">Ресурсы</span>
+        <span class="sidebar-tab-label" data-i18n="sidebar.assets">Ресурсы</span>
       </button>
-      <button type="button" class="sidebar-tab" data-sidebar-tab="handbook" role="tab" aria-selected="false" title="Справочник по Pygame Zero">
+      <button type="button" class="sidebar-tab" data-sidebar-tab="handbook" role="tab" aria-selected="false" data-i18n-title="sidebar.handbookTitle" title="Справочник по Pygame Zero">
         <span class="pz-icon-wrap" data-pz-icon="book"></span>
-        <span class="sidebar-tab-label">Справочник</span>
+        <span class="sidebar-tab-label" data-i18n="sidebar.handbook">Справочник</span>
       </button>
     </div>
     <div class="sidebar-panels">
@@ -1556,10 +1629,10 @@
 <div id="resourceGallery">
   <div class="frame" id="imagesFrame">
     <div class="frame-header">
-      <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="image"></span> Картинки</h3>
+      <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="image"></span> <span data-i18n="sidebar.images">Картинки</span></h3>
       <div class="controls-bar">
-        <button class="gallery-btn" data-pz-icon="gLibrary" onclick="openImageLibraryModal()" title="Библиотека спрайтов"></button>
-        <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
+        <button class="gallery-btn" data-pz-icon="gLibrary" data-i18n-title="sidebar.spriteLibrary" onclick="openImageLibraryModal()" title="Библиотека спрайтов"></button>
+        <button class="gallery-btn" data-pz-icon="gAdd" data-i18n-title="sidebar.addImage" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
       </div>
     </div>
     <div id="imagesList" class="assets-items-scroll"></div>
@@ -1567,10 +1640,10 @@
 
   <div class="frame" id="soundsFrame">
     <div class="frame-header">
-      <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="sound"></span> Звуки</h3>
+      <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="sound"></span> <span data-i18n="sidebar.sounds">Звуки</span></h3>
       <div class="controls-bar">
-        <button class="gallery-btn" data-pz-icon="gLibrary" onclick="openSoundLibraryModal()" title="Библиотека звуков"></button>
-        <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('audio'))()" title="Добавить звук"></button>
+        <button class="gallery-btn" data-pz-icon="gLibrary" data-i18n-title="sidebar.soundLibrary" onclick="openSoundLibraryModal()" title="Библиотека звуков"></button>
+        <button class="gallery-btn" data-pz-icon="gAdd" data-i18n-title="sidebar.addSound" onclick="(async () => await addFile('audio'))()" title="Добавить звук"></button>
       </div>
     </div>
     <div id="soundsList" class="assets-items-scroll"></div>
@@ -1578,10 +1651,10 @@
 
   <div class="frame" id="musicFrame">
     <div class="frame-header">
-      <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="music"></span> Музыка</h3>
+      <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="music"></span> <span data-i18n="sidebar.music">Музыка</span></h3>
       <div class="controls-bar">
-        <button class="gallery-btn" data-pz-icon="gLibrary" onclick="openMusicLibraryModal()" title="Библиотека музыки"></button>
-        <button class="gallery-btn" data-pz-icon="gAdd" onclick="(async () => await addFile('music'))()" title="Добавить музыку"></button>
+        <button class="gallery-btn" data-pz-icon="gLibrary" data-i18n-title="sidebar.musicLibrary" onclick="openMusicLibraryModal()" title="Библиотека музыки"></button>
+        <button class="gallery-btn" data-pz-icon="gAdd" data-i18n-title="sidebar.addMusic" onclick="(async () => await addFile('music'))()" title="Добавить музыку"></button>
       </div>
     </div>
     <div id="musicList" class="assets-items-scroll"></div>
@@ -1590,7 +1663,7 @@
 </div>
       </div>
       <div id="sidebarPanelHandbook" class="sidebar-panel" role="tabpanel" hidden>
-        <iframe src="./pgz-handbook.html" id="handbook" title="Справочник по Pygame Zero"></iframe>
+        <iframe src="./pgz-handbook.html?embed=1" id="handbook" data-i18n-title="sidebar.handbookTitle" title="Справочник по Pygame Zero"></iframe>
       </div>
     </div>
   </div>
@@ -1598,23 +1671,23 @@
 
 <footer id="appFooter" class="app-footer">
   <span id="footerProjectStatus" class="footer-project-status" aria-live="polite"></span>
-  <span class="footer-credits">Сделал <strong>Andrei Pabiarzhyn</strong></span>
-  <span id="footerVersion" class="footer-version" title="PGZero Studio">v0.047</span>
+  <span class="footer-credits"><span data-i18n="common.credit">Сделал Andrei Pabiarzhyn</span></span>
+  <span id="footerVersion" class="footer-version" title="PGZero Studio">v0.052</span>
 </footer>
 
 <!-- Продолжить сессию -->
 <div id="sessionResumeModal" class="modal-overlay" style="display: none;">
   <div class="modal-content modal-dark session-resume-modal">
     <div class="modal-header">
-      <h3 class="modal-title">Продолжить игру?</h3>
+      <h3 class="modal-title" data-i18n="session.resumeTitle">Продолжить игру?</h3>
     </div>
     <div class="modal-body">
-      <p id="sessionResumeText">Мы нашли вашу прошлую работу в браузере.</p>
-      <p class="session-resume-hint">Код и картинки сохраняются автоматически. Файл .pgz — чтобы перенести игру на другой компьютер.</p>
+      <p id="sessionResumeText" data-i18n="session.resumeText">Мы нашли вашу прошлую работу в браузере.</p>
+      <p class="session-resume-hint" data-i18n="session.resumeHint">Код и картинки сохраняются автоматически. Файл .pgz — чтобы перенести игру на другой компьютер.</p>
     </div>
     <div class="modal-footer session-resume-actions">
-      <button type="button" id="sessionResumeContinue" class="btn-modal-close">Продолжить</button>
-      <button type="button" id="sessionResumeNew" class="btn-secondary">Новая игра</button>
+      <button type="button" id="sessionResumeContinue" class="btn-modal-close" data-i18n="session.continue">Продолжить</button>
+      <button type="button" id="sessionResumeNew" class="btn-secondary" data-i18n="session.newGame">Новая игра</button>
     </div>
   </div>
 </div>
@@ -1624,18 +1697,18 @@
 <div id="soundLibraryModal" class="modal-overlay sound-library-overlay" style="display:none;">
   <div class="modal-content modal-dark sound-library-modal">
     <div class="modal-header">
-      <h3 class="modal-title">Библиотека звуков</h3>
-      <button type="button" class="modal-close" data-modal-close onclick="closeSoundLibraryModal()" aria-label="Закрыть">&times;</button>
+      <h3 class="modal-title" data-i18n="library.sounds">Библиотека звуков</h3>
+      <button type="button" class="modal-close" data-modal-close onclick="closeSoundLibraryModal()" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
     </div>
     <div class="sound-library-search-wrap">
-      <input type="search" id="soundLibrarySearch" class="sound-library-search" placeholder="Поиск…" autocomplete="off">
+      <input type="search" id="soundLibrarySearch" class="sound-library-search" data-i18n-placeholder="common.search" placeholder="Поиск…" autocomplete="off">
     </div>
     <div id="soundLibraryCategories" class="sound-library-categories"></div>
     <div id="soundLibraryGroups" class="sound-library-groups"></div>
     <div id="soundLibraryGrid" class="sound-library-grid"></div>
     <div class="sound-library-footer">
-      <button type="button" id="soundLibraryImportBtn" class="btn-modal-close sound-library-import-btn" style="display:none;" onclick="importSelectedSound()">Добавить в проект</button>
-      <button type="button" class="btn-secondary" data-modal-close onclick="closeSoundLibraryModal()">Закрыть</button>
+      <button type="button" id="soundLibraryImportBtn" class="btn-modal-close sound-library-import-btn" style="display:none;" data-i18n="common.addToProject" onclick="importSelectedSound()">Добавить в проект</button>
+      <button type="button" class="btn-secondary" data-modal-close data-i18n="common.close" onclick="closeSoundLibraryModal()">Закрыть</button>
     </div>
   </div>
 </div>
@@ -1644,17 +1717,17 @@
 <div id="imageLibraryModal" class="modal-overlay sound-library-overlay" style="display:none;">
   <div class="modal-content modal-dark sound-library-modal">
     <div class="modal-header">
-      <h3 class="modal-title">Библиотека спрайтов</h3>
-      <button type="button" class="modal-close" data-modal-close onclick="closeImageLibraryModal()" aria-label="Закрыть">&times;</button>
+      <h3 class="modal-title" data-i18n="library.sprites">Библиотека спрайтов</h3>
+      <button type="button" class="modal-close" data-modal-close onclick="closeImageLibraryModal()" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
     </div>
     <div class="sound-library-search-wrap">
-      <input type="search" id="imageLibrarySearch" class="sound-library-search" placeholder="Поиск…" autocomplete="off">
+      <input type="search" id="imageLibrarySearch" class="sound-library-search" data-i18n-placeholder="common.search" placeholder="Поиск…" autocomplete="off">
     </div>
     <div id="imageLibraryGroups" class="sound-library-groups" style="display:flex;"></div>
     <div id="imageLibraryGrid" class="sound-library-grid image-library-grid"></div>
     <div class="sound-library-footer">
-      <button type="button" id="imageLibraryImportBtn" class="btn-modal-close sound-library-import-btn" style="display:none;" onclick="importSelectedImageFromLibrary()">Добавить в проект</button>
-      <button type="button" class="btn-secondary" data-modal-close onclick="closeImageLibraryModal()">Закрыть</button>
+      <button type="button" id="imageLibraryImportBtn" class="btn-modal-close sound-library-import-btn" style="display:none;" data-i18n="common.addToProject" onclick="importSelectedImageFromLibrary()">Добавить в проект</button>
+      <button type="button" class="btn-secondary" data-modal-close data-i18n="common.close" onclick="closeImageLibraryModal()">Закрыть</button>
     </div>
   </div>
 </div>
@@ -1663,17 +1736,17 @@
 <div id="musicLibraryModal" class="modal-overlay sound-library-overlay" style="display:none;">
   <div class="modal-content modal-dark sound-library-modal">
     <div class="modal-header">
-      <h3 class="modal-title">Библиотека музыки</h3>
-      <button type="button" class="modal-close" data-modal-close onclick="closeMusicLibraryModal()" aria-label="Закрыть">&times;</button>
+      <h3 class="modal-title" data-i18n="library.music">Библиотека музыки</h3>
+      <button type="button" class="modal-close" data-modal-close onclick="closeMusicLibraryModal()" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
     </div>
     <div class="sound-library-search-wrap">
-      <input type="search" id="musicLibrarySearch" class="sound-library-search" placeholder="Поиск…" autocomplete="off">
+      <input type="search" id="musicLibrarySearch" class="sound-library-search" data-i18n-placeholder="common.search" placeholder="Поиск…" autocomplete="off">
     </div>
     <div id="musicLibraryGroups" class="sound-library-groups" style="display:flex;"></div>
     <div id="musicLibraryGrid" class="sound-library-grid"></div>
     <div class="sound-library-footer">
-      <button type="button" id="musicLibraryImportBtn" class="btn-modal-close sound-library-import-btn" style="display:none;" onclick="importSelectedMusic()">Добавить в проект</button>
-      <button type="button" class="btn-secondary" data-modal-close onclick="closeMusicLibraryModal()">Закрыть</button>
+      <button type="button" id="musicLibraryImportBtn" class="btn-modal-close sound-library-import-btn" style="display:none;" data-i18n="common.addToProject" onclick="importSelectedMusic()">Добавить в проект</button>
+      <button type="button" class="btn-secondary" data-modal-close data-i18n="common.close" onclick="closeMusicLibraryModal()">Закрыть</button>
     </div>
   </div>
 </div>
@@ -1683,8 +1756,8 @@
   <div class="modal-content modal-dark"style="height:70vh; overflow:auto;">
 
         <div class="modal-header">
-            <h3 class="modal-title">Импорт картинок</h3>
-            <button class="modal-close" data-modal-close onclick="closeImportModal()" aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="library.importImages">Импорт картинок</h3>
+            <button class="modal-close" data-modal-close onclick="closeImportModal()" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
 
     <!-- Категории -->
@@ -1695,7 +1768,7 @@
 
     <!-- Кнопка импорта -->
     <div id="importFileBtnContainer" style="margin-top:15px; text-align:center; display:none;">
-      <button onclick="importSelectedImage()" style="background:#4caf50; color:white; border:0; border-radius:6px; padding:8px 20px; font-size:14px;">Импортировать файл</button>
+      <button onclick="importSelectedImage()" style="background:#4caf50; color:white; border:0; border-radius:6px; padding:8px 20px; font-size:14px;" data-i18n="library.importFile">Импортировать файл</button>
     </div>
   </div>
 </div>
@@ -1713,12 +1786,12 @@
 				<div class="modal-body message-modal-body">
 					<p id="modal-text">Текст сообщения...</p>
 					<div id="modal-input-wrapper" class="modal-input-wrapper" style="display: none;">
-						<input type="text" id="modal-input-field" placeholder="Введите текст здесь...">
+						<input type="text" id="modal-input-field" data-i18n-placeholder="modal.inputPlaceholder" placeholder="Введите текст здесь...">
 					</div>
 				</div>
 				<div class="modal-footer message-modal-footer">
-					<button id="modal-cancel-btn" class="btn btn-cancel">Отмена</button>
-					<button id="modal-ok-btn" class="btn btn-ok">OK</button>
+					<button id="modal-cancel-btn" class="btn btn-cancel" data-i18n="common.cancel">Отмена</button>
+					<button id="modal-ok-btn" class="btn btn-ok" data-i18n="common.ok">OK</button>
 				</div>
 			</div>
 		</div>
@@ -1747,8 +1820,8 @@
 <div id="saveModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark">
         <div class="modal-header">
-            <h3 class="modal-title">Файлы — сохранение, получение, восстановление</h3>
-            <button class="modal-close" id="btn_save_close" aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="saveModal.title">Файлы — сохранение, получение, восстановление</h3>
+            <button class="modal-close" id="btn_save_close" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             
@@ -1758,10 +1831,10 @@
                 <label class="file-action-button" id="btn_show_recover_label">
                     <div class="card-header">
                         <i class="fa fa-history"></i>
-                        <h3>История кода</h3>
+                        <h3 data-i18n="saveModal.historyTitle">История кода</h3>
                     </div>
                     <div class="card-body">
-                        <p>До 5 последних версий — автосохранение и запуск игры.</p>
+                        <p data-i18n="saveModal.historyBody">До 5 последних версий — автосохранение и запуск игры.</p>
                     </div>
                 </label>
 
@@ -1769,10 +1842,10 @@
                 <label class="file-action-button" id="btnDownloadLabel">
                     <div class="card-header">
                         <i class="fa fa-download"></i>
-                        <h3>Сохранить py-код</h3>
+                        <h3 data-i18n="saveModal.downloadTitle">Сохранить py-код</h3>
                     </div>
                     <div class="card-body">
-                        <p>Скачать текущий py-код в файл на ваш компьютер.</p>
+                        <p data-i18n="saveModal.downloadBody">Скачать текущий py-код в файл на ваш компьютер.</p>
                         <div class="shortcut-hint">
                             <i class="fa fa-keyboard-o"></i>
                             <span>Ctrl + Alt + S</span>
@@ -1784,10 +1857,10 @@
                 <label for="file-btn" class="file-action-button file-upload-button">
                     <div class="card-header">
                         <i class="fa fa-upload"></i>
-                        <h3>Получить py-код</h3>
+                        <h3 data-i18n="saveModal.uploadTitle">Получить py-код</h3>
                     </div>
                     <div class="card-body">
-                        <p>Выберите Python-файл, чтобы загрузить его с компьютера в редактор.</p>
+                        <p data-i18n="saveModal.uploadBody">Выберите Python-файл, чтобы загрузить его с компьютера в редактор.</p>
                     </div>
                     <input type="file" id="file-btn" accept=".py,.txt,.pyj" hidden>
                 </label>
@@ -1802,18 +1875,18 @@
 <div id="projectSettingsModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark">
         <div class="modal-header">
-            <h3 class="modal-title">Проект</h3>
-            <button class="modal-close" id="btn_project_settings_close" aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="projectSettings.title">Проект</h3>
+            <button class="modal-close" id="btn_project_settings_close" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             <div class="settings-section">
                 <div class="section-content">
-                    <p class="setting-description">
+                    <p class="setting-description" data-i18n="projectSettings.description">
                         Переименование проекта поможет вам упорядочить сохранённый код
                     </p>
                     
                     <div class="form-group">
-                        <label for="txt_project_name" class="form-label">Название проекта:</label>
+                        <label for="txt_project_name" class="form-label" data-i18n="projectSettings.nameLabel">Название проекта:</label>
                         <input type="text" id="txt_project_name" name="txt_project_name" 
                                class="form-input" value="mycode" maxlength="50">
                     </div>
@@ -1827,7 +1900,7 @@
                 </button>
                 <button id="btn_project_cancel" class="btn-secondary">
                     <i class="fa fa-times"></i>
-                    <span>Отмена</span>
+                    <span data-i18n="common.cancel">Отмена</span>
                 </button>
             </div>
         </div>
@@ -1838,21 +1911,21 @@
 <div id="fileSettingsModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark">
         <div class="modal-header">
-            <h3 class="modal-title">Файл</h3>
-            <button class="modal-close" id="btn_file_settings_close" aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="fileSettings.title">Файл</h3>
+            <button class="modal-close" id="btn_file_settings_close" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             <div class="settings-section">
                 <div class="section-content">
                     <div class="warning-box">
                         <i class="fa fa-warning"></i>
-                        <p class="warning-text">
+                        <p class="warning-text" data-i18n="fileSettings.warning">
                             Будьте внимательны: если вы удалите файл, восстановить его не получится — только из заранее сохранённой копии
                         </p>
                     </div>
                     
                     <div class="form-group">
-                        <label for="txt_file_name" class="form-label">Переименовать файл:</label>
+                        <label for="txt_file_name" class="form-label" data-i18n="fileSettings.renameLabel">Переименовать файл:</label>
                         <input type="text" id="txt_file_name" name="txt_file_name" 
                                class="form-input" value="">
                     </div>
@@ -1862,15 +1935,15 @@
             <div class="modal-actions">
                 <button id="btn_file_rename" class="btn-primary">
                     <i class="fa fa-edit"></i>
-                    <span>Переименовать</span>
+                    <span data-i18n="fileSettings.renameBtn">Переименовать</span>
                 </button>
                 <button id="btn_file_delete" class="btn-danger">
                     <i class="fa fa-trash"></i>
-                    <span>Удалить</span>
+                    <span data-i18n="fileSettings.deleteBtn">Удалить</span>
                 </button>
                 <button id="btn_file_cancel" class="btn-secondary">
                     <i class="fa fa-times"></i>
-                    <span>Отмена</span>
+                    <span data-i18n="common.cancel">Отмена</span>
                 </button>
             </div>
         </div>
@@ -1881,19 +1954,19 @@
 <div id="settingsModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark settings-modal" style="width:600px;">
         <div class="modal-header">
-            <h3 class="modal-title">Настройки</h3>
-            <button class="modal-close" id="btn_settings_close" aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="settings.title">Настройки</h3>
+            <button class="modal-close" id="btn_settings_close" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body settings-body">
             <!-- Размеры текста -->
             <div class="settings-section">
                 <div class="section-header">                    
-                    <h4>Размеры шрифтов текста</h4>
+                    <h4 data-i18n="settings.fontSizes">Размеры шрифтов текста</h4>
                 </div>
                 <div class="section-content">
                     
                     <div class="setting-item">
-                        <label for="txt_code_size" class="setting-label">Размер шрифта редактора кода:</label>
+                        <label for="txt_code_size" class="setting-label" data-i18n="settings.codeSize">Размер шрифта редактора кода:</label>
                         <div class="slider-container-settings" style="display: flex;flex-direction: column;">
                             <input type="text" id="txt_code_size" class="slider-value" style="width: 50px;" readonly>
                             <input type="range" id="slider_code_size" min="10" max="24" value="15" class="slider-native">
@@ -1901,7 +1974,7 @@
                     </div>
                     
                     <div class="setting-item">
-                        <label for="txt_output_size" class="setting-label">Размер шрифта консоли:</label>
+                        <label for="txt_output_size" class="setting-label" data-i18n="settings.outputSize">Размер шрифта консоли:</label>
                         <div class="slider-container-settings" style="display: flex;flex-direction: column;">
                             <input type="text" id="txt_output_size" class="slider-value" style="width: 50px;" readonly>
                             <input type="range" id="slider_output_size" min="6" max="40" value="12" class="slider-native">
@@ -1914,19 +1987,19 @@
             <!-- Тема приложения -->
             <div class="settings-section">
                 <div class="section-header">
-                    <h4>Тема приложения</h4>
+                    <h4 data-i18n="settings.appTheme">Тема приложения</h4>
                 </div>
                 <div class="section-content">
                     <div class="radio-group" id="radio_app_theme">
                         <label class="radio-label" for="radio_app_theme_light">
                             <input type="radio" id="radio_app_theme_light" name="radio_app_theme" checked="checked">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Светлая</span>
+                            <span class="radio-text" data-i18n="settings.themeLight">Светлая</span>
                         </label>
                         <label class="radio-label" for="radio_app_theme_dark">
                             <input type="radio" id="radio_app_theme_dark" name="radio_app_theme">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Тёмная</span>
+                            <span class="radio-text" data-i18n="settings.themeDark">Тёмная</span>
                         </label>
                     </div>
                 </div>
@@ -1935,7 +2008,7 @@
             <!-- Цвета редактора -->
             <div class="settings-section">
                 <div class="section-header">                    
-                    <h4>Цвета редактора</h4>
+                    <h4 data-i18n="settings.editorColors">Цвета редактора</h4>
                 </div>
                 <div class="section-content">
                     <div class="radio-group" id="radio_code_style">
@@ -1947,22 +2020,22 @@
                         <label class="radio-label" for="radio_code_style_pro">
                             <input type="radio" id="radio_code_style_pro" name="radio_code_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Профи (IDE)</span>
+                            <span class="radio-text" data-i18n="settings.stylePro">Профи (IDE)</span>
                         </label>
                         <label class="radio-label" for="radio_code_style_light">
                             <input type="radio" id="radio_code_style_light" name="radio_code_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">День</span>
+                            <span class="radio-text" data-i18n="settings.styleLight">День</span>
                         </label>
                         <label class="radio-label" for="radio_code_style_dusk">
                             <input type="radio" id="radio_code_style_dusk" name="radio_code_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Сумерки</span>
+                            <span class="radio-text" data-i18n="settings.styleDusk">Сумерки</span>
                         </label>
                         <label class="radio-label" for="radio_code_style_dark">
                             <input type="radio" id="radio_code_style_dark" name="radio_code_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Ночь</span>
+                            <span class="radio-text" data-i18n="settings.styleDark">Ночь</span>
                         </label>
                     </div>
                 </div>
@@ -1971,24 +2044,24 @@
             <!-- Цвета консоли -->
             <div class="settings-section">
                 <div class="section-header">                    
-                    <h4>Цвета консоли</h4>
+                    <h4 data-i18n="settings.consoleColors">Цвета консоли</h4>
                 </div>
                 <div class="section-content">
                     <div class="radio-group" id="radio_output_style">
                         <label class="radio-label" for="radio_output_style_light">
                             <input type="radio" id="radio_output_style_light" name="radio_output_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">День</span>
+                            <span class="radio-text" data-i18n="settings.styleLight">День</span>
                         </label>
                         <label class="radio-label" for="radio_output_style_dusk">
                             <input type="radio" id="radio_output_style_dusk" name="radio_output_style">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Сумерки</span>
+                            <span class="radio-text" data-i18n="settings.styleDusk">Сумерки</span>
                         </label>
                         <label class="radio-label" for="radio_output_style_dark">
                             <input type="radio" id="radio_output_style_dark" name="radio_output_style" checked="checked">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Ночь</span>
+                            <span class="radio-text" data-i18n="settings.styleDark">Ночь</span>
                         </label>
                     </div>
                 </div>
@@ -1997,29 +2070,29 @@
             <!-- Режим запуска -->
             <div class="settings-section">
                 <div class="section-header">                    
-                    <h4>Режим запуска</h4>
+                    <h4 data-i18n="settings.runMode">Режим запуска</h4>
                 </div>
                 <div class="section-content">
                     <div class="radio-group" id="radio_run_mode">
                         <label class="radio-label" for="radio_run_mode_all">
                             <input type="radio" id="radio_run_mode_all" name="radio_run_mode" checked>
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Вся программа</span>
+                            <span class="radio-text" data-i18n="settings.runAll">Вся программа</span>
                         </label>
                         <label class="radio-label" for="radio_run_mode_single">
                             <input type="radio" id="radio_run_mode_single" name="radio_run_mode">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Пошагово</span>
+                            <span class="radio-text" data-i18n="settings.runSingle">Пошагово</span>
                         </label>
                         <label class="radio-label" for="radio_run_mode_anim">
                             <input type="radio" id="radio_run_mode_anim" name="radio_run_mode">
                             <span class="radio-custom"></span>
-                            <span class="radio-text">Анимация строк</span>
+                            <span class="radio-text" data-i18n="settings.runAnim">Анимация строк</span>
                         </label>
                     </div>
                     
                     <div class="setting-item" id="anim_time_setting">
-                        <label for="txt_step_anim_time" class="setting-label">Задержка между выполнением каждой строки:</label>
+                        <label for="txt_step_anim_time" class="setting-label" data-i18n="settings.animDelay">Задержка между выполнением каждой строки:</label>
                         <div class="slider-container-settings" style="display: flex;flex-direction: column;">
                             <input type="text" id="txt_step_anim_time" class="slider-value" style="width: 50px;" readonly>
                             <input type="range" id="slider_step_anim_time" min="500" max="5000" step="500" value="500" class="slider-native">
@@ -2038,15 +2111,15 @@
 <div id="projectFilesModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark" style="width:480px;">
         <div class="modal-header">
-            <h3 class="modal-title">Файлы проекта</h3>
-            <button class="modal-close" data-modal-close onclick="closeProjectFiles()" aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="projectFiles.title">Файлы проекта</h3>
+            <button class="modal-close" data-modal-close onclick="closeProjectFiles()" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             <p id="projectFilesCount" class="pf-count"></p>
             <div id="projectFilesList" class="pf-list"></div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn-modal-close" data-modal-close onclick="closeProjectFiles()">Закрыть</button>
+            <button type="button" class="btn-modal-close" data-modal-close data-i18n="common.close" onclick="closeProjectFiles()">Закрыть</button>
         </div>
     </div>
 </div>
@@ -2055,15 +2128,15 @@
 <div id="gameTemplatesModal" class="modal-overlay project-gallery-overlay" style="display: none;">
     <div class="modal-content modal-dark project-gallery-modal game-templates-modal">
         <div class="modal-header">
-            <h3 class="modal-title">Примеры игр</h3>
-            <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="templates.title">Примеры игр</h3>
+            <button type="button" class="modal-close" data-modal-close data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body project-gallery-body">
-            <p class="ux-modal-hint">Выбери пример — загрузятся картинки и пустой код. Дальше допиши игру сам!</p>
+            <p class="ux-modal-hint" data-i18n="templates.hint">Выбери пример — загрузятся картинки и пустой код. Дальше допиши игру сам!</p>
             <div id="gameTemplatesGrid" class="project-gallery-grid game-templates-grid"></div>
         </div>
         <div class="modal-footer project-gallery-footer">
-            <button type="button" class="btn-modal-close" data-modal-close>Закрыть</button>
+            <button type="button" class="btn-modal-close" data-modal-close data-i18n="common.close">Закрыть</button>
         </div>
     </div>
 </div>
@@ -2072,24 +2145,24 @@
 <div id="templateApplyModal" class="modal-overlay project-gallery-overlay" style="display: none;">
     <div class="modal-content modal-dark project-gallery-modal template-apply-modal">
         <div class="modal-header">
-            <h3 class="modal-title">Куда записать пример?</h3>
-            <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="templates.applyTitle">Куда записать пример?</h3>
+            <button type="button" class="modal-close" data-modal-close data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body project-gallery-body">
             <p class="ux-modal-hint" id="templateApplyHint"></p>
-            <p class="template-apply-name">Пример: <strong id="templateApplyName"></strong></p>
+            <p class="template-apply-name"><span data-i18n="templates.exampleLabel">Пример:</span> <strong id="templateApplyName"></strong></p>
             <div class="template-apply-actions">
                 <button type="button" id="templateApplyCurrent" class="btn-primary template-apply-btn"></button>
                 <button type="button" id="templateApplyNew" class="btn-secondary template-apply-btn"></button>
-                <button type="button" id="templateApplyPick" class="btn-secondary template-apply-btn">Выбрать ячейку…</button>
+                <button type="button" id="templateApplyPick" class="btn-secondary template-apply-btn" data-i18n="templates.pickSlot">Выбрать ячейку…</button>
             </div>
             <div id="templateApplySlotPicker" class="template-apply-picker" style="display: none;">
-                <p class="ux-modal-hint ux-modal-hint--compact">Нажми на ячейку. Если там уже есть игра — она будет заменена.</p>
+                <p class="ux-modal-hint ux-modal-hint--compact" data-i18n="templates.pickSlotHint">Нажми на ячейку. Если там уже есть игра — она будет заменена.</p>
                 <div id="templateApplySlotGrid" class="project-gallery-grid template-slot-grid"></div>
             </div>
         </div>
         <div class="modal-footer project-gallery-footer">
-            <button type="button" class="btn-modal-close" data-modal-close>Отмена</button>
+            <button type="button" class="btn-modal-close" data-modal-close data-i18n="common.cancel">Отмена</button>
         </div>
     </div>
 </div>
@@ -2098,16 +2171,16 @@
 <div id="projectGalleryModal" class="modal-overlay project-gallery-overlay" style="display: none;">
     <div class="modal-content modal-dark project-gallery-modal">
         <div class="modal-header project-gallery-header">
-            <h3 class="modal-title" id="projectGalleryTitle">Мои игры</h3>
-            <button type="button" class="modal-close project-gallery-close" data-modal-close aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" id="projectGalleryTitle" data-i18n="gallery.title">Мои игры</h3>
+            <button type="button" class="modal-close project-gallery-close" data-modal-close data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body project-gallery-body">
             <p class="ux-modal-hint" id="projectGalleryHint"></p>
             <div id="projectGalleryGrid" class="project-gallery-grid"></div>
         </div>
         <div class="modal-footer project-gallery-footer">
-            <button type="button" class="btn-secondary project-gallery-import" onclick="importGallery()">Открыть файл .pgz</button>
-            <button type="button" class="btn-modal-close project-gallery-close" data-modal-close>Закрыть</button>
+            <button type="button" class="btn-secondary project-gallery-import" data-i18n="gallery.openPgz" onclick="importGallery()">Открыть файл .pgz</button>
+            <button type="button" class="btn-modal-close project-gallery-close" data-modal-close data-i18n="common.close">Закрыть</button>
         </div>
     </div>
 </div>
@@ -2116,16 +2189,16 @@
 <div id="codeHistoryModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark code-history-modal">
         <div class="modal-header">
-            <h3 class="modal-title">История кода</h3>
-            <button class="modal-close" data-modal-close aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="codeHistory.title">История кода</h3>
+            <button class="modal-close" data-modal-close data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
-            <p class="code-history-intro">До 5 последних версий. Новая версия добавляется при автосохранении и при запуске игры.</p>
+            <p class="code-history-intro" data-i18n="codeHistory.intro">До 5 последних версий. Новая версия добавляется при автосохранении и при запуске игры.</p>
             <div id="codeHistoryList" class="code-history-list"></div>
         </div>
         <div class="modal-footer code-history-footer">
-            <button type="button" id="codeHistoryClear" class="btn-secondary">Очистить историю</button>
-            <button type="button" class="btn-modal-close" data-modal-close>Закрыть</button>
+            <button type="button" id="codeHistoryClear" class="btn-secondary" data-i18n="codeHistory.clear">Очистить историю</button>
+            <button type="button" class="btn-modal-close" data-modal-close data-i18n="common.close">Закрыть</button>
         </div>
     </div>
 </div>
@@ -2134,14 +2207,13 @@
 <div id="recoverModal" class="modal-overlay" style="display: none;">
     <div class="modal-content modal-dark">
         <div class="modal-header">
-            <h3 class="modal-title">Восстановление кода</h3>
-            <button class="modal-close" id="btn_recover_close" aria-label="Закрыть">&times;</button>
+            <h3 class="modal-title" data-i18n="recoverModal.title">Восстановление кода</h3>
+            <button class="modal-close" id="btn_recover_close" data-i18n-aria-label="common.close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="modal-body">
             
-            <!-- Информация о сохранении -->
             <div class="modal-info">
-                <p class="info-text" id="recover_info_text">
+                <p class="info-text" id="recover_info_text" data-i18n="recoverModal.info">
                     Копия вашего кода сохраняется в хранилище браузера каждый раз, когда вы его запускаете.
                 </p>
                 <p class="info-count" id="recover_count_text">
@@ -2149,18 +2221,18 @@
                 </p>
             </div>
 
-            <!-- Ползунок для выбора версии -->
             <div class="slider-container-recover">
                 <input type="range" id="slider_recover" min="0" max="0" value="0" class="slider-native-recover">
-                <div id="recover_time" class="recover-time-info" style="margin-top:20px; background: #333;">
+                <p class="recover-slider-hint" data-i18n="recoverModal.sliderHint">
                     Перетащите ползунок, чтобы посмотреть предыдущее состояние кода
+                </p>
+                <div id="recover_time" class="recover-time-info" style="margin-top:20px; background: #333;">
                 </div>
             </div>
 
-            <!-- Фрейм для просмотра кода -->
             <div class="code-preview-frame">
                 <div class="preview-header">
-                    <span class="preview-title">Просмотр кода</span>
+                    <span class="preview-title" data-i18n="recoverModal.previewTitle">Просмотр кода</span>
                     <span class="preview-file-name" id="preview_file_name">my_pgz.py</span>
                 </div>
                 <div class="preview-content">
@@ -2172,24 +2244,23 @@
             <div class="modal-actions">
                 <button id="btn_recover" class="btn-primary btn-recover">
                     <i class="fa fa-undo"></i>
-                    <span>Восстановить выбранную копию кода</span>
+                    <span data-i18n="recoverModal.restoreBtn">Восстановить выбранную копию кода</span>
                 </button>
             </div>
 
-            <!-- Секция удаления -->
             <div class="warning-section">
-                <p class="warning-text" id="recover_delete_info">
+                <p class="warning-text" id="recover_delete_info" data-i18n="recoverModal.deleteInfo">
                     При необходимости вы можете удалить все копии кода, которые хранятся в хранилище восстановления.
                 </p>
                 <p class="warning-caution">
                     <i class="fa fa-warning"></i>
-                    <span id="recover_warning_text">
+                    <span id="recover_warning_text" data-i18n="recoverModal.deleteWarning">
                         Будьте внимательны: после нажатия «Удалить всё» отменить это действие не получится.
                     </span>
                 </p>
                 <button id="btn_recover_clear" class="btn-danger">
                     <i class="fa fa-trash"></i>
-                    <span>Удалить всё из хранилища</span>
+                    <span data-i18n="recoverModal.deleteAllBtn">Удалить всё из хранилища</span>
                 </button>
             </div>
             
@@ -2197,21 +2268,22 @@
     </div>
 </div>
     <!-- Галерея ресурсов -->
-    <script src="./lib/starter-code.js"></script>
+    <script src="./lib/starter-code.js?v=0.052"></script>
     <script src="./lib/icons.js"></script>
     <script src="./lib/tooltips.js"></script>
     <script src="./lib/app-theme.js"></script>
+    <script src="./lib/i18n.js?v=0.052"></script>
     <script src="./lib/toolbar-compact.js"></script>
     <script src="./lib/version.js"></script>
     <script src="./lib/game-modal.js"></script>
-    <script src="./lib/wav-adpcm.js?v=0.047"></script>
-    <script src="./lib/assets-gallery.js?v=0.047"></script>
-    <script src="./lib/sound-library.js?v=0.047"></script>
-    <script src="./lib/music-library.js?v=0.047"></script>
-    <script src="./lib/image-library.js?v=0.047"></script>
+    <script src="./lib/wav-adpcm.js?v=0.052"></script>
+    <script src="./lib/assets-gallery.js?v=0.052"></script>
+    <script src="./lib/sound-library.js?v=0.052"></script>
+    <script src="./lib/music-library.js?v=0.052"></script>
+    <script src="./lib/image-library.js?v=0.052"></script>
     <script src="./lib/project-files.js"></script>
-    <script src="./lib/project-gallery.js?v=0.047"></script>
-    <script src="./lib/game-templates.js?v=0.047"></script>
+    <script src="./lib/project-gallery.js?v=0.052"></script>
+    <script src="./lib/game-templates.js?v=0.052"></script>
     <script src="./lib/layout-splitters.js"></script>
     <script src="./lib/sidebar-tabs.js"></script>
     <script src="./lib/modals.js"></script>
@@ -2727,7 +2799,14 @@ async function createProjectFromModal() {
     if (typeof PGZSession !== 'undefined') PGZSession.clear();
     
     // создание шаблона кода с параметрами
-    const pgzTemplate = `import pgzrun
+    const pgzTemplate = typeof PGZ_getProjectTemplate === 'function'
+        ? PGZ_getProjectTemplate({
+            width: width,
+            height: height,
+            title: windowTitle,
+            description: description || undefined
+        })
+        : `import pgzrun
 
 # ${description || 'Pygame Zero'}
 
@@ -2778,8 +2857,10 @@ const ModalUI = {
                     this.text.innerText = text;
                     this.inputField.value = '';
                     
-                    this.okBtn.innerText = (type === 'confirm') ? 'Да' : 'OK';
-                    this.cancelBtn.innerText = 'Отмена';
+                    this.okBtn.innerText = (type === 'confirm')
+                        ? ((typeof PGZI18n !== 'undefined') ? PGZI18n.t('common.yes') : 'Да')
+                        : ((typeof PGZI18n !== 'undefined') ? PGZI18n.t('common.ok') : 'OK');
+                    this.cancelBtn.innerText = (typeof PGZI18n !== 'undefined') ? PGZI18n.t('common.cancel') : 'Отмена';
                     this.inputWrapper.style.display = (type === 'input') ? 'block' : 'none';
                     this.cancelBtn.style.display = (type === 'message') ? 'none' : 'inline-block';
                     if (this.container.parentNode !== document.body) {
@@ -2876,6 +2957,9 @@ function toggleMoreMenu(e) {
 function closeMoreMenu() {
   document.getElementById('moreMenu')?.classList.remove('is-open');
   document.getElementById('btn_more')?.classList.remove('tb-btn--active');
+  if (typeof PGZI18n !== 'undefined' && PGZI18n.closeEditorLangMenu) {
+    PGZI18n.closeEditorLangMenu();
+  }
 }
 
 document.addEventListener('click', function(e) {
@@ -2899,6 +2983,7 @@ window.addEventListener('resize', function () {
 		try {
 		initPzIcons();
 		if (typeof AppTheme !== 'undefined') AppTheme.init();
+		if (typeof PGZI18n !== 'undefined') await PGZI18n.init();
 		if (typeof PGZToolbarCompact !== 'undefined') PGZToolbarCompact.init();
 		if (typeof PGZVersion !== 'undefined') PGZVersion.load();
 		if (typeof PZTooltip !== 'undefined') PZTooltip.init();
@@ -2908,6 +2993,7 @@ window.addEventListener('resize', function () {
 		setupAppModals();
 		if (typeof LayoutSplitters !== 'undefined') LayoutSplitters.init();
 		if (typeof PGZSidebarTabs !== 'undefined') PGZSidebarTabs.init();
+		if (typeof PZTooltip !== 'undefined') PZTooltip.refresh(document);
 		document.body.classList.add('app-ready');
 
 		document.getElementById('page-loader')?.remove();
@@ -2918,19 +3004,7 @@ window.addEventListener('resize', function () {
 		if (!rawUrl && !localStorage.loadAction && typeof PGZProjectGallery !== 'undefined') {
 			await PGZProjectGallery.migrateLegacySession();
 			await PGZProjectGallery.promptStartup();
-			document.getElementById('topPanel').style.display = 'flex';
-			document.getElementById('mainLayout').style.display = 'flex';
-			if (typeof PGZToolbarCompact !== 'undefined') PGZToolbarCompact.update();
-			if (typeof PythonIDE !== 'undefined' && PythonIDE.refreshEditorView) {
-				PythonIDE.refreshEditorView();
-			}
-			await showGallery();
 		} else if (!rawUrl) {
-			document.getElementById('topPanel').style.display = 'flex';
-			document.getElementById('mainLayout').style.display = 'flex';
-			if (typeof PGZToolbarCompact !== 'undefined') PGZToolbarCompact.update();
-			document.getElementById('playGameBtn').style.display = 'none';
-
 			if (coldStart && !localStorage.loadAction && typeof PythonIDE !== 'undefined') {
 				var starter = typeof PGZ_getNewProjectCode === 'function'
 					? PGZ_getNewProjectCode()
@@ -2939,14 +3013,27 @@ window.addEventListener('resize', function () {
 				if (PythonIDE.editor) PythonIDE.editor.setValue(starter);
 				document.getElementById('projectNameInput').value = generateProjectName();
 			}
-			await showGallery();
 		} else {
 			    document.getElementById('playGameBtn').style.display = 'block';
 				await loadProjectFromUrl(rawUrl);
-				}
+		}
+
+		if (!rawUrl) {
+			document.getElementById('topPanel').style.display = 'flex';
+			document.getElementById('mainLayout').style.display = 'flex';
+			if (typeof PGZToolbarCompact !== 'undefined') PGZToolbarCompact.update();
+			if (typeof PythonIDE !== 'undefined' && PythonIDE.refreshEditorView) {
+				PythonIDE.refreshEditorView();
+			}
+			await showGallery();
+		}
 		} catch (err) {
 			console.error('Ошибка инициализации:', err);
 			document.getElementById('page-loader')?.remove();
+			if (!rawUrl) {
+				document.getElementById('topPanel').style.display = 'flex';
+				document.getElementById('mainLayout').style.display = 'flex';
+			}
 		}
 	});
 // необработанные ошибки из промисов

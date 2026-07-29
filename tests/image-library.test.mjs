@@ -10,7 +10,7 @@ import vm from 'node:vm';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-function loadImageLibraryTest(version) {
+function loadImageLibraryTest(version, lang) {
   const source = readFileSync(join(__dirname, '../lib/image-library.js'), 'utf8');
   const sandbox = {
     window: {},
@@ -24,6 +24,9 @@ function loadImageLibraryTest(version) {
     console
   };
   sandbox.window = sandbox;
+  if (lang) {
+    sandbox.PGZI18n = { getLang: () => lang };
+  }
   vm.createContext(sandbox);
   vm.runInContext(source, sandbox);
   return sandbox.window._imageLibraryTest;
@@ -65,7 +68,21 @@ test('mapSpriteEntry задаёт имя для Actor', () => {
     source: 'local',
     file: 'assets/image-library/kenney/characters/hero_green_stand.png'
   });
+  assert.equal(mapped.name, 'Герой зелёный (стоит)');
   assert.equal(mapped.importName, 'hero_green_stand');
   assert.equal(mapped.ext, 'png');
   assert.match(mapped.url, /hero_green_stand\.png\?v=0\.036$/);
+});
+
+test('mapSpriteEntry uses translated labels for en', () => {
+  const { mapSpriteEntry, setSpriteLabels } = loadImageLibraryTest('0.036', 'en');
+  setSpriteLabels({ hero_green_stand: 'Hero green (standing)' }, 'en');
+  const mapped = mapSpriteEntry({
+    id: 'hero_green_stand',
+    label: 'Герой зелёный (стоит)',
+    group: 'characters',
+    source: 'local',
+    file: 'assets/image-library/kenney/characters/hero_green_stand.png'
+  });
+  assert.equal(mapped.name, 'Hero green (standing)');
 });
