@@ -1,0 +1,22 @@
+{
+  "menu": "Game menu",
+  "gameplay": "Gameplay",
+  "action": "Action",
+  "space": "Space",
+  "fantasy": "Fantasy",
+  "racing": "Racing",
+  "calm": "Calm",
+  "relaxed": "Relaxed",
+  "cave": "Cave",
+  "piano": "Piano",
+  "lounge": "Lounge",
+  "reggae": "Reggae",
+  "retro": "Retro game",
+  "retro_beat": "8-bit beat",
+  "retro_comedy": "8-bit comedy",
+  "retro_mystic": "8-bit mystic",
+  "retro_polka": "8-bit arcade",
+  "retro_reggae": "8-bit chiptune",
+  "victory": "Victory",
+  "retro_jingle": "8-bit jingle"
+}

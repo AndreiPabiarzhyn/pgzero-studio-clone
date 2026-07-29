@@ -10,7 +10,7 @@ import vm from 'node:vm';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-function loadMusicLibraryTest() {
+function loadMusicLibraryTest(lang) {
   const source = readFileSync(join(__dirname, '../lib/music-library.js'), 'utf8');
   const sandbox = {
     window: {},
@@ -23,6 +23,9 @@ function loadMusicLibraryTest() {
     console
   };
   sandbox.window = sandbox;
+  if (lang) {
+    sandbox.PGZI18n = { getLang: () => lang };
+  }
   vm.createContext(sandbox);
   vm.runInContext(source, sandbox);
   return sandbox.window._musicLibraryTest;
@@ -67,4 +70,28 @@ test('mapMusicEntry задаёт имя для music.play', () => {
   });
   assert.equal(mapped.importName, 'menu');
   assert.equal(mapped.ext, 'wav');
+  assert.equal(mapped.name, 'Меню игры');
+});
+
+test('musicDisplayName использует перевод для en/es', () => {
+  const testApi = loadMusicLibraryTest('en');
+  testApi.setMusicLabels({ menu: 'Game menu' }, 'en');
+  const mapped = testApi.mapMusicEntry({
+    id: 'menu',
+    label: 'Меню игры',
+    group: 'menu',
+    source: 'scratch',
+    md5ext: 'fc6e9cc9ba13c7e4ebb1af6cd7c90c49.wav'
+  });
+  assert.equal(mapped.name, 'Game menu');
+});
+
+test('music-labels покрывают все id из game-music.json', () => {
+  const json = JSON.parse(readFileSync(join(__dirname, '../assets/sound-library/game-music.json'), 'utf8'));
+  const en = JSON.parse(readFileSync(join(__dirname, '../locales/music-labels.en.json'), 'utf8'));
+  const es = JSON.parse(readFileSync(join(__dirname, '../locales/music-labels.es.json'), 'utf8'));
+  json.forEach(function (entry) {
+    assert.ok(en[entry.id], 'missing en label for ' + entry.id);
+    assert.ok(es[entry.id], 'missing es label for ' + entry.id);
+  });
 });

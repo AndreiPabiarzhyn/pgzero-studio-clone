@@ -52,6 +52,7 @@ const cacheBustFiles = [
     'lib/sound-library.js',
     'lib/music-library.js',
     'lib/image-library.js',
+    'lib/starter-code.js',
     'lib/i18n.js'
 ];
 

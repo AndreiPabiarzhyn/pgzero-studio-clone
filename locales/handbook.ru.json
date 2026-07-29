@@ -1,0 +1,73 @@
+{
+  "title": "Справочник по Pygame Zero",
+  "tocTitle": "Содержание",
+  "backToTop": "↑ К содержанию",
+  "sections": [
+    {
+      "id": "intro",
+      "toc": "1. О Pygame Zero",
+      "title": "1. О Pygame Zero",
+      "body": "<p>Pygame Zero — это библиотека для начинающих, которая упрощает создание\r\n        игр на Python. Она основана на Pygame, но скрывает сложные детали и\r\n        позволяет сосредоточиться на логике игры.</p>\r\n      <p>Главные преимущества:</p>\r\n      <ul>\r\n        <li>Не нужно писать главный цикл игры</li>\r\n        <li>Простой синтаксис для работы с графикой и звуком</li>\r\n        <li>Идеально подходит для обучения программированию</li>\r\n      </ul>\r\n      <p>Пример самой простой программы:</p>\r\n      <pre>import pgzrun\r\n\r\nWIDTH = 800\r\nHEIGHT = 600\r\n\r\n# Создаём актёра (спрайт)\r\nactor = Actor('alien')  # alien.png должен лежать в папке images/\r\nactor.pos = (400, 300)\r\n\r\ndef draw():\r\n    screen.clear()\r\n    actor.draw()\r\n\r\ndef on_mouse_move(pos):\r\n    actor.pos = pos\r\n\r\npgzrun.go()</pre>"
+    },
+    {
+      "id": "objects",
+      "toc": "2. Объекты",
+      "title": "2. Объекты",
+      "body": "<p>В Pygame Zero основные объекты — это <strong>спрайты</strong>, их ещё\r\n        называют <strong>актёрами</strong> (Actor). Актёр — это спрайт с\r\n        программным управлением (перемещение, поворот и так далее).</p>\r\n      <p>Создание актёра:</p>\r\n      <pre>actor = Actor('image_name')</pre>\r\n      <p>где <code>'image_name'</code> — название файла изображения (без\r\n        расширения), который должен находиться в папке <code>images</code>.</p>\r\n      <div class=\"note\"> <strong>Совет:</strong> Изображения должны быть в\r\n        форматах PNG или JPG и храниться в папке <code>images</code> рядом с\r\n        файлом игры. </div>"
+    },
+    {
+      "id": "window",
+      "toc": "3. Окно",
+      "title": "3. Окно",
+      "body": "<p>Размер окна игры задаётся переменными <code>WIDTH</code> и <code>HEIGHT</code>.\r\n        Эти переменные должны быть определены в начале программы.</p>\r\n      <pre>WIDTH = 800\r\nHEIGHT = 600\r\n\r\nplayer = Actor('player')\r\nplayer.pos = 100, 56</pre>\r\n      <p>Координаты в Pygame Zero начинаются с верхнего левого угла экрана (0,\r\n        0). Позиция актёра задаётся через свойство <code>pos</code> (или\r\n        отдельно через <code>x</code> и <code>y</code>).</p>"
+    },
+    {
+      "id": "redraw",
+      "toc": "4. Перерисовка",
+      "title": "4. Перерисовка",
+      "body": "<p>Функция <code>draw()</code> вызывается автоматически, чтобы\r\n        перерисовать все объекты, которые находятся на экране.</p>\r\n      <pre>def draw():\r\n    screen.clear()\r\n    player.draw()\r\n    enemy.draw()\r\n    screen.draw.text(\"Счёт: \" + str(score), (10, 10))</pre>\r\n      <p>Важно всегда начинать с <code>screen.clear()</code>, чтобы очистить\r\n        предыдущий кадр. Для рисования текста используйте <code>screen.draw.text()</code>.</p>"
+    },
+    {
+      "id": "sprites",
+      "toc": "5. Спрайты и их свойства",
+      "title": "5. Спрайты и их свойства",
+      "body": "<p>У актёров есть много полезных свойств:</p>\r\n      <ul>\r\n        <li><code>pos</code> — позиция (x, y)</li>\r\n        <li><code>x</code>, <code>y</code> — отдельные координаты</li>\r\n        <li><code>angle</code> — угол поворота (в градусах)</li>\r\n        <li><code>opacity</code> — непрозрачность</li>\r\n        <li><code>scale</code> — масштаб (1.0 — исходный размер)</li>\r\n        <li><code>image</code> — название текущего изображения</li>\r\n      </ul>\r\n      <pre>player = Actor('hero')\r\nplayer.pos = (400, 300)\r\nplayer.angle = 45\r\nplayer.scale = 1.5\r\n\r\n# Смена изображения\r\nplayer.image = 'hero_angry'</pre>\r\n      <div class=\"note\"> <strong>Совет:</strong> Для анимации можно менять\r\n        свойство <code>image</code> в зависимости от состояния игры. </div>"
+    },
+    {
+      "id": "movement",
+      "toc": "6. Перемещение спрайтов",
+      "title": "6. Перемещение спрайтов",
+      "body": "<p>Перемещение объектов происходит в функции <code>update()</code>,\r\n        которая вызывается перед каждой перерисовкой.</p>\r\n      <pre>def update():\r\n    if keyboard.right:\r\n        player.x += 5\r\n    if keyboard.left:\r\n        player.x -= 5\r\n    if keyboard.up:\r\n        player.y -= 5\r\n    if keyboard.down:\r\n        player.y += 5</pre>"
+    },
+    {
+      "id": "keyboard",
+      "toc": "7. Использование клавиатуры",
+      "title": "7. Использование клавиатуры",
+      "body": "<p>Pygame Zero даёт простой доступ к состоянию клавиш через объект <code>keyboard</code>.</p>\r\n      <pre>def update():\r\n    if keyboard.space:\r\n        fire_bullet()\r\n    if keyboard.a:\r\n        player.x -= 3\r\n    if keyboard.d:\r\n        player.x += 3</pre>\r\n      <p>Можно также использовать специальные функции для обработки нажатия\r\n        клавиш:</p>\r\n      <pre>def on_key_down(key):\r\n    if key == keys.SPACE:\r\n        create_explosion()\r\n    elif key == keys.ESCAPE:\r\n        exit()</pre>"
+    },
+    {
+      "id": "mouse",
+      "toc": "8. События мыши",
+      "title": "8. События мыши",
+      "body": "<p>Обработка событий мыши выполняется через специальные функции:</p>\r\n      <pre>def on_mouse_down(pos, button):\r\n    if button == mouse.LEFT:\r\n        print(\"Левая кнопка нажата в\", pos)\r\n    elif button == mouse.RIGHT:\r\n        print(\"Правая кнопка нажата\")\r\n\r\ndef on_mouse_move(pos):\r\n    player.pos = pos</pre>\r\n      <p>Вы также можете проверять состояние кнопок мыши в функции <code>update()</code>:</p>\r\n      <pre>def update():\r\n    if mouse.LEFT:\r\n        player.angle += 2</pre>"
+    },
+    {
+      "id": "audio",
+      "toc": "9. Звуки и музыка",
+      "title": "9. Звуки и музыка",
+      "body": "<p>Для работы со звуком используйте модуль <code>music</code> и объект\r\n        <code>sounds</code>.</p>\r\n      <pre># Воспроизведение звука\r\ndef on_key_down(key):\r\n    if key == keys.SPACE:\r\n        sounds.jump.play()\r\n\r\n# Управление музыкой\r\nmusic.play('background_theme')\r\nmusic.set_volume(0.5)\r\n\r\n# Остановка музыки\r\nmusic.stop()</pre>\r\n      <p>Звуковые файлы должны находиться в папке <code>sounds</code> (для\r\n        коротких звуков) или <code>music</code> (для фоновой музыки).</p>\r\n      <div class=\"note\"> <strong>Поддерживаемые форматы:</strong> WAV, OGG, MP3\r\n        (в зависимости от системы). </div>"
+    },
+    {
+      "id": "timer",
+      "toc": "10. Таймер",
+      "title": "10. Таймер",
+      "body": "<p>Для отложенного выполнения кода используйте функции модуля <code>clock</code>.</p>\r\n      <pre>def spawn_enemy():\r\n    enemies.append(Actor('enemy'))\r\n\r\n# Создавать врага каждые 3 секунды\r\nclock.schedule_interval(spawn_enemy, 3.0)\r\n\r\n# Выполнить функцию один раз через 5 секунд\r\nclock.schedule(game_over, 5.0)\r\n\r\ndef game_over():\r\n    print(\"Время вышло!\")</pre>\r\n      <p>Чтобы отменить запланированное событие, сохраните ссылку на функцию:</p>\r\n      <pre>def cancel_timer():\r\n    clock.unschedule(spawn_enemy)\r\n\r\nclock.schedule_interval(spawn_enemy, 2.0)</pre>"
+    },
+    {
+      "id": "faq",
+      "toc": "11. FAQ — частые вопросы по коду",
+      "title": "11. FAQ — частые вопросы по коду",
+      "body": "<p><strong>Почему игра не запускается?</strong><br>\r\n        Проверь, что в проекте есть файл <code>my_pgz.py</code>, в конце написано <code>pgzrun.go()</code>, а отступы в Python одинаковые (4 пробела).</p>\r\n      <p><strong>Что такое <code>draw()</code> и <code>update()</code>?</strong><br>\r\n        <code>draw()</code> рисует картинку на экране каждый кадр.<br>\r\n        <code>update()</code> меняет положение героев и проверяет нажатия клавиш.</p>\r\n      <p><strong>Как двигать героя?</strong><br>\r\n        Меняй <code>actor.x</code> и <code>actor.y</code> в <code>update()</code> или используй <code>keyboard.left</code>, <code>keyboard.right</code> и другие клавиши.</p>\r\n      <p><strong>Где хранятся картинки и звуки?</strong><br>\r\n        Картинки — в папке <code>images</code>, звуки — в <code>sounds</code>, музыка — в <code>music</code>. Имена файлов без пробелов, латиницей.</p>\r\n      <p><strong>Как нарисовать своего героя?</strong><br>\r\n        Нажми кнопку «Нарисовать» на панели или в галерее картинок, сохрани файл и используй его имя в <code>Actor('имя_файла')</code>.</p>\r\n      <p><strong>Что делать, если ошибка в коде?</strong><br>\r\n        Прочитай красное сообщение внизу, найди номер строки и исправь опечатку. Частые ошибки: забытая двоеточие <code>:</code>, неправильный отступ, неверное имя файла картинки.</p>"
+    }
+  ]
+}
