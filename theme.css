@@ -1389,19 +1389,20 @@ body.app-ready {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 112px;
-  height: 112px;
+  width: 120px;
+  height: 120px;
   border-radius: 30px;
-  background: var(--pz-bg-elevated);
-  border: 1px solid var(--pz-border);
-  box-shadow: 0 12px 32px rgba(91, 141, 239, 0.18);
+  background: transparent;
+  border: none;
+  box-shadow: 0 14px 36px rgba(8, 18, 40, 0.28);
 }
 
 .pg-startup-screen__logo {
   display: block;
-  width: 88px;
-  height: 88px;
-  border-radius: 22px;
+  width: 120px;
+  height: 120px;
+  border-radius: 28px;
+  object-fit: cover;
 }
 
 .pg-startup-screen__brand {
@@ -1507,12 +1508,10 @@ body.app-ready {
 }
 
 .pg-startup-screen__logo-wrap {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 20px 48px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(12px);
+  background: transparent;
+  border: none;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+  backdrop-filter: none;
 }
 
 .pg-startup-screen__brand {
@@ -1594,9 +1593,7 @@ body.app-ready {
 }
 
 [data-app-theme="dark"] .pg-startup-screen__logo-wrap {
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.05) inset,
-    0 20px 48px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
 }
 
 [data-app-theme="dark"] .pg-startup-screen__slots {

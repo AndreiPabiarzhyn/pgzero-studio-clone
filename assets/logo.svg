@@ -1,7 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="PGZero Studio">
-  <rect width="128" height="128" rx="28" fill="#4A7DE0"/>
-  <rect x="24" y="30" width="80" height="56" rx="12" fill="#FFFFFF"/>
-  <path d="M56 44v40l36-20-36-20z" fill="#34C759"/>
-  <rect x="24" y="94" width="80" height="10" rx="5" fill="#FFFFFF" opacity="0.88"/>
-  <circle cx="94" cy="99" r="4.5" fill="#34C759"/>
+  <defs>
+    <linearGradient id="pg-bg" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#142848"/>
+      <stop offset="100%" stop-color="#060e1c"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#pg-bg)"/>
+  <circle cx="32" cy="30" r="9" fill="#ff9a3c"/>
+  <circle cx="32" cy="30" r="16" fill="#ff9a3c" opacity="0.25"/>
+  <path d="M84 98 Q102 84 96 66" stroke="#5eb8ff" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <text x="64" y="86" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="54" fill="#eef4ff" letter-spacing="-2">PG</text>
 </svg>
