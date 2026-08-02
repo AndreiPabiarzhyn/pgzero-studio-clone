@@ -50,3 +50,9 @@ test('Actor сообщает об ошибке, если картинка не �
     assert.match(pgzSource, /if \(!img\) throwImageNotFound\(self\.attributes\.image\)/);
     assert.match(pgzSource, /Did you mean/);
 });
+
+test('остановка игры глушит музыку и звуки', () => {
+    assert.match(pgzSource, /window\.PGZ_stopAllGameAudio = stopAllGameAudio/);
+    assert.match(pgzSource, /registerGameAudio\(audio\)/);
+    assert.match(readFileSync(join(root, 'lib/lib.js'), 'utf8'), /PGZ_stopAllGameAudio/);
+});
