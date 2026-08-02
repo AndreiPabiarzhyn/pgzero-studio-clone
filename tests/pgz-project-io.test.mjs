@@ -30,5 +30,12 @@ test('buildProjectZipBlob включает sounds и music', () => {
   const source = readFileSync(join(__dirname, '../lib/pgz-project-io.js'), 'utf8');
   assert.match(source, /zip\.file\('sounds\//);
   assert.match(source, /zip\.file\('music\//);
-  assert.match(source, /mimeFromMediaPath/);
+  assert.match(source, /buildProjectZipFromActiveSlot/);
+  assert.match(source, /syncEditorToFiles/);
+});
+
+test('dataURLToBlob отклоняет пустые данные', () => {
+  const { dataURLToBlob } = loadProjectIO();
+  assert.throws(() => dataURLToBlob(undefined), /Повреждённый файл ресурса/);
+  assert.throws(() => dataURLToBlob('not-a-data-url'), /Повреждённый файл ресурса/);
 });

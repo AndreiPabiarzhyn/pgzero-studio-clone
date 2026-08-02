@@ -111,3 +111,16 @@ test('play.html подключает статическую публикацию
     assert.match(playHtml, /publish-static\.js/);
     assert.doesNotMatch(playHtml, /publish-cloud\.js/);
 });
+
+test('publish привязывает id к активному слоту через getActiveSlot', () => {
+    assert.match(publishSource, /PGZProjectGallery\.getActiveSlot/);
+    assert.doesNotMatch(publishSource, /PGZProjectGallery\.getActiveSlotIndex/);
+});
+
+test('play-page не подставляет пустой проект по ссылке', () => {
+    const playSource = readFileSync(join(__dirname, '../lib/play-page.js'), 'utf8');
+    assert.match(playSource, /loadProjectByStaticId/);
+    assert.doesNotMatch(playSource, /code = await loadProjectById\(id\)/);
+    assert.match(playSource, /empty_project/);
+    assert.match(playSource, /isZipBlob/);
+});
