@@ -32,6 +32,12 @@ test('applyProject сбрасывает pgz-globals при смене слота
     assert.match(readFileSync(join(__dirname, '../lib/game-modal.js'), 'utf8'), /resetChrome: resetChrome/);
 });
 
+test('галерея зеркалирует слоты в localStorage и умеет восстанавливать', () => {
+    assert.match(source, /pgz_slots_mirror_v1/);
+    assert.match(source, /recoverIfNeeded/);
+    assert.match(source, /syncMirrorFromSlots/);
+});
+
 test('assetSummary считает ресурсы', () => {
     const { assetSummary } = loadGallery()._test;
     assert.equal(assetSummary(null), '');
