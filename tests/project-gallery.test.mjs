@@ -26,6 +26,12 @@ test('escapeHtml экранирует спецсимволы', () => {
     assert.equal(escapeHtml('"quote"'), '&quot;quote&quot;');
 });
 
+test('applyProject сбрасывает pgz-globals при смене слота', () => {
+    assert.match(source, /PythonIDE\.resetPgzRunGlobals/);
+    assert.match(readFileSync(join(__dirname, '../lib/lib.js'), 'utf8'), /resetPgzRunGlobals: function/);
+    assert.match(readFileSync(join(__dirname, '../lib/game-modal.js'), 'utf8'), /resetChrome: resetChrome/);
+});
+
 test('assetSummary считает ресурсы', () => {
     const { assetSummary } = loadGallery()._test;
     assert.equal(assetSummary(null), '');

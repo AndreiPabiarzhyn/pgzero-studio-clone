@@ -2554,6 +2554,29 @@ body.layout-dragging-h * {
   word-break: break-word;
 }
 
+#output.output-style-light {
+  background: #fff;
+  color: #111;
+}
+
+#output.output-style-dark {
+  background: #111;
+  color: #ccc;
+}
+
+#output.output-style-dusk {
+  background: #002240;
+  color: #ccc;
+}
+
+[data-app-theme="dark"] .modal-header {
+  border-bottom-color: var(--pz-border);
+}
+
+[data-app-theme="light"] .modal-header {
+  border-bottom-color: var(--pz-border);
+}
+
 #rightBar {
   background: var(--pz-bg) !important;
   margin: 0 !important;
@@ -2704,6 +2727,7 @@ body.layout-dragging-h * {
 
 [data-app-theme="dark"] .modal-close {
   background: var(--pz-surface) !important;
+  color: var(--pz-text-muted);
 }
 
 /* --- Галерея ресурсов --- */
