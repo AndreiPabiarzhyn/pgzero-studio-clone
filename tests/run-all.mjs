@@ -13,6 +13,9 @@ const files = readdirSync(testsDir)
     .filter(function (name) { return name.endsWith('.test.mjs'); })
     .sort();
 
+const integration = join(testsDir, 'qa-integration.mjs');
+const runIntegration = files.length > 0; // always after unit files
+
 let failed = 0;
 
 for (const file of files) {
@@ -23,9 +26,18 @@ for (const file of files) {
     if (result.status !== 0) failed += 1;
 }
 
+if (runIntegration) {
+    const result = spawnSync(process.execPath, [integration], {
+        stdio: 'inherit',
+        cwd: root
+    });
+    if (result.status !== 0) failed += 1;
+}
+
 if (failed) {
     process.exitCode = 1;
     console.error('\n' + failed + ' test file(s) failed.');
 } else {
-    console.log('\nAll ' + files.length + ' test files passed.');
+    var summary = files.length + ' unit test file(s) + integration QA';
+    console.log('\nAll passed (' + summary + ').');
 }
