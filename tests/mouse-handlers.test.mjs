@@ -42,3 +42,11 @@ test('экран очищается перед каждым draw()', () => {
         /function runUserDraw\(\)[\s\S]{0,400}fillRect\(0,\s*0,\s*width,\s*height\)[\s\S]{0,160}Sk\.globals\.draw/
     );
 });
+
+test('Actor сообщает об ошибке, если картинка не найдена', () => {
+    assert.match(pgzSource, /function requireImage/);
+    assert.match(pgzSource, /function throwImageNotFound/);
+    assert.match(pgzSource, /var img = requireImage\(self\.attributes\.image\)/);
+    assert.match(pgzSource, /if \(!img\) throwImageNotFound\(self\.attributes\.image\)/);
+    assert.match(pgzSource, /Did you mean/);
+});
