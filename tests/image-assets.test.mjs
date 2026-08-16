@@ -146,6 +146,19 @@ test('repairConvertibleImages пересохраняет jfif как jpg', async
     assert.equal(fs.files.get('/images/enemy.jpg'), 'data:image/jpeg;base64,abc');
 });
 
+test('кликер-проект: enemy.jfif распознаётся как конвертируемый', () => {
+    const IA = loadImageAssets();
+    const clickerPath = join(__dirname, '_clicker_extract/images/enemy.jfif');
+    try {
+        readFileSync(clickerPath);
+    } catch (e) {
+        return;
+    }
+    const info = IA.inspectStoredImageName('enemy.jfif');
+    assert.equal(info.repairTo, 'enemy.jpg');
+    assert.equal(IA.inspectStoredImageName('fon.jpg').ok, true);
+});
+
 test('clearRuntimeImageCache сохраняет объект кеша для pgzrun', () => {
     const source = readFileSync(join(__dirname, '../lib/image-assets.js'), 'utf8');
     const sandbox = { window: {}, console };
