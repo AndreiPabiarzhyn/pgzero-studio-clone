@@ -105,6 +105,32 @@ test('resolveUploadImageName различает дубликаты в одной
     assert.equal(second, 'hero (1).png');
 });
 
+test('clearRuntimeImageCache сохраняет объект кеша для pgzrun', () => {
+    const source = readFileSync(join(__dirname, '../lib/image-assets.js'), 'utf8');
+    const sandbox = { window: {}, console };
+    vm.createContext(sandbox);
+    vm.runInContext(source, sandbox);
+
+    sandbox.window.PGZ_IMAGE_CACHE = { fon: {}, dog: {} };
+    const cacheRef = sandbox.window.PGZ_IMAGE_CACHE;
+    sandbox.window.PGZImageAssets.clearRuntimeImageCache();
+    cacheRef.hero = { width: 10, height: 10 };
+
+    assert.equal(sandbox.window.PGZ_IMAGE_CACHE, cacheRef);
+    assert.equal(Object.keys(sandbox.window.PGZ_IMAGE_CACHE).length, 1);
+    assert.ok(sandbox.window.PGZ_IMAGE_CACHE.hero);
+    assert.equal(sandbox.window.PGZ_PRELOAD_COMPLETE, false);
+});
+
+test('runCode использует clearRuntimeImageCache вместо нового объекта', () => {
+    const libSource = readFileSync(join(__dirname, '../lib/lib.js'), 'utf8');
+    const pgzSource = readFileSync(join(__dirname, '../lib/skulpt/pgzrun/__init__.js'), 'utf8');
+    assert.match(libSource, /clearRuntimeImageCache/);
+    assert.match(libSource, /delete window\.PGZ_IMAGE_CACHE\[key\]/);
+    assert.match(pgzSource, /function imageCache\(\)/);
+    assert.doesNotMatch(pgzSource, /var loadedAssets = window\.PGZ_IMAGE_CACHE/);
+});
+
 test('assets-gallery и image-library подключены к PGZImageAssets', () => {
     const gallerySource = readFileSync(join(__dirname, '../lib/assets-gallery.js'), 'utf8');
     const librarySource = readFileSync(join(__dirname, '../lib/image-library.js'), 'utf8');
