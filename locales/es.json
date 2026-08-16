@@ -330,6 +330,7 @@
     "exportedHint": "Archivo «{name}.pgz» descargado",
     "playError": "Error de reproducción: {detail}",
     "addFileError": "No se pudo añadir el archivo",
+    "imagesUpdatedRestart": "Imágenes actualizadas. Pulsa Jugar para ver los cambios.",
     "projectImported": "¡Proyecto importado!",
     "loadProjectError": "No se pudo cargar el proyecto:\n{detail}"
   },

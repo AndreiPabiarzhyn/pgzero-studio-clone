@@ -330,6 +330,7 @@
     "exportedHint": "File «{name}.pgz» downloaded",
     "playError": "Playback error: {detail}",
     "addFileError": "Could not add file",
+    "imagesUpdatedRestart": "Images updated. Click Play to see the changes.",
     "projectImported": "Project imported successfully!",
     "loadProjectError": "Could not load project:\n{detail}"
   },

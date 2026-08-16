@@ -333,6 +333,7 @@
     "exportedHint": "Файл «{name}.pgz» скачан на компьютер",
     "playError": "Ошибка воспроизведения: {detail}",
     "addFileError": "Не удалось добавить файл",
+    "imagesUpdatedRestart": "Картинки обновлены. Нажми «Играть», чтобы увидеть изменения.",
     "projectImported": "Проект успешно импортирован!",
     "loadProjectError": "Не удалось загрузить проект:\n{detail}"
   },
