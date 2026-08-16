@@ -331,6 +331,12 @@
     "playError": "Playback error: {detail}",
     "addFileError": "Could not add file",
     "imagesUpdatedRestart": "Images updated. Click Play to see the changes.",
+    "imageFormatTitle": "Unsupported format",
+    "imageFormatUnsupported": "File «{name}» cannot be used in the game.\n\nFormat: {ext}\nSupported: {supported}.",
+    "imageFormatConverted": "Format «{name}» is not suitable for the game. Saved as «{saved}» ({supported}).",
+    "imageFormatRepaired": "File «{from}» was converted to «{to}». Supported: {supported}.",
+    "imageFormatBadFile": "Format «{ext}» does not work in the game. Save as {supported} and upload again.",
+    "unsupportedImagesInProject": "Unsupported image formats in project: {names}. Use {supported}.",
     "projectImported": "Project imported successfully!",
     "loadProjectError": "Could not load project:\n{detail}"
   },

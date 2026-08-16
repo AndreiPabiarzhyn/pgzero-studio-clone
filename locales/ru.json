@@ -334,6 +334,12 @@
     "playError": "Ошибка воспроизведения: {detail}",
     "addFileError": "Не удалось добавить файл",
     "imagesUpdatedRestart": "Картинки обновлены. Нажми «Играть», чтобы увидеть изменения.",
+    "imageFormatTitle": "Неподдерживаемый формат",
+    "imageFormatUnsupported": "Файл «{name}» нельзя использовать в игре.\n\nФормат: {ext}\nПоддерживаются: {supported}.",
+    "imageFormatConverted": "Формат «{name}» не подходит для игры. Сохранили как «{saved}» ({supported}).",
+    "imageFormatRepaired": "Файл «{from}» не подходит для игры и сохранён как «{to}». Поддерживаются: {supported}.",
+    "imageFormatBadFile": "Формат «{ext}» не работает в игре. Сохраните как {supported} и загрузите снова.",
+    "unsupportedImagesInProject": "В проекте есть картинки неподходящего формата: {names}. Нужны {supported}.",
     "projectImported": "Проект успешно импортирован!",
     "loadProjectError": "Не удалось загрузить проект:\n{detail}"
   },

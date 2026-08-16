@@ -331,6 +331,12 @@
     "playError": "Error de reproducción: {detail}",
     "addFileError": "No se pudo añadir el archivo",
     "imagesUpdatedRestart": "Imágenes actualizadas. Pulsa Jugar para ver los cambios.",
+    "imageFormatTitle": "Formato no compatible",
+    "imageFormatUnsupported": "El archivo «{name}» no se puede usar en el juego.\n\nFormato: {ext}\nCompatibles: {supported}.",
+    "imageFormatConverted": "El formato «{name}» no sirve para el juego. Se guardó como «{saved}» ({supported}).",
+    "imageFormatRepaired": "El archivo «{from}» se convirtió a «{to}». Compatibles: {supported}.",
+    "imageFormatBadFile": "El formato «{ext}» no funciona en el juego. Guárdalo como {supported} y súbelo otra vez.",
+    "unsupportedImagesInProject": "Hay imágenes con formato incompatible: {names}. Usa {supported}.",
     "projectImported": "¡Proyecto importado!",
     "loadProjectError": "No se pudo cargar el proyecto:\n{detail}"
   },

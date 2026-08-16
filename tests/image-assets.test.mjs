@@ -37,6 +37,9 @@ function createMockFs(initialFiles) {
         async type(path) {
             return files.has(path) ? 'file' : null;
         },
+        async read(path) {
+            return files.get(path);
+        },
         async write(path, content) {
             files.set(path, content);
         },
@@ -103,6 +106,44 @@ test('resolveUploadImageName различает дубликаты в одной
 
     assert.equal(first, 'hero.png');
     assert.equal(second, 'hero (1).png');
+});
+
+test('inspectImageUpload отклоняет svg и принимает jfif с конвертацией', () => {
+    const IA = loadImageAssets();
+    const jfif = IA.inspectImageUpload({ name: 'enemy.jfif', type: 'image/jpeg' });
+    assert.equal(jfif.ok, true);
+    assert.equal(jfif.converted, true);
+    assert.equal(jfif.uploadName, 'enemy.jpg');
+
+    const svg = IA.inspectImageUpload({ name: 'icon.svg', type: 'image/svg+xml' });
+    assert.equal(svg.ok, false);
+    assert.equal(svg.blocked, true);
+
+    const png = IA.inspectImageUpload({ name: 'hero.png', type: 'image/png' });
+    assert.equal(png.ok, true);
+    assert.equal(png.converted, undefined);
+});
+
+test('inspectStoredImageName находит jfif и предлагает repairTo jpg', () => {
+    const IA = loadImageAssets();
+    const info = IA.inspectStoredImageName('enemy.jfif');
+    assert.equal(info.ok, false);
+    assert.equal(info.repairTo, 'enemy.jpg');
+    assert.equal(IA.inspectStoredImageName('fon.jpg').ok, true);
+});
+
+test('repairConvertibleImages пересохраняет jfif как jpg', async () => {
+    const IA = loadImageAssets();
+    const fs = createMockFs({
+        '/images/enemy.jfif': 'data:image/jpeg;base64,abc',
+        '/images/fon.jpg': 'data:image/jpeg;base64,zzz'
+    });
+    const repaired = await IA.repairConvertibleImages(fs);
+    assert.equal(repaired.length, 1);
+    assert.equal(repaired[0].from, 'enemy.jfif');
+    assert.equal(repaired[0].to, 'enemy.jpg');
+    assert.equal(fs.files.has('/images/enemy.jfif'), false);
+    assert.equal(fs.files.get('/images/enemy.jpg'), 'data:image/jpeg;base64,abc');
 });
 
 test('clearRuntimeImageCache сохраняет объект кеша для pgzrun', () => {

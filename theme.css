@@ -2363,6 +2363,20 @@ body.app-ready .app-footer {
   flex-wrap: nowrap;
 }
 
+#resourceGallery .item-unsupported-image .thumb-container {
+  outline: 2px solid #ef4444;
+  outline-offset: 1px;
+  border-radius: 6px;
+}
+
+#resourceGallery .item-unsupported-image .item-name {
+  color: #f87171;
+}
+
+[data-app-theme="light"] #resourceGallery .item-unsupported-image .item-name {
+  color: #dc2626;
+}
+
 #resourceGallery .item {
   position: relative;
   max-width: 76px;
