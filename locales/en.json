@@ -137,6 +137,7 @@
     "copyFailed": "Could not copy link",
     "empty": "Nothing to publish — add code or assets.",
     "noCode": "Add code to my_pgz.py before publishing.",
+    "noDraw": "Add a draw() function — without it the screen stays black for players.",
     "tooBig": "Project too large (max {mb} MB). Reduce images or sounds.",
     "linkTooBig": "Game too large for a link (max ~{kb} KB compressed).\n\nReduce images and sounds.",
     "hostAndLinkFailed": "Could not upload to GitHub and game is too large for a long link.\n\n{detail}",
@@ -285,7 +286,8 @@
     "demoTitle": "My runner",
     "demoHint": "Space — jump",
     "baseComment": "Pygame Zero",
-    "placeholderComment": "Your code goes here"
+    "placeholderComment": "Your code goes here",
+    "emptyHint": "Add your code!"
   },
   "codeHistory": {
     "title": "Code history",
@@ -409,7 +411,9 @@
     "gameError": "Game error:\n{detail}",
     "linkTruncated": "Could not open game from link. The link may be truncated — copy the full link from Studio.",
     "notFound": "Game not found. Wait a minute after publishing or publish again.",
-    "missingGame": "No game data in the link. Open Studio, click Publish, and copy the link."
+    "missingGame": "No game data in the link. Open Studio, click Publish, and copy the link.",
+    "noDraw": "This game has no draw() function, so nothing appears on screen. Open Studio, add draw(), and publish again.",
+    "emptyProject": "The game file is empty or damaged. Open Studio, check your code and assets, and publish again."
   },
   "modal": {
     "inputPlaceholder": "Enter text here..."

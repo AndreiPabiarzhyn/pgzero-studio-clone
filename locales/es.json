@@ -137,6 +137,7 @@
     "copyFailed": "No se pudo copiar el enlace",
     "empty": "Nada que publicar — añade código o recursos.",
     "noCode": "Añade código en my_pgz.py antes de publicar.",
+    "noDraw": "Añade la función draw() — sin ella la pantalla queda negra para quien juegue.",
     "tooBig": "Proyecto demasiado grande (máx. {mb} MB). Reduce imágenes o sonidos.",
     "linkTooBig": "Juego demasiado grande para un enlace (máx. ~{kb} KB comprimido).\n\nReduce imágenes y sonidos.",
     "hostAndLinkFailed": "No se pudo subir a GitHub y el juego es demasiado grande para un enlace largo.\n\n{detail}",
@@ -285,7 +286,8 @@
     "demoTitle": "Mi runner",
     "demoHint": "Espacio — salto",
     "baseComment": "Pygame Zero",
-    "placeholderComment": "Tu código va aquí"
+    "placeholderComment": "Tu código va aquí",
+    "emptyHint": "¡Añade tu código!"
   },
   "codeHistory": {
     "title": "Historial de código",
@@ -409,7 +411,9 @@
     "gameError": "Error en el juego:\n{detail}",
     "linkTruncated": "No se pudo abrir el juego. El enlace puede estar truncado — cópialo completo desde Studio.",
     "notFound": "Juego no encontrado. Espera un minuto tras publicar o publica de nuevo.",
-    "missingGame": "No hay datos del juego en el enlace. Abre Studio, pulsa Publicar y copia el enlace."
+    "missingGame": "No hay datos del juego en el enlace. Abre Studio, pulsa Publicar y copia el enlace.",
+    "noDraw": "Este juego no tiene función draw(), así que no se ve nada en pantalla. Abre Studio, añade draw() y publica de nuevo.",
+    "emptyProject": "El archivo del juego está vacío o dañado. Abre Studio, revisa el código y los recursos y publica otra vez."
   },
   "modal": {
     "inputPlaceholder": "Escribe aquí..."

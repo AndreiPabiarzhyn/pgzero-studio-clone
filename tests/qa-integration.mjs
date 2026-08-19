@@ -66,7 +66,7 @@ test('pgz roundtrip: код и ресурсы сохраняются в zip и �
         jsfs: mockFs,
         initFS: async () => {},
         PythonIDE: {
-            files: { 'my_pgz.py': "import pgzrun\n\nTITLE = 'QA'\n\npgzrun.go()\n" },
+            files: { 'my_pgz.py': "import pgzrun\n\nTITLE = 'QA'\n\ndef draw():\n    screen.fill('black')\n\npgzrun.go()\n" },
             currentFile: 'my_pgz.py',
             editor: null
         },
@@ -75,7 +75,7 @@ test('pgz roundtrip: код и ресурсы сохраняются в zip и �
             getSlot: async () => ({
                 projectName: 'QA Game',
                 currentFile: 'my_pgz.py',
-                files: { 'my_pgz.py': "import pgzrun\n\nTITLE = 'QA'\n\npgzrun.go()\n" },
+                files: { 'my_pgz.py': "import pgzrun\n\nTITLE = 'QA'\n\ndef draw():\n    screen.fill('black')\n\npgzrun.go()\n" },
                 assets: {
                     images: [{ name: 'hero.png', dataUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==' }],
                     sounds: [],

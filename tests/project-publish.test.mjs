@@ -117,10 +117,17 @@ test('publish привязывает id к активному слоту чер�
     assert.doesNotMatch(publishSource, /PGZProjectGallery\.getActiveSlotIndex/);
 });
 
+test('publish блокирует проекты без draw()', () => {
+    assert.match(publishSource, /no_draw/);
+    assert.match(publishSource, /publish\.noDraw/);
+});
+
 test('play-page не подставляет пустой проект по ссылке', () => {
     const playSource = readFileSync(join(__dirname, '../lib/play-page.js'), 'utf8');
     assert.match(playSource, /loadProjectByStaticId/);
     assert.doesNotMatch(playSource, /code = await loadProjectById\(id\)/);
     assert.match(playSource, /empty_project/);
     assert.match(playSource, /isZipBlob/);
+    assert.match(playSource, /no_draw/);
+    assert.match(playSource, /hasDrawFunction/);
 });
