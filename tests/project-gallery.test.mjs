@@ -26,6 +26,19 @@ test('escapeHtml экранирует спецсимволы', () => {
     assert.equal(escapeHtml('"quote"'), '&quot;quote&quot;');
 });
 
+test('галерея сериализует сохранение и загрузку слотов', () => {
+    assert.match(source, /function runGalleryOp/);
+    assert.match(source, /function syncEditorToFiles/);
+    assert.match(source, /saveToSlotImpl\(active, \{ skipOverwriteConfirm: true \}/);
+    assert.match(source, /await applyProjectImpl\(data\)/);
+});
+
+test('openSwitchModal ждёт сохранение перед показом модалки', () => {
+    assert.match(source, /function openSwitchModal/);
+    assert.match(source, /await saveToSlotImpl\(idx, \{ skipOverwriteConfirm: true \}/);
+    assert.match(source, /await showSwitchModal\(\)/);
+});
+
 test('applyProject сбрасывает pgz-globals при смене слота', () => {
     assert.match(source, /PythonIDE\.resetPgzRunGlobals/);
     assert.match(readFileSync(join(__dirname, '../lib/lib.js'), 'utf8'), /resetPgzRunGlobals: function/);
