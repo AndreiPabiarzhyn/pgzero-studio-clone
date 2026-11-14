@@ -15,7 +15,7 @@ const JSZip = require(join(__dirname, '../lib/jszip.min.js'));
 
 function loadProjectIO() {
   const source = readFileSync(join(__dirname, '../lib/pgz-project-io.js'), 'utf8');
-  const sandbox = { window: {}, console, JSZip };
+  const sandbox = { window: {}, console, JSZip, Blob };
   sandbox.window = sandbox;
   vm.createContext(sandbox);
   vm.runInContext(source, sandbox);
@@ -53,4 +53,13 @@ test('hasDrawFunction и no_draw при публикации без draw()', asy
     files: { 'my_pgz.py': 'import pgzrun\n\npgzrun.go()\n' }
   });
   assert.equal(built.error, 'no_draw');
+});
+
+
+test('резервная копия сохраняет незавершённый код без draw', async () => {
+  const IO = loadProjectIO();
+  const code = 'x = 42\n\n';
+  const built = await IO.buildProjectZipFromData({ projectName: 'Draft', files: { 'my_pgz.py': code } }, { allowIncomplete: true });
+  const zip = await JSZip.loadAsync(await built.blob.arrayBuffer());
+  assert.equal(await zip.file('my_pgz.py').async('text'), code);
 });

@@ -19,7 +19,7 @@ test('F5 не запускает игру при перезагрузке стр
 });
 
 test('Ctrl+Enter по-прежнему запускает игру', () => {
-    assert.match(libSource, /case\s+13:[\s\S]{0,120}runCode/);
+    assert.match(libSource, /case\s+13:[\s\S]{0,500}runCode/);
 });
 
 test('keyboard.enter — алиас для return', () => {

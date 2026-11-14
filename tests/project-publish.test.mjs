@@ -131,3 +131,70 @@ test('play-page не подставляет пустой проект по сс�
     assert.match(playSource, /no_draw/);
     assert.match(playSource, /hasDrawFunction/);
 });
+
+test('публикация не выдаёт локальную ссылку за общедоступную, если создание ссылки недоступно', async () => {
+    const map = {};
+    const sandbox = {
+        console, setTimeout,
+        location: { origin: 'https://example.com', pathname: '/app/index.html' },
+        localStorage: { getItem: key => map[key] || null, setItem: (key, value) => { map[key] = value; } },
+        PGZProjectGallery: { getActiveSlot: () => 0, flushAndSaveActive: async () => true },
+        PGZProjectIO: { syncEditorToFiles() {}, buildProjectZipBlob: async () => ({ blob: new Blob(['game']), title: 'Test' }) },
+        indexedDB: { open() {
+            const request = {};
+            setTimeout(() => {
+                request.result = { transaction() {
+                    const tx = { objectStore() { return { put() { setTimeout(() => tx.oncomplete(), 0); } }; } };
+                    return tx;
+                } };
+                request.onsuccess();
+            }, 0);
+            return request;
+        } }
+    };
+    sandbox.window = sandbox;
+    vm.createContext(sandbox);
+    vm.runInContext(publishSource, sandbox);
+    const result = await sandbox.PGZProjectPublish.publish();
+    assert.equal(result.error, 'host_and_link_failed');
+    assert.equal(result.url, undefined);
+});
+
+test('публикация прекращается при неудачном сохранении активного проекта', async () => {
+    let built = false;
+    const sandbox = {
+        console,
+        location: { origin: 'https://example.com', pathname: '/app/index.html' },
+        localStorage: { getItem: () => null },
+        PGZProjectGallery: { getActiveSlot: () => 0, flushAndSaveActive: async () => false },
+        PGZProjectIO: { syncEditorToFiles() {}, buildProjectZipBlob: async () => { built = true; } }
+    };
+    sandbox.window = sandbox;
+    vm.createContext(sandbox);
+    vm.runInContext(publishSource, sandbox);
+    const result = await sandbox.PGZProjectPublish.publish();
+    assert.equal(result.error, 'save_failed');
+    assert.equal(built, false);
+});
+
+ test('дата первой публикации сохраняется при повторной загрузке', async () => {
+    const source = readFileSync(join(__dirname, '../lib/publish-static.js'), 'utf8');
+    const previous = {id:'abc123', title:'Старое', publishedAt:1000, updatedAt:2000};
+    let savedMeta;
+    const sandbox = {console, Blob, Uint8Array, Number, Date, encodeURIComponent, decodeURIComponent, escape, unescape,
+      btoa: value => Buffer.from(value, 'binary').toString('base64'), atob: value => Buffer.from(value, 'base64').toString('binary'),
+      location:{pathname:'/index.html',hostname:'localhost'}, localStorage:{getItem:()=>''},
+      PGZPublishConfig:{github:{owner:'test',repo:'test',token:'test',path:'published'}},
+      fetch:async (url, opts) => {
+        const isMeta = url.includes('abc123.json');
+        if (opts.method === 'GET' && isMeta) return {ok:true,status:200,json:async()=>({sha:'old',encoding:'base64',content:Buffer.from(JSON.stringify(previous),'utf8').toString('base64')})};
+        if (opts.method === 'GET') return {ok:false,status:404};
+        if (isMeta) savedMeta = JSON.parse(Buffer.from(JSON.parse(opts.body).content,'base64').toString('utf8'));
+        return {ok:true,status:200,json:async()=>({})};
+      }};
+    sandbox.window = sandbox; vm.createContext(sandbox); vm.runInContext(source, sandbox);
+    await sandbox.PGZPublishStatic.uploadGame('abc123', new Blob(['game']), 'Новое');
+    assert.equal(savedMeta.publishedAt, 1000);
+    assert.ok(savedMeta.updatedAt > savedMeta.publishedAt);
+    assert.equal(savedMeta.title, 'Новое');
+ });

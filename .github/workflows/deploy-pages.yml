@@ -24,15 +24,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Build published game catalog
+        run: node scripts/build-published-catalog.mjs
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
-
-      - name: Inject publish token
-        env:
-          PGZ_PUBLISH_TOKEN: ${{ secrets.PGZ_PUBLISH_TOKEN }}
-        run: node scripts/inject-publish-token.mjs
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3

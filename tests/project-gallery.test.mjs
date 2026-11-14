@@ -96,16 +96,60 @@ test('заполненные ячейки показывают кнопку оч
     assert.match(source, /gallery\.clearBody/);
 });
 
-test('стартовый экран — hero, chips, i18n и автор', () => {
+test('стартовый экран содержит каталог, игры и переключение языка', () => {
     const html = readFileSync(join(__dirname, '../index.html'), 'utf8');
     assert.match(source, /projectStartupScreen/);
     assert.match(source, /projectStartupGrid/);
     assert.match(source, /function showStartupScreen/);
-    assert.match(html, /pg-startup-screen__title/);
+    assert.match(html, /startupHomeView/);
+    assert.match(html, /startupProjectsView/);
     assert.match(html, /data-i18n="startup.credit"/);
-    assert.match(html, /data-i18n="startup.hint"/);
-    assert.match(html, /pg-startup-screen__chips/);
-    assert.match(html, /pg-startup-screen__scene/);
+    assert.match(html, /data-i18n="startup.featuredTitle"/);
+    assert.match(html, /startupProjectSearch/);
     assert.match(html, /pg-lang-switch/);
     assert.doesNotMatch(html, /То, что сделал я/);
+});
+
+
+test('список проектов сохраняет прежние ключи и поддерживает больше 20 проектов', async () => {
+    const records = new Map([['0', {projectName:'Старый'}], ['5', {projectName:'Шестой'}], ['21', {projectName:'Новый'}]]);
+    function request(value) { const req = {}; queueMicrotask(() => { req.result = value; req.onsuccess(); }); return req; }
+    const db = { transaction() { return { objectStore() { return { getAllKeys() { return request([...records.keys()]); }, getAll() { return request([...records.values()]); } }; } }; } };
+    const indexedDB = { open() { return request(db); } };
+    const sandbox = { window: {}, indexedDB, console, localStorage: {getItem() { return '21'; }} };
+    vm.createContext(sandbox); vm.runInContext(source, sandbox);
+    const gallery = sandbox.window.PGZProjectGallery;
+    const slots = await gallery.listSlots();
+    assert.equal(slots[0].projectName, 'Старый');
+    assert.equal(slots[5].projectName, 'Шестой');
+    assert.equal(slots[21].projectName, 'Новый');
+    assert.equal(gallery.getActiveSlot(), 21);
+    assert.equal((await gallery.findEmptySlots())[0], 1);
+});
+
+
+test('каталог фильтрует проекты и показывает не более 20 на странице', () => {
+    const startupSource = readFileSync(join(__dirname, '../lib/startup-home.js'), 'utf8');
+    const sandbox = {window: {}, document: {readyState:'loading', addEventListener() {}}};
+    vm.createContext(sandbox); vm.runInContext(startupSource, sandbox);
+    const projectPage = sandbox.window.PGZStartupHome.projectPage;
+    const projects = Array.from({length: 23}, (_, i) => ({projectName:'Проект ' + i, savedAt:i}));
+    const first = projectPage(projects, '', 0), second = projectPage(projects, '', 1);
+    assert.equal(first.items.length, 20); assert.equal(first.pages, 2); assert.equal(second.items.length, 3);
+    assert.equal(first.items[0].index, 22); assert.equal(projectPage(projects, 'ПРОЕКТ 12', 0).items[0].index, 12);
+    assert.equal(projectPage(projects, 'несуществующий', 1).total, 0);
+});
+
+test('новые игры отбираются за 10 дней по первой публикации', () => {
+    const startupSource = readFileSync(join(__dirname, '../lib/startup-home.js'), 'utf8');
+    const sandbox = {window: {}, document: {readyState:'loading', addEventListener() {}}};
+    vm.createContext(sandbox); vm.runInContext(startupSource, sandbox);
+    const now = Date.UTC(2026, 10, 14), day = 86400000;
+    const games = [
+      {id:'new', publishedAt: now-day}, {id:'old', publishedAt: now-11*day, updatedAt:now-day},
+      {id:'legacy', updatedAt:now-2*day}, {id:'future', publishedAt: now+day}
+    ];
+    const result = sandbox.window.PGZStartupHome.recentGames(games, now);
+    assert.deepEqual(Array.from(result, x => x.id), ['new','legacy']);
+    assert.equal(sandbox.window.PGZStartupHome.recentGames(games, now+30*day).length, 0);
 });

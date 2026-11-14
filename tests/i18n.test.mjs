@@ -99,12 +99,11 @@ test('plural для en/other форм', () => {
   assert.equal(i18n.plural('gallery.images', 3), '3 images');
 });
 
-test('index.html содержит переключатель языка и chips', () => {
+test('index.html содержит переключатель языка и раздел игр', () => {
   const html = readFileSync(join(__dirname, '../index.html'), 'utf8');
   assert.match(html, /pg-lang-switch/);
   assert.match(html, /data-lang="en"/);
-  assert.match(html, /pg-startup-screen__chips/);
-  assert.match(html, /data-i18n="startup.title"/);
+  assert.match(html, /data-i18n="startup.featuredTitle"/);
   assert.match(html, /more-menu-lang/);
   assert.match(html, /data-pz-icon="globe"/);
   assert.match(html, /data-i18n="toolbar.play"/);

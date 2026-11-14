@@ -72,6 +72,12 @@ python -m http.server 8100
 
 Изменения в PGZero Studio распространяются на тех же условиях **GPL-3.0**: исходный код открыт, лицензия сохраняется, производные работы — тоже под GPL.
 
+### Иконки интерфейса
+
+- [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) — выбранные SVG, MIT; лицензия: `assets/icons/fluent-color/LICENSE`. Цветной вариант помечен авторами как устаревший.
+- [IconPark](https://github.com/bytedance/IconPark) — выбранные SVG с цветовой темой проекта, Apache-2.0; лицензия: `assets/icons/iconpark/LICENSE`.
+- [Material Design Icons](https://github.com/google/material-design-icons) — пипетка и заливка, Apache-2.0; лицензия: `assets/icons/material/LICENSE`.
+
 ## Лицензия
 
 [GNU GPL v3](LICENSE) — как у исходного PGZ Studio. Полный текст лицензии — в файле [LICENSE](LICENSE).

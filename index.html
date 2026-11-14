@@ -36,13 +36,14 @@
   to { transform: rotate(360deg); }
 }
 </style>
-    <link rel="stylesheet" href="./lib/cm/codemirror.css">    
+    <link rel="stylesheet" href="./lib/cm/codemirror.css">
+    <link rel="stylesheet" href="./lib/cm/dialog.css">    
     <link rel="stylesheet" href="./lib/cm/cobalt.css">
     <link rel="stylesheet" href="./lib/cm/blackboard.css">
     <link rel="stylesheet" href="./lib/cm/monokai.css">
     <link rel="stylesheet" href="./lib/cm/pgz-ide.css">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./theme.css?v=0.073">
+    <link rel="stylesheet" href="./theme.css?v=0.090">
     <link rel="stylesheet" href="./new-message.css">
     <link rel="stylesheet" href="./lib/font-awesome.min.css">   
     <link rel="stylesheet" href="./jquery/ui/1.13.3/themes/base/jquery-ui.css">
@@ -54,83 +55,65 @@
 
 <!-- Стартовый экран (не модалка) -->
 <div id="projectStartupScreen" class="pg-startup-screen" hidden>
-    <div class="pg-startup-screen__scene" aria-hidden="true">
-        <div class="pg-startup-screen__base"></div>
-        <div class="pg-startup-screen__glow pg-startup-screen__glow--indigo"></div>
-        <div class="pg-startup-screen__glow pg-startup-screen__glow--cyan"></div>
-        <div class="pg-startup-screen__glow pg-startup-screen__glow--violet"></div>
-        <div class="pg-startup-screen__stars"></div>
-        <div class="pg-startup-screen__retro-grid"></div>
-        <div class="pg-startup-screen__art">
-            <div class="pg-startup-diorama pg-startup-diorama--space">
-                <div class="pg-startup-diorama__glow pg-startup-diorama__glow--space"></div>
-                <img class="pg-startup-sprite pg-startup-sprite--ship" src="./assets/image-library/kenney/characters/ship2_blue.png" width="48" height="48" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--meteor" src="./assets/image-library/kenney/projectiles/meteor_grey_big3.png" width="32" height="32" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--star" src="./assets/image-library/kenney/effects/space_star1.png" width="16" height="16" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--star pg-startup-sprite--star-2" src="./assets/image-library/kenney/effects/space_star1.png" width="12" height="12" alt="">
-            </div>
-            <div class="pg-startup-diorama pg-startup-diorama--fantasy">
-                <div class="pg-startup-diorama__glow pg-startup-diorama__glow--fantasy"></div>
-                <img class="pg-startup-sprite pg-startup-sprite--wizard" src="./assets/image-library/kenney/characters/dungeon_wizard.png" width="32" height="32" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--ghost" src="./assets/image-library/kenney/enemies/dungeon_ghost.png" width="32" height="32" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--cultist" src="./assets/image-library/kenney/enemies/dungeon_cultist.png" width="32" height="32" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--knight" src="./assets/image-library/kenney/characters/dungeon_knight_grille.png" width="32" height="32" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--spider" src="./assets/image-library/kenney/enemies/dungeon_spider.png" width="32" height="32" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--bat" src="./assets/image-library/kenney/enemies/dungeon_wisp.png" width="24" height="24" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--gem" src="./assets/image-library/kenney/items/gem_green.png" width="24" height="24" alt="">
-            </div>
-            <div class="pg-startup-diorama pg-startup-diorama--nature">
-                <div class="pg-startup-diorama__glow pg-startup-diorama__glow--nature"></div>
-                <img class="pg-startup-sprite pg-startup-sprite--tree-a" src="./assets/image-library/kenney/backgrounds/layer_tree01.png" width="48" height="64" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--tree-b" src="./assets/image-library/kenney/backgrounds/layer_tree02.png" width="40" height="56" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--tree-c" src="./assets/image-library/kenney/backgrounds/layer_tree03.png" width="36" height="52" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--bush" src="./assets/image-library/kenney/tiles/bush.png" width="32" height="32" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--mushroom" src="./assets/image-library/kenney/tiles/mushroom_red.png" width="24" height="24" alt="">
-            </div>
-            <div class="pg-startup-diorama pg-startup-diorama--arcade">
-                <div class="pg-startup-diorama__glow pg-startup-diorama__glow--arcade"></div>
-                <img class="pg-startup-sprite pg-startup-sprite--hero" src="./assets/image-library/kenney/characters/hero_yellow_stand.png" width="32" height="32" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--coin" src="./assets/image-library/kenney/items/coin_gold.png" width="24" height="24" alt="">
-                <img class="pg-startup-sprite pg-startup-sprite--invader" src="./assets/image-library/kenney/enemies/enemy_blue_1.png" width="32" height="32" alt="">
-            </div>
-        </div>
-        <div class="pg-startup-screen__focus"></div>
-        <div class="pg-startup-screen__fog"></div>
-        <div class="pg-startup-screen__vignette"></div>
-    </div>
-    <div class="pg-startup-screen__topbar">
-        <div class="pg-lang-switch" role="group" aria-labelledby="startupLangLabel">
+    <aside class="startup-sidebar">
+        <div class="startup-brand"><span class="startup-brand__icon" aria-hidden="true"><span class="startup-svg startup-svg--gamepad"></span></span><strong>PGZero<br>Studio</strong></div>
+        <nav class="startup-nav" aria-label="Навигация">
+            <button type="button" class="startup-nav__item is-active" data-startup-view="home" data-i18n-aria-label="startup.navHome" aria-label="Главная"><span class="startup-svg startup-svg--home" aria-hidden="true"></span><span data-i18n="startup.navHome">Главная</span></button>
+            <button type="button" class="startup-nav__item" data-startup-view="mine" data-i18n-aria-label="startup.myGamesNav" aria-label="Мои игры"><span class="startup-svg startup-svg--gamepad" aria-hidden="true"></span><span data-i18n="startup.myGamesNav">Мои игры</span></button>
+            <button type="button" class="startup-nav__item" data-startup-view="projects" data-i18n-aria-label="startup.navProjects" aria-label="Все проекты"><span class="startup-svg startup-svg--folder" aria-hidden="true"></span><span data-i18n="startup.navProjects">Все проекты</span></button>
+        </nav>
+        <div class="startup-sidebar__art" aria-hidden="true"></div>
+    </aside>
+    <div class="startup-workspace">
+        <header class="startup-topbar"><div class="pg-lang-switch" role="group" aria-labelledby="startupLangLabel">
             <span id="startupLangLabel" class="pg-lang-switch__label" data-i18n="lang.label">Язык интерфейса</span>
-            <div class="pg-lang-switch__buttons">
-                <button type="button" class="pg-lang-switch__btn" data-lang="ru" aria-pressed="false">RU</button>
-                <button type="button" class="pg-lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
-                <button type="button" class="pg-lang-switch__btn" data-lang="es" aria-pressed="false">ES</button>
+            <div class="pg-lang-switch__buttons"><button type="button" class="pg-lang-switch__btn" data-lang="ru" aria-pressed="false">RU</button><button type="button" class="pg-lang-switch__btn" data-lang="en" aria-pressed="false">EN</button><button type="button" class="pg-lang-switch__btn" data-lang="es" aria-pressed="false">ES</button></div>
+        </div></header>
+        <main class="startup-main">
+            <div id="startupHomeView">
+                <section class="startup-featured" aria-labelledby="featuredGamesTitle">
+                    <div class="startup-featured__art" aria-hidden="true"></div>
+                    <div class="startup-heading"><div><h1 id="featuredGamesTitle" data-i18n="startup.featuredTitle">Игры сообщества</h1><p data-i18n="startup.featuredHint">Попробуй игры, созданные в студии</p><button type="button" class="startup-text-link startup-library-link" data-startup-view="projects" data-i18n="startup.allGames">Все игры →</button></div>
+                    </div>
+                    <div class="startup-feed-toolbar">
+                    <div class="startup-feed-tabs" role="group" aria-label="Игры сообщества">
+                        <button type="button" class="is-active" id="feedCurated" aria-pressed="true" data-i18n="startup.feedCurated">Выбор студии</button>
+                        <button type="button" id="feedRecent" aria-pressed="false" data-i18n="startup.feedRecent">Недавно опубликованные</button>
+                    </div>
+                    <div class="startup-carousel__controls"><button type="button" id="featuredPrev" aria-label="Назад" data-i18n-aria-label="startup.previous"><span class="startup-svg startup-svg--prev" aria-hidden="true"></span></button><button type="button" id="featuredPause" aria-label="Пауза" data-i18n-aria-label="startup.pause"><span class="startup-svg startup-svg--pause" aria-hidden="true"></span></button><button type="button" id="featuredNext" aria-label="Далее" data-i18n-aria-label="startup.next"><span class="startup-svg startup-svg--next" aria-hidden="true"></span></button></div>
+                    </div>
+                    <p id="feedMessage" class="startup-feed-message" hidden role="status"></p>
+                    <div class="startup-carousel is-overflowing" id="featuredCarousel" tabindex="0" aria-label="Игры сообщества">
+                        <div class="startup-carousel__track" id="featuredTrack">
+                            <a class="startup-game" href="./play.html?id=3u6jzz" target="_blank" rel="noopener noreferrer"><img src="./assets/featured-games/space-cats.png" alt=""><span class="startup-game__body"><strong>Space Cats</strong><span data-i18n="startup.featuredSpace">Космическое приключение</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=fqjs93" target="_blank" rel="noopener noreferrer"><img src="./assets/featured-games/clicker-heroes.png" alt=""><span class="startup-game__body"><strong>Clicker Heroes</strong><span data-i18n="startup.featuredClicker">Кликер с улучшениями</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=q33jsj" target="_blank" rel="noopener noreferrer"><img src="./assets/featured-games/runner.png" alt=""><span class="startup-game__body"><strong>Runner</strong><span data-i18n="startup.featuredRunner">Прыжки и препятствия</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=gr57ko" target="_blank" rel="noopener noreferrer"><img src="./assets/featured-games/soul-knight.png" alt=""><span class="startup-game__body"><strong>Soul Knight</strong><span data-i18n="startup.featuredAction">Приключение</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=0xuy0b" target="_blank" rel="noopener noreferrer"><img src="./assets/featured-games/meteorites.jpg" alt=""><span class="startup-game__body"><strong>Метеориты-3</strong><span data-i18n="startup.featuredSpace">Космическое приключение</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=3ryh7r" target="_blank" rel="noopener noreferrer"><img src="./assets/featured-games/begat.png" alt=""><span class="startup-game__body"><strong>Begat</strong><span data-i18n="startup.featuredAction">Приключение</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=1wn18o" target="_blank" rel="noopener noreferrer"><img src="./assets/featured-games/clicker.jpg" alt=""><span class="startup-game__body"><strong>Кликер</strong><span data-i18n="startup.featuredClicker">Кликер с улучшениями</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=6y5dto" target="_blank" rel="noopener noreferrer"><img src="./published/previews/6y5dto.webp" alt=""><span class="startup-game__body"><strong>ПИНГ - ПОНГ 2.0</strong><span data-i18n="startup.featuredCommunity">Игра сообщества</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=26cgkb" target="_blank" rel="noopener noreferrer"><img src="./published/previews/26cgkb.webp" alt=""><span class="startup-game__body"><strong>myMysticAdventureGame</strong><span data-i18n="startup.featuredCommunity">Игра сообщества</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=w9y7kp" target="_blank" rel="noopener noreferrer"><img src="./published/previews/w9y7kp.webp" alt=""><span class="startup-game__body"><strong>зомби</strong><span data-i18n="startup.featuredCommunity">Игра сообщества</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=qddhba" target="_blank" rel="noopener noreferrer"><img src="./published/previews/qddhba.webp" alt=""><span class="startup-game__body"><strong>myHiddenExploitGame</strong><span data-i18n="startup.featuredCommunity">Игра сообщества</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=61zsjr" target="_blank" rel="noopener noreferrer"><img src="./published/previews/61zsjr.webp" alt=""><span class="startup-game__body"><strong>myShadowCodeGame</strong><span data-i18n="startup.featuredCommunity">Игра сообщества</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                            <a class="startup-game" href="./play.html?id=2k1txf" target="_blank" rel="noopener noreferrer"><img src="./published/previews/2k1txf.webp" alt=""><span class="startup-game__body"><strong>Бегун (1)</strong><span data-i18n="startup.featuredCommunity">Игра сообщества</span><span class="startup-game__play" data-i18n="startup.featuredPlay">Играть</span></span></a>
+                        </div>
+                    </div>
+                </section>
+                <section class="startup-projects" aria-labelledby="startupSlotsTitle"><div class="startup-section-heading"><h2 id="startupSlotsTitle" data-i18n="startup.slotsTitle">Твои игры</h2><button type="button" class="startup-text-link" data-startup-view="mine" data-i18n="startup.allMyGames">Все мои игры →</button></div><div id="projectStartupGrid" class="project-gallery-grid pg-startup-grid"></div></section>
             </div>
-        </div>
-    </div>
-    <div class="pg-startup-screen__layout">
-        <main class="pg-startup-screen__main">
-            <header class="pg-startup-screen__hero">
-                <div class="pg-startup-screen__logo-wrap">
-                    <img class="pg-startup-screen__logo" src="./assets/logo-brand.png" width="120" height="120" alt="PGZero Studio">
+            <section id="startupProjectsView" hidden aria-labelledby="allProjectsTitle"><div class="startup-heading"><div><h1 id="allProjectsTitle" data-i18n="startup.navProjects">Все проекты</h1><p id="startupCatalogHint" data-i18n="startup.libraryHint">Опубликованные игры сообщества</p></div><button type="button" class="startup-create" id="startupCreateProject" hidden data-i18n="startup.newProject">Новый проект</button></div>
+                <div id="startupBackupActions" class="startup-backup-actions" hidden><button type="button" id="startupBackupDownload" data-i18n="startup.backupDownload">Скачать копию всех игр</button><button type="button" id="startupBackupRestore" data-i18n="startup.backupRestore">Восстановить из копии</button><input id="startupBackupFile" type="file" accept=".pgzbackup,application/zip" hidden><span id="startupBackupStatus" role="status" aria-live="polite"></span></div>
+                <div class="startup-catalog-tabs" role="group" aria-label="Каталог проектов">
+                    <button type="button" class="is-active" id="catalogLibrary" aria-pressed="true" data-i18n="startup.libraryTab">Библиотека игр</button>
+                    <button type="button" id="catalogMine" aria-pressed="false" data-i18n="startup.mineTab">Мои проекты</button>
                 </div>
-                <p class="pg-startup-screen__brand"><span>PGZero</span> Studio</p>
-                <h1 class="pg-startup-screen__title" data-i18n="startup.title">Добро пожаловать</h1>
-                <p class="pg-startup-screen__subtitle" data-i18n="startup.subtitle">Создавай игры прямо в браузере — код, картинки и звуки</p>
-                <ul class="pg-startup-screen__chips" aria-label="Features">
-                    <li class="pg-startup-screen__chip" data-i18n="startup.chipCode">Код в браузере</li>
-                    <li class="pg-startup-screen__chip" data-i18n="startup.chipSprites">Спрайты и звуки</li>
-                    <li class="pg-startup-screen__chip" data-i18n="startup.chipPublish">Публикация игры</li>
-                    <li class="pg-startup-screen__chip" data-i18n="startup.chipNoInstall">Без установки</li>
-                </ul>
-                <p class="pg-startup-screen__hint" data-i18n="startup.hint">Выбери ячейку для новой или сохранённой игры</p>
-            </header>
-            <section class="pg-startup-screen__slots" aria-labelledby="startupSlotsTitle">
-                <h2 id="startupSlotsTitle" class="pg-startup-screen__slots-title" data-i18n="startup.slotsTitle">Твои игры</h2>
-                <div id="projectStartupGrid" class="project-gallery-grid pg-startup-grid"></div>
+                <label class="startup-search"><span class="sr-only" data-i18n="startup.search">Поиск по названию</span><input id="startupProjectSearch" type="search" data-i18n-placeholder="startup.search" placeholder="Поиск по названию"></label>
+                <div id="allProjectsGrid" class="startup-project-grid"></div><p id="allProjectsEmpty" class="startup-empty" hidden data-i18n="startup.noProjects">Проекты не найдены</p><div id="startupPagination" class="startup-pagination" aria-label="Страницы"></div>
             </section>
         </main>
-        <footer class="pg-startup-screen__credit"><span data-i18n="startup.credit">Сделал Andrei Pabiarzhyn</span></footer>
+        <footer class="startup-footer" data-i18n="startup.credit">Сделал Andrei Pabiarzhyn</footer>
     </div>
 </div>
 
@@ -176,25 +159,26 @@
     <script src="./lib/cm/search.js"></script>
     <script src="./lib/cm/searchbox.js"></script>   
     <script src="./lib/cm/matchbrackets.js"></script>
-    <script src="./lib/editor-ide.js?v=0.073"></script>
+    <script src="./lib/cm/closebrackets.js"></script>
+    <script src="./lib/editor-ide.js?v=0.074"></script>
     <!-- Библиотеки -->
     <script src="./lib/base.js"></script>
-    <script src="./lib/lib.js?v=0.073"></script>
-    <script src="./lib/session.js?v=0.073"></script>
+    <script src="./lib/lib.js?v=0.074"></script>
+    <script src="./lib/session.js?v=0.074"></script>
     <script src="./lib/code-history.js"></script>
     <script src="./lib/storage-guard.js"></script>
     <script src="./lib/skulpt/skulpt.min.js"></script>
     <script src="./lib/skulpt/skulpt-stdlib.js"></script>
-    <script src="./lib/extlibs.js?v=0.073"></script>
-    <script src="./lib/jsfs2.js"></script>
-    <script src="./lib/image-assets.js?v=0.073"></script>    
+    <script src="./lib/extlibs.js?v=0.074"></script>
+    <script src="./lib/jsfs2.js?v=0.088"></script>
+    <script src="./lib/image-assets.js?v=0.074"></script>    
     <script src="./lib/jszip.min.js"></script>
     <script src="./lib/FileSaver.min.js"></script>
-    <script src="./lib/pgz-project-io.js?v=0.073"></script>
-    <script src="./lib/publish-config.js?v=0.073"></script>
-    <script src="./lib/publish-static.js?v=0.073"></script>
-    <script src="./lib/publish-link.js?v=0.073"></script>
-    <script src="./lib/project-publish.js?v=0.073"></script>
+    <script src="./lib/pgz-project-io.js?v=0.074"></script>
+    <script src="./lib/publish-config.js?v=0.074"></script>
+    <script src="./lib/publish-static.js?v=0.083"></script>
+    <script src="./lib/publish-link.js?v=0.074"></script>
+    <script src="./lib/project-publish.js?v=0.074"></script>
     <script>
 	var coldStart = true;
     if (localStorage.loadAction) { coldStart=false}
@@ -1530,34 +1514,40 @@
     </a>
     <input type="text" id="projectNameInput" class="tb-project-name" data-i18n-placeholder="toolbar.projectName" data-i18n-aria-label="toolbar.projectName" placeholder="Название игры" maxlength="32" aria-label="Название игры">
     <span class="tb-divider" aria-hidden="true"></span>
-    <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-play--hero tb-wide" data-pz-icon="play" data-i18n-title="toolbar.playTitle" title="Запустить игру (F5)">
+    <button type="button" id="btn_run" class="toolButton tb-btn tb-play tb-play--hero tb-wide" data-pz-icon="play" data-i18n-title="toolbar.playTitle" data-i18n-aria-label="toolbar.playTitle" title="Запустить игру (Ctrl+Enter)" aria-label="Запустить игру (Ctrl+Enter)">
       <span class="tb-label" data-i18n="toolbar.play">Играть</span>
     </button>
-    <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" data-i18n-title="toolbar.stop" title="Остановить" style="display:none;"></button>
+    <button type="button" id="btn_stopRunning" class="toolButton tb-btn tb-danger" data-pz-icon="stop" data-i18n-title="toolbar.stop" data-i18n-aria-label="toolbar.stop" title="Остановить" aria-label="Остановить" style="display:none;"></button>
     <span class="tb-divider" aria-hidden="true"></span>
     <div class="tb-group tb-group-save">
-      <button type="button" id="btn_save_slot" class="toolButton tb-btn tb-save-slot tb-wide" data-pz-icon="save" data-i18n-title="toolbar.saveTitle" title="Сохранить игру в браузере" onclick="PGZProjectGallery.saveActiveSlotNow()">
+      <button type="button" id="btn_save_slot" class="toolButton tb-btn tb-save-slot tb-wide" data-pz-icon="tSave" data-i18n-title="toolbar.saveTitle" data-i18n-aria-label="toolbar.saveTitle" title="Сохранить игру в браузере" onclick="PGZProjectGallery.saveActiveSlotNow()">
         <span class="tb-label" data-i18n="toolbar.save">Сохранить</span>
       </button>
-      <button type="button" id="btn_pgz_publish" class="toolButton tb-btn tb-publish tb-wide" data-pz-icon="publish" data-i18n-title="toolbar.publishTitle" data-i18n-aria-label="toolbar.publishAria" title="Опубликовать и получить ссылку" aria-label="Опубликовать" onclick="PGZProjectPublish.publishFromUi()">
+      <button type="button" id="btn_pgz_publish" class="toolButton tb-btn tb-publish tb-wide" data-pz-icon="tPublish" data-i18n-title="toolbar.publishTitle" data-i18n-aria-label="toolbar.publishAria" title="Опубликовать и получить ссылку" aria-label="Опубликовать" onclick="PGZProjectPublish.publishFromUi()">
         <span class="tb-label" data-i18n="toolbar.publish">Опубликовать</span>
       </button>
     </div>
     <div class="tb-group tb-group-files">
-      <button type="button" id="btn_pgz_open" class="toolButton tb-btn tb-open-file" data-pz-icon="folderOpen" data-i18n-title="toolbar.openFile" data-i18n-aria-label="toolbar.openFileAria" title="Открыть проект с компьютера" aria-label="Открыть проект" onclick="importGallery()"></button>
-      <button type="button" id="btn_pgz_save" class="toolButton tb-btn tb-save-file" data-pz-icon="download" data-i18n-title="toolbar.downloadFile" data-i18n-aria-label="toolbar.downloadFileAria" title="Скачать файл .pgz на компьютер" aria-label="Скачать на компьютер" onclick="exportGallery()"></button>
+      <button type="button" id="btn_pgz_open" class="toolButton tb-btn tb-open-file" data-pz-icon="tOpen" data-i18n-title="toolbar.openFile" data-i18n-aria-label="toolbar.openFileAria" title="Открыть проект с компьютера" aria-label="Открыть проект" onclick="importGallery()"></button>
+      <button type="button" id="btn_pgz_save" class="toolButton tb-btn tb-save-file" data-pz-icon="tDownload" data-i18n-title="toolbar.downloadFile" data-i18n-aria-label="toolbar.downloadFileAria" title="Скачать файл .pgz на компьютер" aria-label="Скачать на компьютер" onclick="exportGallery()"></button>
     </div>
     <div class="tb-group tb-group-learn">
-      <button type="button" id="btn_project_gallery" class="toolButton tb-btn tb-wide" data-pz-icon="projects" data-i18n-title="toolbar.myGamesTitle" title="Мои игры — 6 ячеек в браузере" onclick="PGZProjectGallery.openSwitchModal()">
+      <button type="button" id="btn_project_gallery" class="toolButton tb-btn tb-wide" data-pz-icon="tProjects" data-i18n-title="toolbar.myGamesTitle" data-i18n-aria-label="toolbar.myGamesTitle" title="Мои игры в браузере" onclick="PGZProjectGallery.openSwitchModal()">
         <span class="tb-label" data-i18n="toolbar.myGames">Мои игры</span>
       </button>
-      <button type="button" id="btn_open_templates" class="toolButton tb-btn tb-wide" data-pz-icon="templates" data-i18n-title="toolbar.templatesTitle" title="Примеры игр с картинками" onclick="PGZGameTemplates.openModal()">
+      <button type="button" id="btn_open_templates" class="toolButton tb-btn tb-wide" data-pz-icon="tTemplates" data-i18n-title="toolbar.templatesTitle" data-i18n-aria-label="toolbar.templatesTitle" title="Примеры игр с картинками" onclick="PGZGameTemplates.openModal()">
         <span class="tb-label" data-i18n="toolbar.templates">Примеры</span>
       </button>
     </div>
     <div class="tb-more-wrap">
-      <button type="button" id="btn_more" class="toolButton tb-btn tb-more" data-pz-icon="more" data-i18n-title="toolbar.more" title="Ещё" onclick="toggleMoreMenu(event)"></button>
+      <button type="button" id="btn_more" class="toolButton tb-btn tb-more" data-pz-icon="more" data-i18n-title="toolbar.more" data-i18n-aria-label="toolbar.more" aria-label="Ещё" aria-haspopup="true" aria-expanded="false" aria-controls="moreMenu" title="Ещё" onclick="toggleMoreMenu(event)"></button>
       <div id="moreMenu">
+        <button type="button" class="toolButton tb-btn tb-overflow-save" data-pz-icon="tSave" onclick="PGZProjectGallery.saveActiveSlotNow(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.save">Сохранить</span></button>
+        <button type="button" class="toolButton tb-btn tb-overflow-projects" data-pz-icon="tProjects" onclick="PGZProjectGallery.openSwitchModal(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.myGames">Мои игры</span></button>
+        <button type="button" class="toolButton tb-btn tb-small-publish" data-pz-icon="tPublish" onclick="PGZProjectPublish.publishFromUi(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.publish">Опубликовать</span></button>
+        <button type="button" class="toolButton tb-btn tb-narrow-action" data-pz-icon="tOpen" onclick="importGallery(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.openFile">Открыть проект с компьютера</span></button>
+        <button type="button" class="toolButton tb-btn tb-narrow-action" data-pz-icon="tDownload" onclick="exportGallery(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.downloadFile">Скачать файл .pgz на компьютер</span></button>
+        <button type="button" class="toolButton tb-btn tb-narrow-action" data-pz-icon="tTemplates" onclick="PGZGameTemplates.openModal(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.templates">Примеры</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="paint" data-i18n-title="toolbar.drawSpriteTitle" title="Нарисовать спрайт" onclick="showEditor(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.drawSprite">Нарисовать спрайт</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="files" data-i18n-title="toolbar.myFilesTitle" title="Мои файлы" onclick="showProjectFiles(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.myFiles">Мои файлы</span></button>
         <button type="button" class="toolButton tb-btn" data-pz-icon="console" data-i18n-title="toolbar.consoleTitle" title="Консоль" onclick="showConsole(); closeMoreMenu();"><span class="tb-label" data-i18n="toolbar.console">Консоль</span></button>
@@ -1608,6 +1598,7 @@
           <span id="ideStatusPos">Стр. 1, кол. 1</span>
           <span id="ideStatusSel"></span>
           <span class="ide-status-spacer"></span>
+          <span data-i18n="ide.indentStatus">Пробелы: 4</span>
           <span id="ideStatusLang" data-i18n="ide.statusLang">Python · Pygame Zero</span>
           <span id="ideStatusHints" data-i18n="ide.statusHints">Ctrl+F · +/−</span>
         </div>
@@ -1616,8 +1607,17 @@
     <div id="splitterH" class="layout-splitter layout-splitter-h" data-i18n-title="ide.splitterH" title="Потяните — изменить высоту консоли"></div>
     <div id="consolePane" class="layout-console-pane">
       <div id="consoleContainer" class="ide-console-wrap">
-        <div class="ide-console-label" data-i18n="ide.console">Консоль</div>
-        <div id="output"></div>
+        <div class="ide-console-header">
+          <span class="ide-console-label" data-i18n="ide.console">Консоль</span>
+          <div class="ide-console-actions">
+            <button type="button" id="consoleZoomOut" class="ide-console-zoom" data-i18n-title="ide.consoleZoomOut" data-i18n-aria-label="ide.consoleZoomOut" title="Уменьшить текст консоли" aria-label="Уменьшить текст консоли">−</button>
+            <span id="consoleZoomValue" class="ide-console-zoom-value" aria-hidden="true">14</span>
+            <button type="button" id="consoleZoomIn" class="ide-console-zoom" data-i18n-title="ide.consoleZoomIn" data-i18n-aria-label="ide.consoleZoomIn" title="Увеличить текст консоли" aria-label="Увеличить текст консоли">+</button>
+            <button type="button" id="consoleClearBtn" class="ide-console-clear" data-i18n="ide.clearConsole" data-i18n-title="ide.clearConsoleTitle" title="Очистить вывод консоли">Очистить</button>
+          </div>
+        </div>
+        <div id="output" role="log" aria-live="polite" aria-relevant="additions text"></div>
+        <span id="consoleEmpty" class="ide-console-empty" data-i18n="ide.consoleEmpty">Здесь появится вывод игры</span>
       </div>
     </div>
   </div>
@@ -1641,8 +1641,8 @@
     <div class="frame-header">
       <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="image"></span> <span data-i18n="sidebar.images">Картинки</span></h3>
       <div class="controls-bar">
-        <button class="gallery-btn" data-pz-icon="gLibrary" data-i18n-title="sidebar.spriteLibrary" onclick="openImageLibraryModal()" title="Библиотека спрайтов"></button>
-        <button class="gallery-btn" data-pz-icon="gAdd" data-i18n-title="sidebar.addImage" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
+        <button class="gallery-btn" data-pz-icon="gLibrary" data-i18n-title="sidebar.spriteLibrary" data-i18n-aria-label="sidebar.spriteLibrary" onclick="openImageLibraryModal()" title="Библиотека спрайтов"></button>
+        <button class="gallery-btn" data-pz-icon="gAdd" data-i18n-title="sidebar.addImage" data-i18n-aria-label="sidebar.addImage" onclick="(async () => await addFile('image'))()" title="Добавить картинку"></button>
       </div>
     </div>
     <div id="imagesList" class="assets-items-scroll"></div>
@@ -1652,8 +1652,8 @@
     <div class="frame-header">
       <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="sound"></span> <span data-i18n="sidebar.sounds">Звуки</span></h3>
       <div class="controls-bar">
-        <button class="gallery-btn" data-pz-icon="gLibrary" data-i18n-title="sidebar.soundLibrary" onclick="openSoundLibraryModal()" title="Библиотека звуков"></button>
-        <button class="gallery-btn" data-pz-icon="gAdd" data-i18n-title="sidebar.addSound" onclick="(async () => await addFile('audio'))()" title="Добавить звук"></button>
+        <button class="gallery-btn" data-pz-icon="gLibrary" data-i18n-title="sidebar.soundLibrary" data-i18n-aria-label="sidebar.soundLibrary" onclick="openSoundLibraryModal()" title="Библиотека звуков"></button>
+        <button class="gallery-btn" data-pz-icon="gAdd" data-i18n-title="sidebar.addSound" data-i18n-aria-label="sidebar.addSound" onclick="(async () => await addFile('audio'))()" title="Добавить звук"></button>
       </div>
     </div>
     <div id="soundsList" class="assets-items-scroll"></div>
@@ -1663,8 +1663,8 @@
     <div class="frame-header">
       <h3 class="frame-title"><span class="pz-icon-wrap" data-pz-icon="music"></span> <span data-i18n="sidebar.music">Музыка</span></h3>
       <div class="controls-bar">
-        <button class="gallery-btn" data-pz-icon="gLibrary" data-i18n-title="sidebar.musicLibrary" onclick="openMusicLibraryModal()" title="Библиотека музыки"></button>
-        <button class="gallery-btn" data-pz-icon="gAdd" data-i18n-title="sidebar.addMusic" onclick="(async () => await addFile('music'))()" title="Добавить музыку"></button>
+        <button class="gallery-btn" data-pz-icon="gLibrary" data-i18n-title="sidebar.musicLibrary" data-i18n-aria-label="sidebar.musicLibrary" onclick="openMusicLibraryModal()" title="Библиотека музыки"></button>
+        <button class="gallery-btn" data-pz-icon="gAdd" data-i18n-title="sidebar.addMusic" data-i18n-aria-label="sidebar.addMusic" onclick="(async () => await addFile('music'))()" title="Добавить музыку"></button>
       </div>
     </div>
     <div id="musicList" class="assets-items-scroll"></div>
@@ -1682,7 +1682,7 @@
 <footer id="appFooter" class="app-footer">
   <span id="footerProjectStatus" class="footer-project-status" aria-live="polite"></span>
   <span class="footer-credits"><span data-i18n="common.credit">Сделал Andrei Pabiarzhyn</span></span>
-  <span id="footerVersion" class="footer-version" title="PGZero Studio">v0.073</span>
+  <span id="footerVersion" class="footer-version" title="PGZero Studio">v0.074</span>
 </footer>
 
 <!-- Продолжить сессию -->
@@ -1736,8 +1736,7 @@
     <div id="imageLibraryGroups" class="sound-library-groups" style="display:flex;"></div>
     <div id="imageLibraryGrid" class="sound-library-grid image-library-grid"></div>
     <div class="sound-library-footer">
-      <button type="button" id="imageLibraryImportBtn" class="btn-modal-close sound-library-import-btn" style="display:none;" data-i18n="common.addToProject" onclick="importSelectedImageFromLibrary()">Добавить в проект</button>
-      <button type="button" class="btn-secondary" data-modal-close data-i18n="common.close" onclick="closeImageLibraryModal()">Закрыть</button>
+      <button type="button" id="imageLibraryImportBtn" class="btn-modal-close sound-library-import-btn" disabled data-i18n="common.addToProject" onclick="importSelectedImageFromLibrary()">Добавить в проект</button>
     </div>
   </div>
 </div>
@@ -1994,6 +1993,14 @@
                 </div>
             </div>
 
+            <div class="settings-section">
+                <div class="section-header"><h4 data-i18n="settings.typing">Набор кода</h4></div>
+                <div class="section-content">
+                    <label class="setting-item"><input type="checkbox" id="editorAutoPairs"> <span data-i18n="settings.autoPairs">Закрывать скобки и кавычки</span></label>
+                    <label class="setting-item"><input type="checkbox" id="editorAutoComplete"> <span data-i18n="settings.autoComplete">Показывать подсказки при наборе</span></label>
+                </div>
+            </div>
+
             <!-- Тема приложения -->
             <div class="settings-section">
                 <div class="section-header">
@@ -2190,7 +2197,6 @@
         </div>
         <div class="modal-footer project-gallery-footer">
             <button type="button" class="btn-secondary project-gallery-import" data-i18n="gallery.openPgz" onclick="importGallery()">Открыть файл .pgz</button>
-            <button type="button" class="btn-modal-close project-gallery-close" data-modal-close data-i18n="common.close">Закрыть</button>
         </div>
     </div>
 </div>
@@ -2278,29 +2284,32 @@
     </div>
 </div>
     <!-- Галерея ресурсов -->
-    <script src="./lib/starter-code.js?v=0.073"></script>
-    <script src="./lib/icons.js"></script>
-    <script src="./lib/tooltips.js"></script>
+    <script src="./lib/starter-code.js?v=0.074"></script>
+    <script src="./lib/icons.js?v=0.105"></script>
+    <script src="./lib/tooltips.js?v=0.074"></script>
     <script src="./lib/app-theme.js"></script>
-    <script src="./lib/i18n.js?v=0.073"></script>
-    <script src="./lib/toolbar-compact.js"></script>
+    <script src="./lib/i18n.js?v=0.074"></script>
+    <script src="./lib/toolbar-compact.js?v=0.109"></script>
     <script src="./lib/version.js"></script>
     <script src="./lib/game-modal.js"></script>
-    <script src="./lib/wav-adpcm.js?v=0.073"></script>
-    <script src="./lib/assets-gallery.js?v=0.073"></script>
-    <script src="./lib/sound-library.js?v=0.073"></script>
-    <script src="./lib/music-library.js?v=0.073"></script>
-    <script src="./lib/image-library.js?v=0.073"></script>
+    <script src="./lib/wav-adpcm.js?v=0.074"></script>
+    <script src="./lib/assets-gallery.js?v=0.074"></script>
+    <script src="./lib/sound-library.js?v=0.074"></script>
+    <script src="./lib/music-library.js?v=0.074"></script>
+    <script src="./lib/image-library.js?v=0.074"></script>
     <script src="./lib/project-files.js"></script>
-    <script src="./lib/project-gallery.js?v=0.073"></script>
-    <script src="./lib/game-templates.js?v=0.073"></script>
+    <script src="./lib/project-gallery.js?v=0.090"></script>
+    <script src="./lib/project-backup.js?v=0.090"></script>
+    <script src="./lib/startup-home.js?v=0.090"></script>
+    <script src="./lib/game-templates.js?v=0.074"></script>
     <script src="./lib/layout-splitters.js"></script>
-    <script src="./lib/sidebar-tabs.js"></script>
-    <script src="./lib/modals.js"></script>
+    <script src="./lib/sidebar-tabs.js?v=0.082"></script>
+    <script src="./lib/modals.js?v=0.086"></script>
     <script>
 	PythonIDE.init('normal');	
 
     async function showEditor(filename = null) {
+        if (typeof hideItemPopovers === 'function') hideItemPopovers();
         const modal = document.createElement('div');
         modal.id = 'imageEditorModal';
         modal.style.cssText = `
@@ -2325,16 +2334,6 @@
         const wrap = document.createElement('div');
         wrap.style.cssText = 'position:relative;width:80vw;height:90vh;';
 
-        const closeBtn = document.createElement('button');
-        closeBtn.type = 'button';
-        closeBtn.className = 'btn-modal-close';
-        closeBtn.textContent = 'Закрыть';
-        closeBtn.style.cssText = 'position:absolute;top:-48px;right:0;z-index:2;';
-        closeBtn.onclick = function() {
-            modal.remove();
-            window.removeEventListener('message', messageHandler);
-        };
-    
         const iframe = document.createElement('iframe');
         iframe.src = editorUrl;
         iframe.style.cssText = `
@@ -2346,18 +2345,10 @@
         `;
         iframe.id = 'drawEditorFrame';
 
-        wrap.appendChild(closeBtn);
         wrap.appendChild(iframe);
         modal.appendChild(wrap);
         document.body.appendChild(modal);
 
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.remove();
-                window.removeEventListener('message', messageHandler);
-            }
-        });
-    
         const messageHandler = async(event) => {
             if (event.source !== iframe.contentWindow || !event.data) return;
 
@@ -2709,6 +2700,38 @@ document.getElementById('closeGameBtn').addEventListener('click', function() {
 });
 
 
+(function () {
+    var size = 14;
+    try { size = Math.min(24, Math.max(10, Number(localStorage.getItem('pgzConsoleFontSize')) || 14)); } catch (e) {}
+    function update() {
+        document.getElementById('output').style.fontSize = size + 'px';
+        document.getElementById('consoleZoomValue').textContent = size;
+        document.getElementById('consoleZoomOut').disabled = size <= 10;
+        document.getElementById('consoleZoomIn').disabled = size >= 24;
+        try { localStorage.setItem('pgzConsoleFontSize', size); } catch (e) {}
+    }
+    document.getElementById('consoleZoomOut').addEventListener('click', function () { size = Math.max(10, size - 1); update(); });
+    document.getElementById('consoleZoomIn').addEventListener('click', function () { size = Math.min(24, size + 1); update(); });
+    update();
+})();
+
+document.getElementById('consoleClearBtn').addEventListener('click', function () {
+    var output = document.getElementById('output');
+    if (!output) return;
+    // Keep the runtime's structural nodes (debugger/watch and REPL) intact.
+    Array.from(output.childNodes).forEach(function (node) {
+        if (node.nodeType === 1 && (node.id === 'headerOut' || node.id === 'consoleOut' || node.querySelector('#btn_showREPL') || node.id === 'raw_input_holder')) return;
+        node.remove();
+    });
+    var consoleOut = document.getElementById('consoleOut');
+    if (consoleOut) Array.from(consoleOut.childNodes).forEach(function (node) {
+        if (node.nodeType === 1 && node.id === 'watch') return;
+        node.remove();
+    });
+    var empty = document.getElementById('consoleEmpty');
+    if (empty) empty.hidden = !!document.getElementById('raw_input_holder');
+});
+
 function showConsole() {
 		var pane = document.getElementById('consolePane');
 		var splitter = document.getElementById('splitterH');
@@ -2860,12 +2883,12 @@ const ModalUI = {
             okBtn: document.getElementById('modal-ok-btn'),
             cancelBtn: document.getElementById('modal-cancel-btn'),
 
-            show(title, text, type) {
+            show(title, text, type, initialValue) {
                 return new Promise((resolve) => {
                     // Настройка содержимого
                     this.title.innerText = title;
                     this.text.innerText = text;
-                    this.inputField.value = '';
+                    this.inputField.value = initialValue == null ? '' : String(initialValue);
                     
                     this.okBtn.innerText = (type === 'confirm')
                         ? ((typeof PGZI18n !== 'undefined') ? PGZI18n.t('common.yes') : 'Да')
@@ -2897,6 +2920,17 @@ const ModalUI = {
                         finish(type === 'input' ? null : false);
                     };
 
+                    this.container.onkeydown = (e) => {
+                        if (e.isComposing) return;
+                        if (e.key === 'Escape' && type !== 'message') {
+                            e.preventDefault(); e.stopPropagation();
+                            finish(type === 'input' ? null : false);
+                        } else if (e.key === 'Enter' && type === 'input' && e.target === this.inputField) {
+                            e.preventDefault(); e.stopPropagation();
+                            finish(this.inputField.value);
+                        }
+                    };
+
                     this.container.onclick = (e) => {
                         if (e.target !== this.container) return;
                         if (type === 'confirm' || type === 'input') {
@@ -2906,7 +2940,7 @@ const ModalUI = {
 
                     // Фокус на поле ввода, если это input
                     if (type === 'input') {
-                        setTimeout(() => this.inputField.focus(), 100);
+                        setTimeout(() => { this.inputField.focus(); this.inputField.select(); }, 100);
                     }
                 });
             }
@@ -2922,8 +2956,8 @@ async function askConfirm(title, text) {
             return await ModalUI.show(title, text, 'confirm');
 }
 
-async function input(title, text) {
-            return await ModalUI.show(title, text, 'input');
+async function input(title, text, initialValue) {
+            return await ModalUI.show(title, text, 'input', initialValue);
 }
 
 function initPzIcons() {
@@ -2958,7 +2992,10 @@ function toggleMoreMenu(e) {
   if (!menu) return;
   var willOpen = !menu.classList.contains('is-open');
   menu.classList.toggle('is-open');
-  if (btn) btn.classList.toggle('tb-btn--active', willOpen);
+  if (btn) {
+    btn.classList.toggle('tb-btn--active', willOpen);
+    btn.setAttribute('aria-expanded', String(willOpen));
+  }
   if (willOpen) {
     requestAnimationFrame(positionMoreMenu);
   }
@@ -2966,11 +3003,19 @@ function toggleMoreMenu(e) {
 
 function closeMoreMenu() {
   document.getElementById('moreMenu')?.classList.remove('is-open');
-  document.getElementById('btn_more')?.classList.remove('tb-btn--active');
+  var moreBtn = document.getElementById('btn_more');
+  if (moreBtn) { moreBtn.classList.remove('tb-btn--active'); moreBtn.setAttribute('aria-expanded', 'false'); }
   if (typeof PGZI18n !== 'undefined' && PGZI18n.closeEditorLangMenu) {
     PGZI18n.closeEditorLangMenu();
   }
 }
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('moreMenu')?.classList.contains('is-open')) {
+    closeMoreMenu();
+    document.getElementById('btn_more')?.focus();
+  }
+});
 
 document.addEventListener('click', function(e) {
   if (!e.target.closest('.tb-more-wrap') && !e.target.closest('#moreMenu')) {
@@ -3056,4 +3101,5 @@ window.addEventListener('unhandledrejection', function(event) {
 </script>
 </body>
 </html>
+
 
