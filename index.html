@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="./lib/cm/monokai.css">
     <link rel="stylesheet" href="./lib/cm/pgz-ide.css">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./theme.css?v=0.090">
+    <link rel="stylesheet" href="./theme.css?v=0.091">
     <link rel="stylesheet" href="./new-message.css">
     <link rel="stylesheet" href="./lib/font-awesome.min.css">   
     <link rel="stylesheet" href="./jquery/ui/1.13.3/themes/base/jquery-ui.css">
@@ -117,6 +117,17 @@
     </div>
 </div>
 
+<dialog id="publishDetailsDialog" class="publish-details" aria-labelledby="publishDetailsTitle">
+  <form id="publishDetailsForm">
+    <div class="publish-details__header"><div><h2 id="publishDetailsTitle" data-i18n="publish.detailsTitle">Публикация игры</h2><p data-i18n="publish.detailsHint">Добавь название и обложку для библиотеки.</p></div><button type="button" id="publishDetailsClose" class="publish-details__close" aria-label="Закрыть" data-i18n-aria-label="common.close">×</button></div>
+    <label class="publish-details__label" for="publishGameName" data-i18n="publish.gameName">Название игры</label>
+    <input id="publishGameName" maxlength="100" required autocomplete="off" data-i18n-placeholder="publish.gameNamePlaceholder" placeholder="Например, Космический кот">
+    <div class="publish-details__label" data-i18n="publish.cover">Обложка</div>
+    <div class="publish-details__cover"><img id="publishCoverPreview" alt="" hidden><div><p data-i18n="publish.coverAuto">Если не загрузить картинку, студия сделает снимок игры.</p><label id="publishCoverChoose" class="publish-details__upload" for="publishCoverFile" tabindex="0" data-i18n="publish.coverChoose">Выбрать картинку</label><input id="publishCoverFile" type="file" accept="image/png,image/jpeg,image/webp" hidden><button id="publishCoverRemove" type="button" class="publish-details__remove" hidden data-i18n="publish.coverRemove">Убрать</button></div></div>
+    <p id="publishDetailsError" class="publish-details__error" role="alert" hidden></p>
+    <div class="publish-details__actions"><button type="button" id="publishDetailsCancel" class="publish-details__secondary" data-i18n="common.cancel">Отмена</button><button type="submit" class="publish-details__primary" data-i18n="toolbar.publish">Опубликовать</button></div>
+  </form>
+</dialog>
 <!-- Публикация — индикатор загрузки -->
 <div id="projectPublishLoading" class="pg-publish-loading" hidden aria-live="polite" aria-busy="true">
     <div class="pg-publish-loading__panel" role="status">
@@ -176,9 +187,9 @@
     <script src="./lib/FileSaver.min.js"></script>
     <script src="./lib/pgz-project-io.js?v=0.074"></script>
     <script src="./lib/publish-config.js?v=0.074"></script>
-    <script src="./lib/publish-static.js?v=0.083"></script>
+    <script src="./lib/publish-static.js?v=0.091"></script>
     <script src="./lib/publish-link.js?v=0.074"></script>
-    <script src="./lib/project-publish.js?v=0.074"></script>
+    <script src="./lib/project-publish.js?v=0.091"></script>
     <script>
 	var coldStart = true;
     if (localStorage.loadAction) { coldStart=false}
@@ -2300,7 +2311,7 @@
     <script src="./lib/project-files.js"></script>
     <script src="./lib/project-gallery.js?v=0.090"></script>
     <script src="./lib/project-backup.js?v=0.090"></script>
-    <script src="./lib/startup-home.js?v=0.090"></script>
+    <script src="./lib/startup-home.js?v=0.091"></script>
     <script src="./lib/game-templates.js?v=0.074"></script>
     <script src="./lib/layout-splitters.js"></script>
     <script src="./lib/sidebar-tabs.js?v=0.082"></script>

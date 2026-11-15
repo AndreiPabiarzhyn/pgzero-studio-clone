@@ -172,6 +172,18 @@
     "consoleEmpty": "La salida del juego aparecerá aquí"
   },
   "publish": {
+    "detailsTitle": "Publicar juego",
+    "detailsHint": "Añade un nombre y una portada para la biblioteca.",
+    "gameName": "Nombre del juego",
+    "gameNamePlaceholder": "Por ejemplo, Gato espacial",
+    "nameRequired": "Escribe un nombre para el juego.",
+    "cover": "Portada",
+    "coverAuto": "Si no subes una imagen, el estudio capturará una imagen del juego.",
+    "coverChoose": "Elegir imagen",
+    "coverRemove": "Quitar",
+    "coverInvalid": "Elige una imagen PNG, JPEG o WebP de hasta 8 MB.",
+    "captureFailed": "No se pudo capturar una imagen. Comprueba el juego o sube una imagen.",
+    "coverPortable": "La portada está disponible al publicar en la biblioteca.",
     "title": "¡Juego publicado!",
     "hint": "Comparte el enlace — tus amigos pueden jugar sin el editor",
     "urlLabel": "Enlace del juego",

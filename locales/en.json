@@ -172,6 +172,18 @@
     "consoleEmpty": "Game output will appear here"
   },
   "publish": {
+    "detailsTitle": "Publish game",
+    "detailsHint": "Add a name and cover for the library.",
+    "gameName": "Game name",
+    "gameNamePlaceholder": "For example, Space Cat",
+    "nameRequired": "Enter a game name.",
+    "cover": "Cover image",
+    "coverAuto": "If you don't upload an image, the studio will capture a frame from your game.",
+    "coverChoose": "Choose image",
+    "coverRemove": "Remove",
+    "coverInvalid": "Choose a PNG, JPEG or WebP image up to 8 MB.",
+    "captureFailed": "Could not capture a frame. Check your game or upload an image.",
+    "coverPortable": "Cover images are available when publishing to the library.",
     "title": "Game published!",
     "hint": "Share the link — friends can play without the editor",
     "urlLabel": "Game link",
