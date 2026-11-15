@@ -1,6 +1,13 @@
 /* PGZero Studio — детская тема */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap');
 
+/* Python operators must appear as their literal characters in every editor theme. */
+.CodeMirror pre {
+  -webkit-font-variant-ligatures: none;
+  font-variant-ligatures: none;
+  font-feature-settings: "calt" 0, "liga" 0, "clig" 0;
+}
+
 :root {
   --pz-bg: #edf0e9;
   --pz-bg-elevated: #fcfdf9;
