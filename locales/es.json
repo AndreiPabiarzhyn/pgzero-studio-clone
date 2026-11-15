@@ -474,7 +474,8 @@
     "noBackupsComment": "# No hay copias\n# Ejecuta el código para crear una copia"
   },
   "play": {
-    "waitingUpdate": "El juego se está actualizando. Espera un momento…",
+    "waitingUpdate": "Preparando el juego",
+    "waitingHint": "La nueva versión se está publicando. Suele tardar 1–2 minutos. Cuando esté lista aparecerá el botón Jugar.",
     "updatePending": "El juego aún se está actualizando. Vuelve a abrir el enlace en unos minutos.",
     "title": "Juego",
     "pageTitle": "Juego — PGZero Studio",

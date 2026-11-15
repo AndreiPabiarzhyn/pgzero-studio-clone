@@ -474,7 +474,8 @@
     "noBackupsComment": "# No backups\n# Run code to create a backup"
   },
   "play": {
-    "waitingUpdate": "The game is updating. Please wait…",
+    "waitingUpdate": "Getting the game ready",
+    "waitingHint": "The new version is being published. This usually takes 1–2 minutes. The Play button will appear when it is ready.",
     "updatePending": "The game is still updating. Try opening the link again in a few minutes.",
     "title": "Game",
     "pageTitle": "Game — PGZero Studio",
