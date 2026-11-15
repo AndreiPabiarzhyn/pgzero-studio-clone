@@ -155,3 +155,21 @@ test('новые игры отбираются за 10 дней по перво�
     assert.equal(sandbox.window.PGZStartupHome.recentGames([{id:'no-cover', publishedAt:now, preview:false}], now).length, 0);
     assert.equal(sandbox.window.PGZStartupHome.recentGames(games, now+30*day).length, 0);
 });
+
+test('выбор студии добавляет две последние игры с обложкой без повторов', () => {
+    const startupSource = readFileSync(join(__dirname, '../lib/startup-home.js'), 'utf8');
+    const sandbox = {window: {}, document: {readyState:'loading', addEventListener() {}}, URL, Set};
+    vm.createContext(sandbox); vm.runInContext(startupSource, sandbox);
+    const now = Date.UTC(2026, 10, 14);
+    const games = [
+        {id:'featured', publishedAt:now-1, preview:true},
+        {id:'no-cover', publishedAt:now-2, preview:false},
+        {id:'latest', publishedAt:now-3, preview:true},
+        {id:'next', publishedAt:now-4, preview:true},
+        {id:'third', publishedAt:now-5, preview:true},
+        {id:'future', publishedAt:now+1, preview:true}
+    ];
+    const picks = sandbox.window.PGZStartupHome.newestCommunityGames(games, ['featured'], now);
+    assert.deepEqual(Array.from(picks, game => game.id), ['latest', 'next']);
+    assert.equal(sandbox.window.PGZStartupHome.newestCommunityGames([], [], now).length, 0);
+});
