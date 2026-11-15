@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#0f172a">
-    <link rel="stylesheet" href="./theme.css?v=0.074">
+    <link rel="stylesheet" href="./theme.css?v=0.096">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -160,6 +160,29 @@
         #handbookSearch { display: block; box-sizing: border-box; width: 100%; margin-bottom: 16px; padding: 9px 12px; border: 1px solid var(--pz-border); border-radius: 8px; background: var(--pz-bg-elevated); color: var(--pz-text); font: inherit; }
         #handbookSearch:focus-visible, .toc a:focus-visible, .back-to-top:focus-visible { outline: 2px solid #5b9cff; outline-offset: 2px; }
         .section[hidden], .toc li[hidden], #handbookNoResults[hidden] { display: none; }
+        /* Standalone handbook shares the studio home palette; embedded mode follows its host theme. */
+        html { background: #141b1c; }
+        body:not(.handbook-embed) { max-width: 940px; padding: 32px 24px 64px; box-sizing: border-box; background: #141b1c; color: #efe9db; font-family: var(--pz-font, sans-serif); }
+        body:not(.handbook-embed) .handbook-top a { color: #c2d796; }
+        body:not(.handbook-embed) h1 { margin: 18px 0 30px; padding: 0; border: 0; text-align: left; color: #efe9db; font-size: clamp(26px, 4vw, 36px); }
+        body:not(.handbook-embed) h2, body:not(.handbook-embed) .toc h2 { color: #efe9db; border-color: #45504d; }
+        body:not(.handbook-embed) .toc, body:not(.handbook-embed) .section { background: #222b2c; border: 1px solid #45504d; border-radius: 12px; box-shadow: none; }
+        body:not(.handbook-embed) .toc a { color: #d0dfa8; }
+        body:not(.handbook-embed) .toc a:hover { background: #344339; }
+        body:not(.handbook-embed) #handbookSearch { background: #222b2c; border-color: #45504d; color: #efe9db; }
+        body:not(.handbook-embed) #handbookSearch::placeholder { color: #b5c1b5; }
+        body:not(.handbook-embed) .handbook-search-status, body:not(.handbook-embed) #handbookNoResults { color: #c4cabe; }
+        body:not(.handbook-embed) code { background: #34413a; color: #e0edc2; }
+        body:not(.handbook-embed) pre { background: #141b1c; color: #efe9db; }
+        body:not(.handbook-embed) pre code { background: transparent; color: inherit; }
+        body:not(.handbook-embed) .note { border: 1px solid #596850; border-radius: 8px; background: #303a30; color: #efe9db; }
+        body:not(.handbook-embed) .back-to-top { background: #adc477; color: #1b2719; }
+        html[data-app-theme="dark"] body:not(.handbook-embed) .toc a,
+        html[data-app-theme="dark"] body:not(.handbook-embed) .handbook-top a { color: #d0dfa8; }
+        html[data-app-theme="dark"] body.handbook-embed .toc a,
+        html[data-app-theme="dark"] body.handbook-embed .back-to-top { color: #d0dfa8; }
+        body:not(.handbook-embed) a:focus-visible, body:not(.handbook-embed) #handbookSearch:focus-visible { outline: 2px solid #c2d796; outline-offset: 3px; }
+        @media (max-width: 600px) { body:not(.handbook-embed) { padding: 22px 16px 48px; } body:not(.handbook-embed) .toc, body:not(.handbook-embed) .section { padding: 18px; } }
     </style>
   </head>
   <body>

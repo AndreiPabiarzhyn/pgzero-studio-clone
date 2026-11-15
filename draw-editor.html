@@ -10,7 +10,8 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#0f172a">
-    <link rel="stylesheet" href="theme.css?v=0.074">
+    <script>try { document.documentElement.dataset.appTheme = localStorage.getItem('OPT_appTheme') === 'dark' ? 'dark' : 'light'; } catch (e) {}</script>
+    <link rel="stylesheet" href="theme.css?v=0.096">
     <style>
         html, body {
             margin: 0;
@@ -101,6 +102,7 @@
 
         .de-size input[type="range"] {
             width: 100px;
+            accent-color: var(--pz-accent);
         }
 
         .de-main {
@@ -195,6 +197,7 @@
         .de-canvas-wrap {
             position: relative;
             display: inline-block;
+            background-color: #e3e6e4;
             background-image:
                 linear-gradient(45deg, #ccc 25%, transparent 25%),
                 linear-gradient(-45deg, #ccc 25%, transparent 25%),
@@ -320,6 +323,9 @@
         .de-tool[data-tool="crop"] { margin-top: 9px; }
         .de-tool-action { margin-top: 9px; }
         .de-viewport { background: #c5d0db; }
+        html[data-app-theme="dark"] .de-viewport { background: #34423e; }
+        html[data-app-theme="dark"] .de-btn--accent { color: #18251a; }
+        html[data-app-theme="dark"] .de-topbar, html[data-app-theme="dark"] .de-sidebar { border-color: #45504d; }
         .de-canvas-wrap { border-radius: 2px; }
         .de-bottom { flex-wrap: wrap; gap: 8px 12px; border-top-width: 1px; }
         #colorPalette { flex: 1 1 340px; gap: 5px; }
@@ -330,8 +336,8 @@
             .de-topbar { gap: 5px; padding: 6px 8px; }
             .de-brand { display: none; }
             .de-size input[type="range"] { width: 65px; }
-            .de-sidebar { width: 60px; padding: 6px 4px; }
-            .de-tool { flex-direction: column; justify-content: center; gap: 2px; padding: 5px 2px; font-size: 10px; text-align: center; overflow-wrap: anywhere; }
+            .de-sidebar { width: 72px; padding: 6px 4px; }
+            .de-tool { flex-direction: column; justify-content: center; gap: 2px; padding: 5px 2px; font-size: 9px; text-align: center; overflow-wrap: normal; }
             .de-bottom { padding: 6px 8px; }
         }
 
@@ -346,7 +352,7 @@
         }
 
         .modal-content {
-            background: #fff;
+            background: var(--pz-bg-elevated);
             padding: 20px;
             border-radius: var(--pz-radius, 14px);
             max-width: 360px;
@@ -371,6 +377,8 @@
             border-radius: 10px;
             font: inherit;
             box-sizing: border-box;
+            background: var(--pz-surface);
+            color: var(--pz-text);
         }
 
         .modal-buttons {
@@ -390,7 +398,7 @@
         }
 
         .btn-ok { background: var(--pz-play, #34c759); color: #fff; }
-        .btn-cancel { background: #e2e8f0; color: var(--pz-text); }
+        .btn-cancel { background: var(--pz-surface); color: var(--pz-text); }
     </style>
 </head>
 <body>

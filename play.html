@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#0f172a">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache">
-    <link rel="stylesheet" href="./theme.css?v=0.074">
+    <link rel="stylesheet" href="./theme.css?v=0.096">
     <link rel="stylesheet" href="./new-message.css">
     <style>
         #page-loader {
@@ -40,6 +40,28 @@
             -webkit-tap-highlight-color: transparent;
             display: block;
         }
+        .pg-play-page { background: #141b1c; color: #efe9db; }
+        .pg-play-page #page-loader { background: #141b1c; }
+        .pg-play-page .spinner { border-color: #45504d; border-top-color: #adc477; }
+        .pg-play-page .pg-play-header { min-height: 48px; padding: 10px 28px; background: #1b2525; border-color: #45504d; }
+        .pg-play-page .pg-play-brand, .pg-play-page .pg-play-brand strong { color: #efe9db; }
+        .pg-play-page .startup-brand__icon { width: 34px; height: 34px; border-radius: 8px; }
+        .pg-play-page .startup-brand__icon .startup-svg { width: 20px; height: 20px; }
+        .pg-play-page .pg-play-main { background: #141b1c url('./assets/startup/stone-arch.png') no-repeat right 4% top 8%; background-size: min(42vw, 440px) auto; }
+        .pg-play-page .pg-play-intro { position: relative; padding: 40px 32px; max-width: min(420px, calc(100vw - 80px)); }
+        .pg-play-page .pg-play-intro__label { color: #b7c4ac; font-size: 14px; text-transform: none; letter-spacing: 0; }
+        .pg-play-page .pg-play-intro__title { color: #efe9db; overflow-wrap: anywhere; }
+        .pg-play-page .pg-play-start-btn { padding: 14px 26px; border-radius: 9px; background: #adc477; color: #1b2719; box-shadow: none; font-size: 17px; }
+        .pg-play-page .pg-play-start-btn:hover { background: #c2d796; }
+        .pg-play-page .pg-play-start-btn:focus-visible, .pg-play-page a:focus-visible { outline: 2px solid #c2d796; outline-offset: 4px; }
+        .pg-play-page .pg-play-start-btn__icon { width: 24px; height: 24px; background: transparent; }
+        .pg-play-page .pg-play-intro__note, .pg-play-page .pg-play-loading, .pg-play-page .pg-play-footer { color: #c4cabe; }
+        .pg-play-page .pg-play-intro__note a, .pg-play-page .pg-play-error__link { color: #c2d796; }
+        .pg-play-page .pg-play-footer { border-color: #34433e; }
+        .pg-play-page .pg-play-game-overlay { background: #141b1c; }
+        .pg-play-page .pg-play-game-window { border-color: #45504d; }
+        .pg-play-page .pg-play-game-bar { background: #222d2b; border-color: #45504d; }
+        @media (max-width: 600px) { .pg-play-page .pg-play-header { padding: 8px 16px; } .pg-play-page .pg-play-main { background-size: 70vw auto; background-position: right top; } }
     </style>
 </head>
 <body class="pg-play-page">
@@ -48,7 +70,7 @@
     <div id="playPageShell" class="pg-play-shell">
         <header class="pg-play-header">
             <a class="pg-play-brand" href="./index.html" aria-label="PGZero Studio">
-                <img src="./favicon.svg" width="24" height="24" alt="">
+                <span class="startup-brand__icon" aria-hidden="true"><span class="startup-svg startup-svg--gamepad"></span></span>
                 <span><strong>PGZero</strong> Studio</span>
             </a>
             <h1 class="pg-play-header__title" data-play-title data-i18n="play.title">Игра</h1>

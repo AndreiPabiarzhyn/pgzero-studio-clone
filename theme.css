@@ -2,16 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap');
 
 :root {
-  --pz-bg: #eef6ff;
-  --pz-bg-elevated: #ffffff;
-  --pz-bg-panel: #ffffff;
-  --pz-surface: #f8fbff;
-  --pz-border: #c7ddff;
-  --pz-text: #1e3a5f;
-  --pz-text-muted: #5b7a9d;
-  --pz-accent: #5b8def;
-  --pz-accent-hover: #4a7de0;
-  --pz-accent-soft: rgba(91, 141, 239, 0.12);
+  --pz-bg: #edf0e9;
+  --pz-bg-elevated: #fcfdf9;
+  --pz-bg-panel: #fcfdf9;
+  --pz-surface: #f3f6ee;
+  --pz-border: #c9d2c2;
+  --pz-text: #273a31;
+  --pz-text-muted: #52665a;
+  --pz-accent: #567235;
+  --pz-accent-hover: #415c25;
+  --pz-accent-soft: rgba(101, 131, 67, 0.12);
   --pz-play: #34c759;
   --pz-play-hover: #2db84e;
   --pz-cyan: #38bdf8;
@@ -2649,16 +2649,16 @@ body.layout-dragging-h * {
 
 /* ========== Тёмная тема приложения ========== */
 [data-app-theme="dark"] {
-  --pz-bg: #0f172a;
-  --pz-bg-elevated: #1e293b;
-  --pz-bg-panel: #1e293b;
-  --pz-surface: #334155;
-  --pz-border: #475569;
-  --pz-text: #e2e8f0;
-  --pz-text-muted: #94a3b8;
-  --pz-accent: #60a5fa;
-  --pz-accent-hover: #3b82f6;
-  --pz-accent-soft: rgba(96, 165, 250, 0.15);
+  --pz-bg: #141b1c;
+  --pz-bg-elevated: #1b2525;
+  --pz-bg-panel: #1b2525;
+  --pz-surface: #273231;
+  --pz-border: #45504d;
+  --pz-text: #efe9db;
+  --pz-text-muted: #c4cabe;
+  --pz-accent: #adc477;
+  --pz-accent-hover: #c2d796;
+  --pz-accent-soft: rgba(173, 196, 119, 0.14);
   --pz-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
 }
 
@@ -4288,6 +4288,7 @@ body.game-modal-dragging .game-modal-header {
 .publish-details [hidden] { display: none; }
 .publish-details__actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 24px; }
 .publish-details__primary { background: var(--pz-accent); color: white; }
+[data-app-theme="dark"] .publish-details__primary { color: #18251a; }
 .publish-details__error { margin: 12px 0 0; color: #ef6b73; font-size: 14px; }
 .publish-details :focus-visible { outline: 2px solid var(--pz-accent); outline-offset: 2px; }
 @media(max-width: 480px) { .publish-details form { padding: 18px; } .publish-details__cover { align-items: flex-start; flex-direction: column; } }
