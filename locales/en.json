@@ -36,7 +36,7 @@
     "featuredAction": "Adventure",
     "feedCurated": "Studio picks",
     "feedRecent": "Recently published",
-    "feedEmpty": "No games published in the last 10 days.",
+    "feedEmpty": "No new games with covers in the last 10 days.",
     "feedError": "Could not load games. Try again.",
     "feedLoading": "Loading games…",
     "featuredTitle": "Community games",

@@ -146,10 +146,12 @@ test('новые игры отбираются за 10 дней по перво�
     vm.createContext(sandbox); vm.runInContext(startupSource, sandbox);
     const now = Date.UTC(2026, 10, 14), day = 86400000;
     const games = [
-      {id:'new', publishedAt: now-day}, {id:'old', publishedAt: now-11*day, updatedAt:now-day},
-      {id:'legacy', updatedAt:now-2*day}, {id:'future', publishedAt: now+day}
+      {id:'new', publishedAt: now-day, preview:true}, {id:'old', publishedAt: now-11*day, updatedAt:now-day, preview:true},
+      {id:'legacy', updatedAt:now-2*day, preview:true}, {id:'future', publishedAt: now+day, preview:true},
+      {id:'no-cover', publishedAt:now, preview:false}, {id:'missing-cover-field', publishedAt:now}
     ];
     const result = sandbox.window.PGZStartupHome.recentGames(games, now);
     assert.deepEqual(Array.from(result, x => x.id), ['new','legacy']);
+    assert.equal(sandbox.window.PGZStartupHome.recentGames([{id:'no-cover', publishedAt:now, preview:false}], now).length, 0);
     assert.equal(sandbox.window.PGZStartupHome.recentGames(games, now+30*day).length, 0);
 });
