@@ -4,7 +4,7 @@ const { chromium } = require('playwright');
 const fs = require('node:fs');
 const path = require('node:path');
 const os = require('node:os');
-const base = 'http://127.0.0.1:8101/';
+const base = process.env.PGZ_CHECK_BASE || 'http://127.0.0.1:8101/';
 (async () => {
   const browser = await chromium.launch({ channel: 'chrome', headless: true });
   try {
