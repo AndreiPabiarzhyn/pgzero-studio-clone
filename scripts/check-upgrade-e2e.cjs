@@ -58,5 +58,24 @@ const server = http.createServer((req, res) => {
     assert.equal(loaded.music, original.assets.music[0].dataUrl);
     assert.deepEqual(await page.evaluate(() => PGZProjectGallery.getSlot(0)), original);
     console.log('Full upgrade passed: old UI → new UI → open game; all code and media are intact.');
+    const seventh = { ...original, projectName: 'Седьмая игра', files: { 'my_pgz.py': '# seventh project' } };
+    await page.evaluate(async project => {
+      const request = indexedDB.open('pgz_project_gallery_v1', 1);
+      const db = await new Promise((resolve, reject) => { request.onsuccess = () => resolve(request.result); request.onerror = () => reject(request.error); });
+      await new Promise((resolve, reject) => { const tx = db.transaction('slots', 'readwrite'); tx.objectStore('slots').add(project, '6'); tx.oncomplete = resolve; tx.onabort = () => reject(tx.error); });
+      db.close();
+    }, seventh);
+    root = oldRoot;
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.waitForSelector('#projectStartupScreen', { state: 'visible', timeout: 30000 });
+    const rollback = await page.evaluate(async () => ({ visible: (await PGZProjectGallery.listSlots()).length, seventh: await PGZProjectGallery.getSlot(6) }));
+    assert.equal(rollback.visible, 6);
+    assert.deepEqual(rollback.seventh, seventh);
+    root = newRoot;
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.waitForSelector('#projectStartupScreen', { state: 'visible', timeout: 30000 });
+    const restored = await page.evaluate(async () => (await PGZProjectGallery.listSlots())[6]);
+    assert.deepEqual(restored, seventh);
+    console.log('Rollback passed: old UI shows six slots but retains slot seven; new UI shows it again.');
   } finally { await context.close(); await browser.close(); server.close(); }
 })().catch(error => { console.error(error); server.close(); process.exitCode = 1; });
