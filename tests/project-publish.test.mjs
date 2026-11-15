@@ -37,6 +37,7 @@ test('buildPlayUrl формирует play.html?id=', () => {
     const pub = loadPublish();
     const url = pub._test.buildPlayUrl('abc123');
     assert.equal(url, 'https://example.com/pgzero-studio-clone/play.html?id=abc123');
+    assert.equal(pub._test.buildPlayUrl('abc123', 1794700000000), 'https://example.com/pgzero-studio-clone/play.html?id=abc123&v=1794700000000');
 });
 
 test('getAppBasePath учитывает index.html и play.html', () => {
