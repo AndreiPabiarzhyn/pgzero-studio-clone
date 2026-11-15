@@ -189,7 +189,7 @@
     <script src="./lib/publish-config.js?v=0.074"></script>
     <script src="./lib/publish-static.js?v=0.093"></script>
     <script src="./lib/publish-link.js?v=0.074"></script>
-    <script src="./lib/project-publish.js?v=0.093"></script>
+    <script src="./lib/project-publish.js?v=0.094"></script>
     <script>
 	var coldStart = true;
     if (localStorage.loadAction) { coldStart=false}
@@ -2386,8 +2386,7 @@
     
         window.addEventListener('message', messageHandler);
     }	
-	function generateProjectName() {
-    const project_names = [
+	const PGZ_GENERATED_PROJECT_NAMES = [
         "HiddenJourney",
         "SilentQuest",
         "ArcaneExploit",
@@ -2451,7 +2450,14 @@
         "ObscureJourney"
     ];
 
-    const randomName = project_names[Math.floor(Math.random() * project_names.length)];
+function isGeneratedProjectName(name) {
+    return PGZ_GENERATED_PROJECT_NAMES.some(function (part) {
+        return ('my' + part + 'Game').toLowerCase() === String(name || '').trim().toLowerCase();
+    });
+}
+
+function generateProjectName() {
+    const randomName = PGZ_GENERATED_PROJECT_NAMES[Math.floor(Math.random() * PGZ_GENERATED_PROJECT_NAMES.length)];
     return "my" + randomName + "Game";
 }
 

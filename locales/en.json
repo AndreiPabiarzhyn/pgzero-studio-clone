@@ -177,6 +177,7 @@
     "gameName": "Game name",
     "gameNamePlaceholder": "For example, Space Cat",
     "nameRequired": "Enter a game name.",
+    "nameGenerated": "Choose your own game name.",
     "cover": "Cover image",
     "coverAuto": "If you don't upload an image, the studio will capture a frame from your game.",
     "coverChoose": "Choose image",

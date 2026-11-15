@@ -177,6 +177,7 @@
     "gameName": "Nombre del juego",
     "gameNamePlaceholder": "Por ejemplo, Gato espacial",
     "nameRequired": "Escribe un nombre para el juego.",
+    "nameGenerated": "Inventa tu propio nombre para el juego.",
     "cover": "Portada",
     "coverAuto": "Si no subes una imagen, el estudio capturará una imagen del juego.",
     "coverChoose": "Elegir imagen",

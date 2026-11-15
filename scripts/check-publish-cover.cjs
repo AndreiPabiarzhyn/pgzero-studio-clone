@@ -28,7 +28,12 @@ const base = process.env.PGZ_CHECK_BASE || 'http://127.0.0.1:8101/';
         const keep = 'data:image/png;base64,' + fs.readFileSync(path.join(root(), 'assets/featured-games/runner.png')).toString('base64');
         await page.evaluate(async data => { await initFS(); await jsfs.write('/images/keep.png', data); }, keep);
         await page.locator('#btn_pgz_publish').click();
+        assert.equal(await page.locator('#publishGameName').inputValue(), '', 'generated project names are not prefilled');
         await page.locator('#publishGameName').fill('');
+        await page.locator('#publishDetailsForm [type=submit]').click();
+        assert.equal(await page.locator('#publishDetailsDialog').isVisible(), true);
+        assert.equal(writes.length, 0);
+        await page.locator('#publishGameName').fill('myHiddenUndertakingGame');
         await page.locator('#publishDetailsForm [type=submit]').click();
         assert.equal(await page.locator('#publishDetailsDialog').isVisible(), true);
         assert.equal(writes.length, 0);
@@ -46,7 +51,12 @@ const base = process.env.PGZ_CHECK_BASE || 'http://127.0.0.1:8101/';
         assert.equal(bytes.subarray(0, 4).toString(), 'RIFF');
         const meta = writes.find(item => /\.json$/.test(item.url));
         assert.equal(JSON.parse(Buffer.from(meta.data.content, 'base64')).title, auto ? 'Auto cover' : 'Uploaded cover');
+        assert.equal(await page.locator('#projectNameInput').inputValue(), auto ? 'Auto cover' : 'Uploaded cover');
+        assert.equal((await page.evaluate(() => PGZProjectGallery.getSlot(0))).projectName, auto ? 'Auto cover' : 'Uploaded cover');
         assert.equal(await page.evaluate(() => jsfs.read('/images/keep.png')), keep);
+        await page.evaluate(() => PGZProjectPublish.hideSuccess());
+        await page.locator('#btn_pgz_publish').click();
+        assert.equal(await page.locator('#publishGameName').inputValue(), auto ? 'Auto cover' : 'Uploaded cover', 'custom names are retained');
         console.log((auto ? 'Automatic' : 'Uploaded') + ' cover: validation, WebP upload and title passed');
       } finally { await context.close(); }
     }
