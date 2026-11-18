@@ -15,6 +15,8 @@
     "slotsTitle": "Tus juegos",
     "libraryTab": "Biblioteca de juegos",
     "mineTab": "Mis proyectos",
+    "publishedDate": "Publicado {date}",
+    "updatedDate": "Actualizado {date}",
     "libraryHint": "Juegos publicados por la comunidad",
     "libraryError": "No se pudo cargar la biblioteca. Actualiza la página.",
     "libraryEmpty": "Todavía no hay juegos en la biblioteca",

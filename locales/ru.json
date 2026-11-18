@@ -15,6 +15,8 @@
     "slotsTitle": "Твои игры",
     "libraryTab": "Библиотека игр",
     "mineTab": "Мои проекты",
+    "publishedDate": "Опубликовано {date}",
+    "updatedDate": "Обновлено {date}",
     "libraryHint": "Опубликованные игры сообщества",
     "libraryError": "Не удалось загрузить библиотеку. Обнови страницу.",
     "libraryEmpty": "В библиотеке пока нет игр",
