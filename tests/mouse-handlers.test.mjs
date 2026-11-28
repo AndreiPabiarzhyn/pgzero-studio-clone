@@ -59,8 +59,8 @@ test('остановка игры глушит музыку и звуки', () =
 
 test('после закрытия игры draw не падает из-за очищенного кеша', () => {
     const libSource = readFileSync(join(root, 'lib/lib.js'), 'utf8');
-    assert.match(pgzSource, /if \(window\.PGZ_STOP_REQUESTED\) return;/);
-    assert.match(pgzSource, /function runUserDraw\(\)[\s\S]{0,120}if \(window\.PGZ_STOP_REQUESTED\)/);
+    assert.match(pgzSource, /if \(disposed \|\| window\.PGZ_STOP_REQUESTED\) return;/);
+    assert.match(pgzSource, /function runUserDraw\(\)[\s\S]{0,120}if \(disposed \|\| window\.PGZ_STOP_REQUESTED\)/);
     assert.match(libSource, /Ignored runtime error after stop/);
     assert.doesNotMatch(
         libSource,
