@@ -99,6 +99,38 @@ test('plural для en/other форм', () => {
   assert.equal(i18n.plural('gallery.images', 3), '3 images');
 });
 
+test('раннее применение сохраняет исходный текст до загрузки словаря', async () => {
+  const source = readFileSync(join(__dirname, '../lib/i18n.js'), 'utf8');
+  const element = {
+    textContent: 'Игры сообщества',
+    getAttribute(name) { return name === 'data-i18n' ? 'startup.featuredTitle' : null; }
+  };
+  const document = {
+    documentElement: {},
+    getElementById() { return null; },
+    addEventListener() {},
+    querySelectorAll(selector) { return selector === '[data-i18n]' ? [element] : []; }
+  };
+  let resolveFetch;
+  let attempts = 0;
+  const sandbox = { document, navigator: { language: 'ru' }, console,
+    localStorage: { getItem() { return null; } },
+    fetch: () => {
+      if (++attempts === 1) return Promise.reject(new Error('Временный сбой сети'));
+      return new Promise(resolve => { resolveFetch = resolve; });
+    } };
+  sandbox.window = sandbox;
+  vm.createContext(sandbox);
+  vm.runInContext(source, sandbox);
+  await assert.rejects(sandbox.PGZI18n.init(), /Временный сбой сети/);
+  const loading = sandbox.PGZI18n.init();
+  sandbox.PGZI18n.apply(document);
+  assert.equal(element.textContent, 'Игры сообщества');
+  resolveFetch({ ok: true, json: async () => ({ startup: { featuredTitle: 'Переведённый заголовок' } }) });
+  await loading;
+  assert.equal(element.textContent, 'Переведённый заголовок');
+});
+
 test('index.html содержит переключатель языка и раздел игр', () => {
   const html = readFileSync(join(__dirname, '../index.html'), 'utf8');
   assert.match(html, /pg-lang-switch/);
